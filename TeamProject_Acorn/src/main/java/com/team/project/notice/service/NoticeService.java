@@ -1,5 +1,7 @@
 package com.team.project.notice.service;
 
-public interface NoticeService {
+import javax.servlet.http.HttpServletRequest;
 
+public interface NoticeService {
+	public void list(HttpServletRequest request);
 }
