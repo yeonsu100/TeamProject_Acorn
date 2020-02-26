@@ -17,14 +17,14 @@
 	<c:choose>
 		<c:when test="${isSuccess }">
 			<script>
-				alert("Successfully Updated!")
+				alert("게시물이 정상적으로 업로드 되었습니다")
 				location.href="list.go";
 			</script>
 		</c:when>
 		<c:otherwise>
-			<h1>Alert</h1>
-			<p>Failure to update
-			<a href="upload_form.go">Please try it again.</a>
+			<h1>Alert!</h1>
+			<p>업로드 실패
+			<a href="upload_form.go">다시 시도해 주세요.</a>
 			</p>
 		</c:otherwise>
 	</c:choose>

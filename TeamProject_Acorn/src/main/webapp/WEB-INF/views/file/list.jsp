@@ -42,14 +42,14 @@
 	<table class="table table-striped table-hover">
 		<thead>
 			<tr>
-				<th>No.</th>
-				<th>Writer</th>
-				<th>Title</th>
-				<th>File Name</th>
-				<th>File Size</th>
-				<th>Down Count</th>
-				<th>Date</th>
-				<th>Delete</th>
+				<th>번호</th>
+				<th>작성자</th>
+				<th>파일 제목</th>
+				<th>파일명</th>
+				<th>파일 크기 (byte)</th>
+				<th>다운로드 수</th>
+				<th>작성일</th>
+				<th>삭제</th>
 			</tr>
 		</thead>
 				
