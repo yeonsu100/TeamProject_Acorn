@@ -4,10 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
  <configuration>
  	<typeAliases>
+		<typeAlias type="com.team.project.notice.dto.NoticeDto" alias="noticeDto"/>
 		<typeAlias type="com.team.project.file.dto.FileDto" alias="fileDto"/>
  	</typeAliases>
  	
  	<mappers>
+		<mapper resource="com/team/project/mybatis/NoticeMapper.xml"/>
  		<mapper resource="com/team/project/mybatis/FileMapper.xml" />
  	</mappers>
  </configuration>
