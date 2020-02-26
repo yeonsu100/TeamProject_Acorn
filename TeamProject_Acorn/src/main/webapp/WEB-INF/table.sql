@@ -6,7 +6,7 @@ CREATE TABLE T_emp(
 	phoneno VARCHAR2(100) --전화번호
 );
 
-CREATE SEQUENCE emp_seq
+CREATE SEQUENCE T_emp_seq
 	MAXVALUE 9999
 	CYCLE;	--사번생성용 시퀀스. 1~9999까지 증가한 후 다시 1로 초기화. 1년에 신입사원 1만명 넘으면 자릿수부터 수정필요
 
