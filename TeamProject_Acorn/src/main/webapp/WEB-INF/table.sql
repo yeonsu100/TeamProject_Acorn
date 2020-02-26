@@ -15,7 +15,7 @@ CREATE TABLE T_user(
 	empno NUMBER PRIMARY KEY,  --사번. emp테이블에서 생성된거 회원가입시 자동입력시킬예정
 	userid VARCHAR2(100) NOT NULL,  --유저 계정
 	pwd VARCHAR2(100) NOT NULL,		--유저 비번
-	email VARCHAR2(100),	--사내 email 생성
+	email VARCHAR2(100) NOT NULL,	--사내 email 생성
 	profile VARCHAR2(100),			--프로필이미지용
 	isadmin VARCHAR2(100)			--admin일경우 관리자, null일경우 일반회원계정
 );
