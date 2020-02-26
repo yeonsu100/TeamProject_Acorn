@@ -12,7 +12,6 @@
 <jsp:include page="../include/navbar.jsp">
 	<jsp:param value="notice" name="category"/>
 </jsp:include>
-<h1>테스트중..</h1>
 <div class="container">
 	<ol class="breadcrumb">
 		<li><a href="list.go">글목록 보기</a></li>
