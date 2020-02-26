@@ -14,8 +14,8 @@
 </jsp:include>
 <div class="container">
 	<ol class="breadcrumb">
-		<li><a href="list.do">글목록 보기</a></li>
-		<li><a href="insertform.do">새글 작성</a></li>
+		<li><a href="list.go">글목록 보기</a></li>
+		<li><a href="insertform.go">새글 작성</a></li>
 	</ol>
 	<c:if test="${not empty keyword }">
 		<p>
