@@ -2,8 +2,8 @@
 CREATE TABLE T_emp(
 	empno NUMBER PRIMARY KEY,  --사번, 입사년월+4자리 시퀀스숫자로 넣을예정
 	ename VARCHAR2(100),  --사원 이름
-	hdate VARCHAR2(100),  --입사일
-	phoneno VARCHAR2(100) --전화번호
+	hdate DATE,  --입사일
+	pnum VARCHAR2(100) --전화번호
 );
 
 CREATE SEQUENCE T_emp_seq
