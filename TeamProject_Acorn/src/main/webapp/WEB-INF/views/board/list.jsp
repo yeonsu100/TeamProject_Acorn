@@ -14,7 +14,7 @@
 </jsp:include>
 <div class="container">
 	<ol class="breadcrumb">
-		<li><a href="${pageContext.request.contextPath }/board/list.jsp">목록</a></li>
+		<li><a href="${pageContext.request.contextPath }/board/list.go">목록</a></li>
 	</ol>
 	<c:if test="${not empty keyword }">
 		<p>
@@ -47,7 +47,7 @@
 				<td>${tmp.num }</td>
 				<td>${tmp.writer }</td>
 				<td>
-					<a href="detail.jsp?num=${tmp.num }">
+					<a href="detail.go?num=${tmp.num }&condition=${condition }&keyword=${encodedKeyword }">
 						${tmp.title }
 					</a>
 				</td>
@@ -58,7 +58,7 @@
 		</tbody>
 	</table>
 
-	<a href="private/insertform.jsp">새글 작성</a>
+	<a href="inserform.go">새글 작성</a>
 
 	<div class="page-display">
 		<ul class="pagination">
