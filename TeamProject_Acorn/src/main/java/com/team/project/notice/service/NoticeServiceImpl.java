@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
+
 
 import com.team.project.notice.dao.NoticeDao;
 import com.team.project.notice.dto.NoticeDto;
@@ -112,5 +114,31 @@ public class NoticeServiceImpl implements NoticeService{
 		dto.setTitle(title);
 		dto.setContent(content);
 		noticeDao.insert(dto);
+	}
+
+	@Override
+	public void deleteContent(int num, HttpServletRequest request) {
+//		String id=(String)request.getSession().getAttribute("id");
+//		String writer=noticeDao.getData(num).getWriter();
+//		if(!id.equals(writer)) {
+//			throw new CanNotDeleteException();
+//		}
+		noticeDao.delete(num);
+		
+	}
+
+	@Override
+	public void showContent(int num, ModelAndView mView) {
+		NoticeDto dto= new NoticeDto();
+		noticeDao.getData(dto);
+		mView.addObject("dto", dto);
+	}
+
+	@Override
+	public void detail(HttpServletRequest request) {
+		NoticeDto dto= new NoticeDto();
+		noticeDao.getData(dto);
+		//request 에 글정보를 담고 
+		request.setAttribute("dto", dto);
 	}
 }

@@ -34,5 +34,18 @@ public class NoticeDaoImpl implements NoticeDao{
 	public void insert(NoticeDto dto) {
 		session.insert("notice.insert", dto);
 	}
+	
+	// 글삭제 메소드
+	@Override
+	public void delete(int num) {
+		session.delete("notice.delete", num);
+	}
+
+	// 글 하나의 정보 
+	@Override
+	public NoticeDto getData(NoticeDto dto) {
+		dto=session.selectOne("notice.getData2", dto.getNum());
+		return dto;
+	}
 
 }
