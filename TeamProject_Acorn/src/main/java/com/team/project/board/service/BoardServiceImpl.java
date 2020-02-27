@@ -172,14 +172,16 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public void getUpdateData(ModelAndView mView, int num) {
-		// TODO Auto-generated method stub
-		
+		//수정할 글번호를 이용해서 수정할 글 정보를 얻어오기
+		BoardDto dto=boardDao.getData(num);
+		//ModelAndView 객체에 담는다
+		mView.addObject("dto", dto);
 	}
 
 	@Override
 	public void updateContent(BoardDto dto) {
-		// TODO Auto-generated method stub
-		
+		//BoardDao 객체를 이용해서 원글을 수정 반영
+		boardDao.update(dto);
 	}
 
 	@Override

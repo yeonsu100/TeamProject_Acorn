@@ -62,5 +62,26 @@ public class BoardController {
 		service.deleteContent(num, request);
 		//글 목록 보기로 redirect move
 		return new ModelAndView("redirect:/board/list.go");	
-	}	
+	}
+	@RequestMapping("board/updateform")
+	public ModelAndView authUpdateform(HttpServletRequest request,
+			@RequestParam int num, ModelAndView mView) {
+		//수정할 글정보 ModelAndView 객체 담기
+		service.getUpdateData(mView, num);
+		mView.setViewName("board/updateform");
+		return mView;
+	}
+	//원글 수정 반영 요청 처리
+		@RequestMapping(value="/board/update",
+				method=RequestMethod.POST)
+		public ModelAndView 
+			authUpdate(HttpServletRequest request,
+					@ModelAttribute BoardDto dto){
+			//서비스를 이용해서 수정 반영한다.
+			service.updateContent(dto);
+
+			//글 자세히 보기로 리다일렉트 이동 
+			return new ModelAndView
+				("redirect:/board/detail.do?num="+dto.getNum());
+		}
 }
