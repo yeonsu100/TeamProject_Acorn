@@ -9,4 +9,6 @@ public interface NoticeDao {
 	public int getCount(NoticeDto dto);
 	// 글의 목록
 	public List<NoticeDto> getList(NoticeDto dto);
+	// 글 추가
+	public void insert(NoticeDto dto);
 }

@@ -31,4 +31,9 @@
 		ORDER BY num DESC) result1)
 		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
+	<insert id="insert" parameterType="noticeDto">
+		INSERT INTO T_notice
+		(num, writer, title, content, viewCount, regdate)
+		VALUES(T_notice_seq.NEXTVAL,#{writer},#{title},#{content},0,SYSDATE)
+	</insert>
 </mapper>

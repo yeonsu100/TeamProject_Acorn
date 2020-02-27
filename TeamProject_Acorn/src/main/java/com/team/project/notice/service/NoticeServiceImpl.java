@@ -100,4 +100,17 @@ public class NoticeServiceImpl implements NoticeService{
 		request.setAttribute("totalPageCount", totalPageCount);
 		request.setAttribute("totalRow", totalRow);
 	}
+	
+	// 글 추가 메소드
+	@Override
+	public void addContent(HttpServletRequest request, NoticeDto dto) {
+		String writer=request.getParameter("writer");
+		String title=request.getParameter("title");
+		String content=request.getParameter("content");
+		// 글작성자
+		dto.setWriter(writer);
+		dto.setTitle(title);
+		dto.setContent(content);
+		noticeDao.insert(dto);
+	}
 }
