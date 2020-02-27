@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.team.project.board.dao.BoardDao;
 import com.team.project.board.dto.BoardCommentDto;
 import com.team.project.board.dto.BoardDto;
+import com.team.project.exception.CanNotDeleteException;
 
 @Service
 public class BoardServiceImpl implements BoardService{
@@ -161,8 +162,12 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public void deleteContent(int num, HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		
+		String id=(String)request.getSession().getAttribute("id");
+		String writer=boardDao.getData(num).getWriter();
+		if(!id.equals(writer)) {
+			throw new CanNotDeleteException();
+		}
+		boardDao.delete(num);
 	}
 
 	@Override

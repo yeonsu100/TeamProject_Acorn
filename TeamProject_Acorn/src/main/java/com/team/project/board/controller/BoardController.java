@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team.project.board.dto.BoardDto;
@@ -54,6 +55,12 @@ public class BoardController {
 		//view page로 forward 이동해서 글 자세히 보기
 		return "cafe/detail";
 	}
-	
-	
+	//원글 삭제 요청 처리
+	@RequestMapping("/board/delete")
+	public ModelAndView authDelete(HttpServletRequest request, @RequestParam int num) {
+		//서비스를 이용하여 글 삭제
+		service.deleteContent(num, request);
+		//글 목록 보기로 redirect move
+		return new ModelAndView("redirect:/board/list.go");	
+	}	
 }

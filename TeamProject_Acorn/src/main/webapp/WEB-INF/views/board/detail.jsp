@@ -68,7 +68,7 @@
 		즉, 본인이 작성한 글만 수정할수 있도록 하기 위해
 	--%>
 	<c:if test="${dto.writer eq id }">
-		<a href="updateform.jsp?num=${dto.num }">
+		<a href="updateform.go?num=${dto.num }">
 			수정
 		</a>
 		<a href="javascript:deleteConfirm()">삭제</a>
