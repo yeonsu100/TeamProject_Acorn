@@ -22,7 +22,7 @@
 		WHERE pnum=#{pnum}
 	</select>
 	<select id="getData" parameterType="String" resultType="usersDto">
-		
+
 	</select>
 	
 	<update id="updateProfile" parameterType="usersDto">
