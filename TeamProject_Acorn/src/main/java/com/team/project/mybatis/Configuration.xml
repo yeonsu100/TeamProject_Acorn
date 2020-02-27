@@ -5,9 +5,11 @@
  <configuration>
  	<typeAliases>
 		<typeAlias type="com.team.project.users.dto.UsersDto" alias="usersDto"/>
+		<typeAlias type="com.team.project.file.dto.FileDto" alias="fileDto"/>
  	</typeAliases>
  	
  	<mappers>
 		<mapper resource="com/team/project/mybatis/UsersMapper.xml"/>
+ 		<mapper resource="com/team/project/mybatis/FileMapper.xml" />
  	</mappers>
  </configuration>
