@@ -66,7 +66,7 @@ regdate DATE
  CREATE SEQUENCE T_board_seq;
  
  --게시판 댓글 정보 테이블
- CREATE TABLE T_board_comment(
+CREATE TABLE T_board_comment(
 num NUMBER PRIMARY KEY, -- 댓글의 글번호
 writer VARCHAR2(100),
 content VARCHAR2(500),
