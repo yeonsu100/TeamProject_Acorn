@@ -26,15 +26,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public void getList(HttpServletRequest request) {
-		/*
-		 *  request 에 검색 keyword 가 전달 될수도 있고 안될수도
-		 *  있다.
-		 *  1. 전달 안되는 경우 : home 에서 목록보기를 누른경우
-		 *  2. 전달 되는 경우 : list.do 에서 검색어를 입력후 
-		 *     form 전송한 경우. 
-		 *  3. 전달 되는 경우 : 이미 검색을 한 상태에서 페이징
-		 *     처리 링크를 누른경우
-		 */
+
 		//검색과 관련된 파라미터를 읽어와 본다.
 		String keyword=request.getParameter("keyword");
 		String condition=request.getParameter("condition");
@@ -83,7 +75,7 @@ public class BoardServiceImpl implements BoardService{
 		int endRowNum=pageNum*PAGE_ROW_COUNT;
 
 		//전체 row 의 갯수를 읽어온다.
-		int totalRow=BoardDao.getCount(dto);
+		int totalRow=boardDao.getCount(dto);
 		//전체 페이지의 갯수 구하기
 		int totalPageCount=
 				(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
@@ -101,7 +93,7 @@ public class BoardServiceImpl implements BoardService{
 		dto.setEndRowNum(endRowNum);
 
 		// startRowNum 과 endRowNum 에 해당하는 카페글 목록을 select 해 온다.
-		List<BoardDto> list=BoardDao.getList(dto);
+		List<BoardDto> list=boardDao.getList(dto);
 
 		//view 페이지에서 필요한 값을 request 에 담고 
 		request.setAttribute("list", list);
@@ -115,7 +107,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public void saveContent(BoardDto dto) {
-		// TODO Auto-generated method stub
+		boardDao.insert(dto);
 		
 	}
 

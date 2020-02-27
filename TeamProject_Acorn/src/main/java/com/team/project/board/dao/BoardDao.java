@@ -21,5 +21,4 @@ public interface BoardDao {
 	public BoardDto getData(int num);
 	//글 수정 
 	public void update(BoardDto dto);
-	
 }
