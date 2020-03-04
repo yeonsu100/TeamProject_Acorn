@@ -28,7 +28,12 @@ public class UsersServiceImpl implements UsersService{
 		//암호화된 비밀번호를 UsersDto 에 다시 넣어준다.
 		dto.setPwd(encodedPwd);
 		//UsersDao 객체를 이용해서 DB 에 저장하기 
-		dao.insert(dto);
+		dao.insertUser(dto);
+	}
+	
+	@Override
+	public void addEmp(UsersDto dto) {
+		dao.insertEmp(dto);
 	}
 	
 	@Override

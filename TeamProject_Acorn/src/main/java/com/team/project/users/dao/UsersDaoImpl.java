@@ -62,8 +62,13 @@ public class UsersDaoImpl implements UsersDao{
 	}
 
 	@Override
-	public void insert(UsersDto dto) {
-		session.insert("users.insert", dto);
+	public void insertUser(UsersDto dto) {
+		session.insert("users.insertUser", dto);
+	}
+	
+	@Override
+	public void insertEmp(UsersDto dto) {
+		session.insert("users.insertEmp", dto);
 	}
 
 	@Override

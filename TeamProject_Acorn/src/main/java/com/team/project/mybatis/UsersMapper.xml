@@ -11,10 +11,16 @@
 		FROM T_user
 		WHERE empno=#{empno}
 	</select>
-	<insert id="insert" parameterType="usersDto">
+	<insert id="insertUser" parameterType="usersDto">
 		INSERT INTO T_user
 		(empno, userid, pwd, email)
 		VALUES(#{empno}, #{userid}, #{pwd}, #{email})
+	</insert>
+	<insert id="insertEmp" parameterType="usersDto">
+		INSERT INTO T_emp
+		(empno, ename, hdate, pnum)
+		VALUES(to_number(SUBSTR(#{hdate},1,6)||LPAD(T_emp_seq.nextval,4,0)),
+			 #{ename}, to_date(#{hdate}, 'yyyymmdd'), #{pnum})
 	</insert>
 	<select id="getPwdHash" parameterType="String" resultType="String">
 		SELECT pwd 

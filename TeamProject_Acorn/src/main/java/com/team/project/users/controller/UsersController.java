@@ -25,6 +25,12 @@ public class UsersController {
 	@Autowired
 	private UsersService service;
 	
+	//사원추가 폼 요청처리
+	@RequestMapping("/emp/insertform")
+	public String emp_insert_form() {
+		return "emp/insertform";
+	}
+	
 	//사원여부 체크 폼 요청 처리 
 	@RequestMapping("/users/signup_checkform")
 	public String signup_checkform() {
@@ -45,7 +51,16 @@ public class UsersController {
 		return map;
 	}
 	
-	// POST 방식 /users/signup.do 요청 처리 
+	//사원 추가 요청 처리
+	@RequestMapping(value = "/emp/insert", method = RequestMethod.POST)
+	public ModelAndView empInsert(@ModelAttribute("dto") UsersDto dto, 
+			ModelAndView mView, HttpSession session) {
+		service.addEmp(dto);
+		mView.setViewName("emp/insert");
+		return mView;
+	}
+	
+	//회원가입 요청 처리 
 	@RequestMapping(value = "/users/signup", method = RequestMethod.POST)
 	public ModelAndView signup(@ModelAttribute("dto") UsersDto dto,
 			ModelAndView mView, HttpSession session) {
