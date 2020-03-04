@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="users">
-	<select id="isExist" parameterType="java.lang.String" resultType="String">
+	<select id="isIdExist" parameterType="String" resultType="String">
 		SELECT userid
 		FROM T_user
 		WHERE userid=#{inputId}
+	</select>
+	<select id="isUserExist" parameterType="int" resultType="String">
+		SELECT userid
+		FROM T_user
+		WHERE empno=#{empno}
 	</select>
 	<insert id="insert" parameterType="usersDto">
 		INSERT INTO T_user
@@ -20,6 +25,11 @@
 		SELECT ename
 		FROM T_emp
 		WHERE pnum=#{pnum}
+	</select>
+	<select id="getEmpno" parameterType="String" resultType="int">
+		SELECT empno
+		FROM T_emp
+		where pnum=#{pnum}
 	</select>
 	<select id="getData" parameterType="String" resultType="usersDto">
 

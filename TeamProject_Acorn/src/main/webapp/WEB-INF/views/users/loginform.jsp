@@ -14,8 +14,8 @@
 	<form class="form-signin" action="login.go" method="post">
 		<input type="hidden" name="url" value="${url }" />
 		<h2 class="form-signin-heading">로그인 정보 입력</h2>
-		<label for="id" class="sr-only">아이디</label>
-		<input type="text" id="id" name="id" class="form-control" 
+		<label for="userid" class="sr-only">아이디</label>
+		<input type="text" id="userid" name="userid" class="form-control" 
 			placeholder="아이디" value="${savedId }"/>
 		<label for="pwd" class="sr-only">비밀번호</label>
 		<input type="password" id="pwd" name="pwd" class="form-control" 

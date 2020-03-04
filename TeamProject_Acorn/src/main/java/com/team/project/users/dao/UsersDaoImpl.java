@@ -29,13 +29,32 @@ public class UsersDaoImpl implements UsersDao{
 		//select된 사원명을 리턴
 		return savedEname;
 	}
+	
+	@Override
+	public int getEmpno(String pnum) {
+		//입력한 전화번호를 이용해서 저장된 사원의 사원번호 select
+		int savedEmpno=session.selectOne("users.getEmpno", pnum);
+		return savedEmpno;
+	}
 
 	@Override
-	public boolean isExist(String inputId) {
+	public boolean isIdExist(String inputId) {
 		//인자로 전달되는 아이디를 이용해서 select 를 한다.
-		String id=session.selectOne("users.isExist", inputId);
+		String id=session.selectOne("users.isIdExist", inputId);
 		//만일 select 된 결과가 null 이면 존재하지 않는 아이디이다.
 		if(id==null) {
+			return false;
+		}else {
+			return true;
+		}
+	}
+	
+	@Override
+	public boolean isUserExist(int inputEmpno) {
+		//인자로 전달되는 사번을 이용해서 userid select
+		String userid=session.selectOne("users.isUserExist", inputEmpno);
+		//만일 select 결과가 있으면 이미 가입한 사원이다
+		if(userid==null) {
 			return false;
 		}else {
 			return true;

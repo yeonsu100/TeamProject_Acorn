@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,10 +44,11 @@ public class UsersController {
 		Map<String, Object> map=service.isExistId(inputId);
 		return map;
 	}
+	
 	// POST 방식 /users/signup.do 요청 처리 
 	@RequestMapping(value = "/users/signup", method = RequestMethod.POST)
 	public ModelAndView signup(@ModelAttribute("dto") UsersDto dto,
-			ModelAndView mView) {
+			ModelAndView mView, HttpSession session) {
 		service.addUser(dto);
 		mView.setViewName("users/insert");
 		return mView;
@@ -69,7 +71,7 @@ public class UsersController {
 		mView.addObject("url", url);
 		mView.addObject("encodedUrl", encodedUrl);
 		
-		//입력한 이름과 전화번호가 T_emp테이블에 등록된 정보인지 확인		
+		//입력한 이름과 전화번호가 T_emp테이블에 등록된 정보인지, T_user에 이미 존재하는(이미 가입된)사원인지 확인 
 		service.validEmp(dto, request.getSession(), mView);
 		
 		mView.setViewName("users/signup_check");
@@ -146,5 +148,12 @@ public class UsersController {
 		
 		mView.setViewName("users/login");
 		return mView;
+	}
+	
+	//로그아웃처리
+	@RequestMapping("/users/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/home.go";
 	}
 }

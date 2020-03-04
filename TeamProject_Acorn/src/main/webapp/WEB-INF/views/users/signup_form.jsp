@@ -50,14 +50,16 @@
 			<label class="control-label" for="ename">이름</label>
 			<input type="text" class="form-control" id="ename" value="${ename }" disabled/>
 		</div>
+		<input type="hidden" name="empno" value="${empno}" }/>
 		<div class="form-group">
 			<label class="control-label" for="empno">사번</label>
-			<input type="text" class="form-control" id="empno" value="${pnum }" disabled/>
+			<input type="text" class="form-control" id="empno" value="${empno }" disabled/>
 		</div>
 		<button disabled="disabled" class="btn btn-primary" type="submit">가입</button>
 		<button class="btn btn-warning" type="reset">취소</button>
 	</form>
 </div>
+<% session.invalidate(); %>
 <script>
 	//아이디를 사용할수 있는지 여부 
 	var isIdUsable=false;

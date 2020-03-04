@@ -53,8 +53,12 @@ public class UsersServiceImpl implements UsersService{
 		//전화번호를 통해 이름을 검색
 		String ename=dao.getEname(dto.getPnum());
 		if(ename != null && ename.equals(dto.getEname())) {//해당 이름 사원이 존재하고 입력한 이름과 일치하면
-			//정상사원이므로 회원가입폼으로 연결해준다
+			int empno=dao.getEmpno(dto.getPnum());	//사번을 읽어와서
+			boolean isUserExist=dao.isUserExist(empno); //이미 가입한 사원인지 여부를 검사해서
+			//사원명, 사번, 이미 가입된 사원인지 여부를 전달 
+			session.setAttribute("isUserExist", isUserExist);
 			session.setAttribute("ename", ename);
+			session.setAttribute("empno", empno);
 		}
 	}
 

@@ -11,10 +11,16 @@
 <div class="container">
 	<h1>Alert</h1>
 	<c:choose>
-		<c:when test="${not empty sessionScope.ename }">
+		<c:when test="${not empty sessionScope.ename && sessionScope.isUserExist==false }">
 			<p>
 				<strong>${ename }</strong> 사원님 회원가입을 시작합니다.
 				<a href="${url }">확인</a>
+			</p>
+		</c:when>
+		<c:when test="${not empty sessionScope.ename && sessionScope.isUserExist==true }">
+			<p>
+				<strong>${ename }</strong> 사원님은 이미 가입 된 회원입니다.
+				<a href="loginform.go">로그인 하러 가기</a>
 			</p>
 		</c:when>
 		<c:otherwise>
