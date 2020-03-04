@@ -12,12 +12,20 @@
 	<h1>Alert</h1>
 	<p>
 		<strong>${dto.ename }</strong> 사원의 데이터가 추가 되었습니다.
-		<a href="${pageContext.request.contextPath }/emp/insertform.go">
-			입력하러 가기
-		</a>
-		<a href="${pageContext.request.contextPath }/home.go">
-			메인 화면으로 돌아가기
-		</a>
+		<ul>
+			<li>
+				<a href="${pageContext.request.contextPath }/emp/insertform.go">
+					입력하러 가기
+				</a>
+			</li>
+			<li>
+				<a href="${pageContext.request.contextPath }/home.go">
+					메인 화면으로 돌아가기
+				</a>
+			</li>
+		</ul>
+		
+		
 	</p>
 </div>
 </body>

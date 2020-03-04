@@ -1,5 +1,6 @@
 package com.team.project.users.service;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -69,8 +70,10 @@ public class UsersServiceImpl implements UsersService{
 
 	@Override
 	public Map<String, Object> isExistId(String inputId) {
-		// TODO Auto-generated method stub
-		return null;
+		boolean isExist=dao.isIdExist(inputId);
+		Map<String, Object> map=new HashMap<>();
+		map.put("isExist", isExist);
+		return map;
 	}
 
 	@Override
