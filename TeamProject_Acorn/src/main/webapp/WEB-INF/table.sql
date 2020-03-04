@@ -22,9 +22,9 @@ CREATE TABLE T_user(
 	isadmin VARCHAR2(100)			--admin일경우 관리자, null일경우 일반회원계정
 );
 
-INSERT INTO T_user 		--admin계정 생성
-(empno, userid, pwd, email, isadmin)
-VALUES(1, admin, admin, admin@acorn.com, admin);
+INSERT INTO T_emp 		--admin계정 생성
+(empno, ename, hdate, pnum)
+VALUES(1001010001, 'admin', to_date('1001.01.01', 'yyyy.mm.dd'), '01012345678');
 
 -- 파일 시스템 table
 CREATE TABLE T_file(
