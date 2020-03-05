@@ -34,7 +34,7 @@
 			<c:when test="${empty sessionScope.id }">
 				<div class="pull-right">
 				<a class="btn btn-primary navbar-btn btn-xs" href="${pageContext.request.contextPath }/users/loginform.go">Sign In</a>
-				<a class="btn btn-info navbar-btn btn-xs" href="${pageContext.request.contextPath }/users/signup_form.go">Create an account</a>
+				<a class="btn btn-info navbar-btn btn-xs" href="${pageContext.request.contextPath }/users/signup_checkform.go">Create an account</a>
 				</div>
 			</c:when>
 			<c:otherwise>
