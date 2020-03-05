@@ -14,6 +14,7 @@
 
 <div class="container">
 	<h1>Main Page</h1>
+	<a href="emp/insertform.go">사원 추가(임시)</a>
 </div>
 
 </body>
