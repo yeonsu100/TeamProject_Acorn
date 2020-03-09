@@ -22,6 +22,12 @@ public class UsersDaoImpl implements UsersDao{
 	}
 	
 	@Override
+	public String getIsAdmin(String inputId) {
+		String savedIsAdmin=session.selectOne("users.getIsAdmin", inputId);
+		return savedIsAdmin;
+	}
+	
+	@Override
 	public String getProfile(String inputId) {
 		String savedProfile=session.selectOne("users.getProfile", inputId);
 		return savedProfile;

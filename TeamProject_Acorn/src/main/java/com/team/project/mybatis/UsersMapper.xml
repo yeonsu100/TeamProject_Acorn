@@ -37,6 +37,11 @@
 		FROM T_emp
 		WHERE pnum=#{pnum}
 	</select>
+	<select id="getIsAdmin" parameterType="String" resultType="String">
+		SELECT isadmin
+		FROM T_user
+		WHERE userid=#{inputId}
+	</select>
 	<select id="getEmpno" parameterType="String" resultType="int">
 		SELECT empno
 		FROM T_emp
