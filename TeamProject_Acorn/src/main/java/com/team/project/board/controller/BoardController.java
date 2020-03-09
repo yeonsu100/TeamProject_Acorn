@@ -1,5 +1,8 @@
 package com.team.project.board.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +11,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.team.project.board.dto.BoardCommentDto;
 import com.team.project.board.dto.BoardDto;
 import com.team.project.board.service.BoardService;
 
@@ -92,5 +97,18 @@ public class BoardController {
 				@RequestParam int ref_group) {
 			service.saveComment(request);
 			return new ModelAndView("redirect:/board/detail.go?num="+ref_group);
+		}
+		
+		//댓글 수정 요청 처리
+		@ResponseBody
+		@RequestMapping("/board/comment_update")
+		public Map<String, Object>
+			authCommentUpdate(HttpServletRequest request, @ModelAttribute BoardCommentDto dto){
+			
+			service.updateComment(dto);
+			
+			Map<String, Object> map=new HashMap<>();
+			map.put("isSuccess", true);
+			return map;
 		}
 }

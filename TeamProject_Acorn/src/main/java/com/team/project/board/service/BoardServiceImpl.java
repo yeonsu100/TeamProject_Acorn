@@ -233,7 +233,13 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public void updateComment(BoardCommentDto dto) {
-		// TODO Auto-generated method stub
+		boardCommentDao.update(dto);
+		
+	}
+
+	@Override
+	public void addViewCount(int num) {
+		boardDao.addViewCount(num);
 		
 	}
 }
