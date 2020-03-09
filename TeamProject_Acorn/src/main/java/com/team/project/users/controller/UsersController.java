@@ -1,6 +1,7 @@
 package com.team.project.users.controller;
 
 import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team.project.users.dto.UsersDto;
@@ -25,6 +27,66 @@ public class UsersController {
 	@Autowired
 	private UsersService service;
 	
+	//비밀번호 수정하기 폼 요청 처리
+	@RequestMapping("/users/pwd_updateform")
+	public ModelAndView authPwdForm(HttpServletRequest request,
+			ModelAndView mView) {
+		mView.setViewName("users/pwd_updateform");
+		return mView;
+	}
+	
+	//비밀번호 수정 반영 요청 처리
+	@RequestMapping("/users/pwd_update")
+	public ModelAndView authPwdUpdate(HttpServletRequest request,
+			ModelAndView mView) {
+		//기존 비밀번호 
+		String pwd=request.getParameter("pwd");
+		//새 비밀번호
+		String newPwd=request.getParameter("newPwd");
+		//로그인된 아이디
+		String id=(String)request.getSession().getAttribute("id");
+		//위의 3가지 정보를 UsersDto 객체에 담아서 
+		UsersDto dto=new UsersDto();
+		dto.setPwd(pwd);
+		dto.setNewPwd(newPwd);
+		dto.setUserid(id);
+		//서비스에 전달
+		service.updatePassword(dto, mView);
+		
+		mView.setViewName("users/pwd_update");
+		return mView;
+	}
+	
+	//프로필 이미지파일 업로드 요청
+	// ajax 파일 업로드 처리, JSON 문자열을 리턴해 주어야 한다. 
+	@ResponseBody
+	@RequestMapping(value = "/users/profile_upload", 
+			method = RequestMethod.POST)
+	public Map<String, Object> profileUpload(HttpServletRequest request,
+			@RequestParam MultipartFile profileImage){
+		String path=service.saveProfileImage(request, profileImage);
+		/*
+		 *  {"savedPath":"/upload/xxxx.jpg"} 형식의 JSON 문자열을 리턴해주도록
+		 *  Map 객체를 구성해서 리턴해준다. 
+		 */
+		Map<String, Object> map=new HashMap<>();
+		map.put("savedPath", path);
+		return map;
+	}
+	
+	//개인 정보 보기 요청 처리
+	@RequestMapping("/users/info")
+	public ModelAndView authInfo(HttpServletRequest request, 
+				ModelAndView mView) {
+		//로그인된 아이디 읽어오기
+		String id=(String)request.getSession().getAttribute("id");
+		//UsersService 객체를 이용해서 개인정보를 ModelAndView 객체에 담기도록 한다.
+		service.showInfo(id, mView);
+		//view page 정보를 담고 
+		mView.setViewName("users/info");
+		return mView;//ModelAndView 객체를 리턴해주기 
+	}
+		
 	//사원추가 폼 요청처리
 	@RequestMapping("/emp/insertform")
 	public String emp_insert_form() {
