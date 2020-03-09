@@ -3,7 +3,7 @@
 <mapper namespace="file">
 	<select id="getCount" parameterType="fileDto" resultType="int" >
 		SELECT NVL(MAX(ROWNUM), 0)
-		FROM board_file
+		FROM T_file
 		<choose>
 			<when test="title != null and orgFileName != null">
 				WHERE title LIKE '%${title}%' OR orgFileName LIKE '%${orgFileName}%'
@@ -23,7 +23,7 @@
 			(SELECT result1.*, ROWNUM AS rnum
 			FROM
 				(SELECT num, writer, title, orgFileName, fileSize, downCount, regdate
-				FROM board_file
+				FROM T_file
 				<choose>
 					<when test="title != null and orgFileName != null">
 						WHERE title LIKE '%${title}%' OR orgFileName LIKE '%${orgFileName}%'
@@ -40,26 +40,26 @@
 	</select>
 	
 	<insert id="insert" parameterType="fileDto">
-		INSERT INTO board_file
+		INSERT INTO T_file
 		(num, writer, title, orgFileName, saveFileName, fileSize, downCount, regdate)
-		VALUES(board_file_seq.NEXTVAL, #{writer}, #{title}, #{orgFileName},
+		VALUES(T_file_seq.NEXTVAL, #{writer}, #{title}, #{orgFileName},
 				#{saveFileName}, #{fileSize}, #{downCount}, SYSDATE)
 	</insert>
 	
 	<select id="getData" parameterType="int" resultType="fileDto">
 		SELECT num, writer, title, orgFileName, saveFileName, fileSize, downCount, regdate
-		FROM board_file
+		FROM T_file
 		WHERE num=#{num}
 	</select>
 	
 	<update id="addDownCount" parameterType="int">
-		UPDATE board_file
+		UPDATE T_file
 		SET downCount=downCount+1
 		WHERE num=#{num}
 	</update>
 	
 	<delete id="delete" parameterType="int">
-		DELETE FROM board_file
+		DELETE FROM T_file
 		WHERE num=#{num}
 	</delete>
 </mapper>
