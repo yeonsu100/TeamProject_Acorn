@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+		<select id="getCount" parameterType="boardDto"
+		resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM T_board
+		<choose>
+			<when test="title != null and content != null">
+				WHERE title LIKE '%'||#{title}||'%' OR
+				content  LIKE '%'||#{content}||'%'
+			</when>
+			<when test="title != null">
+				WHERE title LIKE '%'||#{title}||'%'
+			</when>
+			<when test="writer != null">
+				WHERE writer LIKE '%'||#{writer}||'%'
+			</when>
+		</choose>
+	</select>
+	<select id="getList" parameterType="boardDto"
+		resultType="boardDto">
+		SELECT *
+		FROM
+			(SELECT result1.*, ROWNUM AS rnum
+			FROM
+				(SELECT num, writer, title, viewCount, 
+				TO_CHAR(regdate, 'YY.MM.DD HH24:MI') AS regdate
+				FROM T_board
+				<choose>
+					<when test="title != null and content != null">
+						WHERE title LIKE '%'||#{title}||'%' OR
+						content  LIKE '%'||#{content}||'%'
+					</when>
+					<when test="title != null">
+						WHERE title LIKE '%'||#{title}||'%'
+					</when>
+					<when test="writer != null">
+						WHERE writer LIKE '%'||#{writer}||'%'
+					</when>
+				</choose>
+				ORDER BY num DESC) result1)
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+
+	<insert id="insert" parameterType="boardDto">
+		INSERT INTO T_board
+		(num, writer, title, content, viewCount, regdate)
+		VALUES(T_board_seq.NEXTVAL, #{writer}, #{title}, #{content},
+		#{viewCount}, SYSDATE)	
+	</insert>
+
+	<select id="getData" parameterType="boardDto"
+		resultType="boardDto">
+		SELECT result1.*
+		FROM
+			(SELECT num, writer, title, content, viewCount, 
+			TO_CHAR(regdate, 'YY.MM.DD HH24:MI') AS regdate,
+			LAG(num, 1, 0) OVER(ORDER BY num DESC) AS prevNum,
+			LEAD(num, 1, 0) OVER(ORDER BY num DESC) AS nextNum
+			FROM T_board
+			<choose>
+				<when test="title != null and content != null">
+					WHERE title LIKE '%'||#{title}||'%' OR
+					content  LIKE '%'||#{content}||'%'
+				</when>
+				<when test="title != null">
+					WHERE title LIKE '%'||#{title}||'%'
+				</when>
+				<when test="writer != null">
+					WHERE writer LIKE '%'||#{writer}||'%'
+				</when>
+			</choose>
+			ORDER BY num DESC) result1
+		WHERE num=#{num }
+	</select>
+	<select id="getData2" parameterType="int"
+		resultType="boardDto">
+		SELECT result1.*
+		FROM
+			(SELECT num, writer, title, content, viewCount, 
+			TO_CHAR(regdate, 'YY.MM.DD HH24:MI') AS regdate,
+			LAG(num, 1, 0) OVER(ORDER BY num DESC) AS prevNum,
+			LEAD(num, 1, 0) OVER(ORDER BY num DESC) AS nextNum
+			FROM T_board
+			ORDER BY num DESC) result1
+		WHERE num=#{num }
+	</select>	
+
+	<delete id="delete" parameterType="int">
+		DELETE FROM T_board
+		WHERE num=#{num}
+	</delete>
+	<update id="addViewCount" parameterType="int">
+		UPDATE T_board
+		SET viewCount=viewCount+1
+		WHERE num=#{num}
+	</update>
+	<update id="update" parameterType="boardDto">
+		UPDATE T_board
+		SET title=#{title}, content=#{content}
+		WHERE num=#{num}
+	</update>
+		
+</mapper>
