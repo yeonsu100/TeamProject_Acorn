@@ -15,7 +15,7 @@
 <div class="container">
 	<ol class="breadcrumb">
 		<li><a href="list.go">글목록 보기</a></li>
-		<c:if test="${not empty isadmin }">
+		<c:if test="${not empty isAdmin }">
 			<li><a href="insertform.go">새글 작성</a></li>	
 		</c:if>
 	</ol>
