@@ -1,5 +1,12 @@
 package com.team.project.suggest.dao;
 
-public interface SuggestDao {
+import java.util.List;
 
+import com.team.project.suggest.dto.SuggestDto;
+
+public interface SuggestDao {
+	// 글 갯수 가져올 메소드
+	public int getCount();
+	// 글 목록 출력할 메소드
+	public List<SuggestDto> getList(SuggestDto dto);
 }
