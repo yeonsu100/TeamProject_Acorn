@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
+
 
 import com.team.project.notice.dao.NoticeDao;
 import com.team.project.notice.dto.NoticeDto;
@@ -99,5 +101,83 @@ public class NoticeServiceImpl implements NoticeService{
 		request.setAttribute("endPageNum", endPageNum);
 		request.setAttribute("totalPageCount", totalPageCount);
 		request.setAttribute("totalRow", totalRow);
+	}
+	
+	// 글 추가 메소드
+	@Override
+	public void addContent(HttpServletRequest request, NoticeDto dto) {
+		String writer=request.getParameter("writer");
+		String title=request.getParameter("title");
+		String content=request.getParameter("content");
+		// 글작성자
+		dto.setWriter(writer);
+		dto.setTitle(title);
+		dto.setContent(content);
+		noticeDao.insert(dto);
+	}
+
+	@Override
+	public void deleteContent(int num, HttpServletRequest request) {
+//		String id=(String)request.getSession().getAttribute("id");
+//		String writer=noticeDao.getData(num).getWriter();
+//		if(!id.equals(writer)) {
+//			throw new CanNotDeleteException();
+//		}
+		noticeDao.delete(num);
+		
+	}
+
+	@Override
+	public void showContent(int num, ModelAndView mView) {
+		NoticeDto dto= new NoticeDto();
+		noticeDao.getData(dto);
+		mView.addObject("dto", dto);
+	}
+
+	@Override
+	public void detail(HttpServletRequest request) {
+		//파라미터로 전달되는 글번호
+				int num=Integer.parseInt(request.getParameter("num"));
+
+				//검색과 관련된 파라미터를 읽어와 본다.
+				String keyword=request.getParameter("keyword");
+				String condition=request.getParameter("condition");
+
+				//NoticeDto 객체 생성 (select 할때 필요한 정보를 담기 위해)
+				NoticeDto dto=new NoticeDto();
+
+				if(keyword != null) {//검색 키워드가 전달된 경우
+					if(condition.equals("titlecontent")) {//제목+내용 검색
+						dto.setTitle(keyword);
+						dto.setContent(keyword);
+					}else if(condition.equals("title")) {//제목 검색
+						dto.setTitle(keyword);
+					}else if(condition.equals("writer")) {//작성자 검색
+						dto.setWriter(keyword);
+					}
+					//request 에 검색 조건과 키워드 담기
+					request.setAttribute("condition", condition);
+					/*
+					 *  검색 키워드에는 한글이 포함될 가능성이 있기 때문에
+					 *  링크에 그대로 출력가능하도록 하기 위해 미리 인코딩을 해서
+					 *  request 에 담아준다.
+					 */
+					String encodedKeyword=null;
+					try {
+						encodedKeyword=URLEncoder.encode(keyword, "utf-8");
+					} catch (UnsupportedEncodingException e) {
+						e.printStackTrace();
+					}
+					//인코딩된 키워드와 인코딩 안된 키워드를 모두 담는다.
+					request.setAttribute("encodedKeyword", encodedKeyword);
+					request.setAttribute("keyword", keyword);
+				}		
+				//NoticeDto 에 글번호도 담기
+				dto.setNum(num);
+				//조회수 1 증가 시키기
+				//글정보를 얻어와서
+				NoticeDto dto2=noticeDao.getData(dto);
+				//request 에 글정보를 담고 
+				request.setAttribute("dto", dto2);
 	}
 }
