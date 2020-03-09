@@ -3,10 +3,10 @@
 <mapper namespace="boardComment">
 	<select id="getList" parameterType="int" resultType="boardCommentDto">
 		SELECT num, writer, content, target_id, ref_group,
-			comment_group, deleted, board_comment.regdate, profile
+			comment_group, deleted, regdate, T_user.profile
 		FROM T_board_comment
 		INNER JOIN T_user
-		ON T_board_comment.writer = T_user.id
+		ON T_board_comment.writer = T_user.userid
 		WHERE ref_group=#{ref_group}
 		ORDER BY comment_group ASC, num ASC
 	</select>

@@ -27,7 +27,7 @@ public class BoardCommentImpl implements BoardCommentDao{
 
 	@Override
 	public void insert(BoardCommentDto dto) {
-		session.insert("boardComment", dto);
+		session.insert("boardComment.insert", dto);
 	}
 	//저장할 댓글의 글번호를 리턴하는 메소드
 	@Override
