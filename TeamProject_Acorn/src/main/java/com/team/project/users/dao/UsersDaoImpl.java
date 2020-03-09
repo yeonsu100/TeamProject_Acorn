@@ -22,6 +22,12 @@ public class UsersDaoImpl implements UsersDao{
 	}
 	
 	@Override
+	public String getProfile(String inputId) {
+		String savedProfile=session.selectOne("users.getProfile", inputId);
+		return savedProfile;
+	};
+	
+	@Override
 	public String getEname(String pnum) {
 		//입력한 전화번호를 이용해서 저장된 사원명을 select
 		//존재하지않으면 null

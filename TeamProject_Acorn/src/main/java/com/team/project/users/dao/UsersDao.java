@@ -11,6 +11,7 @@ public interface UsersDao {
 	public UsersDto getData(String id);
 	public String getEname(String pnum);
 	public int getEmpno(String pnum);
+	public String getProfile(String inputId);
 	public void updateProfile(UsersDto dto);
 	public void updatePwd(UsersDto dto);
 	public void updateUser(UsersDto dto);

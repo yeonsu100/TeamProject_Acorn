@@ -27,6 +27,11 @@
 		FROM T_user
 		WHERE userid=#{inputId}
 	</select>
+	<select id="getProfile" parameterType="String" resultType="String">
+		SELECT profile
+		FROM T_user
+		WHERE userid=#{inputId}
+	</select>
 	<select id="getEname" parameterType="String" resultType="String">
 		SELECT ename
 		FROM T_emp
