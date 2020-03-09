@@ -18,4 +18,6 @@ public interface NoticeDao {
 	public NoticeDto getDate(int num);
 	// 글 정보 수정
 	public void update(NoticeDto dto);
+	// 조회수 증가 시키기
+	public int addCount(int num);
 }
