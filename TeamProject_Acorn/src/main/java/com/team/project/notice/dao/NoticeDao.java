@@ -15,4 +15,7 @@ public interface NoticeDao {
 	public void delete(int num);
 	// 글하나의 정보
 	public NoticeDto getData(NoticeDto dto);
+	public NoticeDto getDate(int num);
+	// 글 정보 수정
+	public void update(NoticeDto dto);
 }

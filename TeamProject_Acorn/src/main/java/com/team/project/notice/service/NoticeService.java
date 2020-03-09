@@ -17,5 +17,7 @@ public interface NoticeService {
 	public void showContent(int num, ModelAndView mView);
 	// 글 자세히 보기
 	public void detail(HttpServletRequest request);
+	// 글 수정 메소드
+	public void updateContent(NoticeDto dto);
 	
 }
