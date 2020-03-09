@@ -10,12 +10,14 @@ public class UsersDto {
 	private String email;
 	private String profile;
 	private String isadmin;
+	private String newPwd;
 	
 	//디폴트 생성자
 	public UsersDto() {}
 
+	
 	public UsersDto(int empno, String ename, String hdate, String pnum, String userid, String pwd, String email,
-			String profile, String isadmin) {
+			String profile, String isadmin, String newPwd) {
 		super();
 		this.empno = empno;
 		this.ename = ename;
@@ -26,7 +28,19 @@ public class UsersDto {
 		this.email = email;
 		this.profile = profile;
 		this.isadmin = isadmin;
+		this.newPwd = newPwd;
 	}
+
+
+	public String getNewPwd() {
+		return newPwd;
+	}
+
+
+	public void setNewPwd(String newPwd) {
+		this.newPwd = newPwd;
+	}
+
 
 	public int getEmpno() {
 		return empno;
