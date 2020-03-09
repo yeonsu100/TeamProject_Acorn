@@ -45,7 +45,9 @@
 	</select>
 	
 	<update id="updateProfile" parameterType="usersDto">
-		
+		UPDATE T_user
+		SET profile=#{profile}
+		WHERE userid=#{userid}
 	</update>
 	
 	<update id="updatePwd" parameterType="usersDto">

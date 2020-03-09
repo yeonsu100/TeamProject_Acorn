@@ -1,6 +1,7 @@
 package com.team.project.users.controller;
 
 import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team.project.users.dto.UsersDto;
@@ -24,6 +26,23 @@ import com.team.project.users.service.UsersService;
 public class UsersController {
 	@Autowired
 	private UsersService service;
+	
+	//프로필 이미지파일 업로드 요청
+	// ajax 파일 업로드 처리, JSON 문자열을 리턴해 주어야 한다. 
+	@ResponseBody
+	@RequestMapping(value = "/users/profile_upload", 
+			method = RequestMethod.POST)
+	public Map<String, Object> profileUpload(HttpServletRequest request,
+			@RequestParam MultipartFile profileImage){
+		String path=service.saveProfileImage(request, profileImage);
+		/*
+		 *  {"savedPath":"/upload/xxxx.jpg"} 형식의 JSON 문자열을 리턴해주도록
+		 *  Map 객체를 구성해서 리턴해준다. 
+		 */
+		Map<String, Object> map=new HashMap<>();
+		map.put("savedPath", path);
+		return map;
+	}
 	
 	//개인 정보 보기 요청 처리
 	@RequestMapping("/users/info")
