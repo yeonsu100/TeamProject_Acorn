@@ -8,6 +8,7 @@
  		<typeAlias type="com.team.project.board.dto.BoardCommentDto" alias="boardCommentDto"/>
 		<typeAlias type="com.team.project.notice.dto.NoticeDto" alias="noticeDto"/>
 		<typeAlias type="com.team.project.file.dto.FileDto" alias="fileDto"/>
+		<typeAlias type="com.team.project.users.dto.UsersDto" alias="usersDto"/>
  	</typeAliases>
  	
  	<mappers>
@@ -15,5 +16,6 @@
  		<mapper resource="com/team/project/mybatis/BoardCommentMapper.xml"/>
 		<mapper resource="com/team/project/mybatis/NoticeMapper.xml"/>
  		<mapper resource="com/team/project/mybatis/FileMapper.xml" />
+ 		<mapper resource="com/team/project/mybatis/UsersMapper.xml"/>
  	</mappers>
  </configuration>
