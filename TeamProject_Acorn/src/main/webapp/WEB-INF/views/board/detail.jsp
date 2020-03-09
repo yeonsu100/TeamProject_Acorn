@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,7 +78,7 @@
 		결과 자세히 보기 입니다.</p>
 	</c:if>
 	
-	<h3>카페 글 상세 보기</h3>
+	<h3>게시글 상세 보기</h3>
 	
 	<c:if test="${dto.prevNum ne 0 }">
 		<a href="detail.go?num=${dto.prevNum }&condition=${condition}&keyword=${encodedKeyword}">이전글</a>
@@ -190,7 +190,7 @@
 		<!-- 원글에 댓글을 작성할수 있는 폼 -->
 		<div class="comment_form">
 			<form action="comment_insert.go" method="post">
-				<!-- 댓글의 그룹번호는 원글의 글번호가 된다.ㄴ  -->
+				<!-- 댓글의 그룹번호는 원글의 글번호가 된다.  -->
 				<input type="hidden" name="ref_group" 
 					value="${dto.num }"/>
 				<!-- 댓글의 대상자는 원글의 작성자가 된다. -->

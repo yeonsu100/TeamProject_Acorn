@@ -16,7 +16,7 @@ public interface BoardService {
 	public void getUpdateData(ModelAndView mView, int num);
 	//원글 수정하는 메소드 
 	public void updateContent(BoardDto dto);
-	//원그 ㄹ조회수 증가 메소드
+	//원글 조회수 증가 메소드
 	public void addViewCount(int num);
 	//댓글 저장하는 메소드
 	public void saveComment(HttpServletRequest request);

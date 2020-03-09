@@ -5,8 +5,8 @@
 		SELECT num, writer, content, target_id, ref_group,
 			comment_group, deleted, board_comment.regdate, profile
 		FROM T_board_comment
-		INNER JOIN users
-		ON T_board_comment.writer = users.id
+		INNER JOIN T_user
+		ON T_board_comment.writer = T_user.id
 		WHERE ref_group=#{ref_group}
 		ORDER BY comment_group ASC, num ASC
 	</select>

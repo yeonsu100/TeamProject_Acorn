@@ -46,7 +46,7 @@ public class BoardController {
 		//세션에 있는 글작성자의 아이디
 				String writer=(String)
 						request.getSession().getAttribute("id");
-				//CafeDto 객체에 담고 
+				//BoardDto 객체에 담고 
 				dto.setWriter(writer);
 				//서비스를 이용해서 DB 에 저장
 				service.saveContent(dto);
@@ -58,7 +58,7 @@ public class BoardController {
 	public String detail(HttpServletRequest request) {
 		service.getDetail(request);
 		//view page로 forward 이동해서 글 자세히 보기
-		return "cafe/detail";
+		return "board/detail";
 	}
 	//원글 삭제 요청 처리
 	@RequestMapping("/board/delete")
