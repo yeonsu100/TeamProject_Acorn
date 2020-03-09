@@ -59,4 +59,10 @@ public class NoticeDaoImpl implements NoticeDao{
 		return dto;
 	}
 
+	@Override
+	public int addCount(int num) {
+		int count=session.update("notice.addCount",num);
+		return count;
+	}
+
 }

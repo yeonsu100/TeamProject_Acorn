@@ -176,6 +176,7 @@ public class NoticeServiceImpl implements NoticeService{
 				//NoticeDto 에 글번호도 담기
 				dto.setNum(num);
 				//조회수 1 증가 시키기
+				noticeDao.addCount(num);
 				//글정보를 얻어와서
 				NoticeDto dto2=noticeDao.getData(dto);
 				//request 에 글정보를 담고 
@@ -186,5 +187,10 @@ public class NoticeServiceImpl implements NoticeService{
 	@Override
 	public void updateContent(NoticeDto dto) {
 		noticeDao.update(dto);
+	}
+
+	@Override
+	public void addCount(int num) {
+		noticeDao.addCount(num);
 	}
 }

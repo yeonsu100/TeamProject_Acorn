@@ -19,5 +19,7 @@ public interface NoticeService {
 	public void detail(HttpServletRequest request);
 	// 글 수정 메소드
 	public void updateContent(NoticeDto dto);
+	// 글 조회수 증가 메소드
+	public void addCount(int num);
 	
 }
