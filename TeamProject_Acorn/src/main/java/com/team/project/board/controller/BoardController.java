@@ -84,4 +84,13 @@ public class BoardController {
 			return new ModelAndView
 				("redirect:/board/detail.do?num="+dto.getNum());
 		}
+		
+		//댓글 저장 요청 처리
+		@RequestMapping(value= "/board/comment_insert", 
+				method = RequestMethod.POST)
+		public ModelAndView authCommentInsert(HttpServletRequest request,
+				@RequestParam int ref_group) {
+			service.saveComment(request);
+			return new ModelAndView("redirect:/board/detail.go?num="+ref_group);
+		}
 }

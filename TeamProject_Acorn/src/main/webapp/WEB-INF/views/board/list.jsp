@@ -28,7 +28,8 @@
 		<colgroup>
 			<col class="col-xs-1"/>
 			<col class="col-xs-2"/>
-			<col class="col-xs-5"/>
+			<col class="col-xs-4"/>
+			<col class="col-xs-1"/>
 			<col class="col-xs-1"/>
 			<col class="col-xs-3"/>
 		</colgroup>
@@ -47,9 +48,7 @@
 				<td>${tmp.num }</td>
 				<td>${tmp.writer }</td>
 				<td>
-					<a href="detail.go?num=${tmp.num }&condition=${condition }&keyword=${encodedKeyword }">
-						${tmp.title }
-					</a>
+					<a href="detail.go?num=${tmp.num }&condition=${condition }&keyword=${encodedKeyword }">${tmp.title }</a>
 				</td>
 				<td>${tmp.viewCount }</td>
 				<td>${tmp.regdate }</td>
@@ -58,7 +57,7 @@
 		</tbody>
 	</table>
 
-	<a href="inserform.go">새글 작성</a>
+	<a href="insertform.go">새글 작성</a>
 
 	<div class="page-display">
 		<ul class="pagination">
