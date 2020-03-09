@@ -4,56 +4,38 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/notice/insertform.jsp</title>
+<title>/cafe/private/updateform.jsp</title>
 <jsp:include page="../include/resource.jsp"></jsp:include>
-<style>
-	/* textarea의 크기가 SmartEditor의 크기가 된다.*/
-	#content{
-		display:nome;
-		width:100%;
-		height:400px;
-	}
-</style>
 </head>
 <body>
 <jsp:include page="../include/navbar.jsp">
-	<jsp:param value="notice" name="category"/>
+	<jsp:param value="cafe" name="category"/>
 </jsp:include>
 <div class="container">
-	<ol class="breadcrumb">
+	<ul class="breadcrumb">
 		<li><a href="${pageContext.request.contextPath }/notice/list.go">목록</a></li>
-		<li>새글 작성</li>
-	</ol>
-	<form action="insert.go" method="post">
+		<li>글 수정중</li>
+	</ul>
+	<form action="update.go" method="post">
+		<input type="hidden" name="num" value="${dto.num }"/>
 		<div class="form-group">
-			<label for="writer">작성자</label>
-			<input class="form-control" type="text" value="${id }" disabled/>
+			<label for="num">글 번호</label>
+			<input class="form-control" type="text" id="num" value="${dto.num }" disabled/>
 		</div>
 		<div class="form-group">
-			<label for="title">제목</label>
-			<input class="form-control" type="text" name="title" id="title"/>
+			<label for="title">글 제목</label>
+			<input class="form-control" type="text" id="title" name="title" value="${dto.title }"/>
 		</div>
-		<div>
+		<div class="form-group">
 			<label for="content">내용</label>
-			<textarea class="form-control" name="content" id="content" cols="30" rows="10"></textarea>
+			<textarea class="form-control" name="content" id="content">
+				${dto.content }
+			</textarea>
 		</div>
-		<button class="btn btn-primary" type="submit" onclick="submitContents(this);">저장</button>
-		<button class="btn btn-warning" type="button"  onclick="location.href='../list.go' ">취소</button>
+		<button class="btn btn-primary" type="submit" onclick="submitContents(this);">수정확인</button>
+		<button class="btn btn-warning" type="button"  onclick="location.href='detail.go?num=${dto.num}' ">취소</button>
 	</form>
 </div>
-<%--
-	[ SmartEditor 를 사용하기 위한 설정 ]
-	1. WebContent 에 SmartEditor 폴드를 복사해서 붙여넣기
-	2. WebContent 에 upload 폴더 만들어두기
-	3. WebContent/WEB-INF/lib 폴더에
-		commons-io.jar 파일과 commons-fileupload.jar 파일 붙여 넣기
-	4. <textarea id="content" name="content">
-		content가 아래의 javascript 에서 사용되기 때문에 다른이름으로 바꾸고
-		싶으면 javascript 에서 content 를 찾아서 모두 다른 이름으로 바꾸어 주면 된다.
-	5. textarea 의 크기가 SmartEditor 의 크기가 된다.
-	6. 폼을 제출하고 싶으면 submitContents(this)라는 javascript 가 
-	      폼 안에 있는 버튼에서 실행되면 된다. 
- --%>
 <!-- SmartEditor 에서 필요한 javascript 로딩  -->
 <script src="${pageContext.request.contextPath }/SmartEditor/js/HuskyEZCreator.js"></script>
 <script>
