@@ -87,7 +87,7 @@ public class BoardController {
 
 			//글 자세히 보기로 리다일렉트 이동 
 			return new ModelAndView
-				("redirect:/board/detail.do?num="+dto.getNum());
+				("redirect:/board/detail.go?num="+dto.getNum());
 		}
 		
 		//댓글 저장 요청 처리
@@ -110,5 +110,19 @@ public class BoardController {
 			Map<String, Object> map=new HashMap<>();
 			map.put("isSuccess", true);
 			return map;
+		}
+		
+		//댓글 삭제 요청 처리
+		@ResponseBody
+		@RequestMapping("/board/comment_delete")
+		public Map<String , Object>
+			authCommentDelete(HttpServletRequest request,
+					@RequestParam int num){
+			
+			service.deleteComment(num);
+			
+			Map<String, Object> map=new HashMap<>();
+			map.put("isSuccess", true);
+			return map; // {"isSuccess":true} 형식의 JSON 문자열이 응답된다.
 		}
 }

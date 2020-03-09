@@ -161,6 +161,9 @@ public class BoardServiceImpl implements BoardService{
 		BoardDto dto2=boardDao.getData(dto);
 		//request에 글 정보 담기
 		request.setAttribute("dto", dto2);
+		
+		List<BoardCommentDto> commentList=boardCommentDao.getList(num);
+		request.setAttribute("commentList", commentList);
 	}
 
 	@Override
@@ -227,7 +230,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public void deleteComment(int num) {
-		// TODO Auto-generated method stub
+		boardCommentDao.delete(num);
 		
 	}
 
