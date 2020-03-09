@@ -53,7 +53,7 @@ public class NoticeController {
 	// 글 자세히 보기
 	@RequestMapping("/notice/detail")
 	public String detail(HttpServletRequest request){
-		
+		service.detail(request);
 		//view page 로 forward 이동해서 글 자세히 보기 
 		return "notice/detail";
 	}	
