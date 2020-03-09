@@ -14,7 +14,14 @@
 
 <div class="container">
 	<h1>Main Page</h1>
-	<a href="emp/insertform.go">사원 추가(임시)</a>
+	
+	<c:choose>
+		<c:when test="${empty sessionScope.isAdmin }">
+		</c:when>
+		<c:otherwise>
+			<a href="emp/insertform.go">사원 추가(임시)</a>
+		</c:otherwise>
+	</c:choose>
 </div>
 
 </body>
