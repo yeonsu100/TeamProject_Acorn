@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import com.team.project.exception.CanNotDeleteException;
 import com.team.project.notice.dao.NoticeDao;
 import com.team.project.notice.dto.NoticeDto;
 
@@ -115,14 +115,15 @@ public class NoticeServiceImpl implements NoticeService{
 		dto.setContent(content);
 		noticeDao.insert(dto);
 	}
-
+	
+	// 글삭제 하는 메소드
 	@Override
 	public void deleteContent(int num, HttpServletRequest request) {
-//		String id=(String)request.getSession().getAttribute("id");
-//		String writer=noticeDao.getData(num).getWriter();
-//		if(!id.equals(writer)) {
-//			throw new CanNotDeleteException();
-//		}
+		String id=(String)request.getSession().getAttribute("id");
+		String writer=noticeDao.getDate(num).getWriter();
+		if(!id.equals(writer)) {
+			throw new CanNotDeleteException();
+		}
 		noticeDao.delete(num);
 		
 	}
@@ -175,9 +176,21 @@ public class NoticeServiceImpl implements NoticeService{
 				//NoticeDto 에 글번호도 담기
 				dto.setNum(num);
 				//조회수 1 증가 시키기
+				noticeDao.addCount(num);
 				//글정보를 얻어와서
 				NoticeDto dto2=noticeDao.getData(dto);
 				//request 에 글정보를 담고 
 				request.setAttribute("dto", dto2);
+	}
+
+	// 글수정 서비스
+	@Override
+	public void updateContent(NoticeDto dto) {
+		noticeDao.update(dto);
+	}
+
+	@Override
+	public void addCount(int num) {
+		noticeDao.addCount(num);
 	}
 }

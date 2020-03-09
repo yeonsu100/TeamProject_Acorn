@@ -51,5 +51,15 @@
 			FROM T_notice
 			ORDER BY num DESC) result1
 		WHERE num=#{num }
-	</select>	
+	</select>
+	<update id="update" parameterType="noticeDto">
+		UPDATE T_notice
+		SET title=#{title}, content=#{content}
+		WHERE num=#{num}
+	</update>
+	<update id="addCount" parameterType="int">
+		UPDATE T_notice
+		SET viewCount=viewCount+1
+		WHERE num=#{num}
+	</update>	
 </mapper>

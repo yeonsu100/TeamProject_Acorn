@@ -48,4 +48,21 @@ public class NoticeDaoImpl implements NoticeDao{
 		return dto;
 	}
 
+	@Override
+	public void update(NoticeDto dto) {
+		session.update("notice.update", dto);
+	}
+
+	@Override
+	public NoticeDto getDate(int num) {
+		NoticeDto dto=session.selectOne("notice.getData2", num);
+		return dto;
+	}
+
+	@Override
+	public int addCount(int num) {
+		int count=session.update("notice.addCount",num);
+		return count;
+	}
+
 }
