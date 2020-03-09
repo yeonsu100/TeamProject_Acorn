@@ -78,8 +78,8 @@ public class UsersServiceImpl implements UsersService{
 
 	@Override
 	public void showInfo(String id, ModelAndView mView) {
-		// TODO Auto-generated method stub
-		
+		UsersDto dto=dao.getData(id);
+		mView.addObject("dto", dto);
 	}
 
 	@Override

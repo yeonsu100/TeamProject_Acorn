@@ -38,7 +38,10 @@
 		where pnum=#{pnum}
 	</select>
 	<select id="getData" parameterType="String" resultType="usersDto">
-
+		SELECT e.empno, e.ename, e.hdate, e.pnum, u.userid, u.email, u.profile
+		FROM T_user u, T_emp e
+		WHERE e.empno=u.empno
+		AND u.userid=#{id}
 	</select>
 	
 	<update id="updateProfile" parameterType="usersDto">

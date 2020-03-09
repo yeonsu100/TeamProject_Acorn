@@ -25,6 +25,19 @@ public class UsersController {
 	@Autowired
 	private UsersService service;
 	
+	//개인 정보 보기 요청 처리
+	@RequestMapping("/users/info")
+	public ModelAndView authInfo(HttpServletRequest request, 
+				ModelAndView mView) {
+		//로그인된 아이디 읽어오기
+		String id=(String)request.getSession().getAttribute("id");
+		//UsersService 객체를 이용해서 개인정보를 ModelAndView 객체에 담기도록 한다.
+		service.showInfo(id, mView);
+		//view page 정보를 담고 
+		mView.setViewName("users/info");
+		return mView;//ModelAndView 객체를 리턴해주기 
+	}
+		
 	//사원추가 폼 요청처리
 	@RequestMapping("/emp/insertform")
 	public String emp_insert_form() {
