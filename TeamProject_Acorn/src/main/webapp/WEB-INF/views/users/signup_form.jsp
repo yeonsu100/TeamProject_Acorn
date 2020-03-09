@@ -16,6 +16,7 @@
 <script src="${pageContext.request.contextPath }/resources/js/bootstrap.js"></script>
 </head>
 <body>
+<jsp:include page="../include/navbar.jsp"/>
 <div class="container">
 	<h1>회원 가입 페이지</h1>
 	<form action="signup.go" method="post" id="signupForm">

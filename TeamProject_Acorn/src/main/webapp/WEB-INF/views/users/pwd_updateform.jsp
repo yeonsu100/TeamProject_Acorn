@@ -8,6 +8,7 @@
 <jsp:include page="../include/resource.jsp"/>
 </head>
 <body>
+<jsp:include page="../include/navbar.jsp"/>
 <div class="container">
 	<h1>비밀번호 수정 페이지</h1>
 	<form action="pwd_update.go" method="post">
