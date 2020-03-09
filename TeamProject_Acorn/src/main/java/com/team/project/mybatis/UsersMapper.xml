@@ -27,10 +27,20 @@
 		FROM T_user
 		WHERE userid=#{inputId}
 	</select>
+	<select id="getProfile" parameterType="String" resultType="String">
+		SELECT profile
+		FROM T_user
+		WHERE userid=#{inputId}
+	</select>
 	<select id="getEname" parameterType="String" resultType="String">
 		SELECT ename
 		FROM T_emp
 		WHERE pnum=#{pnum}
+	</select>
+	<select id="getIsAdmin" parameterType="String" resultType="String">
+		SELECT isadmin
+		FROM T_user
+		WHERE userid=#{inputId}
 	</select>
 	<select id="getEmpno" parameterType="String" resultType="int">
 		SELECT empno
@@ -38,15 +48,22 @@
 		where pnum=#{pnum}
 	</select>
 	<select id="getData" parameterType="String" resultType="usersDto">
-
+		SELECT e.empno, e.ename, e.hdate, e.pnum, u.userid, u.email, u.profile
+		FROM T_user u, T_emp e
+		WHERE e.empno=u.empno
+		AND u.userid=#{id}
 	</select>
 	
 	<update id="updateProfile" parameterType="usersDto">
-		
+		UPDATE T_user
+		SET profile=#{profile}
+		WHERE userid=#{userid}
 	</update>
 	
 	<update id="updatePwd" parameterType="usersDto">
-		
+		UPDATE T_user
+		SET pwd=#{pwd}
+		WHERE userid=#{userid}
 	</update>
 	
 	<update id="updateUser" parameterType="usersDto">
