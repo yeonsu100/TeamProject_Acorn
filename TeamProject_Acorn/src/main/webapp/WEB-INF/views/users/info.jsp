@@ -56,8 +56,6 @@
 			<td>${dto.hdate }</td>
 		</tr>
 	</table>
-	<a href="updateform.go">개인 정보 수정하기</a>
-	<a href="javascript:deleteConfirm()">회원 탈퇴</a>
 </div>
 
 <form action="profile_upload.go" method="post"
@@ -92,12 +90,6 @@
 		$("#profileLink img").attr("src", src);
 	});
 	
-	function deleteConfirm(){
-		var isDelete=confirm("${userid} 님 탈퇴 하시겠습니까?");
-		if(isDelete){
-			location.href="delete.go";
-		}
-	}
 </script>
 </body>
 </html>

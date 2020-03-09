@@ -56,7 +56,9 @@
 	</update>
 	
 	<update id="updatePwd" parameterType="usersDto">
-		
+		UPDATE T_user
+		SET pwd=#{pwd}
+		WHERE userid=#{userid}
 	</update>
 	
 	<update id="updateUser" parameterType="usersDto">
