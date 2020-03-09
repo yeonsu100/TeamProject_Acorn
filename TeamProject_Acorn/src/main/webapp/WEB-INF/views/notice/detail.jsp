@@ -78,7 +78,9 @@
 <div class="container">
 	<ul class="breadcrumb">
 		<li><a href="list.go">글목록 보기</a></li>
-		<li><a href="insertform.go">새글 작성</a></li>
+		<c:if test="${not empty isadmin }">
+			<li><a href="insertform.go">새글 작성</a></li>	
+		</c:if>
 		<c:if test="${dto.writer eq id }">
 			<li><a href="updateform.go?num=${dto.num }">글 수정하기</a></li>
 			<li><a href="javascript:deleteConfirm()">삭제</a></li>
