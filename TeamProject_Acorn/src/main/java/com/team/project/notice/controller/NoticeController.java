@@ -36,6 +36,9 @@ public class NoticeController {
 	@RequestMapping(value = "/notice/insert", method = RequestMethod.POST )
 	public ModelAndView authInsert(HttpServletRequest request,
 			@ModelAttribute NoticeDto dto) {
+		// 세션에 있는 작성자 아이디 읽어오기
+		String writer=(String)request.getSession().getAttribute("id");
+		dto.setWriter(writer);
 		service.addContent(request, dto);
 		return new ModelAndView("redirect:/notice/list.go");
 	}

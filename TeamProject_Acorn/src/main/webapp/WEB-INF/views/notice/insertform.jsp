@@ -27,7 +27,7 @@
 	<form action="insert.go" method="post">
 		<div class="form-group">
 			<label for="writer">작성자</label>
-			<input class="form-control" type="text" name="writer" id="writer"/>
+			<input class="form-control" type="text" value="${id }" disabled/>
 		</div>
 		<div class="form-group">
 			<label for="title">제목</label>
