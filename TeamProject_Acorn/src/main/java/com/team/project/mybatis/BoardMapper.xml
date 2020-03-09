@@ -75,7 +75,7 @@
 		WHERE num=#{num }
 	</select>
 	<select id="getData2" parameterType="int"
-		resultType="boardDto">
+		resultType="noticeDto">
 		SELECT result1.*
 		FROM
 			(SELECT num, writer, title, content, viewCount, 
@@ -85,7 +85,7 @@
 			FROM T_board
 			ORDER BY num DESC) result1
 		WHERE num=#{num }
-	</select>	
+	</select>
 
 	<delete id="delete" parameterType="int">
 		DELETE FROM T_board

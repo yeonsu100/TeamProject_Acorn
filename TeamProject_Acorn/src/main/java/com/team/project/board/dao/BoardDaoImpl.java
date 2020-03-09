@@ -36,7 +36,7 @@ public class BoardDaoImpl implements BoardDao{
 
 	@Override
 	public void addViewCount(int num) {
-		session.update("board.addViewConnt", num);
+		session.update("board.addViewCount", num);
 	}
 
 	@Override
