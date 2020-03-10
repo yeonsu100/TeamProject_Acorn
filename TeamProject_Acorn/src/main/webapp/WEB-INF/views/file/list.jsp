@@ -127,7 +127,7 @@
 	</div>
 	
 	<form action="list.go" method="get">
-		<label for="condition">Search for...</label>
+		<label for="condition">검색하기</label>
 		<select name="condition" id="condition">
 			<option value="titlename" <c:if test="${condition eq 'titlename' }">selected</c:if> >파일 제목 또는 파일명</option>
 			<option value="title" <c:if test="${condition eq 'title' }">selected</c:if> >파일 제목</option>
