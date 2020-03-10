@@ -79,3 +79,16 @@ regdate DATE -- 댓글 등록일
  );
  
  CREATE SEQUENCE T_board_comment_seq;
+ 
+ --Message table 
+CREATE TABLE T_msg( 
+num NUMBER PRIMARY KEY,
+idSend VARCHAR2(100) NOT NULL,
+idRec VARCHAR2(100) NOT NULL,
+title VARCHAR2(100) NOT NULL,
+content CLOB,
+sendDate DATE,
+readDate DATE
+);
+--message sequence
+CREATE SEQUENCE T_msg_seq;
