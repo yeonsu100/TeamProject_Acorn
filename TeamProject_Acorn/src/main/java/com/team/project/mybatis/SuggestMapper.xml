@@ -10,8 +10,10 @@
 		FROM
 			(SELECT result1.*, ROWNUM AS rnum
 			FROM
-				(SELECT num,sugId,sugContent,regdate
+				(SELECT num,sugId,sugContent,regdate, T_user.profile
 				FROM T_suggest
+				INNER JOIN T_user
+				ON T_suggest.sugId=T_user.userid
 				ORDER BY num DESC) result1)
 		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
