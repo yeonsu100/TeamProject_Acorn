@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="users">
+	<select id="isIdExist" parameterType="String" resultType="String">
+		SELECT userid
+		FROM T_user
+		WHERE userid=#{inputId}
+	</select>
+	<select id="isUserExist" parameterType="int" resultType="String">
+		SELECT userid
+		FROM T_user
+		WHERE empno=#{empno}
+	</select>
+	<insert id="insertUser" parameterType="usersDto">
+		INSERT INTO T_user
+		(empno, userid, pwd, email)
+		VALUES(#{empno}, #{userid}, #{pwd}, #{email})
+	</insert>
+	<insert id="insertEmp" parameterType="usersDto">
+		INSERT INTO T_emp
+		(empno, ename, hdate, pnum)
+		VALUES(to_number(SUBSTR(#{hdate},1,6)||LPAD(T_emp_seq.nextval,4,0)),
+			 #{ename}, to_date(#{hdate}, 'yyyymmdd'), #{pnum})
+	</insert>
+	<select id="getPwdHash" parameterType="String" resultType="String">
+		SELECT pwd 
+		FROM T_user
+		WHERE userid=#{inputId}
+	</select>
+	<select id="getProfile" parameterType="String" resultType="String">
+		SELECT profile
+		FROM T_user
+		WHERE userid=#{inputId}
+	</select>
+	<select id="getEname" parameterType="String" resultType="String">
+		SELECT ename
+		FROM T_emp
+		WHERE pnum=#{pnum}
+	</select>
+	<select id="getIsAdmin" parameterType="String" resultType="String">
+		SELECT isadmin
+		FROM T_user
+		WHERE userid=#{inputId}
+	</select>
+	<select id="getEmpno" parameterType="String" resultType="int">
+		SELECT empno
+		FROM T_emp
+		where pnum=#{pnum}
+	</select>
+	<select id="getData" parameterType="String" resultType="usersDto">
+		SELECT e.empno, e.ename, e.hdate, e.pnum, u.userid, u.email, u.profile
+		FROM T_user u, T_emp e
+		WHERE e.empno=u.empno
+		AND u.userid=#{id}
+	</select>
+	
+	<update id="updateProfile" parameterType="usersDto">
+		UPDATE T_user
+		SET profile=#{profile}
+		WHERE userid=#{userid}
+	</update>
+	
+	<update id="updatePwd" parameterType="usersDto">
+		UPDATE T_user
+		SET pwd=#{pwd}
+		WHERE userid=#{userid}
+	</update>
+	
+	<update id="updateUser" parameterType="usersDto">
+		
+	</update>
+	
+	<delete id="delete" parameterType="String">
+		
+	</delete>
+</mapper>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="notice">
+	<select id="getCount" resultType="int" parameterType="noticeDto">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM T_notice
+		<choose>
+			<when test="title != null">
+				WHERE title LIKE '%${title}%'
+			</when>
+			<when test="writer != null">
+				WHERE writer LIKE '%${writer}%'
+			</when>
+		</choose>
+	</select>
+	<select id="getList" resultType="noticeDto" parameterType="noticeDto">
+		SELECT*
+		FROM
+		(SELECT result1.*, ROWNUM AS rnum
+		FROM
+		(SELECT num,writer,title,viewCount,regdate
+		FROM T_notice
+		<choose>
+			<when test="title != null">
+				WHERE title LIKE '%${title}%'
+			</when>
+			<when test="writer != null">
+				WHERE writer LIKE '%${writer}%'
+			</when>
+		</choose>
+		ORDER BY num DESC) result1)
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+	<insert id="insert" parameterType="noticeDto">
+		INSERT INTO T_notice
+		(num, writer, title, content, viewCount, regdate)
+		VALUES(T_notice_seq.NEXTVAL,#{writer},#{title},#{content},0,SYSDATE)
+	</insert>
+	<delete id="delete" parameterType="int">
+		DELETE FROM T_notice
+		WHERE num=#{num}
+	</delete>
+	<select id="getData2" parameterType="int"
+		resultType="noticeDto">
+		SELECT result1.*
+		FROM
+			(SELECT num, writer, title, content, viewCount, 
+			TO_CHAR(regdate, 'YY.MM.DD HH24:MI') AS regdate,
+			LAG(num, 1, 0) OVER(ORDER BY num DESC) AS prevNum,
+			LEAD(num, 1, 0) OVER(ORDER BY num DESC) AS nextNum
+			FROM T_notice
+			ORDER BY num DESC) result1
+		WHERE num=#{num }
+	</select>
+	<update id="update" parameterType="noticeDto">
+		UPDATE T_notice
+		SET title=#{title}, content=#{content}
+		WHERE num=#{num}
+	</update>
+	<update id="addCount" parameterType="int">
+		UPDATE T_notice
+		SET viewCount=viewCount+1
+		WHERE num=#{num}
+	</update>	
+</mapper>
