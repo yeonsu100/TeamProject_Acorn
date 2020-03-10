@@ -1,5 +1,8 @@
 package com.team.project.board.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +11,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.team.project.board.dto.BoardCommentDto;
 import com.team.project.board.dto.BoardDto;
 import com.team.project.board.service.BoardService;
 
@@ -41,7 +46,7 @@ public class BoardController {
 		//세션에 있는 글작성자의 아이디
 				String writer=(String)
 						request.getSession().getAttribute("id");
-				//CafeDto 객체에 담고 
+				//BoardDto 객체에 담고 
 				dto.setWriter(writer);
 				//서비스를 이용해서 DB 에 저장
 				service.saveContent(dto);
@@ -53,7 +58,7 @@ public class BoardController {
 	public String detail(HttpServletRequest request) {
 		service.getDetail(request);
 		//view page로 forward 이동해서 글 자세히 보기
-		return "cafe/detail";
+		return "board/detail";
 	}
 	//원글 삭제 요청 처리
 	@RequestMapping("/board/delete")
@@ -82,6 +87,42 @@ public class BoardController {
 
 			//글 자세히 보기로 리다일렉트 이동 
 			return new ModelAndView
-				("redirect:/board/detail.do?num="+dto.getNum());
+				("redirect:/board/detail.go?num="+dto.getNum());
+		}
+		
+		//댓글 저장 요청 처리
+		@RequestMapping(value= "/board/comment_insert", 
+				method = RequestMethod.POST)
+		public ModelAndView authCommentInsert(HttpServletRequest request,
+				@RequestParam int ref_group) {
+			service.saveComment(request);
+			return new ModelAndView("redirect:/board/detail.go?num="+ref_group);
+		}
+		
+		//댓글 수정 요청 처리
+		@ResponseBody
+		@RequestMapping("/board/comment_update")
+		public Map<String, Object>
+			authCommentUpdate(HttpServletRequest request, @ModelAttribute BoardCommentDto dto){
+			
+			service.updateComment(dto);
+			
+			Map<String, Object> map=new HashMap<>();
+			map.put("isSuccess", true);
+			return map;
+		}
+		
+		//댓글 삭제 요청 처리
+		@ResponseBody
+		@RequestMapping("/board/comment_delete")
+		public Map<String , Object>
+			authCommentDelete(HttpServletRequest request,
+					@RequestParam int num){
+			
+			service.deleteComment(num);
+			
+			Map<String, Object> map=new HashMap<>();
+			map.put("isSuccess", true);
+			return map; // {"isSuccess":true} 형식의 JSON 문자열이 응답된다.
 		}
 }
