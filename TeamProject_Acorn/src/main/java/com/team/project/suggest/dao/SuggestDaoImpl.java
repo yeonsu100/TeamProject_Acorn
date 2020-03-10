@@ -20,9 +20,14 @@ public class SuggestDaoImpl implements SuggestDao{
 	}
 
 	@Override
-	public int getCount() {
-		// 건의 게시판 글의 전체 갯수를 가져온다.
-		int count=session.selectOne("notice.getCount");
-		return count;
+	public int getCount(SuggestDto dto) {
+//		// 건의 게시판 글의 전체 갯수를 가져온다.
+//		int count=session.selectOne("suggest.getCount", dto);
+		return 0;
+	}
+
+	@Override
+	public void insert(SuggestDto dto) {
+		session.insert("suggest.insert", dto);
 	}
 }

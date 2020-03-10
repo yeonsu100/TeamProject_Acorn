@@ -8,11 +8,11 @@ public class SuggestDto {
 	private String regdate;	  // 건의 날짜
 	private int startRowNum;  // 페이징 처리용 시작번호
 	private int endRowNum;    // 페이징 처리용 끝 번호
-	
 	// 디폴트 생성자
 	public SuggestDto() {}
 	
-	public SuggestDto(int num, String sugId, String sugContent, String regdate, int startRowNum, int endRowNum) {
+	public SuggestDto(int num, String sugId, String sugContent, String regdate, int startRowNum,
+			int endRowNum) {
 		super();
 		this.num = num;
 		this.sugId = sugId;
@@ -37,6 +37,7 @@ public class SuggestDto {
 	public void setSugId(String sugId) {
 		this.sugId = sugId;
 	}
+
 
 	public String getSugContent() {
 		return sugContent;
@@ -69,6 +70,8 @@ public class SuggestDto {
 	public void setEndRowNum(int endRowNum) {
 		this.endRowNum = endRowNum;
 	}
+	
+
 	
 	
 }

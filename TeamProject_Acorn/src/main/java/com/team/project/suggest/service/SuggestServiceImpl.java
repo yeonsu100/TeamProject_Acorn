@@ -18,9 +18,10 @@ public class SuggestServiceImpl implements SuggestService{
 	@Override
 	public void list(HttpServletRequest request) {
 		//한 페이지에 나타낼 row 의 갯수
-		final int PAGE_ROW_COUNT=10;
+		final int PAGE_ROW_COUNT=7;
 		//하단 디스플레이 페이지 갯수
 		final int PAGE_DISPLAY_COUNT=5;
+		SuggestDto dto=new SuggestDto();
 
 		//보여줄 페이지의 번호
 		int pageNum=1;
@@ -36,7 +37,7 @@ public class SuggestServiceImpl implements SuggestService{
 		int endRowNum=pageNum*PAGE_ROW_COUNT;
 
 		//전체 row 의 갯수를 읽어온다.
-		int totalRow=suggestDao.getCount();
+		int totalRow=suggestDao.getCount(dto);
 		//전체 페이지의 갯수 구하기
 		int totalPageCount=
 				(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
@@ -50,7 +51,6 @@ public class SuggestServiceImpl implements SuggestService{
 			endPageNum=totalPageCount; //보정해준다. 
 		}		
 		// FileDto 객체에 위에서 계산된 startRowNum 과 endRowNum 을 담는다.
-		SuggestDto dto=new SuggestDto();
 		dto.setStartRowNum(startRowNum);
 		dto.setEndRowNum(endRowNum);
 
@@ -62,5 +62,16 @@ public class SuggestServiceImpl implements SuggestService{
 		request.setAttribute("endPageNum", endPageNum);
 		request.setAttribute("totalPageCount", totalPageCount);
 		request.setAttribute("list", list);
+	}
+	
+	// 게시판 글 작성
+	@Override
+	public void addSuggest(HttpServletRequest request, SuggestDto dto) {
+		String sugId=(String)request.getSession().getAttribute("id");
+		String sugContent=request.getParameter("sugContent");
+		// 작성 내용
+		dto.setSugId(sugId);
+		dto.setSugContent(sugContent);
+		suggestDao.insert(dto);
 	}
 }

@@ -15,4 +15,9 @@
 				ORDER BY num DESC) result1)
 		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
+	<insert id="insert" parameterType="suggestDto">
+		INSERT INTO T_suggest
+		(num,sugId,sugContent,regdate)
+		VALUES(T_suggest_seq.NEXTVAL,#{sugId},#{sugContent},SYSDATE)
+	</insert>
 </mapper>

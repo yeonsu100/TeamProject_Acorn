@@ -13,6 +13,9 @@
 		height: 20px;
 		border-radius: 50%;
 	}
+	.comments form textarea, .comments form button{
+		float: left;
+	}
 </style>
 <jsp:include page="../include/navbar.jsp">
 	<jsp:param value="suggest" name="category"/>
@@ -51,7 +54,29 @@
 			</li>
 		</c:forEach>
 		</ul>
+		<form action="insert.go" method="post">
+			<div class="form-group">
+				<input type="hidden" name="sugId" value="${id }" />
+				<input type="hidden" name="sugProfile" value="${profile}"/>
+				<c:if test="${not empty id}">
+					<textarea class="form-control" rows="3" id="sugContent" name="sugContent"></textarea>
+					<button type="submit">등록</button>
+				</c:if>
+			</div>
+		</form>
 	</div>
+	<c:choose>
+		<c:when test="${startPageNum ne 1 }">
+			<li>
+				<a href="list.go?pageNum=${startPageNum-1 }&condition=${condition}&keyword=${encodedKeyword}">&laquo;</a>
+			</li>
+		</c:when>
+		<c:otherwise>
+			<li class="disabled">
+				<a href="javascript:">&laquo;</a>
+			</li>
+		</c:otherwise>
+	</c:choose>
 </div>
 </body>
 </html>
