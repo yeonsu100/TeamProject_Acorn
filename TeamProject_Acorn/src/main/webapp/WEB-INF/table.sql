@@ -84,6 +84,7 @@ regdate DATE -- 댓글 등록일
 CREATE TABLE T_suggest(
 num NUMBER PRIMARY KEY, -- 건의 게시판 관리 할 번호
 sugId VARCHAR2(100),     -- 건의자 아이디
+profile VARCHAR2(100),   -- 건의자 프로필
 sugContent VARCHAR2(500),-- 건의 내용
 regdate DATE            -- 건의 날짜
 );
