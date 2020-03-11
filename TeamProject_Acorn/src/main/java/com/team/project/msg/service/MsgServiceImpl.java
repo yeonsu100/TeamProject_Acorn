@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.team.project.msg.dao.MsgDao;
 import com.team.project.msg.dto.MsgDto;
+import com.team.project.notice.dto.NoticeDto;
 
 @Service
 public class MsgServiceImpl implements MsgService{
@@ -66,6 +67,25 @@ public class MsgServiceImpl implements MsgService{
 		request.setAttribute("endPageNum", endPageNum);
 		request.setAttribute("totalPageCount", totalPageCount);
 		request.setAttribute("totalRow", totalRow);
+	}
+
+	@Override
+	public void detail(HttpServletRequest request) {
+		//파라미터로 전달되는 글번호
+		int num=Integer.parseInt(request.getParameter("num"));
+		//MsgDto 객체 생성 (select 할때 필요한 정보를 담기 위해)
+		MsgDto dto=new MsgDto();	
+		dto.setNum(num);
+		MsgDto dto2=dao.getData(dto);
+		if(dto2.getReadDate()==null) {
+			dao.checkRead(dto);
+		}
+		request.setAttribute("dto", dto2);
+	}
+
+	@Override
+	public void sendMsg(HttpServletRequest request, MsgDto dto) {
+		dao.sendMsg(dto);
 	}
 
 }

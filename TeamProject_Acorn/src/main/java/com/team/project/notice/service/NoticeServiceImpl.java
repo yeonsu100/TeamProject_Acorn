@@ -138,49 +138,49 @@ public class NoticeServiceImpl implements NoticeService{
 	@Override
 	public void detail(HttpServletRequest request) {
 		//파라미터로 전달되는 글번호
-				int num=Integer.parseInt(request.getParameter("num"));
+		int num=Integer.parseInt(request.getParameter("num"));
 
-				//검색과 관련된 파라미터를 읽어와 본다.
-				String keyword=request.getParameter("keyword");
-				String condition=request.getParameter("condition");
+		//검색과 관련된 파라미터를 읽어와 본다.
+		String keyword=request.getParameter("keyword");
+		String condition=request.getParameter("condition");
 
-				//NoticeDto 객체 생성 (select 할때 필요한 정보를 담기 위해)
-				NoticeDto dto=new NoticeDto();
+		//NoticeDto 객체 생성 (select 할때 필요한 정보를 담기 위해)
+		NoticeDto dto=new NoticeDto();
 
-				if(keyword != null) {//검색 키워드가 전달된 경우
-					if(condition.equals("titlecontent")) {//제목+내용 검색
-						dto.setTitle(keyword);
-						dto.setContent(keyword);
-					}else if(condition.equals("title")) {//제목 검색
-						dto.setTitle(keyword);
-					}else if(condition.equals("writer")) {//작성자 검색
-						dto.setWriter(keyword);
-					}
-					//request 에 검색 조건과 키워드 담기
-					request.setAttribute("condition", condition);
-					/*
-					 *  검색 키워드에는 한글이 포함될 가능성이 있기 때문에
-					 *  링크에 그대로 출력가능하도록 하기 위해 미리 인코딩을 해서
-					 *  request 에 담아준다.
-					 */
-					String encodedKeyword=null;
-					try {
-						encodedKeyword=URLEncoder.encode(keyword, "utf-8");
-					} catch (UnsupportedEncodingException e) {
-						e.printStackTrace();
-					}
-					//인코딩된 키워드와 인코딩 안된 키워드를 모두 담는다.
-					request.setAttribute("encodedKeyword", encodedKeyword);
-					request.setAttribute("keyword", keyword);
-				}		
-				//NoticeDto 에 글번호도 담기
-				dto.setNum(num);
-				//조회수 1 증가 시키기
-				noticeDao.addCount(num);
-				//글정보를 얻어와서
-				NoticeDto dto2=noticeDao.getData(dto);
-				//request 에 글정보를 담고 
-				request.setAttribute("dto", dto2);
+		if(keyword != null) {//검색 키워드가 전달된 경우
+			if(condition.equals("titlecontent")) {//제목+내용 검색
+				dto.setTitle(keyword);
+				dto.setContent(keyword);
+			}else if(condition.equals("title")) {//제목 검색
+				dto.setTitle(keyword);
+			}else if(condition.equals("writer")) {//작성자 검색
+				dto.setWriter(keyword);
+			}
+			//request 에 검색 조건과 키워드 담기
+			request.setAttribute("condition", condition);
+			/*
+			 *  검색 키워드에는 한글이 포함될 가능성이 있기 때문에
+			 *  링크에 그대로 출력가능하도록 하기 위해 미리 인코딩을 해서
+			 *  request 에 담아준다.
+			 */
+			String encodedKeyword=null;
+			try {
+				encodedKeyword=URLEncoder.encode(keyword, "utf-8");
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+			//인코딩된 키워드와 인코딩 안된 키워드를 모두 담는다.
+			request.setAttribute("encodedKeyword", encodedKeyword);
+			request.setAttribute("keyword", keyword);
+		}		
+		//NoticeDto 에 글번호도 담기
+		dto.setNum(num);
+		//조회수 1 증가 시키기
+		noticeDao.addCount(num);
+		//글정보를 얻어와서
+		NoticeDto dto2=noticeDao.getData(dto);
+		//request 에 글정보를 담고 
+		request.setAttribute("dto", dto2);
 	}
 
 	// 글수정 서비스

@@ -2,7 +2,16 @@
     pageEncoding="UTF-8"%>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
-    
+   
+<script type="text/javascript">
+<!--
+function popupOpen(){
+	var popUrl = "${pageContext.request.contextPath }/msg/list.go";
+	var popOption = "width=560, height=400, resizable=no, scrollbars=yes, status=no;";
+		window.open(popUrl,"쪽지함",popOption);
+}
+//-->
+</script> 
 <div class="navbar navbar-inverse navbar-fixed-top">		
 	<div class="container">
 	<div class="navbar-header">
@@ -39,7 +48,7 @@
 			</c:when>
 			<c:otherwise>
 				<p class="navbar-text pull-right">
-				<a class="navbar-link" href="${pageContext.request.contextPath }/msg/list.go"><i class="far fa-comment-dots"></i></a>
+				<a class="navbar-link" href="javascript:popupOpen();"><i class="far fa-comment-dots"></i></a>
 				<i class="fas fa-user"></i>
 				Signed as <strong><a class="navbar-link" href="${pageContext.request.contextPath }/users/info.go">${id }</a></strong>
 				<img src="${pageContext.request.contextPath }${profile }" style="width:35px; height:35px; border-radius:50%;" />

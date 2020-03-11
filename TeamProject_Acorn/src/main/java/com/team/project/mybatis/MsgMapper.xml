@@ -17,4 +17,19 @@
 		ORDER BY num DESC) result1)
 		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
+	<select id="getData" parameterType="msgDto" resultType="msgDto">
+		SELECT num, idSend, idRec, title, content, sendDate, readDate
+		FROM T_msg
+		WHERE num=#{num}		
+	</select>
+	<update id="checkRead" parameterType="msgDto">
+		UPDATE T_msg
+		SET readDate=sysdate
+		WHERE num=#{num}
+	</update>
+	<insert id="sendMsg" parameterType="msgDto">
+		INSERT INTO T_msg
+		(num, idSend, idRec, title, content, sendDate)
+		values(T_msg_seq.NEXTVAL, #{idSend}, #{idRec}, #{title}, #{content}, SYSDATE)
+	</insert>
 </mapper>

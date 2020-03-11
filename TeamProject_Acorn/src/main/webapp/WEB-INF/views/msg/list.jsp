@@ -9,15 +9,7 @@
 <jsp:include page="../include/resource.jsp"/>
 </head>
 <body>
-<jsp:include page="../include/navbar.jsp"></jsp:include>
 <div class="container">
-	<c:if test="${not empty keyword }">
-		<p>
-			<strong>${keyword }</strong> 라는 검색어로 
-			<strong>${totalRow }</strong> 개의 글이 검색 
-			되었습니다.
-		</p>
-	</c:if>
 	<h1>메시지 목록 입니다.</h1>
 	<table class="table table-striped table-condensed">
 		<colgroup>
@@ -39,7 +31,7 @@
 			<tr>
 				<td>${tmp.idSend }</td>
 				<td>
-					<a href="detail.go?num=${tmp.num }&condition=${condition }&keyword=${encodedKeyword }">${tmp.title }</a>
+					<a href="detail.go?num=${tmp.num }">${tmp.title }</a>
 				</td>
 				<td>${tmp.sendDate}</td>
 				<td>${tmp.readDate}</td>
@@ -47,6 +39,9 @@
 		</c:forEach>
 		</tbody>
 	</table>
+	
+	<a href="sendform.go">메시지 쓰기</a>
+	
 	<div class="page-display">
 		<ul class="pagination pagination-sm">
 		<c:choose>
@@ -89,15 +84,6 @@
 			</c:choose>
 		</ul>
 	</div>
-		<form action="list.go" method="get">
-		<label for="condition">검색조건</label>
-		<select name="condition" id="condition">
-			<option value="title"<c:if test="${condition eq 'title' }">selected</c:if>>제목</option>
-			<option value="writer"<c:if test="${condition eq 'writer' }">selected</c:if> >작성자</option>
-		</select>
-		<input type="text" name="keyword" id="keyword" placeholder="검색어 .." value="${keyword }"/>
-		<button type="submit">검색</button>
-	</form>
 </div>
 </body>
 </html>

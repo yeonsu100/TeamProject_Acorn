@@ -27,5 +27,21 @@ public class MsgDaoImpl implements MsgDao{
 		List<MsgDto> list=session.selectList("msg.getList", dto);
 		return list;
 	}
+
+	@Override
+	public MsgDto getData(MsgDto dto) {
+		dto=session.selectOne("msg.getData", dto);
+		return dto;
+	}
+
+	@Override
+	public void checkRead(MsgDto dto) {
+		session.update("msg.checkRead", dto);
+	}
+
+	@Override
+	public void sendMsg(MsgDto dto) {
+		session.insert("msg.sendMsg", dto);
+	}
 	
 }
