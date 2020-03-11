@@ -8,14 +8,14 @@ public class SuggestDto {
 	private String regdate;	  // 건의 날짜
 	private int startRowNum;  // 페이징 처리용 시작번호
 	private int endRowNum;    // 페이징 처리용 끝 번호
-	private String sugProfile; // 작성자의 이미지를 담을 필드
+	private String profile; // 작성자의 이미지를 담을 필드
 	// 디폴트 생성자
 	public SuggestDto() {}
 	
 	
 	
 	public SuggestDto(int num, String sugId, String sugContent, String regdate, int startRowNum, int endRowNum,
-			String sugProfile) {
+			String profile) {
 		super();
 		this.num = num;
 		this.sugId = sugId;
@@ -23,7 +23,7 @@ public class SuggestDto {
 		this.regdate = regdate;
 		this.startRowNum = startRowNum;
 		this.endRowNum = endRowNum;
-		this.sugProfile = sugProfile;
+		this.profile = profile;
 	}
 
 
@@ -64,12 +64,14 @@ public class SuggestDto {
 	public void setEndRowNum(int endRowNum) {
 		this.endRowNum = endRowNum;
 	}
-	public String getSugProfile() {
-		return sugProfile;
+
+	public String getProfile() {
+		return profile;
 	}
-	public void setSugProfile(String sugProfile) {
-		this.sugProfile = sugProfile;
+
+	public void setProfile(String profile) {
+		this.profile = profile;
 	}
-	
+
 	
 }
