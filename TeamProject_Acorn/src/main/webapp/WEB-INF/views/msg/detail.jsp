@@ -96,6 +96,8 @@
 		</tr>
 	</table>
 	<div class="contents">${dto.content }</div>
+	
+	<a href="list.go">목록보기</a>
 </div>
 </script>
 </body>
