@@ -56,5 +56,6 @@ public class SuggestController {
 		Map<String, Object> map=new HashMap<>();
 		map.put("isSuccess", true);
 		return map;
+		
 	}
 }
