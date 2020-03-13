@@ -11,4 +11,6 @@ public interface SuggestService {
 	public void list(HttpServletRequest request);
 	// 글 추가 메소드
 	public void addSuggest(HttpServletRequest request, SuggestDto dto);
+	// 글 수정 메소드
+	public void updateSuggest(SuggestDto dto);
 }

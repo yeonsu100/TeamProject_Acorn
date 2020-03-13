@@ -74,4 +74,9 @@ public class SuggestServiceImpl implements SuggestService{
 		dto.setSugContent(sugContent);
 		suggestDao.insert(dto);
 	}
+
+	@Override
+	public void updateSuggest(SuggestDto dto) {
+		suggestDao.update(dto);
+	}
 }
