@@ -104,9 +104,7 @@ public class BoardController {
 		@RequestMapping("/board/comment_update")
 		public Map<String, Object>
 			authCommentUpdate(HttpServletRequest request, @ModelAttribute BoardCommentDto dto){
-			
 			service.updateComment(dto);
-			
 			Map<String, Object> map=new HashMap<>();
 			map.put("isSuccess", true);
 			return map;

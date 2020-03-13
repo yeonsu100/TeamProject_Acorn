@@ -20,4 +20,9 @@
 		(num,sugId,profile,sugContent,regdate)
 		VALUES(T_suggest_seq.NEXTVAL,#{sugId},#{profile},#{sugContent},SYSDATE)
 	</insert>
+	<update id="update" parameterType="suggestDto">
+		UPDATE T_suggest
+		SET sugContent=#{sugContent}
+		WHERE num=#{num}
+	</update>
 </mapper>

@@ -11,4 +11,6 @@ public interface SuggestDao {
 	public List<SuggestDto> getList(SuggestDto dto);
 	// 글 입력 할 메소드
 	public void insert(SuggestDto dto);
+	// 글 수정 할 메소드
+	public void update(SuggestDto dto);
 }

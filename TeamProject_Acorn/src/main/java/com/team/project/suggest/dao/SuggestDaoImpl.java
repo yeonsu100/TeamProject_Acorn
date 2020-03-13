@@ -30,4 +30,9 @@ public class SuggestDaoImpl implements SuggestDao{
 	public void insert(SuggestDto dto) {
 		session.insert("suggest.insert", dto);
 	}
+
+	@Override
+	public void update(SuggestDto dto) {
+		session.update("suggest.update", dto);
+	}
 }
