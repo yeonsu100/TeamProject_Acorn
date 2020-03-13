@@ -15,14 +15,15 @@ import org.springframework.web.servlet.view.AbstractView;
 
 import com.team.project.file.dto.FileDto;
 
-
 @Component("fileDownView")
 public class FileDownView extends AbstractView{
 
 	@Override
 	protected void renderMergedOutputModel(Map<String, Object> model, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
+		
 		FileDto dto=(FileDto)model.get("dto");
+
 		String orgFileName=dto.getOrgFileName();
 		String saveFileName=dto.getSaveFileName();
 		ServletContext application=request.getServletContext();
@@ -36,7 +37,7 @@ public class FileDownView extends AbstractView{
 		if(request.getHeader("User-Agent").contains("Firefox")){
 			encodedName=new String
 				(orgFileName.getBytes("utf-8"),"ISO-8859-1");
-		}else{
+		}else{ 
 			encodedName=URLEncoder.encode(orgFileName, "utf-8");
 			encodedName=encodedName.replaceAll("\\+"," ");
 		}
