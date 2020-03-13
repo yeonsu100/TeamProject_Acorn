@@ -1,4 +1,5 @@
-<<<<<<< HEAD
+-- TeamProject_Acorn SQL 파일입니다
+
 -- 상품 테이블
 CREATE TABLE T_product(
 	code NUMBER PRIMARY KEY, 						--상품번호
@@ -83,8 +84,6 @@ REFERENCES T_order(o_num) ON DELETE CASCADE;
 ALTER TABLE T_order_detail
 ADD CONSTRAINT T_order_detail_code_fk FOREIGN KEY (code)
 REFERENCES T_product(code) ON DELETE CASCADE;
-=======
--- TeamProject_Acorn SQL 파일입니다
 
 -- 사원 table
 CREATE TABLE T_emp(
@@ -165,4 +164,15 @@ regdate DATE -- 댓글 등록일
  );
  
  CREATE SEQUENCE T_board_comment_seq;
->>>>>>> refs/heads/master
+ 
+-- 건의 게시판 테이블
+CREATE TABLE T_suggest(
+num NUMBER PRIMARY KEY, -- 건의 게시판 관리 할 번호
+sugId VARCHAR2(100),     -- 건의자 아이디
+profile VARCHAR2(100),   -- 건의자 프로필
+sugContent VARCHAR2(500),-- 건의 내용
+regdate DATE            -- 건의 날짜
+);
+-- 건의 게시판 시퀀스
+CREATE SEQUENCE T_suggest_seq;
+
