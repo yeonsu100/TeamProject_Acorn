@@ -13,4 +13,6 @@ public interface SuggestDao {
 	public void insert(SuggestDto dto);
 	// 글 수정 할 메소드
 	public void update(SuggestDto dto);
+	// 글 삭제 할 메소드
+	public void delete(int num);
 }

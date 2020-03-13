@@ -35,4 +35,9 @@ public class SuggestDaoImpl implements SuggestDao{
 	public void update(SuggestDto dto) {
 		session.update("suggest.update", dto);
 	}
+
+	@Override
+	public void delete(int num) {
+		session.delete("suggest.delete", num);
+	}
 }

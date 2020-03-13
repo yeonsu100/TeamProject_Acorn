@@ -25,4 +25,8 @@
 		SET sugContent=#{sugContent}
 		WHERE num=#{num}
 	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM T_suggest
+		WHERE num=#{num}
+	</delete>
 </mapper>
