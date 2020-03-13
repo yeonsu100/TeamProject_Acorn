@@ -245,4 +245,9 @@ public class BoardServiceImpl implements BoardService{
 		boardDao.addViewCount(num);
 		
 	}
+
+	@Override
+	public void pagingComment(BoardCommentDto dto) {
+		
+	}
 }

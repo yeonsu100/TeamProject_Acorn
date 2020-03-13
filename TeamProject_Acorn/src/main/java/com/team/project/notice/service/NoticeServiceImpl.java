@@ -31,7 +31,7 @@ public class NoticeServiceImpl implements NoticeService{
 		String keyword=request.getParameter("keyword");
 		String condition=request.getParameter("condition");
 		
-		//검색 키워드가 존재한다면 키워드를 담을 FileDto 객체 생성 
+		//검색 키워드가 존재한다면 키워드를 담을 NoticeDto 객체 생성 
 		NoticeDto dto=new NoticeDto();
 		if(keyword != null) {//검색 키워드가 전달된 경우
 			if(condition.equals("title")) {//제목+파일명 검색

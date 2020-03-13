@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="suggest">
+	<select id="getCount" resultType="int">
+		SELECT MAX(ROWNUM)
+		FROM T_suggest
+	</select>
+	<select id="getList" parameterType="suggestDto" resultType="suggestDto">
+		SELECT *
+		FROM
+			(SELECT result1.*, ROWNUM AS rnum
+			FROM
+				(SELECT num,sugId,sugContent,regdate, profile
+				FROM T_suggest
+				ORDER BY num DESC) result1)
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+	<insert id="insert" parameterType="suggestDto">
+		INSERT INTO T_suggest
+		(num,sugId,profile,sugContent,regdate)
+		VALUES(T_suggest_seq.NEXTVAL,#{sugId},#{profile},#{sugContent},SYSDATE)
+	</insert>
+	<update id="update" parameterType="suggestDto">
+		UPDATE T_suggest
+		SET sugContent=#{sugContent}
+		WHERE num=#{num}
+	</update>
+</mapper>
