@@ -27,7 +27,6 @@ public class FileController {
 	
 	@RequestMapping("/file/upload_form")
 	public ModelAndView authUploadForm(HttpServletRequest request) {
-		
 		return new ModelAndView("file/upload_form");
 	}
 	
@@ -39,11 +38,8 @@ public class FileController {
 	
 	@RequestMapping("/file/download")
 	public ModelAndView download(ModelAndView mView, @RequestParam int num) {
-		// 다운로드 시켜줄 파일 데이터를 ModelAndView 객체에 담기도록
 		service.getFileData(mView, num);
-		// 다운로드 횟수 증가 시키도록 
 		service.addDownCount(num);
-		// view page 정보를 ModelAndView 객체에 담기 
 		mView.setViewName("fileDownView");
 		return mView;
 	}
