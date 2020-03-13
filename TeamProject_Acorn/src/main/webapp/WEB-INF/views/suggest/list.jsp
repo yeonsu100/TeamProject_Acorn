@@ -86,7 +86,7 @@
 				<c:if test="${id eq tmp.sugId }">
 					<form class="suggest-update-form" action="update.go" method="post">
 						<input type="hidden" name="num" value="${tmp.num }" />
-						<textarea class="form-control" rows="3" name="sugContent" id="sugContent">${tmp.sugContent }</textarea>
+						<textarea class="form-control" rows="3" name="sugContent" id="update-sugContent">${tmp.sugContent }</textarea>
 						<button type="submit">수정</button>
 					</form>
 				</c:if>
@@ -98,8 +98,8 @@
 				<input type="hidden" name="sugId" value="${id }" />
 				<input type="hidden" name="sugProfile" value="${profile}"/>
 				<c:if test="${not empty id}">
-					<textarea class="form-control" rows="3" id="sugContent" name="sugContent"></textarea>
-					<button type="submit">등록</button>
+					<textarea class="form-control" rows="3" id="insert-sugContent" name="sugContent"></textarea>
+					<button class="test" type="submit" disabled>등록</button>
 				</c:if>
 			</div>
 		</form>
@@ -185,6 +185,9 @@
 		// 폼을 제출하면 페이지가 전환 되므로 
 		// 폼 제출을 막아준다.
 		return false;
+	});
+	$("#insert-sugContent").keydown(function(){
+		$(".test").prop("disabled", false);
 	});
 </script>
 </body>
