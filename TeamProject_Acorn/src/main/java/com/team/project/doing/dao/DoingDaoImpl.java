@@ -24,4 +24,21 @@ public class DoingDaoImpl implements DoingDao {
 	public void delete(int num) {
 		session.delete("doing.delete", num);
 	}
+
+	@Override
+	public void insert(DoingDto dto) {
+		session.insert("doing.insert", dto);
+	}
+
+	@Override
+	public DoingDto getData(int num) {
+		DoingDto dto=session.selectOne("doing.getData", num);
+		return dto;
+	}
+
+	@Override
+	public void update(DoingDto dto) {
+		session.update("doing.update", dto);
+	}
+
 }
