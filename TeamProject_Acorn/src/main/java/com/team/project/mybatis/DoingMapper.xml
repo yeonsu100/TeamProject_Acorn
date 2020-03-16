@@ -6,4 +6,27 @@
 		FROM doing
 		ORDER BY num ASC
 	</select>	
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM doing
+		WHERE num=#{num}
+	</delete>
+	
+	<insert id="insert" parameterType="com.team.project.doing.dto.DoingDto">
+		INSERT INTO doing
+		(num, title, content, regdate)
+		VALUES(doing_seq.NEXTVAL, #{title}, #{content}, SYSDATE)
+	</insert>
+	
+	<select id="getData" parameterType="int" resultType="com.team.project.doing.dto.DoingDto">
+		SELECT num, title, content, regdate
+		FROM doing
+		WHERE num=#{num}
+	</select>
+	
+	<update id="update" parameterType="com.team.project.doing.dto.DoingDto">
+		UPDATE doing
+		SET content=#{content}
+		WHERE num=#{num}
+	</update>
 </mapper>
