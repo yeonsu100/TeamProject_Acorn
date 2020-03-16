@@ -1,4 +1,28 @@
-<<<<<<< HEAD
+-- Trello 테이블 - 하는 중(/my trello/T_doing)
+CREATE TABLE T_doing(
+	num NUMBER PRIMARY KEY,
+	title VARCHAR2(100), 
+	content VARCHAR2(100),
+	regdate DATE DEFAULT SYSDATE
+);
+
+-- Trello 테이블 - 할 일(/my trello/T_todo)
+CREATE TABLE T_todo(
+	num NUMBER PRIMARY KEY,
+	title VARCHAR2(100), 
+	content VARCHAR2(100),
+	regdate DATE DEFAULT SYSDATE
+);
+
+-- Trello 테이블 - 완료(/my trello/T_done)
+CREATE TABLE T_done(
+	num NUMBER PRIMARY KEY,
+	title VARCHAR2(100), 
+	content VARCHAR2(100),
+	regdate DATE DEFAULT SYSDATE
+);
+
+
 -- 상품 테이블
 CREATE TABLE T_product(
 	code NUMBER PRIMARY KEY, 						--상품번호
@@ -165,4 +189,3 @@ regdate DATE -- 댓글 등록일
  );
  
  CREATE SEQUENCE T_board_comment_seq;
->>>>>>> refs/heads/master
