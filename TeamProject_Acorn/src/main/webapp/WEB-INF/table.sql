@@ -1,4 +1,31 @@
+<<<<<<< HEAD
+-- Trello 테이블 - 하는 중(/my trello/T_doing)
+CREATE TABLE T_doing(
+	num NUMBER PRIMARY KEY,
+	title VARCHAR2(100), 
+	content VARCHAR2(100),
+	regdate DATE DEFAULT SYSDATE
+);
+
+-- Trello 테이블 - 할 일(/my trello/T_todo)
+CREATE TABLE T_todo(
+	num NUMBER PRIMARY KEY,
+	title VARCHAR2(100), 
+	content VARCHAR2(100),
+	regdate DATE DEFAULT SYSDATE
+);
+
+-- Trello 테이블 - 완료(/my trello/T_done)
+CREATE TABLE T_done(
+	num NUMBER PRIMARY KEY,
+	title VARCHAR2(100), 
+	content VARCHAR2(100),
+	regdate DATE DEFAULT SYSDATE
+);
+
+=======
 -- TeamProject_Acorn SQL 파일입니다
+>>>>>>> refs/heads/master
 
 -- 상품 테이블
 CREATE TABLE T_product(
@@ -164,6 +191,8 @@ regdate DATE -- 댓글 등록일
  );
  
  CREATE SEQUENCE T_board_comment_seq;
+<<<<<<< HEAD
+=======
  
 -- 건의 게시판 테이블
 CREATE TABLE T_suggest(
@@ -176,3 +205,4 @@ regdate DATE            -- 건의 날짜
 -- 건의 게시판 시퀀스
 CREATE SEQUENCE T_suggest_seq;
 
+>>>>>>> refs/heads/master
