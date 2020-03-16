@@ -15,6 +15,12 @@
 				ORDER BY num DESC) result1)
 		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
+	<select id="getData" parameterType="int"
+		resultType="suggestDto">
+		SELECT num, sugId, profile, sugContent, regdate
+		FROM T_suggest
+		WHERE num=#{num}
+	</select>
 	<insert id="insert" parameterType="suggestDto">
 		INSERT INTO T_suggest
 		(num,sugId,profile,sugContent,regdate)

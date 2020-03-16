@@ -75,7 +75,7 @@
 						<c:choose>
 							<c:when test="${id eq tmp.sugId }">
 								<a href="javascript:" class="suggest-update-link">수정</a>&nbsp;&nbsp;
-								<a href="javascript:deleteComment(${tmp.num })">삭제</a>
+								<a href="${pageContext.request.contextPath }/suggest/delete.go?num=${tmp.num}">삭제</a>
 							</c:when>
 						</c:choose>
 					</dt>

@@ -15,4 +15,6 @@ public interface SuggestDao {
 	public void update(SuggestDto dto);
 	// 글 삭제 할 메소드
 	public void delete(int num);
+	// 글 하나의 정보
+	public SuggestDto getData(int num);
 }
