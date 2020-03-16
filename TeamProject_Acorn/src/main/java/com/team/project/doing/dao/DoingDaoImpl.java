@@ -19,4 +19,9 @@ public class DoingDaoImpl implements DoingDao {
 		List<DoingDto> list=session.selectList("doing.getList");
 		return list;
 	}
+
+	@Override
+	public void delete(int num) {
+		session.delete("doing.delete", num);
+	}
 }

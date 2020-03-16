@@ -4,4 +4,5 @@ import org.springframework.web.servlet.ModelAndView;
 
 public interface DoingService {
 	public void getList(ModelAndView mView);
+	public void deleteDoing(int num);
 }

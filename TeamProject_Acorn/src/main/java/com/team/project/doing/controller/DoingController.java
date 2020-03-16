@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team.project.doing.dao.DoingDao;
@@ -21,5 +22,11 @@ public class DoingController {
 		mView.addObject("list", list);
 		mView.setViewName("mytrello/doing/list");
 		return mView;
+	}
+	
+	@RequestMapping("/mytrello/doing/delete")
+	public String delete(@RequestParam int num) {
+		dao.delete(num);
+		return "redirect:/mytrello/doing/list.go";
 	}
 }

@@ -19,4 +19,9 @@ public class DoingServiceImpl implements DoingService {
 		List<DoingDto> list=dao.getList();
 		mView.addObject("list", list);
 	}
+
+	@Override
+	public void deleteDoing(int num) {
+		dao.delete(num);
+	}
 }
