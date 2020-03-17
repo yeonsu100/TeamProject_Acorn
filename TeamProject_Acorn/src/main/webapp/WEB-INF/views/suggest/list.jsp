@@ -187,8 +187,14 @@
 		return false;
 	});
 	
-	$("#insert-sugContent").keydown(function(){
-		$(".test").prop("disabled", false);
+	//내용 비었을때 버튼 비활성화
+	$("#insert-sugContent").on("input", function(){
+		var content=$("#insert-sugContent").val();
+		if(content.length!=0){
+			$(".test").removeAttr("disabled");
+		}else{
+			$(".test").attr("disabled", "disabled");
+		}
 	});
 	
 	function deleteConfirm(num){

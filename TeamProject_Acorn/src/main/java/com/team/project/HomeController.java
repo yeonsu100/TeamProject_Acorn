@@ -9,6 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {	
 	@RequestMapping("/home.go")
 	public String home(HttpServletRequest request) {
-		return "home";
+		String id=(String)request.getSession().getAttribute("id");
+		String url;
+		if(id==null) {
+			url="users/loginform";
+		}else {
+			url="home";
+		}
+		return url;
 	}
 }
