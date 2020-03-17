@@ -10,6 +10,8 @@
 		<typeAlias type="com.team.project.file.dto.FileDto" alias="fileDto"/>
 		<typeAlias type="com.team.project.users.dto.UsersDto" alias="usersDto"/>
 		<typeAlias type="com.team.project.msg.dto.MsgDto" alias="msgDto"/>
+		<typeAlias type="com.team.project.doing.dto.DoingDto" alias="doingDto"/>
+		<typeAlias type="com.team.project.suggest.dto.SuggestDto" alias="suggestDto"/>
  	</typeAliases>
  	
  	<mappers>
@@ -19,5 +21,7 @@
  		<mapper resource="com/team/project/mybatis/FileMapper.xml" />
  		<mapper resource="com/team/project/mybatis/UsersMapper.xml"/>
  		<mapper resource="com/team/project/mybatis/MsgMapper.xml"/>
+ 		<mapper resource="com/team/project/mybatis/DoingMapper.xml"/> 
+ 		<mapper resource="com/team/project/mybatis/SuggestMapper.xml"/>
  	</mappers>
  </configuration>

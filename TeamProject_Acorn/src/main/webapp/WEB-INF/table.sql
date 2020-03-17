@@ -1,3 +1,26 @@
+-- Trello 테이블 - 하는 중(/my trello/T_doing)
+CREATE TABLE T_doing(
+	num NUMBER PRIMARY KEY,
+	title VARCHAR2(100), 
+	content VARCHAR2(100),
+	regdate DATE DEFAULT SYSDATE
+);
+
+-- Trello 테이블 - 할 일(/my trello/T_todo)
+CREATE TABLE T_todo(
+	num NUMBER PRIMARY KEY,
+	title VARCHAR2(100), 
+	content VARCHAR2(100),
+	regdate DATE DEFAULT SYSDATE
+);
+
+-- Trello 테이블 - 완료(/my trello/T_done)
+CREATE TABLE T_done(
+	num NUMBER PRIMARY KEY,
+	title VARCHAR2(100), 
+	content VARCHAR2(100),
+	regdate DATE DEFAULT SYSDATE
+);
 
 -- 상품 테이블
 CREATE TABLE T_product(
@@ -178,3 +201,14 @@ recDel VARCHAR2(100)	--받는사람 목록에서 삭제했는지 여부
 );
 --message sequence
 CREATE SEQUENCE T_msg_seq;
+
+-- 건의 게시판 테이블
+CREATE TABLE T_suggest(
+num NUMBER PRIMARY KEY, -- 건의 게시판 관리 할 번호
+sugId VARCHAR2(100),     -- 건의자 아이디
+profile VARCHAR2(100),   -- 건의자 프로필
+sugContent VARCHAR2(500),-- 건의 내용
+regdate DATE            -- 건의 날짜
+);
+-- 건의 게시판 시퀀스
+CREATE SEQUENCE T_suggest_seq;
