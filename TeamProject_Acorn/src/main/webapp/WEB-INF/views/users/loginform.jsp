@@ -53,7 +53,6 @@
 </head>
 <body>
 <jsp:include page="../include/navbar.jsp"/>
-
 <div class="container">
 	<form class="form-signin" action="login.go" method="post">
 		<input type="hidden" name="url" value="${url }" />

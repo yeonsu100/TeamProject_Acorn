@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
-    
+   
+
 <div class="navbar navbar-inverse navbar-fixed-top">		
 	<div class="container">
 	<div class="navbar-header">
@@ -40,7 +41,8 @@
 				</div>
 			</c:when>
 			<c:otherwise>
-				<p class="navbar-text pull-right"><i class="fas fa-user"></i>
+				<p class="navbar-text pull-right">
+				<i class="fas fa-user"></i>
 				Signed as <strong><a class="navbar-link" href="${pageContext.request.contextPath }/users/info.go">${id }</a></strong>
 				<img src="${pageContext.request.contextPath }${profile }" style="width:35px; height:35px; border-radius:50%;" />
 				<a class="navbar-link" href="${pageContext.request.contextPath }/users/logout.go">Signed Out <i class="fas fa-door-open"></i></a>

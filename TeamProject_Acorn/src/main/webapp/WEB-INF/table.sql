@@ -22,8 +22,6 @@ CREATE TABLE T_done(
 	regdate DATE DEFAULT SYSDATE
 );
 
--- TeamProject_Acorn SQL 파일입니다
-
 -- 상품 테이블
 CREATE TABLE T_product(
 	code NUMBER PRIMARY KEY, 						--상품번호
@@ -175,7 +173,7 @@ regdate DATE
  CREATE SEQUENCE T_board_seq;
  
  --게시판 댓글 정보 테이블
-CREATE TABLE T_board_comment(
+ CREATE TABLE T_board_comment(
 num NUMBER PRIMARY KEY, -- 댓글의 글번호
 writer VARCHAR2(100),
 content VARCHAR2(500),
@@ -188,8 +186,22 @@ regdate DATE -- 댓글 등록일
  );
  
  CREATE SEQUENCE T_board_comment_seq;
-
  
+ --Message table 
+CREATE TABLE T_msg( 
+num NUMBER PRIMARY KEY,		-- 관리용 넘버(유저한테 안보여줌)
+idSend VARCHAR2(100) NOT NULL,	-- 보낸사람 id
+idRec VARCHAR2(100) NOT NULL,	-- 받는사람 id
+title VARCHAR2(100) NOT NULL,	-- 메시지 제목
+content CLOB,	--메시지 내용
+sendDate DATE,	--보낸 시간
+readDate DATE,	--읽은 시간
+sendDel VARCHAR2(100),	--보낸사람 목록에서 삭제했는지 여부
+recDel VARCHAR2(100)	--받는사람 목록에서 삭제했는지 여부
+);
+--message sequence
+CREATE SEQUENCE T_msg_seq;
+
 -- 건의 게시판 테이블
 CREATE TABLE T_suggest(
 num NUMBER PRIMARY KEY, -- 건의 게시판 관리 할 번호
@@ -200,4 +212,3 @@ regdate DATE            -- 건의 날짜
 );
 -- 건의 게시판 시퀀스
 CREATE SEQUENCE T_suggest_seq;
-

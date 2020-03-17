@@ -57,6 +57,7 @@ public class UsersServiceImpl implements UsersService{
 			session.setAttribute("profile", profile);
 			session.setAttribute("isAdmin", isAdmin);
 		}
+		
 	}
 	
 	@Override
