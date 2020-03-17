@@ -11,6 +11,7 @@
 		<typeAlias type="com.team.project.users.dto.UsersDto" alias="usersDto"/>
 		<typeAlias type="com.team.project.doing.dto.DoingDto" alias="doingDto"/>
 		<typeAlias type="com.team.project.done.dto.DoneDto" alias="doneDto"/>
+		<typeAlias type="com.team.project.todo.dto.TodoDto" alias="todoDto"/>
 		<typeAlias type="com.team.project.suggest.dto.SuggestDto" alias="suggestDto"/>
  	</typeAliases>
  	
@@ -22,6 +23,7 @@
  		<mapper resource="com/team/project/mybatis/UsersMapper.xml"/>
  		<mapper resource="com/team/project/mybatis/DoingMapper.xml"/> 
  		<mapper resource="com/team/project/mybatis/DoneMapper.xml"/>
+ 		<mapper resource="com/team/project/mybatis/TodoMapper.xml"/>
  		<mapper resource="com/team/project/mybatis/SuggestMapper.xml"/>
  	</mappers>
  </configuration>
