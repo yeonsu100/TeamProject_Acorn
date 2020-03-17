@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="doing">
-	<select id="getList" resultType="com.team.project.doing.dto.DoingDto">
+<mapper namespace="done">
+	<select id="getList" resultType="com.team.project.done.dto.DoneDto">
 		SELECT num, title, content, regdate
-		FROM doing
+		FROM done
 		ORDER BY num ASC
 	</select>	
 	
 	<delete id="delete" parameterType="int">
-		DELETE FROM doing
+		DELETE FROM done
 		WHERE num=#{num}
 	</delete>
 	
-	<insert id="insert" parameterType="com.team.project.doing.dto.DoingDto">
-		INSERT INTO doing
+	<insert id="insert" parameterType="com.team.project.done.dto.DoneDto">
+		INSERT INTO done
 		(num, title, content, regdate)
-		VALUES(doing_seq.NEXTVAL, #{title}, #{content}, SYSDATE)
+		VALUES(done_seq.NEXTVAL, #{title}, #{content}, SYSDATE)
 	</insert>
 	
-	<select id="getData" parameterType="int" resultType="com.team.project.doing.dto.DoingDto">
+	<select id="getData" parameterType="int" resultType="com.team.project.done.dto.DoneDto">
 		SELECT num, title, content, regdate
-		FROM doing
+		FROM done
 		WHERE num=#{num}
 	</select>
 	
-	<update id="update" parameterType="com.team.project.doing.dto.DoingDto">
-		UPDATE doing
+	<update id="update" parameterType="com.team.project.done.dto.DoneDto">
+		UPDATE done
 		SET content=#{content}
 		WHERE num=#{num}
 	</update>

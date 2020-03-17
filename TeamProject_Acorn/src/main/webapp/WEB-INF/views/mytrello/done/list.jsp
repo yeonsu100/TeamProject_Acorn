@@ -13,7 +13,7 @@
 <jsp:include page="../../include/navbar.jsp"/>
 
 <div class="container">
-	<h1>현재 하고 있는 업무</h1>
+	<h1>완료된 업무</h1>
 	<table class="table table-striped table-hover">
 	<thead>
 		<tr>
