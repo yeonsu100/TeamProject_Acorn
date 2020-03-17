@@ -14,8 +14,8 @@
 	
 	<insert id="insert" parameterType="doneDto">
 		INSERT INTO T_done
-		(num, title, content)
-		VALUES(T_done_seq.NEXTVAL, #{title}, #{content})
+		(num, title, content, regdate)
+		VALUES(T_done_seq.NEXTVAL, #{title}, #{content}, SYSDATE)
 	</insert>
 	
 	<select id="getData" parameterType="int" resultType="doneDto">
