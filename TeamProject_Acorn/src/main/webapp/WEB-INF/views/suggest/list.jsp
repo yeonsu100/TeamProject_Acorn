@@ -75,7 +75,7 @@
 						<c:choose>
 							<c:when test="${id eq tmp.sugId }">
 								<a href="javascript:" class="suggest-update-link">수정</a>&nbsp;&nbsp;
-								<a href="javascript:deleteComment(${tmp.num })">삭제</a>
+								<a href="javascript:deleteConfirm(${tmp.num })">삭제</a>
 							</c:when>
 						</c:choose>
 					</dt>
@@ -186,9 +186,23 @@
 		// 폼 제출을 막아준다.
 		return false;
 	});
+	
 	$("#insert-sugContent").keydown(function(){
 		$(".test").prop("disabled", false);
 	});
+	
+	function deleteConfirm(num){
+		var isDelete=confirm("글을 삭제 하시겠습니까?");
+		if(isDelete){
+			// ajax 요청
+			$.ajax({
+				url:"delete.go",
+				method:"post",
+				data:{"num":num},	
+			})
+			location.href="${pageContext.request.contextPath}/suggest/list.go";
+		}
+	}
 </script>
 </body>
 </html>

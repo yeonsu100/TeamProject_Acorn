@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.team.project.exception.CanNotDeleteException;
 import com.team.project.suggest.dao.SuggestDao;
 import com.team.project.suggest.dto.SuggestDto;
 
@@ -78,5 +79,15 @@ public class SuggestServiceImpl implements SuggestService{
 	@Override
 	public void updateSuggest(SuggestDto dto) {
 		suggestDao.update(dto);
+	}
+
+	@Override
+	public void deleteSuggest(int num, HttpServletRequest request) {
+		String id=(String)request.getSession().getAttribute("id");
+		String sugId=suggestDao.getData(num).getSugId();
+		if(!id.equals(sugId)) {
+			throw new CanNotDeleteException();
+		}
+		suggestDao.delete(num);
 	}
 }

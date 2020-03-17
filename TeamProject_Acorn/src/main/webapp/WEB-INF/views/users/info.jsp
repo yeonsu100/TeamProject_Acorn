@@ -21,6 +21,7 @@
 </style>
 </head>
 <body>
+<jsp:include page="../include/navbar.jsp"/>
 <div class="container">
 	<h1>개인 정보 페이지</h1>
 	<table>

@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>users/signup_check.jsp</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
+<jsp:include page="../include/resource.jsp"/>
 <style>
 	/* 페이지 로딩 시점에 도움말과 피드백 아이콘은 일단 숨기기 */
 	.help-block, .form-control-feedback{
@@ -16,6 +16,7 @@
 <script src="${pageContext.request.contextPath }/resources/js/bootstrap.js"></script>
 </head>
 <body>
+<jsp:include page="../include/navbar.jsp"/>
 <div class="container">
 	<h1>사원 정보 체크 페이지</h1>
 	<form action="signup_check.go" method="post" id="signupCheck">

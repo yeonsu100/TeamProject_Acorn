@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="msg">
+	<select id="getCount" resultType="int" parameterType="msgDto">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM T_msg
+		WHERE idRec=#{idRec}
+	</select>
+	<select id="getUnreadCount" parameterType="msgDto" resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM T_msg
+		WHERE idRec=#{idRec}
+		AND readDate is null
+		AND recDel is null
+	</select>
+	<select id="getList" resultType="msgDto" parameterType="msgDto">
+		SELECT*
+		FROM
+		(SELECT result1.*, ROWNUM AS rnum
+		FROM
+		(SELECT num,idSend,idRec,title,sendDate,readDate
+		FROM T_msg
+		WHERE idRec=#{idRec}
+		AND recDel is null
+		ORDER BY num DESC) result1)
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+	<select id="getData" parameterType="msgDto" resultType="msgDto">
+		SELECT num, idSend, idRec, title, content, sendDate, readDate
+		FROM T_msg
+		WHERE num=#{num}		
+	</select>
+	<update id="checkRead" parameterType="msgDto">
+		UPDATE T_msg
+		SET readDate=sysdate
+		WHERE num=#{num}
+	</update>
+	<insert id="sendMsg" parameterType="msgDto">
+		INSERT INTO T_msg
+		(num, idSend, idRec, title, content, sendDate)
+		values(T_msg_seq.NEXTVAL, #{idSend}, #{idRec}, #{title}, #{content}, SYSDATE)
+	</insert>
+</mapper>

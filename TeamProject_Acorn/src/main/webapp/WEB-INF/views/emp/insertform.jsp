@@ -16,6 +16,7 @@
 <script src="${pageContext.request.contextPath }/resources/js/bootstrap.js"></script>
 </head>
 <body>
+<jsp:include page="../include/navbar.jsp"/>
 <div class="container">
 <h1>사원 추가 페이지</h1>
 	<form action="insert.go" method="post" id="empInsertForm">

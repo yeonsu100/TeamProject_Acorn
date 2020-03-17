@@ -1,4 +1,32 @@
--- TeamProject_Acorn SQL 파일입니다
+-- Trello 테이블 - 하는 중(/my trello/T_doing)
+CREATE TABLE T_doing(
+	num NUMBER PRIMARY KEY,
+	title VARCHAR2(100), 
+	content VARCHAR2(100),
+	regdate DATE DEFAULT SYSDATE
+);
+
+CREATE SEQUENCE T_doing_seq;
+
+-- Trello 테이블 - 할 일(/my trello/T_todo)
+CREATE TABLE T_todo(
+	num NUMBER PRIMARY KEY,
+	title VARCHAR2(100), 
+	content VARCHAR2(100),
+	regdate DATE DEFAULT SYSDATE
+);
+
+CREATE SEQUENCE T_todo_seq;
+
+-- Trello 테이블 - 완료(/my trello/T_done)
+CREATE TABLE T_done(
+	num NUMBER PRIMARY KEY,
+	title VARCHAR2(100), 
+	content VARCHAR2(100),
+	regdate DATE DEFAULT SYSDATE
+);
+
+CREATE SEQUENCE T_done_seq;
 
 -- 상품 테이블
 CREATE TABLE T_product(
@@ -150,11 +178,11 @@ regdate DATE
  CREATE SEQUENCE T_board_seq;
  
  --게시판 댓글 정보 테이블
-CREATE TABLE T_board_comment(
-num NUMBER NOT NULL PRIMARY KEY, -- 댓글의 글번호
-writer VARCHAR2(100) NOT NULL,
-content VARCHAR2(500) ,
-target_id VARCHAR2(100) , -- 댓글의 대상이 되는 아이디 (글작성자)
+ CREATE TABLE T_board_comment(
+num NUMBER PRIMARY KEY, -- 댓글의 글번호
+writer VARCHAR2(100),
+content VARCHAR2(500),
+target_id VARCHAR2(100), -- 댓글의 대상이 되는 아이디 (글작성자)
 ref_group NUMBER, --댓글의 그룹번호
 comment_group NUMBER, --원글의 달린 댓글 내에서의 그룹번호
 deleted CHAR(3) DEFAULT 'no', -- 댓글이 삭제 되었는지 여부
@@ -165,6 +193,21 @@ regdate DATE -- 댓글 등록일
  CREATE SEQUENCE T_board_comment_seq;
 
  
+ --Message table 
+CREATE TABLE T_msg( 
+num NUMBER PRIMARY KEY,		-- 관리용 넘버(유저한테 안보여줌)
+idSend VARCHAR2(100) NOT NULL,	-- 보낸사람 id
+idRec VARCHAR2(100) NOT NULL,	-- 받는사람 id
+title VARCHAR2(100) NOT NULL,	-- 메시지 제목
+content CLOB,	--메시지 내용
+sendDate DATE,	--보낸 시간
+readDate DATE,	--읽은 시간
+sendDel VARCHAR2(100),	--보낸사람 목록에서 삭제했는지 여부
+recDel VARCHAR2(100)	--받는사람 목록에서 삭제했는지 여부
+);
+--message sequence
+CREATE SEQUENCE T_msg_seq;
+
 -- 건의 게시판 테이블
 CREATE TABLE T_suggest(
 num NUMBER PRIMARY KEY, -- 건의 게시판 관리 할 번호
@@ -175,4 +218,3 @@ regdate DATE            -- 건의 날짜
 );
 -- 건의 게시판 시퀀스
 CREATE SEQUENCE T_suggest_seq;
-
