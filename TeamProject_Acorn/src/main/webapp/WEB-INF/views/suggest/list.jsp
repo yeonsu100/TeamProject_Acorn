@@ -148,7 +148,7 @@
 	</div>
 </div>
 <script>
-	var isInsertSug=false;
+	
 	// 게시글 수정 링크를 눌렀을때 호출되는 함수 등록
 	$(".suggest-update-link").click(function(){
 		$(this)
@@ -188,16 +188,16 @@
 		return false;
 	});
 	
-	var insertSug=$("#insert-sugContent").val();
-	$("#insert-sugContent").keydown("input",function(){
-		if(insertSug.length==0 && isInsertSug==false){
+	var isInsertSug=false;
+	
+	$("#insert-sugContent").on("input",function(){
+		var insertSug=$("#insert-sugContent").val();
+		if(insertSug.length==0){
 		//	$(".test").prop("disabled", true);
 			$(".test").removeAttr("disabled");
-			isInsertSug=true;
 		}else{
 		//	$(".test").prop("disabled", false);
 			$(".test").attr("disabled","disabled");
-			isInsertSug=false;
 		}
 	});
 	
