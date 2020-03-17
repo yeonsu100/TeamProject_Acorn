@@ -43,5 +43,11 @@ public class MsgDaoImpl implements MsgDao{
 	public void sendMsg(MsgDto dto) {
 		session.insert("msg.sendMsg", dto);
 	}
+
+	@Override
+	public int getUnreadCount(MsgDto dto) {
+		int count=session.selectOne("msg.getUnreadCount", dto);
+		return count;
+	}
 	
 }

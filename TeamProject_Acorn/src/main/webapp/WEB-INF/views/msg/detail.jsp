@@ -79,10 +79,6 @@
 			<col class="col-xs-8"/>
 		</colgroup>
 		<tr>
-			<th>글번호</th>
-			<td>${dto.num }</td>
-		</tr>
-		<tr>
 			<th>보낸 사람</th>
 			<td>${dto.idSend}</td>
 		</tr>

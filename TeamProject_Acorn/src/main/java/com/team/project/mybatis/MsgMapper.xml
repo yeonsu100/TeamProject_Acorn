@@ -6,6 +6,12 @@
 		FROM T_msg
 		WHERE idRec=#{idRec}
 	</select>
+	<select id="getUnreadCount" parameterType="msgDto" resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM T_msg
+		WHERE idRec=#{idRec}
+		AND readDate is null
+	</select>
 	<select id="getList" resultType="msgDto" parameterType="msgDto">
 		SELECT*
 		FROM

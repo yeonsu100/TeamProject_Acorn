@@ -1,8 +1,11 @@
 package com.team.project.msg.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -86,6 +89,17 @@ public class MsgServiceImpl implements MsgService{
 	@Override
 	public void sendMsg(HttpServletRequest request, MsgDto dto) {
 		dao.sendMsg(dto);
+	}
+
+	@Override
+	public Map<String, Object> checkNewMsg(HttpServletRequest request) {
+		MsgDto dto=new MsgDto();
+		String id=(String)request.getSession().getAttribute("id");
+		dto.setIdRec(id);
+		int unreadCount=dao.getUnreadCount(dto);
+		Map<String, Object> map=new HashMap<>();
+		map.put("count", unreadCount);
+		return map;
 	}
 
 }

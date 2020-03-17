@@ -14,7 +14,6 @@
 
 <div class="container">
 	<h1>Main Page</h1>
-	
 	<c:choose>
 		<c:when test="${empty sessionScope.isAdmin }">
 		</c:when>
@@ -23,6 +22,6 @@
 		</c:otherwise>
 	</c:choose>
 </div>
-
+<jsp:include page="include/msgbtn.jsp"/>
 </body>
 </html>

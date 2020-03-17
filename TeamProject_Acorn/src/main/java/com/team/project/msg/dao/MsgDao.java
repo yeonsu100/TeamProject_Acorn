@@ -15,4 +15,6 @@ public interface MsgDao {
 	public void checkRead(MsgDto dto);
 	// 메시지 보내기(테이블에 추가)
 	public void sendMsg(MsgDto dto);
+	// 접속된 아이디의 안읽은 메시지 개수 읽어오기
+	public int getUnreadCount(MsgDto dto);
 }

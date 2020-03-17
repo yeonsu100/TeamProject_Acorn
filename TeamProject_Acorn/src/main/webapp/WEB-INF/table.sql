@@ -166,13 +166,15 @@ regdate DATE -- 댓글 등록일
  
  --Message table 
 CREATE TABLE T_msg( 
-num NUMBER PRIMARY KEY,
-idSend VARCHAR2(100) NOT NULL,
-idRec VARCHAR2(100) NOT NULL,
-title VARCHAR2(100) NOT NULL,
-content CLOB,
-sendDate DATE,
-readDate DATE
+num NUMBER PRIMARY KEY,		-- 관리용 넘버(유저한테 안보여줌)
+idSend VARCHAR2(100) NOT NULL,	-- 보낸사람 id
+idRec VARCHAR2(100) NOT NULL,	-- 받는사람 id
+title VARCHAR2(100) NOT NULL,	-- 메시지 제목
+content CLOB,	--메시지 내용
+sendDate DATE,	--보낸 시간
+readDate DATE,	--읽은 시간
+sendDel VARCHAR2(100),	--보낸사람 목록에서 삭제했는지 여부
+recDel VARCHAR2(100)	--받는사람 목록에서 삭제했는지 여부
 );
 --message sequence
 CREATE SEQUENCE T_msg_seq;

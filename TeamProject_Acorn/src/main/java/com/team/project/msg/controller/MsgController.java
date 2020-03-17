@@ -1,5 +1,7 @@
 package com.team.project.msg.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team.project.msg.dto.MsgDto;
@@ -16,6 +19,14 @@ import com.team.project.msg.service.MsgService;
 public class MsgController {
 	@Autowired 
 	private MsgService service;
+	
+	//안읽은 메시지 개수 체크
+	@ResponseBody
+	@RequestMapping("/msg/checknewmsg")
+	public Map<String, Object> checkNewMsg(HttpServletRequest request){
+		Map<String, Object> map=service.checkNewMsg(request);
+		return map;
+	}
 	
 	//메시지 목록보기 
 	@RequestMapping("/msg/list")
