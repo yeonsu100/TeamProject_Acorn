@@ -172,7 +172,6 @@ writer VARCHAR2(100) NOT NULL,
 title VARCHAR2(100) NOT NULL,
 content CLOB,
 viewCount NUMBER,
-likeCount NUMBER, --추천수
 regdate DATE
 );
 
@@ -192,6 +191,7 @@ regdate DATE -- 댓글 등록일
  );
  
  CREATE SEQUENCE T_board_comment_seq;
+
  
  --Message table 
 CREATE TABLE T_msg( 
