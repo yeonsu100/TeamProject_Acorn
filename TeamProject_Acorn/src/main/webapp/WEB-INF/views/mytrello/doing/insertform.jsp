@@ -11,10 +11,14 @@
 <div class="container">
 	<form action="insert.go" method="post">
 		<div>
-			<label for="content">Assignment</label>
+			<label for="content">프로젝트명</label>
+			<input type="text" name="title" id="title" />
+		</div> </br>
+		<div>
+			<label for="content">세부 업무 사항</label>
 			<input type="text" name="content" id="content" />
 		</div>
-		<button type="submit">Save</button>
+		<button type="submit">저장</button>
 	</form>
 </div>
 
