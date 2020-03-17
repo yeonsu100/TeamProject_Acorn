@@ -141,14 +141,14 @@
 								
 								<span>${tmp.writer }</span>
 								<c:if test="${tmp.num ne tmp.comment_group }">
-									TO <strong>${tmp.target_id }</strong>
+									to <strong>${tmp.target_id }</strong>
 								</c:if>
 								<span>${tmp.regdate }</span>
-								<a href="javascript:" class="reply_link"> &nbsp;&nbsp; 답글</a> |
+								<a href="javascript:" class="reply_link">답글</a> |
 								<c:choose>
 									<%-- 로그인된 아이디와 댓글의 작성자가 같으면 --%>
 									<c:when test="${id eq tmp.writer }">
-										<a href="javascript:" class="comment-update-link">수정</a> | 
+										<a href="javascript:" class="comment-update-link">수정</a>&nbsp;&nbsp;
 										<a href="javascript:deleteComment(${tmp.num })">삭제</a>
 									</c:when>
 									<c:otherwise>
@@ -189,7 +189,7 @@
 		<!-- 원글에 댓글을 작성할수 있는 폼 -->
 		<div class="comment_form">
 			<form action="comment_insert.go" method="post">
-				<!-- 댓글의 그룹번호는 원글의 글번호가 된다.  -->
+				<!-- 댓글의 그룹번호는 원글의 글번호가 된다.ㄴ  -->
 				<input type="hidden" name="ref_group" 
 					value="${dto.num }"/>
 				<!-- 댓글의 대상자는 원글의 작성자가 된다. -->
@@ -301,7 +301,6 @@
 		if(isDelete){
 			location.href="delete.go?num=${dto.num}";
 		}
-		
 	}
 </script>
 </body>

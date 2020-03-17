@@ -144,7 +144,6 @@ writer VARCHAR2(100) NOT NULL,
 title VARCHAR2(100) NOT NULL,
 content CLOB,
 viewCount NUMBER,
-likeCount NUMBER, --추천수
 regdate DATE
 );
 

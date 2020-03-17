@@ -39,6 +39,7 @@ public class BoardController {
 	
 		return new ModelAndView("board/insertform");
 	}
+	
 	//새글 추가 요청 처리
 	@RequestMapping(value="/board/insert", method=RequestMethod.POST)
 	public ModelAndView authInsert(HttpServletRequest request,
