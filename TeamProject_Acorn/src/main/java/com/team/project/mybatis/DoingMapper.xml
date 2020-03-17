@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="done">
-	<select id="getList" resultType="com.team.project.doing.dto.DoingDto">
+	<select id="getList" resultType="doingDto">
 		SELECT num, title, content, regdate
-		FROM doing
+		FROM T_doing
 		ORDER BY num ASC
 	</select>	
 	
 	<delete id="delete" parameterType="int">
-		DELETE FROM doing
+		DELETE FROM T_doing
 		WHERE num=#{num}
 	</delete>
 	
-	<insert id="insert" parameterType="com.team.project.doing.dto.DoingDto">
-		INSERT INTO doing
-		(num, title, content, regdate)
-		VALUES(doing_seq.NEXTVAL, #{title}, #{content}, SYSDATE)
+	<insert id="insert" parameterType="doingDto">
+		INSERT INTO T_doing
+		(num, title, content)
+		VALUES(T_doing_seq.NEXTVAL, #{title}, #{content})
 	</insert>
 	
-	<select id="getData" parameterType="int" resultType="com.team.project.doing.dto.DoingDto">
+	<select id="getData" parameterType="int" resultType="doingDto">
 		SELECT num, title, content, regdate
-		FROM doing
+		FROM T_doing
 		WHERE num=#{num}
 	</select>
 	
-	<update id="update" parameterType="com.team.project.doing.dto.DoingDto">
-		UPDATE doing
+	<update id="update" parameterType="doingDto">
+		UPDATE T_doing
 		SET content=#{content}
 		WHERE num=#{num}
 	</update>
