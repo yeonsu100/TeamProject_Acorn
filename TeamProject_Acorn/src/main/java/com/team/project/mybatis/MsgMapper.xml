@@ -11,6 +11,7 @@
 		FROM T_msg
 		WHERE idRec=#{idRec}
 		AND readDate is null
+		AND recDel is null
 	</select>
 	<select id="getList" resultType="msgDto" parameterType="msgDto">
 		SELECT*
@@ -20,6 +21,7 @@
 		(SELECT num,idSend,idRec,title,sendDate,readDate
 		FROM T_msg
 		WHERE idRec=#{idRec}
+		AND recDel is null
 		ORDER BY num DESC) result1)
 		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>

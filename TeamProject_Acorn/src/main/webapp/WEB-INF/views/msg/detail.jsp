@@ -50,25 +50,6 @@
 		width: 15%;
 		height: 100px;
 	}
-	/* 댓글에 댓글을 다는 폼과 수정폼을 일단 숨긴다. */
-	.comment form{
-		display: none;
-	}
-	.comment{
-		position: relative;
-	}
-	.comment .reply_icon{
-		width: 8px;
-		height: 8px;
-		position: absolute;
-		top: 10px;
-		left: 30px;
-	}
-	.comments .user-img{
-		width: 20px;
-		height: 20px;
-		border-radius: 50%;
-	}
 </style>
 </head>
 <body>
@@ -95,6 +76,5 @@
 	
 	<a href="list.go">목록보기</a>
 </div>
-</script>
 </body>
 </html>
