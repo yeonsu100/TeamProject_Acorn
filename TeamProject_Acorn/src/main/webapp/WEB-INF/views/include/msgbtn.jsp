@@ -9,10 +9,11 @@
 	     position: absolute;
 	     top: 0;
 	     right: 0;
-	     width: 20px;
 	     height: 20px;
 	     border-radius: 50%;
 	     background-color: red;
+	     justify-content: center;
+		 align-content: center;
 	 }
 </style>
 <script type="text/javascript">

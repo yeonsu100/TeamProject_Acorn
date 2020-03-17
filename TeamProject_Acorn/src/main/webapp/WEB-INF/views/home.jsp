@@ -22,6 +22,11 @@
 		</c:otherwise>
 	</c:choose>
 </div>
-<jsp:include page="include/msgbtn.jsp"/>
+<c:choose>
+	<c:when test="${empty sessionScope.id }"></c:when>
+	<c:otherwise>
+		<jsp:include page="include/msgbtn.jsp"/>
+	</c:otherwise>
+</c:choose>
 </body>
 </html>
