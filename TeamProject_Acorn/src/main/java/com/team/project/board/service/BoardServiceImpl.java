@@ -24,13 +24,13 @@ public class BoardServiceImpl implements BoardService{
 	private BoardCommentDao boardCommentDao;
 	
 	//한 페이지에 나타낼 Row의 갯수
-	static final int PAGE_ROW_COUNT=5;
+	static final int PAGE_ROW_COUNT=5; 
 	//하단 디스플레이 페이지 갯수
 	static final int PAGE_DISPLAY_COUNT=5;
 
 	@Override
 	public void getList(HttpServletRequest request) {
-
+		
 		//검색과 관련된 파라미터를 읽어와 본다.
 		String keyword=request.getParameter("keyword");
 		String condition=request.getParameter("condition");
@@ -246,8 +246,4 @@ public class BoardServiceImpl implements BoardService{
 		
 	}
 
-	@Override
-	public void pagingComment(BoardCommentDto dto) {
-		
-	}
 }

@@ -43,7 +43,7 @@ public class BoardController {
 	@RequestMapping(value="/board/insert", method=RequestMethod.POST)
 	public ModelAndView authInsert(HttpServletRequest request,
 			@ModelAttribute BoardDto dto) {
-		//세션에 있는 글작성자의 아이디
+				//세션에 있는 글작성자의 아이디
 				String writer=(String)
 						request.getSession().getAttribute("id");
 				//BoardDto 객체에 담고 
@@ -123,4 +123,5 @@ public class BoardController {
 			map.put("isSuccess", true);
 			return map; // {"isSuccess":true} 형식의 JSON 문자열이 응답된다.
 		}
+		
 }

@@ -71,7 +71,6 @@
 <div class="container">
 	<ol class="breadcrumb">
 		<li><a href="${pageContext.request.contextPath }/board/list.go">목록</a></li>
-		<li>글 상세 보기</li>
 	</ol>
 	<c:if test="${not empty keyword }">
 		<p> <strong>${keyword }</strong> 검색어로 검색된
@@ -142,14 +141,14 @@
 								
 								<span>${tmp.writer }</span>
 								<c:if test="${tmp.num ne tmp.comment_group }">
-									to <strong>${tmp.target_id }</strong>
+									TO <strong>${tmp.target_id }</strong>
 								</c:if>
 								<span>${tmp.regdate }</span>
-								<a href="javascript:" class="reply_link">답글</a> |
+								<a href="javascript:" class="reply_link"> &nbsp;&nbsp; 답글</a> |
 								<c:choose>
 									<%-- 로그인된 아이디와 댓글의 작성자가 같으면 --%>
 									<c:when test="${id eq tmp.writer }">
-										<a href="javascript:" class="comment-update-link">수정</a>&nbsp;&nbsp;
+										<a href="javascript:" class="comment-update-link">수정</a> | 
 										<a href="javascript:deleteComment(${tmp.num })">삭제</a>
 									</c:when>
 									<c:otherwise>
@@ -302,6 +301,7 @@
 		if(isDelete){
 			location.href="delete.go?num=${dto.num}";
 		}
+		
 	}
 </script>
 </body>
