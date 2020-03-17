@@ -7,6 +7,9 @@
 <meta charset="UTF-8">
 <title>/views/msg/list.jsp</title>
 <jsp:include page="../include/resource.jsp"/>
+<style>
+	body{padding-top: 0px;}
+</style>
 </head>
 <body>
 <div class="container">

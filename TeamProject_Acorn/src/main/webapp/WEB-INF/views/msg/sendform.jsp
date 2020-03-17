@@ -9,8 +9,10 @@
 <style>
 	#content{
 		width: 100%;
-		height: 400px;
+		height: 200px;
 	}
+	
+	body{padding-top: 0px;}
 </style>
 </head>
 <body>
