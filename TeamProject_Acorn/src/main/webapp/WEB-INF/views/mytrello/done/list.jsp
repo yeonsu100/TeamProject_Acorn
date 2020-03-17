@@ -6,14 +6,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/mytrello/doing/list.jsp</title>
+<title>/mytrello/done/list.jsp</title>
 <jsp:include page="../../include/resource.jsp"/>
 </head>
 <body>
 <jsp:include page="../../include/navbar.jsp"/>
 
 <div class="container">
-	<h1>현재 하고 있는 업무</h1>
+	<h1>완료된 업무</h1>
 	<table class="table table-striped table-hover">
 	<thead>
 		<tr>

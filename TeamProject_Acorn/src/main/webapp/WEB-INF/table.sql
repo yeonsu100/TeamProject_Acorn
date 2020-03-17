@@ -6,6 +6,8 @@ CREATE TABLE T_doing(
 	regdate DATE DEFAULT SYSDATE
 );
 
+CREATE SEQUENCE T_doing_seq;
+
 -- Trello 테이블 - 할 일(/my trello/T_todo)
 CREATE TABLE T_todo(
 	num NUMBER PRIMARY KEY,
@@ -14,6 +16,8 @@ CREATE TABLE T_todo(
 	regdate DATE DEFAULT SYSDATE
 );
 
+CREATE SEQUENCE T_todo_seq;
+
 -- Trello 테이블 - 완료(/my trello/T_done)
 CREATE TABLE T_done(
 	num NUMBER PRIMARY KEY,
@@ -21,6 +25,8 @@ CREATE TABLE T_done(
 	content VARCHAR2(100),
 	regdate DATE DEFAULT SYSDATE
 );
+
+CREATE SEQUENCE T_done_seq;
 
 -- 상품 테이블
 CREATE TABLE T_product(

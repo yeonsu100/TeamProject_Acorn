@@ -4,15 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/mytrello/doing/insert.jsp</title>
+<title>/mytrello/done/update.jsp</title>
 </head>
 <body>
 
 <div class="container">
 	<h1>Alert!</h1>
-	<p>Successfully add an assignment! </br>
+	<p>Successfully saved an assignment!</p>
 	<a href="list.go">Back to the list page</a>
-	</p>
 </div>
 
 </body>
