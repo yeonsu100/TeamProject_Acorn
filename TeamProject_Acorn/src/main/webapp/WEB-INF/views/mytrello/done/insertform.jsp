@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/mytrello/doing/insertform.jsp</title>
+<title>/mytrello/done/insertform.jsp</title>
 </head>
 <body>
 
