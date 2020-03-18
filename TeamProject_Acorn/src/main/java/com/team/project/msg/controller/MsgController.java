@@ -57,6 +57,7 @@ public class MsgController {
 	mView.setViewName("msg/list");
 	return mView;
 	}
+	
 	//메시지 내용 보기
 	@RequestMapping("/msg/detail")
 	public String detail(HttpServletRequest request){

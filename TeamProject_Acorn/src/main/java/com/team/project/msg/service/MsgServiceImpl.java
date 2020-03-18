@@ -76,11 +76,12 @@ public class MsgServiceImpl implements MsgService{
 	public void detail(HttpServletRequest request) {
 		//파라미터로 전달되는 글번호
 		int num=Integer.parseInt(request.getParameter("num"));
+		String id=(String)request.getSession().getAttribute("id");
 		//MsgDto 객체 생성 (select 할때 필요한 정보를 담기 위해)
 		MsgDto dto=new MsgDto();	
 		dto.setNum(num);
 		MsgDto dto2=dao.getData(dto);
-		if(dto2.getReadDate()==null) {
+		if(dto2.getIdRec()==id && dto2.getReadDate()==null) {
 			dao.checkRead(dto);
 		}
 		request.setAttribute("dto", dto2);
