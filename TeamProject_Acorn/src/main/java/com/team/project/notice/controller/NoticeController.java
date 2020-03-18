@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import com.team.project.exception.CanNotDeleteException;
+import com.team.project.notice.dao.NoticeDao;
 import com.team.project.notice.dto.NoticeDto;
 import com.team.project.notice.service.NoticeService;
 
@@ -18,7 +19,8 @@ import com.team.project.notice.service.NoticeService;
 public class NoticeController {
 	@Autowired
 	private NoticeService service;
-	
+	@Autowired
+	private NoticeDao noticeDao;
 	// 파일 목록보기 
 	@RequestMapping("/notice/list")
 	public ModelAndView list(ModelAndView mView,
@@ -31,6 +33,11 @@ public class NoticeController {
 	// 글작성 폼 요청
 	@RequestMapping("/notice/insertform")
 	public ModelAndView authInsertForm(HttpServletRequest request) {
+		// Admin이 아니면 insertform.go Exception 발생 
+		String isAdmin=(String)request.getSession().getAttribute("isAdmin");
+		if(isAdmin==null) {
+			throw new CanNotDeleteException();
+		}
 		return new ModelAndView("notice/insertform");
 	}
 	// 글작성 요청
@@ -65,6 +72,12 @@ public class NoticeController {
 	@RequestMapping("/notice/updateform")
 	public ModelAndView authUpdateForm(HttpServletRequest request,
 			ModelAndView mView, @RequestParam int num) {
+		// 작성자와 로그인된 아이디가 같지 않으면 업데이트 폼 Exception 발생
+		String id=(String)request.getSession().getAttribute("id");
+		String writer=noticeDao.getDate(num).getWriter();
+		if(!id.equals(writer)) {
+			throw new CanNotDeleteException();
+		}
 		// 1. 파라미터로 전달되는 수정 할 글번호를 읽어온다.
 		service.detail(request);
 		mView.setViewName("notice/updateform");
@@ -76,7 +89,7 @@ public class NoticeController {
 	public ModelAndView authUpdate(@ModelAttribute NoticeDto dto,
 			HttpServletRequest request) {
 		int num=Integer.parseInt(request.getParameter("num"));
-		service.updateContent(dto);
+		service.updateContent(dto, request);
 		ModelAndView mView =new ModelAndView();
 		mView.addObject("num",num);
 		mView.setViewName("notice/update");

@@ -13,11 +13,14 @@ import org.springframework.web.servlet.ModelAndView;
 import com.team.project.exception.CanNotDeleteException;
 import com.team.project.notice.dao.NoticeDao;
 import com.team.project.notice.dto.NoticeDto;
+import com.team.project.users.dao.UsersDao;
 
 @Service
 public class NoticeServiceImpl implements NoticeService{
 	@Autowired
 	private NoticeDao noticeDao;
+	@Autowired
+	private UsersDao UsersDao;
 
 	@Override
 	public void list(HttpServletRequest request) {
@@ -106,6 +109,10 @@ public class NoticeServiceImpl implements NoticeService{
 	// 글 추가 메소드
 	@Override
 	public void addContent(HttpServletRequest request, NoticeDto dto) {
+		String isAdmin=(String)request.getSession().getAttribute("isAdmin");
+		if(isAdmin==null) {
+			throw new CanNotDeleteException();
+		}
 		String title=request.getParameter("title");
 		String content=request.getParameter("content");
 		// 글작성자
@@ -185,7 +192,12 @@ public class NoticeServiceImpl implements NoticeService{
 
 	// 글수정 서비스
 	@Override
-	public void updateContent(NoticeDto dto) {
+	public void updateContent(NoticeDto dto, HttpServletRequest request) {
+		String id=(String)request.getSession().getAttribute("id");
+		String writer=noticeDao.getData(dto).getWriter();
+		if(!id.equals(writer)) {
+			throw new CanNotDeleteException();
+		}
 		noticeDao.update(dto);
 	}
 

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.team.project.exception.CanNotDeleteException;
 import com.team.project.file.dao.FileDao;
 import com.team.project.file.dto.FileDto;
 
@@ -123,7 +124,7 @@ public class FileServiceImpl implements FileService {
 		String id=(String)request.getSession().getAttribute("id");
 		if(!id.equals(dto.getWriter())) {
 			//예외를 발생 시켜서 메소드가 정상 수행되지 않도록 막는다
-			// throw new CanNotDeleteException();
+			 throw new CanNotDeleteException();
 		}
 		String saveFileName=dto.getSaveFileName();
 		dao.delete(num);
