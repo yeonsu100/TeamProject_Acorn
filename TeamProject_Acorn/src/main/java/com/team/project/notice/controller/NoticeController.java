@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.team.project.exception.CanNotDeleteException;
+import com.team.project.exception.UpdateException;
+import com.team.project.exception.AccessException;
 import com.team.project.notice.dao.NoticeDao;
 import com.team.project.notice.dto.NoticeDto;
 import com.team.project.notice.service.NoticeService;
@@ -36,7 +38,7 @@ public class NoticeController {
 		// Admin이 아니면 insertform.go Exception 발생 
 		String isAdmin=(String)request.getSession().getAttribute("isAdmin");
 		if(isAdmin==null) {
-			throw new CanNotDeleteException();
+			throw new AccessException();
 		}
 		return new ModelAndView("notice/insertform");
 	}
@@ -76,7 +78,7 @@ public class NoticeController {
 		String id=(String)request.getSession().getAttribute("id");
 		String writer=noticeDao.getDate(num).getWriter();
 		if(!id.equals(writer)) {
-			throw new CanNotDeleteException();
+			throw new UpdateException();
 		}
 		// 1. 파라미터로 전달되는 수정 할 글번호를 읽어온다.
 		service.detail(request);
