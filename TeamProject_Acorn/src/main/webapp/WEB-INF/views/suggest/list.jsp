@@ -192,11 +192,9 @@
 	
 	$("#insert-sugContent").on("input",function(){
 		var insertSug=$("#insert-sugContent").val();
-		if(insertSug.length==0){
-		//	$(".test").prop("disabled", true);
+		if(insertSug.length!=0){
 			$(".test").removeAttr("disabled");
 		}else{
-		//	$(".test").prop("disabled", false);
 			$(".test").attr("disabled","disabled");
 		}
 	});
