@@ -148,6 +148,7 @@
 	</div>
 </div>
 <script>
+	
 	// 게시글 수정 링크를 눌렀을때 호출되는 함수 등록
 	$(".suggest-update-link").click(function(){
 		$(this)
@@ -187,8 +188,15 @@
 		return false;
 	});
 	
-	$("#insert-sugContent").keydown(function(){
-		$(".test").prop("disabled", false);
+	var isInsertSug=false;
+	
+	$("#insert-sugContent").on("input",function(){
+		var insertSug=$("#insert-sugContent").val();
+		if(insertSug.length!=0){
+			$(".test").removeAttr("disabled");
+		}else{
+			$(".test").attr("disabled","disabled");
+		}
 	});
 	
 	function deleteConfirm(num){
