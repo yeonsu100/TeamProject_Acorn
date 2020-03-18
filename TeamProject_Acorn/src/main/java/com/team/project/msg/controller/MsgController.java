@@ -28,7 +28,27 @@ public class MsgController {
 		return map;
 	}
 	
-	//메시지 목록보기 
+	//보낸메시지 목록보기 
+	@RequestMapping("/msg/sentlist")
+	public ModelAndView sentList(ModelAndView mView,
+			HttpServletRequest request) {
+	//메시지 목록과 페이징 처리에 필요한 값들을 request에 담아주는 서비스 메소드 호출하기
+	service.sentList(request);
+	mView.setViewName("msg/sentlist");
+	return mView;
+	}
+	
+	//보관한메시지 목록보기 
+	@RequestMapping("/msg/savedlist")
+	public ModelAndView savedList(ModelAndView mView,
+			HttpServletRequest request) {
+	//메시지 목록과 페이징 처리에 필요한 값들을 request에 담아주는 서비스 메소드 호출하기
+	service.savedList(request);
+	mView.setViewName("msg/savedlist");
+	return mView;
+	}
+	
+	//받은메시지 목록보기 
 	@RequestMapping("/msg/list")
 	public ModelAndView list(ModelAndView mView,
 			HttpServletRequest request) {
