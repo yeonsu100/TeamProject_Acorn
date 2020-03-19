@@ -9,13 +9,18 @@ public class BoardCommentDto {
 	private int comment_group; //댓글 내에서의 그룹번호 (대댓글의 처리)
 	private String deleted; // 삭제한 댓글인지 확인 "no" | "yes"
 	private String regdate;
-	private String profile; //댓글 작성자의 프로필 이미지 경로를 담을 필드 
-	
+	private String profile; //댓글 작성자의 프로필 이미지 경로를 담을 필드
+	private int re_startRowNum;
+	private int re_endRowNum;
+	private int re_prevNum; //이전 댓글의 번호 담을 필드
+	private int re_nextNum; //다음 댓글의 번호 담을 필드
+
 	//디폴트 생성자
 	public BoardCommentDto() {}
 
 	public BoardCommentDto(int num, String writer, String content, String target_id, int ref_group, int comment_group,
-			String deleted, String regdate, String profile) {
+			String deleted, String regdate, String profile, int re_startRowNum, int re_endRowNum, int re_prevNum,
+			int re_nextNum) {
 		super();
 		this.num = num;
 		this.writer = writer;
@@ -26,6 +31,10 @@ public class BoardCommentDto {
 		this.deleted = deleted;
 		this.regdate = regdate;
 		this.profile = profile;
+		this.re_startRowNum = re_startRowNum;
+		this.re_endRowNum = re_endRowNum;
+		this.re_prevNum = re_prevNum;
+		this.re_nextNum = re_nextNum;
 	}
 
 	public int getNum() {
@@ -99,6 +108,37 @@ public class BoardCommentDto {
 	public void setProfile(String profile) {
 		this.profile = profile;
 	}
-	
+
+	public int getRe_startRowNum() {
+		return re_startRowNum;
+	}
+
+	public void setRe_startRowNum(int re_startRowNum) {
+		this.re_startRowNum = re_startRowNum;
+	}
+
+	public int getRe_endRowNum() {
+		return re_endRowNum;
+	}
+
+	public void setRe_endRowNum(int re_endRowNum) {
+		this.re_endRowNum = re_endRowNum;
+	}
+
+	public int getRe_prevNum() {
+		return re_prevNum;
+	}
+
+	public void setRe_prevNum(int re_prevNum) {
+		this.re_prevNum = re_prevNum;
+	}
+
+	public int getRe_nextNum() {
+		return re_nextNum;
+	}
+
+	public void setRe_nextNum(int re_nextNum) {
+		this.re_nextNum = re_nextNum;
+	}
 	
 }

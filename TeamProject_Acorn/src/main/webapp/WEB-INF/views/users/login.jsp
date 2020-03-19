@@ -6,24 +6,26 @@
 <head>
 <meta charset="UTF-8">
 <title>/users/login</title>
+<jsp:include page="../include/resource.jsp"></jsp:include>
 </head>
 <body>
 <div class="container">
-	<h1>Alert</h1>
 	<c:choose>
-		<c:when test="${not empty sessionScope.id }">
-			<p>
-				<strong>${id }</strong> 회원님 로그인 되었습니다.
-				<a href="${url }">확인</a>
-			</p>
+		<c:when test="${isValid }">
+			<script>
+				alert("성공적으로 로그인 되었습니다!");
+				location.href="${pageContext.request.contextPath }/home.go";
+			</script>
 		</c:when>
 		<c:otherwise>
-			<p>
-				아이디 혹은 비밀번호가 틀려요!
-				<a href="loginform.go?url=${encodedUrl }">다시 로그인 하러 가기</a>
-			</p>
+			<script>
+				alert("아이디 혹은 비밀번호가 일치하지 않습니다. 다시 시도해주세요");
+				location.href="${pageContext.request.contextPath }/users/loginform.go";
+			</script>			
 		</c:otherwise>
 	</c:choose>
+	
+	
 </div>
 </body>
 </html>

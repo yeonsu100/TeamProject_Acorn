@@ -231,6 +231,6 @@ public class UsersController {
 	@RequestMapping("/users/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "redirect:/home.go";
+		return "users/loginform";
 	}
 }

@@ -75,7 +75,7 @@
 		WHERE num=#{num }
 	</select>
 	<select id="getData2" parameterType="int"
-		resultType="noticeDto">
+		resultType="boardDto">
 		SELECT result1.*
 		FROM
 			(SELECT num, writer, title, content, viewCount, 
@@ -101,5 +101,6 @@
 		SET title=#{title}, content=#{content}
 		WHERE num=#{num}
 	</update>
+	
 		
 </mapper>
