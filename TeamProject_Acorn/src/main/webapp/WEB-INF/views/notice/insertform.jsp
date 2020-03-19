@@ -37,8 +37,8 @@
 			<label for="content">내용</label>
 			<textarea class="form-control" name="content" id="content" cols="30" rows="10"></textarea>
 		</div>
-		<button class="btn btn-primary" type="submit" onclick="submitContents(this);">저장</button>
-		<button class="btn btn-warning" type="button"  onclick="location.href='../list.go' ">취소</button>
+		<button class="btn btn-primary" type="button" onclick="submitContents(this);">저장</button>
+		<button class="btn btn-warning" type="button"  onclick="location.href='list.go' ">취소</button>
 	</form>
 </div>
 <%--
@@ -91,15 +91,19 @@
 		var sHTML = oEditors.getById["content"].getIR();
 		alert(sHTML);
 	}
-		
 	function submitContents(elClickedObj) {
 		oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);	// 에디터의 내용이 textarea에 적용됩니다.
-		
+		var content=document.getElementById("content").value;
+		if(content == "" ||content == null|| content == "&nbsp;" || content == "<p>&nbsp;</p>"){
+			alert("내용을 입력하세요.");
+            oEditors.getById["content"].exec("FOCUS"); //포커싱
+            return false;
+		}
 		// 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("content").value를 이용해서 처리하면 됩니다.
-		
 		try {
 			elClickedObj.form.submit();
 		} catch(e) {}
+		
 	}
 	
 	function setDefaultFont() {
