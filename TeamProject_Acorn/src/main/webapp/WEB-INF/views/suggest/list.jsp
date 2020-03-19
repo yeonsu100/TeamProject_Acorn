@@ -99,7 +99,7 @@
 				<input type="hidden" name="sugProfile" value="${profile}"/>
 				<c:if test="${not empty id}">
 					<textarea class="form-control" rows="3" id="insert-sugContent" name="sugContent"></textarea>
-					<button class="test" type="submit" disabled>등록</button>
+					<button class="btn btn-primary" type="submit" disabled id="insertBtn">등록</button>
 				</c:if>
 			</div>
 		</form>
@@ -148,7 +148,6 @@
 	</div>
 </div>
 <script>
-	
 	// 게시글 수정 링크를 눌렀을때 호출되는 함수 등록
 	$(".suggest-update-link").click(function(){
 		$(this)
@@ -193,9 +192,9 @@
 	$("#insert-sugContent").on("input",function(){
 		var insertSug=$("#insert-sugContent").val();
 		if(insertSug.length!=0){
-			$(".test").removeAttr("disabled");
+			$("#insertBtn").removeAttr("disabled");
 		}else{
-			$(".test").attr("disabled","disabled");
+			$("#insertBtn").attr("disabled","disabled");
 		}
 	});
 	

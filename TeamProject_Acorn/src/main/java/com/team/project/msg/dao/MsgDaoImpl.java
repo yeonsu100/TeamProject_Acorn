@@ -15,7 +15,6 @@ public class MsgDaoImpl implements MsgDao{
 	
 	@Override
 	public int getCount(MsgDto dto) {
-		
 		// 검색 조건에 맞는 파일의 전체 갯수를 select 해서
 		int count=session.selectOne("msg.getCount", dto);
 		// 리턴한다.
@@ -48,6 +47,34 @@ public class MsgDaoImpl implements MsgDao{
 	public int getUnreadCount(MsgDto dto) {
 		int count=session.selectOne("msg.getUnreadCount", dto);
 		return count;
+	}
+
+	@Override
+	public int getSentCount(MsgDto dto) {
+		// 검색 조건에 맞는 파일의 전체 갯수를 select 해서
+		int count=session.selectOne("msg.getSentCount", dto);
+		// 리턴한다.
+		return count;
+	}
+
+	@Override
+	public List<MsgDto> getSentList(MsgDto dto) {
+		List<MsgDto> list=session.selectList("msg.getSentList", dto);
+		return list;
+	}
+
+	@Override
+	public int getSavedCount(MsgDto dto) {
+		// 검색 조건에 맞는 파일의 전체 갯수를 select 해서
+		int count=session.selectOne("msg.getSavedCount", dto);
+		// 리턴한다.
+		return count;
+	}
+
+	@Override
+	public List<MsgDto> getSavedList(MsgDto dto) {
+		List<MsgDto> list=session.selectList("msg.getSavedList", dto);
+		return list;
 	}
 	
 }

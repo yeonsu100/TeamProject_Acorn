@@ -74,7 +74,7 @@
 	</table>
 	<div class="contents">${dto.content }</div>
 	
-	<a href="list.go">목록보기</a>
+	<a href="list.go?pageNum=${pageNum }">목록보기</a>
 </div>
 </body>
 </html>
