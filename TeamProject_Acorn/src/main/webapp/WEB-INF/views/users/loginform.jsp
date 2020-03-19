@@ -43,7 +43,7 @@
 <body>
 
 <div class="container">
-	<form class="form-signin" action="login.go" method="post">
+	<form class="form-signin" action="users/login.go" method="post">
 		<input type="hidden" name="url" value="${url }" />
 		<h2 class="form-signin-heading">로그인 정보 입력</h2>
 		
