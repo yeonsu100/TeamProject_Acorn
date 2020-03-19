@@ -36,7 +36,7 @@
 			<tr>
 				<td>${tmp.idSend }</td>
 				<td>
-					<a href="detail.go?num=${tmp.num }">${tmp.title }</a>
+					<a href="detail.go?num=${tmp.num }&pageNum=${pageNum}">${tmp.title }</a>
 				</td>
 				<td>${tmp.sendDate}</td>
 				<td>${tmp.readDate}</td>
@@ -52,7 +52,7 @@
 		<c:choose>
 			<c:when test="${startPageNum ne 1 }">
 				<li>
-					<a href="list.go?pageNum=${startPageNum-1 }&condition=${condition}&keyword=${encodedKeyword}">&laquo;</a>
+					<a href="list.go?pageNum=${startPageNum-1 }">&laquo;</a>
 				</li>
 			</c:when>
 			<c:otherwise>
@@ -65,12 +65,12 @@
 			<c:choose>
 				<c:when test="${i eq pageNum }">
 					<li class="active">
-						<a href="list.go?pageNum=${i }&condition=${condition}&keyword=${encodedKeyword}">${i }</a>
+						<a href="list.go?pageNum=${i }">${i }</a>
 					</li>
 				</c:when>
 				<c:otherwise>
 					<li>
-						<a href="list.go?pageNum=${i }&condition=${condition}&keyword=${encodedKeyword}">${i }</a>
+						<a href="list.go?pageNum=${i }">${i }</a>
 					</li>
 				</c:otherwise>
 			</c:choose>

@@ -5,19 +5,22 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.team.project.msg.dao.MsgDao;
 import com.team.project.msg.dto.MsgDto;
-import com.team.project.notice.dto.NoticeDto;
 
 @Service
 public class MsgServiceImpl implements MsgService{
 	@Autowired
 	private MsgDao dao;
+	
+	//한 페이지에 나타낼 row 의 갯수
+	final int PAGE_ROW_COUNT=5;
+	//하단 디스플레이 페이지 갯수
+	final int PAGE_DISPLAY_COUNT=5;
 
 	@Override
 	public void list(HttpServletRequest request) {
@@ -26,17 +29,16 @@ public class MsgServiceImpl implements MsgService{
 		String id=(String)request.getSession().getAttribute("id");
 		dto.setIdRec(id);
 		
-		//한 페이지에 나타낼 row 의 갯수
-		final int PAGE_ROW_COUNT=5;
-		//하단 디스플레이 페이지 갯수
-		final int PAGE_DISPLAY_COUNT=5;
+		
 		//보여줄 페이지의 번호
-		int pageNum=1;
+		int pageNum;
 		//보여줄 페이지의 번호가 파라미터로 전달되는지 읽어와 본다.	
 		String strPageNum=request.getParameter("pageNum");
 		if(strPageNum != null){//페이지 번호가 파라미터로 넘어온다면
 			//페이지 번호를 설정한다.
 			pageNum=Integer.parseInt(strPageNum);
+		}else {
+			pageNum=1;
 		}
 		//보여줄 페이지 데이터의 시작 ResultSet row 번호
 		int startRowNum=1+(pageNum-1)*PAGE_ROW_COUNT;
@@ -76,15 +78,17 @@ public class MsgServiceImpl implements MsgService{
 	public void detail(HttpServletRequest request) {
 		//파라미터로 전달되는 글번호
 		int num=Integer.parseInt(request.getParameter("num"));
+		int pageNum=Integer.parseInt(request.getParameter("pageNum"));
 		String id=(String)request.getSession().getAttribute("id");
 		//MsgDto 객체 생성 (select 할때 필요한 정보를 담기 위해)
-		MsgDto dto=new MsgDto();	
+		MsgDto dto=new MsgDto();
 		dto.setNum(num);
 		MsgDto dto2=dao.getData(dto);
 		if(dto2.getIdRec()==id && dto2.getReadDate()==null) {
 			dao.checkRead(dto);
 		}
 		request.setAttribute("dto", dto2);
+		request.setAttribute("pageNum", pageNum);
 	}
 
 	@Override
@@ -110,10 +114,7 @@ public class MsgServiceImpl implements MsgService{
 		String id=(String)request.getSession().getAttribute("id");
 		dto.setIdSend(id);
 		
-		//한 페이지에 나타낼 row 의 갯수
-		final int PAGE_ROW_COUNT=5;
-		//하단 디스플레이 페이지 갯수
-		final int PAGE_DISPLAY_COUNT=5;
+		
 		//보여줄 페이지의 번호
 		int pageNum=1;
 		//보여줄 페이지의 번호가 파라미터로 전달되는지 읽어와 본다.	
@@ -163,10 +164,7 @@ public class MsgServiceImpl implements MsgService{
 		String id=(String)request.getSession().getAttribute("id");
 		dto.setIdRec(id);
 		
-		//한 페이지에 나타낼 row 의 갯수
-		final int PAGE_ROW_COUNT=5;
-		//하단 디스플레이 페이지 갯수
-		final int PAGE_DISPLAY_COUNT=5;
+
 		//보여줄 페이지의 번호
 		int pageNum=1;
 		//보여줄 페이지의 번호가 파라미터로 전달되는지 읽어와 본다.	
