@@ -116,7 +116,7 @@ public class BoardController {
 		@RequestMapping("/board/comment_delete")
 		public Map<String , Object>
 			authCommentDelete(HttpServletRequest request,
-					@RequestParam int num){
+					@RequestParam int num ){
 			
 			service.deleteComment(num);
 			

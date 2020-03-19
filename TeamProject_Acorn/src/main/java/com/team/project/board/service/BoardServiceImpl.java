@@ -98,6 +98,7 @@ public class BoardServiceImpl implements BoardService{
 
 		// startRowNum 과 endRowNum 에 해당하는 카페글 목록을 select 해 온다.
 		List<BoardDto> list=boardDao.getList(dto);
+		
 
 		//view 페이지에서 필요한 값을 request 에 담고 
 		request.setAttribute("list", list);
@@ -224,12 +225,15 @@ public class BoardServiceImpl implements BoardService{
 						(Integer.parseInt(comment_group));
 				}
 				//댓글 정보를 DB 에 저장한다.
-				boardCommentDao.insert(dto);				
+				boardCommentDao.insert(dto);		
+				boardDao.addCountComment(ref_group);
+				
 			}
 		
 
 	@Override
 	public void deleteComment(int num) {
+		
 		boardCommentDao.delete(num);
 		
 	}
@@ -243,6 +247,12 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public void addViewCount(int num) {
 		boardDao.addViewCount(num);
+		
+	}
+
+	@Override
+	public void minusCountComment(int num) {
+		boardDao.minusCountComment(num);
 		
 	}
 
