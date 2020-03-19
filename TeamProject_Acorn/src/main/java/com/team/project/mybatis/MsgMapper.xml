@@ -5,6 +5,19 @@
 		SELECT NVL(MAX(ROWNUM), 0)
 		FROM T_msg
 		WHERE idRec=#{idRec}
+		AND recDel is null
+	</select>
+	<select id="getSentCount" resultType="int" parameterType="msgDto">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM T_msg
+		WHERE idSend=#{idSend}
+		AND sendDel is null
+	</select>
+	<select id="getSavedCount" resultType="int" parameterType="msgDto">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM T_msg
+		WHERE idRec=#{idRec}
+		AND saved is not null
 	</select>
 	<select id="getUnreadCount" parameterType="msgDto" resultType="int">
 		SELECT NVL(MAX(ROWNUM), 0)
@@ -22,6 +35,30 @@
 		FROM T_msg
 		WHERE idRec=#{idRec}
 		AND recDel is null
+		ORDER BY num DESC) result1)
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+	<select id="getSentList" resultType="msgDto" parameterType="msgDto">
+		SELECT*
+		FROM
+		(SELECT result1.*, ROWNUM AS rnum
+		FROM
+		(SELECT num,idSend,idRec,title,sendDate,readDate
+		FROM T_msg
+		WHERE idSend=#{idSend}
+		AND sendDel is null
+		ORDER BY num DESC) result1)
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+	<select id="getSavedList" resultType="msgDto" parameterType="msgDto">
+		SELECT*
+		FROM
+		(SELECT result1.*, ROWNUM AS rnum
+		FROM
+		(SELECT num,idSend,idRec,title,sendDate,readDate
+		FROM T_msg
+		WHERE idRec=#{idRec}
+		AND saved is not null
 		ORDER BY num DESC) result1)
 		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>

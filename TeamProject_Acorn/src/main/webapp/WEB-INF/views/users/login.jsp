@@ -11,7 +11,7 @@
 <body>
 <div class="container">
 	<c:choose>
-		<c:when test="${isValid }">
+		<c:when test="${not empty sessionScope.id }">
 			<script>
 				alert("성공적으로 로그인 되었습니다!");
 				location.href="${pageContext.request.contextPath }/home.go";

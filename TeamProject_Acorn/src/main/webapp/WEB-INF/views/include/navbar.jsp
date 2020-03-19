@@ -30,7 +30,7 @@
 			<li <c:if test="${param.category eq 'file' }">class="active" </c:if>> 
 				<a href="${pageContext.request.contextPath }/file/list.go">Web Hard <span class="glyphicon glyphicon-floppy-save"></span></a></li>
 			<li <c:if test="${param.category eq 'mytrello' }">class="active" </c:if>> 
-				<a href="${pageContext.request.contextPath }/mytrello/doing/list.go">To Do <span class="	glyphicon glyphicon-list"></span></a></li>
+				<a href="${pageContext.request.contextPath }/mytrello/list.go">To Do <span class="glyphicon glyphicon-list"></span></a></li>
 		</ul>
 		
 		<c:choose>

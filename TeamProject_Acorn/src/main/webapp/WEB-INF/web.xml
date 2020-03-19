@@ -31,7 +31,7 @@
 	</servlet-mapping>
 	
 	<welcome-file-list>
-		<welcome-file>users/loginform.go</welcome-file>
+		<welcome-file>home.go</welcome-file>
 	</welcome-file-list>
 	
 	<filter>

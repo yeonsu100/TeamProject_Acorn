@@ -9,6 +9,9 @@ public class MsgDto {
 	private String content;
 	private String sendDate;
 	private String readDate;
+	private String sendDel;
+	private String recDel;
+	private String saved;
 	private int startRowNum;
 	private int endRowNum;
 	private int prevNum; //이전글의 글번호를 담을 필드
@@ -16,8 +19,10 @@ public class MsgDto {
 		
 	public MsgDto() {}
 
+	
+
 	public MsgDto(int num, String idSend, String idRec, String title, String content, String sendDate, String readDate,
-			int startRowNum, int endRowNum, int prevNum, int nextNum) {
+			String sendDel, String recDel, String saved, int startRowNum, int endRowNum, int prevNum, int nextNum) {
 		super();
 		this.num = num;
 		this.idSend = idSend;
@@ -26,11 +31,16 @@ public class MsgDto {
 		this.content = content;
 		this.sendDate = sendDate;
 		this.readDate = readDate;
+		this.sendDel = sendDel;
+		this.recDel = recDel;
+		this.saved = saved;
 		this.startRowNum = startRowNum;
 		this.endRowNum = endRowNum;
 		this.prevNum = prevNum;
 		this.nextNum = nextNum;
 	}
+
+
 
 	public int getNum() {
 		return num;
@@ -119,4 +129,29 @@ public class MsgDto {
 	public void setNextNum(int nextNum) {
 		this.nextNum = nextNum;
 	}
+
+	public String getSendDel() {
+		return sendDel;
+	}
+
+	public void setSendDel(String sendDel) {
+		this.sendDel = sendDel;
+	}
+
+	public String getRecDel() {
+		return recDel;
+	}
+
+	public void setRecDel(String recDel) {
+		this.recDel = recDel;
+	}
+
+	public String getSaved() {
+		return saved;
+	}
+
+	public void setSaved(String saved) {
+		this.saved = saved;
+	}
+	
 }
