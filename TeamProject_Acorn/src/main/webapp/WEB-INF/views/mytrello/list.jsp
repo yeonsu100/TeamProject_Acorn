@@ -59,32 +59,45 @@
 	<div class="notcomp">
 		<h3>해야할 업무 목록</h3>
 		
-		<div class="task">
-			task
-			<i class="fas fa-trash-alt"></i>
-			<i class="fas fa-check"></i>
-		</div>
 		
-		<div class="task">
-			task
-			<i class="fas fa-trash-alt"></i>
-			<i class="fas fa-check"></i>
-		</div>
+		
 	</div>
 	
 	<div class="comp">
 		<h3>완료된 업무 목록</h3>
-		<div class="task">
-			task
-			<i class="fas fa-trash-alt"></i>
-		</div>
-		
-		<div class="task">
-			task
-			<i class="fas fa-trash-alt"></i>
-		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	$(".txtb")on("keyup", function(e){
+		// 13 : Enter Key
+		if(e.keyCode==13 && $(".txtb").val() != "")
+			{
+				var task=$("<div class='task'></div>").text($(".txtb").val());
+				var del=$("<i class='fas fa-trash-alt'></i>").click(function(){
+					var p=$(this).parent();
+					p.fadeOut(function(){
+						p.remove();
+					});	
+				});
+				
+				var check=$("<i class='fas fa-check'></i>").click(function(){
+					var p=$(this).parent();
+					p.fadeOut(function(){
+						$(".comp").append(p);
+						p.fadeIn();
+					});	
+					$(this).remove();
+				});
+				
+				task.append(del, check);
+				$(".notcomp").append(task);
+				// 입력값 초기화 시키기
+				$(".txtb").val("");
+			}
+	});
+	
+</script>
 
 </body>
 </html>
