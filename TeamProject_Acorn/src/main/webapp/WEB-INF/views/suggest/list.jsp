@@ -187,13 +187,14 @@
 		return false;
 	});
 	
-	//내용 비었을때 버튼 비활성화
-	$("#insert-sugContent").on("input", function(){
-		var content=$("#insert-sugContent").val();
-		if(content.length!=0){
+	var isInsertSug=false;
+	
+	$("#insert-sugContent").on("input",function(){
+		var insertSug=$("#insert-sugContent").val();
+		if(insertSug.length!=0){
 			$(".test").removeAttr("disabled");
 		}else{
-			$(".test").attr("disabled", "disabled");
+			$(".test").attr("disabled","disabled");
 		}
 	});
 	

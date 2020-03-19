@@ -24,4 +24,5 @@ public interface BoardService {
 	public void deleteComment(int num);
 	//댓글 수정하는 메소드
 	public void updateComment(BoardCommentDto dto);
+	
 }

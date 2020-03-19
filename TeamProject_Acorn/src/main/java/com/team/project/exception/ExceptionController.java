@@ -10,8 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 @ControllerAdvice
 public class ExceptionController {
 	@ResponseStatus(HttpStatus.FORBIDDEN)
-//	@ExceptionHandler(CanNotDeleteException.class)
-	public ModelAndView forbidden() {
+	@ExceptionHandler(CanNotDeleteException.class)
+	public ModelAndView deleteForbidden() {
 		
 		ModelAndView mView=new ModelAndView();
 		mView.addObject("msg", "Do NOT delete other user's file!");
@@ -24,6 +24,25 @@ public class ExceptionController {
 		ModelAndView mView=new ModelAndView();
 		mView.addObject("exception", dae);
 		mView.setViewName("error/data_access");
+		return mView;
+	}
+	
+	// notice insertform.go Exception 
+	@ResponseStatus(HttpStatus.FORBIDDEN)
+	@ExceptionHandler(AccessException.class)
+	public ModelAndView insertForbidden() {
+		ModelAndView mView=new ModelAndView();
+		mView.addObject("msg", "관리자 만 작성 할 수 있습니다.");
+		mView.setViewName("error/forbidden");
+		return mView;
+	}
+	
+	@ResponseStatus(HttpStatus.FORBIDDEN)
+	@ExceptionHandler(UpdateException.class)
+	public ModelAndView UpdateForbidden() {
+		ModelAndView mView=new ModelAndView();
+		mView.addObject("msg", "작성자 만 수정 할 수 있습니다.");
+		mView.setViewName("error/forbidden");
 		return mView;
 	}
 }

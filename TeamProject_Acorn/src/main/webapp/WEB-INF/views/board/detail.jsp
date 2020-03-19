@@ -71,7 +71,6 @@
 <div class="container">
 	<ol class="breadcrumb">
 		<li><a href="${pageContext.request.contextPath }/board/list.go">목록</a></li>
-		<li>글 상세 보기</li>
 	</ol>
 	<c:if test="${not empty keyword }">
 		<p> <strong>${keyword }</strong> 검색어로 검색된
@@ -190,7 +189,7 @@
 		<!-- 원글에 댓글을 작성할수 있는 폼 -->
 		<div class="comment_form">
 			<form action="comment_insert.go" method="post">
-				<!-- 댓글의 그룹번호는 원글의 글번호가 된다.  -->
+				<!-- 댓글의 그룹번호는 원글의 글번호가 된다.ㄴ  -->
 				<input type="hidden" name="ref_group" 
 					value="${dto.num }"/>
 				<!-- 댓글의 대상자는 원글의 작성자가 된다. -->

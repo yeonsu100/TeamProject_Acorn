@@ -104,7 +104,6 @@
 		</ul>		
 	</div>
 	<%-- 글 검색 기능 폼 --%>
-
 	<form action="list.go" method="get">
 		<label for="condition">검색조건</label>
 		<select name="condition" id="condition">
