@@ -10,7 +10,7 @@
 <jsp:include page="include/resource.jsp"/>
 </head>
 <body>
-<jsp:include page="include/navbar.jsp"/>
+<jsp:include page="include/navbar-new.jsp"/>
 
 <div class="container">
 	<h1>Main Page</h1>
