@@ -51,15 +51,15 @@
 		position: relative;
 	}
 	.comment .reply_icon{
-		width: 8px;
-		height: 8px;
+		width: 15px;
+		height: 15px;
 		position: absolute;
 		top: 10px;
 		left: 30px;
 	}
 	.comments .user-img{
-		width: 20px;
-		height: 20px;
+		width: 25px;
+		height: 25px;
 		border-radius: 50%;
 	}
 </style>
@@ -139,16 +139,16 @@
 									</c:otherwise>
 								</c:choose>
 								
-								<span>${tmp.writer }</span>
+								<strong style="color:green">@ ${tmp.target_id }</strong>
 								<c:if test="${tmp.num ne tmp.comment_group }">
-									to <strong>${tmp.target_id }</strong>
+									<span>${tmp.writer }</span>
 								</c:if>
 								<span>${tmp.regdate }</span>
 								<a href="javascript:" class="reply_link">답글</a> |
 								<c:choose>
 									<%-- 로그인된 아이디와 댓글의 작성자가 같으면 --%>
 									<c:when test="${id eq tmp.writer }">
-										<a href="javascript:" class="comment-update-link">수정</a>&nbsp;&nbsp;
+										<a href="javascript:" class="comment-update-link">수정</a> |
 										<a href="javascript:deleteComment(${tmp.num })">삭제</a>
 									</c:when>
 									<c:otherwise>
@@ -189,7 +189,7 @@
 		<!-- 원글에 댓글을 작성할수 있는 폼 -->
 		<div class="comment_form">
 			<form action="comment_insert.go" method="post">
-				<!-- 댓글의 그룹번호는 원글의 글번호가 된다.ㄴ  -->
+				<!-- 댓글의 그룹번호는 원글의 글번호가 된다.  -->
 				<input type="hidden" name="ref_group" 
 					value="${dto.num }"/>
 				<!-- 댓글의 대상자는 원글의 작성자가 된다. -->
@@ -201,6 +201,52 @@
 		</div>
 	</div>
 </div>
+<!--  댓글 페이징 구역 -->
+<div class="page-display">
+		<ul class="pagination">
+		<c:choose>
+			<c:when test="${re_startPageNum ne 1 }">
+				<li>
+					<a href="detail.go?pageNum=${re_startPageNum-1 }&condition=${condition }&keyword=${encodedKeyword }">
+						&laquo;
+					</a>
+				</li>
+			</c:when>
+			<c:otherwise>
+				<li class="disabled">
+					<a href="javascript:">&laquo;</a>
+				</li>
+			</c:otherwise>
+		</c:choose>
+		<c:forEach var="i" begin="${re_startPageNum }" 
+			end="${re_endPageNum }" step="1">
+			<c:choose>
+				<c:when test="${i eq pageNum }">
+					<li class="active"><a href="detail.go?pageNum=${i }&condition=${condition }&keyword=${encodedKeyword }">${i }</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="detail.go?pageNum=${i }&condition=${condition }&keyword=${encodedKeyword }">${i }</a></li>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+
+		<c:choose>
+			<c:when test="${re_endPageNum lt totalPageCount }">
+				<li>
+					<a href="detail.go?pageNum=${re_endPageNum+1 }&condition=${condition }&keyword=${encodedKeyword }">
+						&raquo;
+					</a>
+				</li>
+			</c:when>
+			<c:otherwise>
+				<li class="disabled">
+					<a href="javascript:">&raquo;</a>
+				</li>
+			</c:otherwise>
+		</c:choose>
+		</ul>		
+	</div>
+
 <script>
 	//댓글 수정 링크를 눌렀을때 호출되는 함수 등록
 	$(".comment-update-link").click(function(){
@@ -247,7 +293,7 @@
 			$.ajax({
 				url:"comment_delete.go", // "/board/comment_delete.go" 요청
 				method:"post",
-				data:{"num":num}, // num 이라는 파라미터명으로 삭제할 댓글의 번호 전송
+				data:{"num":num, "ref_group":${dto.num}}, // num 이라는 파라미터명으로 삭제할 댓글의 번호 전송
 				success:function(responseData){
 					if(responseData.isSuccess){
 						var sel="#comment"+num;
@@ -305,8 +351,3 @@
 </script>
 </body>
 </html>
-
-
-
-
-
