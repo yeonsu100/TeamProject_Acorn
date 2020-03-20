@@ -117,8 +117,10 @@ public class BoardController {
 		public Map<String , Object>
 			authCommentDelete(HttpServletRequest request,
 					@RequestParam int num){
-			
+
+			int ref_group=Integer.parseInt(request.getParameter("ref_group"));
 			service.deleteComment(num);
+			service.minusCountComment(ref_group);
 			
 			Map<String, Object> map=new HashMap<>();
 			map.put("isSuccess", true);

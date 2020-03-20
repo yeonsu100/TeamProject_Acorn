@@ -53,4 +53,16 @@ public class BoardDaoImpl implements BoardDao{
 	public void update(BoardDto dto) {
 		session.update("board.update", dto);
 	}
+
+	@Override
+	public void addCountComment(int num) {
+		session.update("board.addCountComment", num);
+
+	}
+
+	@Override
+	public void minusCountComment(int num) {
+		session.update("board.minusCountComment", num);
+		
+	}
 }

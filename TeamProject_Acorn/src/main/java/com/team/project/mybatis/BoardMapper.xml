@@ -24,7 +24,7 @@
 		FROM
 			(SELECT result1.*, ROWNUM AS rnum
 			FROM
-				(SELECT num, writer, title, viewCount, 
+				(SELECT num, writer, title, viewCount, countComment,
 				TO_CHAR(regdate, 'YY.MM.DD HH24:MI') AS regdate
 				FROM T_board
 				<choose>
@@ -45,9 +45,9 @@
 
 	<insert id="insert" parameterType="boardDto">
 		INSERT INTO T_board
-		(num, writer, title, content, viewCount, regdate)
+		(num, writer, title, content, viewCount, regdate, countComment)
 		VALUES(T_board_seq.NEXTVAL, #{writer}, #{title}, #{content},
-		#{viewCount}, SYSDATE)	
+		#{viewCount}, SYSDATE, 0)	
 	</insert>
 
 	<select id="getData" parameterType="boardDto"
@@ -102,5 +102,16 @@
 		WHERE num=#{num}
 	</update>
 	
-		
+	<update id="addCountComment" parameterType="int">
+		UPDATE T_board
+		SET countComment=countComment+1
+		WHERE num=#{num}
+	</update>
+	
+	<update id="minusCountComment" parameterType="int">
+		UPDATE T_board
+		SET countComment=countComment-1
+		WHERE num=#{num}
+	</update>
+	
 </mapper>

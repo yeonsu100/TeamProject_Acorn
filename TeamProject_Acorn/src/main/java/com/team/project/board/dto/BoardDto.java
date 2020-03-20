@@ -11,12 +11,13 @@ public class BoardDto {
 	private int endRowNum;
 	private int prevNum; //이전글의 글번호를 담을 필드
 	private int nextNum; //다음글의 글번호를 담을 필드
+	private int countComment; //댓글 수를 담을 필드
 	
 	//디폴트 생성자
 	public BoardDto(){}
 
 	public BoardDto(int num, String writer, String title, String content, int viewCount, String regdate,
-			int startRowNum, int endRowNum, int prevNum, int nextNum) {
+			int startRowNum, int endRowNum, int prevNum, int nextNum, int countComment) {
 		super();
 		this.num = num;
 		this.writer = writer;
@@ -28,6 +29,7 @@ public class BoardDto {
 		this.endRowNum = endRowNum;
 		this.prevNum = prevNum;
 		this.nextNum = nextNum;
+		this.countComment = countComment;
 	}
 
 	public int getNum() {
@@ -109,5 +111,13 @@ public class BoardDto {
 	public void setNextNum(int nextNum) {
 		this.nextNum = nextNum;
 	}
-	
+
+	public int getCountComment() {
+		return countComment;
+	}
+
+	public void setCountComment(int countComment) {
+		this.countComment = countComment;
+	}
+
 }
