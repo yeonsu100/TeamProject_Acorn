@@ -293,7 +293,7 @@
 			$.ajax({
 				url:"comment_delete.go", // "/board/comment_delete.go" 요청
 				method:"post",
-				data:{"num":num}, // num 이라는 파라미터명으로 삭제할 댓글의 번호 전송
+				data:{"num":num, "ref_group":${dto.num}}, // num 이라는 파라미터명으로 삭제할 댓글의 번호 전송
 				success:function(responseData){
 					if(responseData.isSuccess){
 						var sel="#comment"+num;
