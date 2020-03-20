@@ -53,16 +53,30 @@
 </style>
 </head>
 <body>
+<script>
+	
+</script>
 <div class="container">
 	<table class="table table-bordered table-condensed">
 		<colgroup>
 			<col class="col-xs-4"/>
 			<col class="col-xs-8"/>
 		</colgroup>
-		<tr>
-			<th>보낸 사람</th>
-			<td>${dto.idSend}</td>
-		</tr>
+		<c:choose>
+			<c:when test="${pageType eq 'sent' }">
+				<tr>
+					<th>받는 사람</th>
+					<td>${dto.idRec}</td>
+				</tr>
+			</c:when>
+			<c:otherwise>
+				<tr>
+					<th>보낸 사람</th>
+					<td>${dto.idSend}</td>
+				</tr>
+			</c:otherwise>
+		</c:choose>
+		
 		<tr>
 			<th>제목</th>
 			<td>${dto.title }</td>
@@ -71,10 +85,28 @@
 			<th>보낸 날짜</th>
 			<td>${dto.sendDate }</td>
 		</tr>
+		<tr>
+			<th>원래 페이지</th>
+			<td>${pageType }</td>
+		</tr>
 	</table>
 	<div class="contents">${dto.content }</div>
+	<c:choose>
+		<c:when test="${pageType ne null}">
+			<button type="button" onclick="location.href='list.go?pageNum=${pageNum }&pageType=${pageType}'">목록보기</button>
+		</c:when>
+		<c:otherwise>
+			<button type="button" onclick="location.href='list.go?pageNum=${pageNum }'">목록보기</button>
+			<c:if test="${empty dto.saved }">
+				<form action="checksaved.go" method="post">
+					<input type="hidden" name="num" value="${dto.num }" />
+					<input type="hidden" name="pageNum" value="${pageNum }" />
+					<button type="submit">보관하기</button>
+				</form>
+			</c:if>
+		</c:otherwise>
+	</c:choose>
 	
-	<a href="list.go?pageNum=${pageNum }">목록보기</a>
 </div>
 </body>
 </html>

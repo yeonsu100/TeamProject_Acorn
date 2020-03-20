@@ -21,6 +21,8 @@ public interface MsgDao {
 	public MsgDto getData(MsgDto dto);
 	// 메시지 최초 읽은시간 기록
 	public void checkRead(MsgDto dto);
+	// 메시지 보관함에 저장
+	public void checkSaved(int num);
 	// 메시지 보내기(테이블에 추가)
 	public void sendMsg(MsgDto dto);
 	// 접속된 아이디의 안읽은 메시지 개수 읽어오기
