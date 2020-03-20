@@ -201,6 +201,52 @@
 		</div>
 	</div>
 </div>
+<!--  댓글 페이징 구역 -->
+<div class="page-display">
+		<ul class="pagination">
+		<c:choose>
+			<c:when test="${re_startPageNum ne 1 }">
+				<li>
+					<a href="detail.go?pageNum=${re_startPageNum-1 }&condition=${condition }&keyword=${encodedKeyword }">
+						&laquo;
+					</a>
+				</li>
+			</c:when>
+			<c:otherwise>
+				<li class="disabled">
+					<a href="javascript:">&laquo;</a>
+				</li>
+			</c:otherwise>
+		</c:choose>
+		<c:forEach var="i" begin="${re_startPageNum }" 
+			end="${re_endPageNum }" step="1">
+			<c:choose>
+				<c:when test="${i eq pageNum }">
+					<li class="active"><a href="detail.go?pageNum=${i }&condition=${condition }&keyword=${encodedKeyword }">${i }</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="detail.go?pageNum=${i }&condition=${condition }&keyword=${encodedKeyword }">${i }</a></li>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+
+		<c:choose>
+			<c:when test="${re_endPageNum lt totalPageCount }">
+				<li>
+					<a href="detail.go?pageNum=${re_endPageNum+1 }&condition=${condition }&keyword=${encodedKeyword }">
+						&raquo;
+					</a>
+				</li>
+			</c:when>
+			<c:otherwise>
+				<li class="disabled">
+					<a href="javascript:">&raquo;</a>
+				</li>
+			</c:otherwise>
+		</c:choose>
+		</ul>		
+	</div>
+
 <script>
 	//댓글 수정 링크를 눌렀을때 호출되는 함수 등록
 	$(".comment-update-link").click(function(){
@@ -305,8 +351,3 @@
 </script>
 </body>
 </html>
-
-
-
-
-
