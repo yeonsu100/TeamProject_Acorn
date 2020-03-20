@@ -49,11 +49,11 @@
 				<td>
 					<c:choose>
 						<c:when test="${tmp.countComment gt 0}">
-							<a href="detail.go?num=${tmp.num }&condition=${condition }&keyword=${encodedKeyword }">${tmp.title }</a>
-							<a>[${tmp.countComment}]</a>
+							<a href="detail.go?num=${tmp.num }&condition=${condition }&keyword=${encodedKeyword }" style="color:black">${tmp.title }</a>
+							<a>[<a style="color:red">${tmp.countComment}</a>]</a>
 						</c:when>
 						<c:otherwise>
-							<a href="detail.go?num=${tmp.num }&condition=${condition }&keyword=${encodedKeyword }">${tmp.title }</a>
+							<a href="detail.go?num=${tmp.num }&condition=${condition }&keyword=${encodedKeyword }" style="color:black">${tmp.title }</a>
 						</c:otherwise>
 					</c:choose> 
 				</td>

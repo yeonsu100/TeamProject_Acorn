@@ -51,15 +51,15 @@
 		position: relative;
 	}
 	.comment .reply_icon{
-		width: 8px;
-		height: 8px;
+		width: 15px;
+		height: 15px;
 		position: absolute;
 		top: 10px;
 		left: 30px;
 	}
 	.comments .user-img{
-		width: 20px;
-		height: 20px;
+		width: 25px;
+		height: 25px;
 		border-radius: 50%;
 	}
 </style>
@@ -139,9 +139,9 @@
 									</c:otherwise>
 								</c:choose>
 								
-								<span>${tmp.writer }</span>
+								<strong style="color:green">@${tmp.target_id }</strong>
 								<c:if test="${tmp.num ne tmp.comment_group }">
-									@<strong>${tmp.target_id }</strong>
+									<span>${tmp.writer }</span>
 								</c:if>
 								<span>${tmp.regdate }</span>
 								<a href="javascript:" class="reply_link">답글</a> |

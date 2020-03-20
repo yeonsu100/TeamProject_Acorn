@@ -172,7 +172,8 @@ writer VARCHAR2(100) NOT NULL,
 title VARCHAR2(100) NOT NULL,
 content CLOB,
 viewCount NUMBER,
-regdate DATE
+regdate DATE,
+countComment NUMBER
 );
 
  CREATE SEQUENCE T_board_seq;
