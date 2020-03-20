@@ -32,23 +32,11 @@
 			<li <c:if test="${param.category eq 'mytrello' }">class="active" </c:if>> 
 				<a href="${pageContext.request.contextPath }/mytrello/list.go">To Do <span class="glyphicon glyphicon-list"></span></a></li>
 		</ul>
-		
-		<c:choose>
-			<c:when test="${empty sessionScope.id }">
-				<div class="pull-right">
-				<a class="btn btn-primary navbar-btn btn-xs" href="${pageContext.request.contextPath }/users/loginform.go">Sign In</a>
-				<a class="btn btn-info navbar-btn btn-xs" href="${pageContext.request.contextPath }/users/signup_checkform.go">Create an account</a>
-				</div>
-			</c:when>
-			<c:otherwise>
-				<p class="navbar-text pull-right">
-				<i class="fas fa-user"></i>
-				Signed as <strong><a class="navbar-link" href="${pageContext.request.contextPath }/users/info.go">${id }</a></strong>
-				<img src="${pageContext.request.contextPath }${profile }" style="width:35px; height:35px; border-radius:50%;" />
-				<a class="navbar-link" href="${pageContext.request.contextPath }/users/logout.go">Signed Out <i class="fas fa-door-open"></i></a>
-				</p>
-			</c:otherwise>
-		</c:choose>
+			<p class="navbar-text pull-right">
+			<i class="fas fa-user"></i>
+			Signed as <strong><a class="navbar-link" href="${pageContext.request.contextPath }/users/info.go">${id }</a></strong> | 
+			<a class="navbar-link" href="${pageContext.request.contextPath }/users/logout.go">Signed Out <i class="fas fa-door-open"></i></a>
+			</p>
 		</div>
 	</div>
 </div>

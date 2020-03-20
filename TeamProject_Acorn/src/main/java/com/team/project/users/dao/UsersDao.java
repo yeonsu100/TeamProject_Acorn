@@ -4,6 +4,7 @@ import com.team.project.users.dto.UsersDto;
 
 public interface UsersDao {
 	public boolean isIdExist(String inputId);
+//	public boolean isPnumExist(String pnum);
 	public boolean isUserExist(int inputEmpno);
 	public void insertUser(UsersDto dto);
 	public void insertEmp(UsersDto dto);

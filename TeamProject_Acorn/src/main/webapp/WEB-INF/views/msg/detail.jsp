@@ -53,16 +53,30 @@
 </style>
 </head>
 <body>
+<script>
+	
+</script>
 <div class="container">
 	<table class="table table-bordered table-condensed">
 		<colgroup>
 			<col class="col-xs-4"/>
 			<col class="col-xs-8"/>
 		</colgroup>
-		<tr>
-			<th>보낸 사람</th>
-			<td>${dto.idSend}</td>
-		</tr>
+		<c:choose>
+			<c:when test="${pageType eq 'sent' }">
+				<tr>
+					<th>받는 사람</th>
+					<td>${dto.idRec}</td>
+				</tr>
+			</c:when>
+			<c:otherwise>
+				<tr>
+					<th>보낸 사람</th>
+					<td>${dto.idSend}</td>
+				</tr>
+			</c:otherwise>
+		</c:choose>
+		
 		<tr>
 			<th>제목</th>
 			<td>${dto.title }</td>
@@ -73,8 +87,50 @@
 		</tr>
 	</table>
 	<div class="contents">${dto.content }</div>
-	
-	<a href="list.go?pageNum=${pageNum }">목록보기</a>
+	<c:choose>
+		<c:when test="${pageType ne null}">
+			<button type="button" onclick="location.href='list.go?pageNum=${pageNum }&pageType=${pageType}'">목록보기</button>
+			<c:choose>
+				<c:when test="${pageType eq 'sent' }">
+					<button type="button" onclick="location.href='javascript:deleteSendConfirm()'">삭제하기</button>
+				</c:when>
+				<c:when test="${pageType eq 'saved' }">
+					<button type="button" onclick="location.href='javascript:deleteSavedConfirm()'">삭제하기</button>
+				</c:when>
+			</c:choose>
+		</c:when>
+		<c:otherwise>
+			<button type="button" onclick="location.href='list.go?pageNum=${pageNum }'">목록보기</button>
+			<button type="button" onclick="location.href='javascript:deleteRecConfirm()'">삭제하기</button>
+			<c:if test="${empty dto.saved }">
+				<form action="checksaved.go" method="post">
+					<input type="hidden" name="num" value="${dto.num }" />
+					<input type="hidden" name="pageNum" value="${pageNum }" />
+					<button type="submit">보관하기</button>
+				</form>
+			</c:if>
+		</c:otherwise>
+	</c:choose>
 </div>
+<script>
+function deleteRecConfirm(){
+	var isDelete=confirm("글을 삭제 하시 겠습니까?");
+	if(isDelete){
+		location.href="recdel.go?num=${dto.num}&pageNum=${pageNum}";
+	}
+}
+function deleteSendConfirm(){
+	var isDelete=confirm("글을 삭제 하시 겠습니까?");
+	if(isDelete){
+		location.href="senddel.go?num=${dto.num}&pageNum=${pageNum}&pageType=${pageType}";
+	}
+}
+function deleteSavedConfirm(){
+	var isDelete=confirm("글을 삭제 하시 겠습니까?");
+	if(isDelete){
+		location.href="saveddel.go?num=${dto.num}&pageNum=${pageNum}&pageType=${pageType}";
+	}
+}
+</script>
 </body>
 </html>

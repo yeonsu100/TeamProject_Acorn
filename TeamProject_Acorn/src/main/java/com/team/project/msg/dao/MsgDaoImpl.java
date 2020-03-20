@@ -20,13 +20,41 @@ public class MsgDaoImpl implements MsgDao{
 		// 리턴한다.
 		return count;
 	}
+	
+	@Override
+	public int getSentCount(MsgDto dto) {
+		// 검색 조건에 맞는 파일의 전체 갯수를 select 해서
+		int count=session.selectOne("msg.getSentCount", dto);
+		// 리턴한다.
+		return count;
+	}
+	
+	@Override
+	public int getSavedCount(MsgDto dto) {
+		// 검색 조건에 맞는 파일의 전체 갯수를 select 해서
+		int count=session.selectOne("msg.getSavedCount", dto);
+		// 리턴한다.
+		return count;
+	}
 
 	@Override
 	public List<MsgDto> getList(MsgDto dto) {
 		List<MsgDto> list=session.selectList("msg.getList", dto);
 		return list;
 	}
+	
+	@Override
+	public List<MsgDto> getSentList(MsgDto dto) {
+		List<MsgDto> list=session.selectList("msg.getSentList", dto);
+		return list;
+	}
 
+	@Override
+	public List<MsgDto> getSavedList(MsgDto dto) {
+		List<MsgDto> list=session.selectList("msg.getSavedList", dto);
+		return list;
+	}
+	
 	@Override
 	public MsgDto getData(MsgDto dto) {
 		dto=session.selectOne("msg.getData", dto);
@@ -39,6 +67,11 @@ public class MsgDaoImpl implements MsgDao{
 	}
 
 	@Override
+	public void checkSaved(int num) {
+		session.update("msg.checkSaved", num);
+	}
+	
+	@Override
 	public void sendMsg(MsgDto dto) {
 		session.insert("msg.sendMsg", dto);
 	}
@@ -50,31 +83,28 @@ public class MsgDaoImpl implements MsgDao{
 	}
 
 	@Override
-	public int getSentCount(MsgDto dto) {
-		// 검색 조건에 맞는 파일의 전체 갯수를 select 해서
-		int count=session.selectOne("msg.getSentCount", dto);
-		// 리턴한다.
-		return count;
+	public void recDel(int num) {
+		session.update("msg.recDel", num);
 	}
 
 	@Override
-	public List<MsgDto> getSentList(MsgDto dto) {
-		List<MsgDto> list=session.selectList("msg.getSentList", dto);
-		return list;
+	public void sendDel(int num) {
+		session.update("msg.sendDel", num);
 	}
 
 	@Override
-	public int getSavedCount(MsgDto dto) {
-		// 검색 조건에 맞는 파일의 전체 갯수를 select 해서
-		int count=session.selectOne("msg.getSavedCount", dto);
-		// 리턴한다.
-		return count;
+	public void savedDel(int num) {
+		session.update("msg.savedDel", num);
 	}
 
 	@Override
-	public List<MsgDto> getSavedList(MsgDto dto) {
-		List<MsgDto> list=session.selectList("msg.getSavedList", dto);
-		return list;
+	public void restoreSaved(int num) {
+		session.update("msg.restoreSaved", num);
 	}
-	
+
+	@Override
+	public void restoreSavedDel(int num) {
+		session.update("msg.restoreSavedDel", num);
+	}
+
 }

@@ -20,32 +20,42 @@ public class MsgController {
 	@Autowired 
 	private MsgService service;
 	
+	//메시지 보관하기
+	@RequestMapping(value="/msg/checksaved", method=RequestMethod.POST)
+	public String save(HttpServletRequest request) {
+		service.checkSaved(request);
+		return "msg/checksaved";
+	}
+	
+	//받은메시지 삭제하기
+	@RequestMapping("/msg/recdel")
+	public ModelAndView receiveDelete(HttpServletRequest request) {
+		int pageNum=service.recDel(request);
+		return new ModelAndView("redirect:/msg/list.go?pageNum="+pageNum);
+	}
+
+	//보낸메시지 삭제하기
+	@RequestMapping("/msg/senddel")
+	public ModelAndView sendDelete(HttpServletRequest request) {
+		int pageNum=service.sendDel(request);
+		String pageType=request.getParameter("pageType");
+		return new ModelAndView("redirect:/msg/list.go?pageNum="+pageNum+"&pageType="+pageType);
+	}
+	
+	//보관함메시지 삭제하기
+	@RequestMapping("/msg/saveddel")
+	public ModelAndView savedDelete(HttpServletRequest request) {
+		int pageNum=service.savedDel(request);
+		String pageType=request.getParameter("pageType");
+		return new ModelAndView("redirect:/msg/list.go?pageNum="+pageNum+"&pageType="+pageType);
+	}
+	
 	//안읽은 메시지 개수 체크
 	@ResponseBody
 	@RequestMapping("/msg/checknewmsg")
 	public Map<String, Object> checkNewMsg(HttpServletRequest request){
 		Map<String, Object> map=service.checkNewMsg(request);
 		return map;
-	}
-	
-	//보낸메시지 목록보기 
-	@RequestMapping("/msg/sentlist")
-	public ModelAndView sentList(ModelAndView mView,
-			HttpServletRequest request) {
-	//메시지 목록과 페이징 처리에 필요한 값들을 request에 담아주는 서비스 메소드 호출하기
-	service.sentList(request);
-	mView.setViewName("msg/sentlist");
-	return mView;
-	}
-	
-	//보관한메시지 목록보기 
-	@RequestMapping("/msg/savedlist")
-	public ModelAndView savedList(ModelAndView mView,
-			HttpServletRequest request) {
-	//메시지 목록과 페이징 처리에 필요한 값들을 request에 담아주는 서비스 메소드 호출하기
-	service.savedList(request);
-	mView.setViewName("msg/savedlist");
-	return mView;
 	}
 	
 	//받은메시지 목록보기 
@@ -77,7 +87,7 @@ public class MsgController {
 		//보내는사람 아이디(접속자) session에서 얻어오기
 		String idSend=(String)request.getSession().getAttribute("id");
 		dto.setIdSend(idSend);
-		service.sendMsg(request,dto);
+		service.sendMsg(dto);
 		return new ModelAndView("msg/send");
 	}
 }

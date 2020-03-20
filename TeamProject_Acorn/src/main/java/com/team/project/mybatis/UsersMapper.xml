@@ -6,6 +6,13 @@
 		FROM T_user
 		WHERE userid=#{inputId}
 	</select>
+	<!-- 
+	<select id="isPnumExist" parameterType="String" resultType="String">
+		SELECT pnum
+		FROM T_emp
+		WHERE pnum=#{inputPnum}
+	</select>
+	 -->
 	<select id="isUserExist" parameterType="int" resultType="String">
 		SELECT userid
 		FROM T_user
@@ -13,8 +20,8 @@
 	</select>
 	<insert id="insertUser" parameterType="usersDto">
 		INSERT INTO T_user
-		(empno, userid, pwd, email)
-		VALUES(#{empno}, #{userid}, #{pwd}, #{email})
+		(empno, userid, pwd, email, profile)
+		VALUES(#{empno}, #{userid}, #{pwd}, #{email}, #{profile})
 	</insert>
 	<insert id="insertEmp" parameterType="usersDto">
 		INSERT INTO T_emp
