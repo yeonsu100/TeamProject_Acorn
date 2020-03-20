@@ -96,7 +96,7 @@
 		<form action="insert.go" method="post">
 			<div class="form-group">
 				<input type="hidden" name="sugId" value="${id }" />
-				<input type="hidden" name="sugProfile" value="${profile}"/>
+				<input type="hidden" name="sugProfile" value="${tmp.profile}"/>
 				<c:if test="${not empty id}">
 					<textarea class="form-control" rows="3" id="insert-sugContent" name="sugContent"></textarea>
 					<button class="btn btn-primary" type="submit" disabled id="insertBtn">등록</button>

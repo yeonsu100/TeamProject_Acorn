@@ -38,9 +38,7 @@ public class SuggestController {
 			@ModelAttribute SuggestDto dto) {
 		// 세션에 있는 작성자 아이디 읽어오기
 		String sugId=(String)request.getSession().getAttribute("id");
-		String profile=(String)request.getSession().getAttribute("profile");
 		dto.setSugId(sugId);
-		dto.setProfile(profile);
 		service.addSuggest(request, dto);
 		ModelAndView mView=new ModelAndView();
 		mView.setViewName("redirect:/suggest/list.go");
