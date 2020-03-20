@@ -172,7 +172,8 @@ writer VARCHAR2(100) NOT NULL,
 title VARCHAR2(100) NOT NULL,
 content CLOB,
 viewCount NUMBER,
-regdate DATE
+regdate DATE,
+countComment NUMBER -- 댓글 갯수를 불러 올 수 있는 칼럼
 );
 
  CREATE SEQUENCE T_board_seq;
@@ -218,3 +219,6 @@ regdate DATE            -- 건의 날짜
 );
 -- 건의 게시판 시퀀스
 CREATE SEQUENCE T_suggest_seq;
+
+-- T_suggest 의 profile column 삭제
+ALTER TABLE T_suggest DROP (profile);

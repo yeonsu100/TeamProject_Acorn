@@ -21,4 +21,9 @@ public interface BoardDao {
 	public BoardDto getData(int num);
 	//글 수정 
 	public void update(BoardDto dto);
+	//댓글 갯수 더하기
+	public void addCountComment(int num);
+	//댓글 갯수 빼기
+	public void minusCountComment(int num);
+	
 }
