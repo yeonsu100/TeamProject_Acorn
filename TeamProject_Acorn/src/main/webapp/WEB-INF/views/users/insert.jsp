@@ -12,7 +12,7 @@
 	<h1>Alert</h1>
 	<p>
 		<strong>${dto.userid }</strong> 회원님 가입 되었습니다.
-		<a href="${pageContext.request.contextPath }/users/loginform.go">
+		<a href="${pageContext.request.contextPath }/home.go">
 			로그인 하러 가기
 		</a>
 	</p>
