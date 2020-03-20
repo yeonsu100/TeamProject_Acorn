@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -147,7 +148,7 @@
 										 <span>${tmp.writer }</span>
 									</c:otherwise>
 								</c:choose>
-								<span>${tmp.regdate }</span>
+								<span>${tmp.regdate } </span>
 								<a href="javascript:" class="reply_link">답글</a> |
 								<c:choose>
 									<%-- 로그인된 아이디와 댓글의 작성자가 같으면 --%>
