@@ -42,8 +42,6 @@
 		</tbody>
 	</table>
 	
-	<a href="sendform.go">메시지 쓰기</a>
-	
 	<div class="page-display">
 		<ul class="pagination pagination-sm">
 		<c:choose>
