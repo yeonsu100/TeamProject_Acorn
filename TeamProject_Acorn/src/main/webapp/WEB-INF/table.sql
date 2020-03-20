@@ -221,3 +221,6 @@ regdate DATE            -- 건의 날짜
 );
 -- 건의 게시판 시퀀스
 CREATE SEQUENCE T_suggest_seq;
+
+-- T_suggest 의 profile column 삭제
+ALTER TABLE T_suggest DROP (profile);

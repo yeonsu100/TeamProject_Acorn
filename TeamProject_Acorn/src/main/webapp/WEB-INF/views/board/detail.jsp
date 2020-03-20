@@ -138,11 +138,15 @@
 										<img class="user-img" src="${pageContext.request.contextPath}${tmp.profile}"/>
 									</c:otherwise>
 								</c:choose>
-								
-								<strong style="color:green">@ ${tmp.target_id }</strong>
-								<c:if test="${tmp.num ne tmp.comment_group }">
-									<span>${tmp.writer }</span>
-								</c:if>
+								<c:choose>
+									<c:when test="${tmp.num ne tmp.comment_group}">
+										<strong style="color:green">@${tmp.target_id} 에게</strong> |
+										<strong>${tmp.writer}</strong>
+									</c:when>
+									<c:otherwise>
+										 <span>${tmp.writer }</span>
+									</c:otherwise>
+								</c:choose>
 								<span>${tmp.regdate }</span>
 								<a href="javascript:" class="reply_link">답글</a> |
 								<c:choose>
