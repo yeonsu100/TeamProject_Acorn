@@ -13,8 +13,8 @@
 	</select>
 	<insert id="insertUser" parameterType="usersDto">
 		INSERT INTO T_user
-		(empno, userid, pwd, email)
-		VALUES(#{empno}, #{userid}, #{pwd}, #{email})
+		(empno, userid, pwd, email, profile)
+		VALUES(#{empno}, #{userid}, #{pwd}, #{email}, #{profile})
 	</insert>
 	<insert id="insertEmp" parameterType="usersDto">
 		INSERT INTO T_emp
