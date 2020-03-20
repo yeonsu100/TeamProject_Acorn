@@ -173,7 +173,7 @@ title VARCHAR2(100) NOT NULL,
 content CLOB,
 viewCount NUMBER,
 regdate DATE,
-countComment NUMBER
+countComment NUMBER -- 댓글 갯수를 불러 올 수 있는 칼럼
 );
 
  CREATE SEQUENCE T_board_seq;

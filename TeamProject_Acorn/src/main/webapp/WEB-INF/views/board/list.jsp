@@ -50,7 +50,7 @@
 					<c:choose>
 						<c:when test="${tmp.countComment gt 0}">
 							<a href="detail.go?num=${tmp.num }&condition=${condition }&keyword=${encodedKeyword }" style="color:black">${tmp.title }</a>
-							<a>[<a style="color:red">${tmp.countComment}</a>]</a>
+							<a>[<a style="color:#FF0000">${tmp.countComment}</a>]</a>
 						</c:when>
 						<c:otherwise>
 							<a href="detail.go?num=${tmp.num }&condition=${condition }&keyword=${encodedKeyword }" style="color:black">${tmp.title }</a>

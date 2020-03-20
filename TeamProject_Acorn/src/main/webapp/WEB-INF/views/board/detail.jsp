@@ -139,7 +139,7 @@
 									</c:otherwise>
 								</c:choose>
 								
-								<strong style="color:green">@${tmp.target_id }</strong>
+								<strong style="color:green">@ ${tmp.target_id }</strong>
 								<c:if test="${tmp.num ne tmp.comment_group }">
 									<span>${tmp.writer }</span>
 								</c:if>
