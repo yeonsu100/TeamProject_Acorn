@@ -73,6 +73,9 @@ public class MsgServiceImpl implements MsgService{
 		if(totalPageCount < endPageNum){
 			endPageNum=totalPageCount; //보정해준다. 
 		}	
+		if(endPageNum < pageNum) {
+			pageNum=endPageNum;
+		}
 		// Dto 객체에 위에서 계산된 startRowNum 과 endRowNum 을 담는다.
 		dto.setStartRowNum(startRowNum);
 		dto.setEndRowNum(endRowNum);
@@ -110,7 +113,7 @@ public class MsgServiceImpl implements MsgService{
 		MsgDto dto=new MsgDto();
 		dto.setNum(num);
 		MsgDto dto2=dao.getData(dto);
-		if(dto2.getIdRec()==id && dto2.getReadDate()==null) {
+		if(dto2.getIdRec().equals(id) && dto2.getReadDate()==null) {
 			dao.checkRead(dto);
 		}
 		request.setAttribute("dto", dto2);
@@ -139,7 +142,87 @@ public class MsgServiceImpl implements MsgService{
 		int num=Integer.parseInt(request.getParameter("num"));
 		int pageNum=Integer.parseInt(request.getParameter("pageNum"));
 		dao.checkSaved(num);
+		dao.restoreSavedDel(num);
 		request.setAttribute("num", num);
 		request.setAttribute("pageNum", pageNum);
+	}
+
+	@Override
+	public int sendDel(HttpServletRequest request) {
+		int num=Integer.parseInt(request.getParameter("num"));
+		int pageNum=Integer.parseInt(request.getParameter("pageNum"));
+		dao.sendDel(num);
+		MsgDto dto=new MsgDto();
+		dto.setIdSend((String)request.getSession().getAttribute("id"));
+		int totalRow=dao.getSentCount(dto);
+		//전체 페이지의 갯수 구하기
+		int totalPageCount=
+				(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
+		//시작 페이지 번호
+		int startPageNum=
+			1+((pageNum-1)/PAGE_DISPLAY_COUNT)*PAGE_DISPLAY_COUNT;
+		//끝 페이지 번호
+		int endPageNum=startPageNum+PAGE_DISPLAY_COUNT-1;
+		//끝 페이지 번호가 잘못된 값이라면 
+		if(totalPageCount < endPageNum){
+			endPageNum=totalPageCount; //보정해준다. 
+		}	
+		if(endPageNum < pageNum) {
+			pageNum=endPageNum;
+		}
+		return pageNum;
+	}
+
+	@Override
+	public int recDel(HttpServletRequest request) {
+		int num=Integer.parseInt(request.getParameter("num"));
+		int pageNum=Integer.parseInt(request.getParameter("pageNum"));
+		dao.recDel(num);
+		MsgDto dto=new MsgDto();
+		dto.setIdRec((String)request.getSession().getAttribute("id"));
+		int totalRow=dao.getCount(dto);
+		//전체 페이지의 갯수 구하기
+		int totalPageCount=
+				(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
+		//시작 페이지 번호
+		int startPageNum=
+			1+((pageNum-1)/PAGE_DISPLAY_COUNT)*PAGE_DISPLAY_COUNT;
+		//끝 페이지 번호
+		int endPageNum=startPageNum+PAGE_DISPLAY_COUNT-1;
+		//끝 페이지 번호가 잘못된 값이라면 
+		if(totalPageCount < endPageNum){
+			endPageNum=totalPageCount; //보정해준다. 
+		}	
+		if(endPageNum < pageNum) {
+			pageNum=endPageNum;
+		}
+		return pageNum;
+	}
+
+	@Override
+	public int savedDel(HttpServletRequest request) {
+		int num=Integer.parseInt(request.getParameter("num"));
+		int pageNum=Integer.parseInt(request.getParameter("pageNum"));
+		dao.savedDel(num);
+		dao.restoreSaved(num);
+		MsgDto dto=new MsgDto();
+		dto.setIdRec((String)request.getSession().getAttribute("id"));
+		int totalRow=dao.getSavedCount(dto);
+		//전체 페이지의 갯수 구하기
+		int totalPageCount=
+				(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
+		//시작 페이지 번호
+		int startPageNum=
+			1+((pageNum-1)/PAGE_DISPLAY_COUNT)*PAGE_DISPLAY_COUNT;
+		//끝 페이지 번호
+		int endPageNum=startPageNum+PAGE_DISPLAY_COUNT-1;
+		//끝 페이지 번호가 잘못된 값이라면 
+		if(totalPageCount < endPageNum){
+			endPageNum=totalPageCount; //보정해준다. 
+		}	
+		if(endPageNum < pageNum) {
+			pageNum=endPageNum;
+		}
+		return pageNum;
 	}
 }

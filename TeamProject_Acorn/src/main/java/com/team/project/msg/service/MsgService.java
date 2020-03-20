@@ -14,6 +14,12 @@ public interface MsgService {
 	public void detail(HttpServletRequest request);
 	// 메시지 보내기
 	public void sendMsg(MsgDto dto);
+	// 보관함메시지 삭제
+	public int savedDel(HttpServletRequest request);
+	// 보낸메시지 삭제
+	public int sendDel(HttpServletRequest request);
+	// 받은메시지 삭제
+	public int recDel(HttpServletRequest request);
 	// 안 읽은 메시지 있는지 검색해서 안읽은 개수 찾아오기
 	public Map<String, Object> checkNewMsg(HttpServletRequest request);
 	// 메시지 보관함에 저장

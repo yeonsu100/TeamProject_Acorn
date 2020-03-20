@@ -18,6 +18,7 @@
 		FROM T_msg
 		WHERE idRec=#{idRec}
 		AND saved is not null
+		AND savedDel is null
 	</select>
 	<select id="getUnreadCount" parameterType="msgDto" resultType="int">
 		SELECT NVL(MAX(ROWNUM), 0)
@@ -59,6 +60,7 @@
 		FROM T_msg
 		WHERE idRec=#{idRec}
 		AND saved is not null
+		AND savedDel is null
 		ORDER BY num DESC) result1)
 		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
@@ -77,9 +79,34 @@
 		SET saved='yes'
 		WHERE num=#{num}
 	</update>
+	<update id="restoreSavedDel" parameterType="int">
+		UPDATE T_msg
+		SET savedDel=null
+		WHERE num=#{num}		
+	</update>
 	<insert id="sendMsg" parameterType="msgDto">
 		INSERT INTO T_msg
 		(num, idSend, idRec, title, content, sendDate)
 		values(T_msg_seq.NEXTVAL, #{idSend}, #{idRec}, #{title}, #{content}, SYSDATE)
 	</insert>
+	<update id="recDel" parameterType="int">
+		UPDATE T_msg
+		SET recDel='yes'
+		WHERE NUM=#{num}
+	</update>
+	<update id="sendDel" parameterType="int">
+		UPDATE T_msg
+		SET sendDel='yes'
+		WHERE NUM=#{num}
+	</update>
+	<update id="savedDel" parameterType="int">
+		UPDATE T_msg
+		SET savedDel='yes'
+		WHERE NUM=#{num}
+	</update>
+	<update id="restoreSaved" parameterType="int">
+		UPDATE T_msg
+		SET saved=null
+		WHERE NUM=#{num}
+	</update>
 </mapper>

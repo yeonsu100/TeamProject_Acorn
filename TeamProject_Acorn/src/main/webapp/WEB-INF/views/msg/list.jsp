@@ -12,7 +12,18 @@
 <body>
 <jsp:include page="msgnav.jsp"/>
 <div class="container">
-	<h3>받은 메시지</h3>
+	<c:choose>
+		<c:when test="${empty pageType }">
+			<h3>받은 메시지</h3>
+		</c:when>
+		<c:when test="${pageType eq 'sent' }">
+			<h3>보낸 메시지</h3>
+		</c:when>
+		<c:when test="${pageType eq 'saved' }">
+			<h3>보관함</h3>
+		</c:when>
+	</c:choose>
+	
 	<table class="table table-striped table-condensed">
 		<colgroup>
 			<col class="col-xs-2"/>

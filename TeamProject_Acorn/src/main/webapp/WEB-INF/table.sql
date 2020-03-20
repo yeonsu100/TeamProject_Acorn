@@ -203,7 +203,9 @@ content CLOB,	--메시지 내용
 sendDate DATE,	--보낸 시간
 readDate DATE,	--읽은 시간
 sendDel VARCHAR2(100),	--보낸사람 목록에서 삭제했는지 여부
-recDel VARCHAR2(100)	--받는사람 목록에서 삭제했는지 여부
+recDel VARCHAR2(100),	--받는사람 목록에서 삭제했는지 여부
+saved VARCHAR2(100),	--보관함에 보관했는지 여부
+svaedDel VARCHAR2(100)	--보관함에서 삭제했는지 여부
 );
 --message sequence
 CREATE SEQUENCE T_msg_seq;

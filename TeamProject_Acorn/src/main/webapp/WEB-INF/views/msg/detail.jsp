@@ -85,18 +85,23 @@
 			<th>보낸 날짜</th>
 			<td>${dto.sendDate }</td>
 		</tr>
-		<tr>
-			<th>원래 페이지</th>
-			<td>${pageType }</td>
-		</tr>
 	</table>
 	<div class="contents">${dto.content }</div>
 	<c:choose>
 		<c:when test="${pageType ne null}">
 			<button type="button" onclick="location.href='list.go?pageNum=${pageNum }&pageType=${pageType}'">목록보기</button>
+			<c:choose>
+				<c:when test="${pageType eq 'sent' }">
+					<button type="button" onclick="location.href='javascript:deleteSendConfirm()'">삭제하기</button>
+				</c:when>
+				<c:when test="${pageType eq 'saved' }">
+					<button type="button" onclick="location.href='javascript:deleteSavedConfirm()'">삭제하기</button>
+				</c:when>
+			</c:choose>
 		</c:when>
 		<c:otherwise>
 			<button type="button" onclick="location.href='list.go?pageNum=${pageNum }'">목록보기</button>
+			<button type="button" onclick="location.href='javascript:deleteRecConfirm()'">삭제하기</button>
 			<c:if test="${empty dto.saved }">
 				<form action="checksaved.go" method="post">
 					<input type="hidden" name="num" value="${dto.num }" />
@@ -106,7 +111,26 @@
 			</c:if>
 		</c:otherwise>
 	</c:choose>
-	
 </div>
+<script>
+function deleteRecConfirm(){
+	var isDelete=confirm("글을 삭제 하시 겠습니까?");
+	if(isDelete){
+		location.href="recdel.go?num=${dto.num}&pageNum=${pageNum}";
+	}
+}
+function deleteSendConfirm(){
+	var isDelete=confirm("글을 삭제 하시 겠습니까?");
+	if(isDelete){
+		location.href="senddel.go?num=${dto.num}&pageNum=${pageNum}&pageType=${pageType}";
+	}
+}
+function deleteSavedConfirm(){
+	var isDelete=confirm("글을 삭제 하시 겠습니까?");
+	if(isDelete){
+		location.href="saveddel.go?num=${dto.num}&pageNum=${pageNum}&pageType=${pageType}";
+	}
+}
+</script>
 </body>
 </html>

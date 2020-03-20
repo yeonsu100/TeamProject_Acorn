@@ -82,6 +82,29 @@ public class MsgDaoImpl implements MsgDao{
 		return count;
 	}
 
-	
-	
+	@Override
+	public void recDel(int num) {
+		session.update("msg.recDel", num);
+	}
+
+	@Override
+	public void sendDel(int num) {
+		session.update("msg.sendDel", num);
+	}
+
+	@Override
+	public void savedDel(int num) {
+		session.update("msg.savedDel", num);
+	}
+
+	@Override
+	public void restoreSaved(int num) {
+		session.update("msg.restoreSaved", num);
+	}
+
+	@Override
+	public void restoreSavedDel(int num) {
+		session.update("msg.restoreSavedDel", num);
+	}
+
 }

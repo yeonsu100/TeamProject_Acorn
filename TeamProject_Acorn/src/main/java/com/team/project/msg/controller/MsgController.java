@@ -27,6 +27,29 @@ public class MsgController {
 		return "msg/checksaved";
 	}
 	
+	//받은메시지 삭제하기
+	@RequestMapping("/msg/recdel")
+	public ModelAndView receiveDelete(HttpServletRequest request) {
+		int pageNum=service.recDel(request);
+		return new ModelAndView("redirect:/msg/list.go?pageNum="+pageNum);
+	}
+
+	//보낸메시지 삭제하기
+	@RequestMapping("/msg/senddel")
+	public ModelAndView sendDelete(HttpServletRequest request) {
+		int pageNum=service.sendDel(request);
+		String pageType=request.getParameter("pageType");
+		return new ModelAndView("redirect:/msg/list.go?pageNum="+pageNum+"&pageType="+pageType);
+	}
+	
+	//보관함메시지 삭제하기
+	@RequestMapping("/msg/saveddel")
+	public ModelAndView savedDelete(HttpServletRequest request) {
+		int pageNum=service.savedDel(request);
+		String pageType=request.getParameter("pageType");
+		return new ModelAndView("redirect:/msg/list.go?pageNum="+pageNum+"&pageType="+pageType);
+	}
+	
 	//안읽은 메시지 개수 체크
 	@ResponseBody
 	@RequestMapping("/msg/checknewmsg")
