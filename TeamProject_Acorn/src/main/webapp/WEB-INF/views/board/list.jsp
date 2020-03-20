@@ -28,10 +28,9 @@
 		<colgroup>
 			<col class="col-xs-1"/>
 			<col class="col-xs-2"/>
-			<col class="col-xs-4"/>
+			<col class="col-xs-5"/>
 			<col class="col-xs-1"/>
-			<col class="col-xs-1"/>
-			<col class="col-xs-3"/>
+			<col class="col-xs-2"/>
 		</colgroup>
 		<thead>
 			<tr>
@@ -48,8 +47,15 @@
 				<td>${tmp.num }</td>
 				<td>${tmp.writer }</td>
 				<td>
-					<a href="detail.go?num=${tmp.num }&condition=${condition }&keyword=${encodedKeyword }">
-					${tmp.title } ${tmp.countComment}</a>
+					<c:choose>
+						<c:when test="${tmp.countComment gt 0}">
+							<a href="detail.go?num=${tmp.num }&condition=${condition }&keyword=${encodedKeyword }">${tmp.title }</a>
+							<a>[${tmp.countComment}]</a>
+						</c:when>
+						<c:otherwise>
+							<a href="detail.go?num=${tmp.num }&condition=${condition }&keyword=${encodedKeyword }">${tmp.title }</a>
+						</c:otherwise>
+					</c:choose> 
 				</td>
 				<td>${tmp.viewCount }</td>
 				<td>${tmp.regdate }</td>

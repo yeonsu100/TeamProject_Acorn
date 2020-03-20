@@ -141,7 +141,7 @@
 								
 								<span>${tmp.writer }</span>
 								<c:if test="${tmp.num ne tmp.comment_group }">
-									to <strong>${tmp.target_id }</strong>
+									@<strong>${tmp.target_id }</strong>
 								</c:if>
 								<span>${tmp.regdate }</span>
 								<a href="javascript:" class="reply_link">답글</a> |
@@ -189,7 +189,7 @@
 		<!-- 원글에 댓글을 작성할수 있는 폼 -->
 		<div class="comment_form">
 			<form action="comment_insert.go" method="post">
-				<!-- 댓글의 그룹번호는 원글의 글번호가 된다.ㄴ  -->
+				<!-- 댓글의 그룹번호는 원글의 글번호가 된다.  -->
 				<input type="hidden" name="ref_group" 
 					value="${dto.num }"/>
 				<!-- 댓글의 대상자는 원글의 작성자가 된다. -->
