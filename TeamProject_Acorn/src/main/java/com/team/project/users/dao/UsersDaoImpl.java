@@ -72,6 +72,16 @@ public class UsersDaoImpl implements UsersDao{
 			return true;
 		}
 	}
+//	
+//	@Override
+//	public boolean isPnumExist(String inputPnum) {
+//		String pnum=session.selectOne("users.isPnumExist", inputPnum);
+//		if(pnum==null) {
+//			return false;
+//		}else {
+//			return true;
+//		}
+//	}
 
 	@Override
 	public void insertUser(UsersDto dto) {
@@ -107,4 +117,6 @@ public class UsersDaoImpl implements UsersDao{
 	public void delete(String id) {
 		session.delete("users.delete", id);
 	}
+
+	
 }

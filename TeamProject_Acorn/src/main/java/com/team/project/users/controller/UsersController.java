@@ -113,6 +113,14 @@ public class UsersController {
 		return map;
 	}
 	
+//	//중복 전화번호 여부 체크
+//	@ResponseBody
+//	@RequestMapping("/emp/checkpnum")
+//	public Map<String, Object> checkpnum(@RequestParam String inputPnum){
+//		Map<String, Object> map=service.isSamePnum(inputPnum);
+//		return map;
+//	}
+	
 	//사원 추가 요청 처리
 	@RequestMapping(value = "/emp/insert", method = RequestMethod.POST)
 	public ModelAndView empInsert(@ModelAttribute("dto") UsersDto dto, 

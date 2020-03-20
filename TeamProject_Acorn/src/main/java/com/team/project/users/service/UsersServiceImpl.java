@@ -80,6 +80,14 @@ public class UsersServiceImpl implements UsersService{
 		map.put("isExist", isExist);
 		return map;
 	}
+//	
+//	@Override
+//	public Map<String, Object> isSamePnum(String inputPnum) {
+//		boolean isSame=dao.isPnumExist(inputPnum);
+//		Map<String, Object> map=new HashMap<>();
+//		map.put("isSame", isSame);
+//		return map;
+//	}
 
 	@Override
 	public void showInfo(String id, ModelAndView mView) {
@@ -158,4 +166,6 @@ public class UsersServiceImpl implements UsersService{
 		// TODO Auto-generated method stub
 		
 	}
+
+
 }
