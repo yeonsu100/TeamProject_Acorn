@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
-   
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 <div class="navbar navbar-default navbar-fixed-top">		
 	<div class="container">
 	<div class="navbar-header">
@@ -32,7 +31,6 @@
 			<li <c:if test="${param.category eq 'mytrello' }">class="active" </c:if>> 
 				<a href="${pageContext.request.contextPath }/mytrello/list.go"><span class="glyphicon glyphicon-list"></span> 체크 리스트</a></li>
 		</ul>
-<<<<<<< HEAD
 		
 		<c:choose>
 			<c:when test="${empty sessionScope.id }">
@@ -41,6 +39,7 @@
 				<a class="btn btn-info navbar-btn btn-xs" href="${pageContext.request.contextPath }/users/signup_checkform.go">계정 생성</a>
 				</div>
 			</c:when>
+			
 			<c:otherwise>
 				<p class="navbar-text pull-right">
 				<i class="fas fa-user"></i>
@@ -50,13 +49,6 @@
 				</p>
 			</c:otherwise>
 		</c:choose>
-=======
-			<p class="navbar-text pull-right">
-			<i class="fas fa-user"></i>
-			Signed as <strong><a class="navbar-link" href="${pageContext.request.contextPath }/users/info.go">${id }</a></strong> | 
-			<a class="navbar-link" href="${pageContext.request.contextPath }/users/logout.go">Signed Out <i class="fas fa-door-open"></i></a>
-			</p>
->>>>>>> branch 'master' of https://github.com/yeonsu100/TeamProject_Acorn.git
 		</div>
 	</div>
 </div>

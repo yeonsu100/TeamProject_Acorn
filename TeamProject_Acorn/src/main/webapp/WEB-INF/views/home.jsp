@@ -61,6 +61,7 @@
 		bottom: 6px;
 		left: 6px;
 		font-size: 15px;
+		text-align: center; 
 	}
 	.i1{
 		width: 208px;
@@ -76,29 +77,29 @@
 	<div class="metro">
 		<div class="l1">
 			<li class="item i1">
-				<i class="glyphicon glyphicon-bullhorn"></i>
-				<span>Notice</span>
+				<a href="${pageContext.request.contextPath }/notice/list.go"><i class="glyphicon glyphicon-bullhorn"></i>
+				<span>Notice</span></a>
 			</li>
 			
 			<li class="item i2">
-				<i class="glyphicon glyphicon-pencil"></i>
-				<span>Board</span>
+				<a href="${pageContext.request.contextPath }/board/list.go"><i class="glyphicon glyphicon-pencil"></i>
+				<span>Board</span></a>
 			</li>
 		</div>
 		<div class="l2">
 			<li class="item i3">
-				<i class="glyphicon glyphicon-inbox"></i>
-				<span>Suggest</span>
+				<a href="${pageContext.request.contextPath }/suggest/list.go"><i class="glyphicon glyphicon-inbox"></i>
+				<span>Suggest</span></a>
 			</li>
 			
 			<li class="item i4">
-				<i class="glyphicon glyphicon-floppy-save"></i>
-				<span>Web Hard</span>
+				<a href="${pageContext.request.contextPath }/file/list.go"><i class="glyphicon glyphicon-floppy-save"></i>
+				<span>Web Hard</span></a>
 			</li>
 			
 			<li class="item i5">
-				<i class="glyphicon glyphicon-th-list"></i>
-				<span>To Do</span>
+				<a href="${pageContext.request.contextPath }/mytrello/list.go"><i class="glyphicon glyphicon-th-list"></i>
+				<span>To Do</span></a>
 			</li>
 		</div>
 	</div>
