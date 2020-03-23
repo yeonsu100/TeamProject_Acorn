@@ -61,7 +61,7 @@
 			</label> <br/>
 		</div>
 		<button class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>
-	</form>	
+	</form>	<br/>
 	
 	<a href="${pageContext.request.contextPath }/users/signup_checkform.go">계정 생성하기</a>
 </div>

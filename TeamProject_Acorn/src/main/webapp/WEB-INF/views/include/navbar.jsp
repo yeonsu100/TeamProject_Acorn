@@ -3,11 +3,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
-<div class="navbar navbar-default navbar-fixed-top">		
+<style>
+	.logo-image{
+		width: 78px;
+	    height: 32px;
+	    visibility: visible;
+	    border-radius: 20%;
+	}
+</style>
+<div class="navbar navbar-default navbar-fixed-top ">		
 	<div class="container">
 	<div class="navbar-header">
 		<a class="navbar-brand" href="${pageContext.request.contextPath }/home.go">
-			<span class="glyphicon glyphicon-home"></span>
+			<div class="logo-image">
+	            <img src="${pageContext.request.contextPath }/resources/images/GitHub_Logo.png" class="logo-image">
+	      </div>
 		</a>
 		<button class="navbar-toggle"
 				data-toggle="collapse"
@@ -41,10 +51,9 @@
 			</c:when>
 			
 			<c:otherwise>
-				<p class="navbar-text pull-right">
-				<i class="fas fa-user"></i>
-				사용자 : <strong><a class="navbar-link" href="${pageContext.request.contextPath }/users/info.go">${id } 님 환영합니다! </a></strong>
-				<img src="${pageContext.request.contextPath }${profile }" style="width:35px; height:35px; border-radius:50%;" />
+				<p class="navbar-text pull-right"><i class="fas fa-user"></i>
+				사용자 (<strong><a class="navbar-link" href="${pageContext.request.contextPath }/users/info.go">${id }</strong></a>)님 환영합니다!
+				<img src="${pageContext.request.contextPath }${profile }" style="width:30px; height:30px; border-radius:50%;" />
 				<a class="navbar-link" href="${pageContext.request.contextPath }/users/logout.go"><i class="fas fa-door-open"></i> 로그아웃</a>
 				</p>
 			</c:otherwise>
