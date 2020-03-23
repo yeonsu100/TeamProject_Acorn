@@ -32,6 +32,7 @@
 			<li <c:if test="${param.category eq 'mytrello' }">class="active" </c:if>> 
 				<a href="${pageContext.request.contextPath }/mytrello/list.go"><span class="glyphicon glyphicon-list"></span> 체크 리스트</a></li>
 		</ul>
+<<<<<<< HEAD
 		
 		<c:choose>
 			<c:when test="${empty sessionScope.id }">
@@ -49,6 +50,13 @@
 				</p>
 			</c:otherwise>
 		</c:choose>
+=======
+			<p class="navbar-text pull-right">
+			<i class="fas fa-user"></i>
+			Signed as <strong><a class="navbar-link" href="${pageContext.request.contextPath }/users/info.go">${id }</a></strong> | 
+			<a class="navbar-link" href="${pageContext.request.contextPath }/users/logout.go">Signed Out <i class="fas fa-door-open"></i></a>
+			</p>
+>>>>>>> branch 'master' of https://github.com/yeonsu100/TeamProject_Acorn.git
 		</div>
 	</div>
 </div>

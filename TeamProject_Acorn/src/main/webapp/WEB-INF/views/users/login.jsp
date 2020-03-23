@@ -20,7 +20,7 @@
 		<c:otherwise>
 			<script>
 				alert("아이디 혹은 비밀번호가 일치하지 않습니다. 다시 시도해주세요");
-				location.href="${pageContext.request.contextPath }/users/loginform.go";
+				location.href="${pageContext.request.contextPath }/home.go";
 			</script>			
 		</c:otherwise>
 	</c:choose>
