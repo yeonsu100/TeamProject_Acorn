@@ -10,59 +10,62 @@
 <jsp:include page="include/resource.jsp"/>
 
 <style>
+	*{
+		list-style: none;
+	}
 	body, html{
 		margin: 0;
 		padding: 0;
-		width: 100%,
+		width: 100%;
 		height: 100%;
+		background: #333;
 	}
 	.section-top{
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
 		position: relative;
-		background-color: #000000;
 		background-repeat: no-repeat;
 		background-size: cover;
 		animation: slide 10s infinite;
 	}
-	.content{
+	.metro{
+		color: white;
 		position: absolute;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		text-transform: uppercase;
+	}
+	.item{
+		width: 100px;
+		height: 100px;
+		float: left;
+		background: #B2CCFF;
+		margin: 4px;
+		cursor: pointer;
 		text-align: center;
+		position: relative;
+		transition: 0.5s;
 	}
-	.content h1{
-		color: white;
-		font-size: 60px;
-		letter-spacing: 16px;
+	.item :hover{
+		transform: scale(0.9);
 	}
-	.content a{
-		background: #D9E5FF;
-		padding: 10px 24px;
-		color: black;
-		text-decoration: none;
-		font-size: 18px;
-		border-radius: 20px;
+	.item i{
+		font-size: 36px;
+		line-height: 90px;
+		opacity: 0.8;
 	}
-	p{
-		font-size: 20px;
-		padding: 10px;
-		line-height: 24px;
+	.item span{
+		opacity: 0.8;
+		position: absolute;
+		bottom: 6px;
+		left: 6px;
+		font-size: 15px;
 	}
-	@keyframes slide {
-		0%{
-			background-color: #6799FF;
-		}
-		33%{
-			background-color: #4374D9;
-		}
-		67%{
-			background-color: #003399;
-		}
+	.i1{
+		width: 208px;
 	}
+
 </style>
 
 </head>
@@ -70,10 +73,34 @@
 <jsp:include page="include/navbar.jsp"/>
 
 <div class="section-top">
-	<div class="content">
-		<h1>Main Page</h1>
-		<a href="${pageContext.request.contextPath }/notice/list.go"></a>
-		
+	<div class="metro">
+		<div class="l1">
+			<li class="item i1">
+				<i class="glyphicon glyphicon-bullhorn"></i>
+				<span>Notice</span>
+			</li>
+			
+			<li class="item i2">
+				<i class="glyphicon glyphicon-pencil"></i>
+				<span>Board</span>
+			</li>
+		</div>
+		<div class="l2">
+			<li class="item i3">
+				<i class="glyphicon glyphicon-inbox"></i>
+				<span>Suggest</span>
+			</li>
+			
+			<li class="item i4">
+				<i class="glyphicon glyphicon-floppy-save"></i>
+				<span>Web Hard</span>
+			</li>
+			
+			<li class="item i5">
+				<i class="glyphicon glyphicon-th-list"></i>
+				<span>To Do</span>
+			</li>
+		</div>
 	</div>
 	
 	<c:choose>
@@ -85,9 +112,6 @@
 	</c:choose>
 </div>
 
-<p>
-It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-</p>
 
 </body>
 </html>
