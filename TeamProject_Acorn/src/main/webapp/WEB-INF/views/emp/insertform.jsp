@@ -186,5 +186,6 @@
 	}
 	
 </script>
+<jsp:include page="../include/msgbtn.jsp"/>
 </body>
 </html>

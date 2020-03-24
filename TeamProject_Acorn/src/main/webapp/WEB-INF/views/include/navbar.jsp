@@ -52,8 +52,7 @@
 			
 			<c:otherwise>
 				<p class="navbar-text pull-right"><i class="fas fa-user"></i>
-				사용자 (<strong><a class="navbar-link" href="${pageContext.request.contextPath }/users/info.go">${id }</strong></a>)님 환영합니다!
-				<img src="${pageContext.request.contextPath }${profile }" style="width:30px; height:30px; border-radius:50%;" />
+				사용자 (<strong><a class="navbar-link" href="${pageContext.request.contextPath }/users/info.go">${id }</a></strong>)님 환영합니다! &nbsp;|&nbsp;  
 				<a class="navbar-link" href="${pageContext.request.contextPath }/users/logout.go"><i class="fas fa-door-open"></i> 로그아웃</a>
 				</p>
 			</c:otherwise>
