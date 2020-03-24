@@ -7,11 +7,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.team.project.msg.dto.MsgDto;
+import com.team.project.users.dto.UsersDto;
 
 @Repository
 public class MsgDaoImpl implements MsgDao{
 	@Autowired
 	private SqlSession session;
+	
+	@Override
+	public int getIdCount(MsgDto dto) {
+		int count=session.selectOne("msg.getIdCount", dto);
+		return count;
+	}
+
+	@Override
+	public List<UsersDto> getIdList(MsgDto dto) {
+		List<UsersDto> list=session.selectList("msg.getIdList", dto);
+		return list;
+	}
 	
 	@Override
 	public int getCount(MsgDto dto) {
