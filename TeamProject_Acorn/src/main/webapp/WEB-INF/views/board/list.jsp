@@ -123,5 +123,6 @@
 		<button type="submit">검색</button>
 	</form>
 </div>
+<jsp:include page="../include/msgbtn.jsp"/>
 </body>
 </html>

@@ -28,5 +28,6 @@
 		<button class="btn btn-default" type="reset">초기화하기</button>
 	</form>
 </div>
+<jsp:include page="../include/msgbtn.jsp"/>
 </body>
 </html>

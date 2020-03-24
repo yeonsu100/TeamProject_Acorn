@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>   
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +25,7 @@
 		</div>
 		<div class="form-group">
 			<label for="idRec">받는 사람</label>
-			<input class="form-control" type="text" name="idRec" id="idRec"/>
+			<input class="form-control" type="text" name="idRec" id="idRec" value="${userid }" readonly="readonly"/>
 		</div>
 		<div class="form-group">
 			<label for="title">제목</label>
@@ -38,3 +39,5 @@
 		<button class="btn btn-warning" type="reset">취소</button>
 	</form>
 </div>
+</body>
+</html>

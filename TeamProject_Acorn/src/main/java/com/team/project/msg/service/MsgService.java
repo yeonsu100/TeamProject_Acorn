@@ -24,4 +24,6 @@ public interface MsgService {
 	public Map<String, Object> checkNewMsg(HttpServletRequest request);
 	// 메시지 보관함에 저장
 	public void checkSaved(HttpServletRequest request);
+	// 메시지 보낼 아이디 검색
+	public void idList(HttpServletRequest request);
 }
