@@ -195,8 +195,6 @@ public class BoardServiceImpl implements BoardService{
 		BoardDto dto2=boardDao.getData(dto);
 		//request에 글 정보 담기
 		request.setAttribute("dto", dto2);
-		int pageNum=Integer.parseInt(request.getParameter("pageNum"));
-		request.setAttribute("pageNum", pageNum);
 		
 		
 	}
@@ -227,7 +225,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public void saveComment(HttpServletRequest request) {
-		//댓글 작성자
+				//댓글 작성자
 				String writer=(String)request.getSession()
 						.getAttribute("id");
 				//댓글의 그룹번호

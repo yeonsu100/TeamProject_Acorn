@@ -71,7 +71,7 @@
 </jsp:include>
 <div class="container">
 	<ol class="breadcrumb">
-		<li><a href="${pageContext.request.contextPath }/board/list.go?pageNum=${pageNum }&condition=${condition }&keyword=${encodedKeyword }">목록</a></li>
+		<li><a href="${pageContext.request.contextPath }/board/list.go?condition=${condition }&keyword=${encodedKeyword }">목록</a></li>
 	</ol>
 	<c:if test="${not empty keyword }">
 		<p> <strong>${keyword }</strong> 검색어로 검색된
