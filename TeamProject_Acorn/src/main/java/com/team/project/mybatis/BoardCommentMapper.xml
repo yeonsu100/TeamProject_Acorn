@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="boardComment">
-	<select id="getList" parameterType="int" resultType="boardCommentDto">
-		SELECT num, writer, content, target_id, ref_group,
-			comment_group, deleted, regdate, T_user.profile
-		FROM T_board_comment
-		INNER JOIN T_user
-		ON T_board_comment.writer = T_user.userid
-		WHERE ref_group=#{ref_group}
-		ORDER BY comment_group ASC, num ASC
+	<select id="getList" parameterType="boardCommentDto" resultType="boardCommentDto">
+		SELECT *
+		FROM
+			(SELECT result1.*, ROWNUM AS rnum
+			FROM
+				(SELECT num, writer, content, target_id, ref_group,
+				comment_group, deleted, regdate, T_user.profile
+			FROM T_board_comment
+			INNER JOIN T_user
+			ON T_board_comment.writer = T_user.userid
+			WHERE ref_group=#{ref_group}
+			ORDER BY comment_group ASC, num ASC) result1)
+			WHERE rnum BETWEEN #{re_startRowNum} AND #{re_endRowNum}
 	</select>
 	<update id="delete" parameterType="int">
 		UPDATE T_board_comment
@@ -30,5 +35,13 @@
 		SET content=#{content}
 		WHERE num=#{num}
 	</update>
+	
+	<select id="getCount" parameterType="boardCommentDto"
+		resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM T_board_comment
+		WHERE ref_group=#{ref_group}
+	</select>
+	
 </mapper>
 	
