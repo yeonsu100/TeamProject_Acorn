@@ -13,7 +13,8 @@
 	<c:choose>
 		<c:when test="${not empty sessionScope.id }">
 			<script>
-				alert("성공적으로 로그인 되었습니다!");
+				alert("성공적으로 로그인 되었습니다.");
+				alert("${id}님 환영합니다!");
 				location.href="${pageContext.request.contextPath }/home.go";
 			</script>
 		</c:when>
@@ -24,7 +25,6 @@
 			</script>			
 		</c:otherwise>
 	</c:choose>
-	
 	
 </div>
 </body>

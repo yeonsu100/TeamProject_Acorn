@@ -18,6 +18,18 @@
 	#profileForm{
 		display: none;
 	}
+	table{
+		width: 100%;
+	}
+	th, td {
+		padding: 20px;
+		border: 1px solid #000000;
+	}
+	th{
+		font-weight: bold;
+	    border-left: 8px solid #369;
+	}
+	
 </style>
 </head>
 <body>
@@ -26,15 +38,15 @@
 	<h1>개인 정보 페이지</h1>
 	<table>
 		<tr>
-			<th>아이디</th>
+			<th scope="row">아이디</th>
 			<td>${dto.userid }</td>
 		</tr>
 		<tr>
-			<th>프로필 이미지</th>
+			<th scope="row">프로필 이미지</th>
 			<td>
 				<a href="javascript:" id="profileLink">
 					<c:choose>
-						<c:when test="${ empty dto.profile }">
+						<c:when test="${empty dto.profile }">
 							<img src="${pageContext.request.contextPath }/resources/images/default_user.jpeg"/>
 						</c:when>
 						<c:otherwise>
@@ -45,15 +57,15 @@
 			</td>
 		</tr>
 		<tr>
-			<th>비밀번호</th>
+			<th scope="row">비밀번호</th>
 			<td><a href="pwd_updateform.go">수정하기</a></td>
 		</tr>
 		<tr>
-			<th>이메일</th>
+			<th scope="row">이메일</th>
 			<td>${dto.email }</td>
 		</tr>
 		<tr>
-			<th>입사일</th>
+			<th scope="row">입사일</th>
 			<td>${dto.hdate }</td>
 		</tr>
 	</table>
@@ -63,7 +75,7 @@
 	enctype="multipart/form-data" id="profileForm">
 	<label for="profileImage">프로필 이미지 선택</label>
 	<input type="file" name="profileImage" id="profileImage"
-		accept=".jpg, .jpeg, .png, .JPG, .JPEG"/>
+		accept=".jpg, .jpeg, .png, .JPG, .JPEG, .PNG"/>
 </form>
 <%-- jquery form  플러그인 javascript 로딩 --%>
 <script src="${pageContext.request.contextPath }/resources/js/jquery.form.min.js"></script>
@@ -85,8 +97,7 @@
 		//{savedPath:"/upload/저장된이미지파일명"}
 		//savedPath 라는 방에 저장된 이미지의 경로가 들어 있다.
 		console.log(responseData);
-		var src="${pageContext.request.contextPath }"
-							+responseData.savedPath;
+		var src="${pageContext.request.contextPath }"+responseData.savedPath;
 		// img 의 src 속성에 반영함으로써 이미지가 업데이트 되도록 한다.
 		$("#profileLink img").attr("src", src);
 	});
