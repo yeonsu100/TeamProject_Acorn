@@ -16,8 +16,8 @@ public class BoardCommentImpl implements BoardCommentDao{
 	//인자로 전달된 그룹번호(원글의 글번호)에 해당되는 댓글 목록 얻어오기
 	
 	@Override
-	public List<BoardCommentDto> getList(int ref_group) {
-		return session.selectList("boardComment.getList", ref_group);
+	public List<BoardCommentDto> getList(BoardCommentDto dto) {
+		return session.selectList("boardComment.getList", dto);
 	}
 
 	@Override
@@ -40,6 +40,12 @@ public class BoardCommentImpl implements BoardCommentDao{
 	@Override
 	public void update(BoardCommentDto dto) {
 		session.update("boardComment.update", dto);
+	}
+
+	@Override
+	public int getCount(BoardCommentDto dto) {
+		return session.selectOne("boardComment.getCount", dto);
+		
 	}
 
 }

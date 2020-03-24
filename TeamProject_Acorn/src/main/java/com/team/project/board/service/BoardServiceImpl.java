@@ -126,7 +126,40 @@ public class BoardServiceImpl implements BoardService{
 		String condition=request.getParameter("condition");
 		
 		//BoardDto 객체 생성 (select 할 때 필요한 정보를 담기 위하여)
-		BoardDto dto=new BoardDto(); 
+		BoardDto dto=new BoardDto();
+		BoardCommentDto re_dto=new BoardCommentDto();
+		re_dto.setRef_group(num);
+		
+		
+		//댓글 페이징 서비스 
+		int re_pageNum=1;
+		String re_strPageNum=request.getParameter("re_pageNum");
+		if(re_strPageNum != null) {
+			re_pageNum=Integer.parseInt(re_strPageNum);
+		}
+		int re_startRowNum=1+(re_pageNum-1)*PAGE_ROW_COUNT;
+		int re_endRowNum=re_pageNum*PAGE_ROW_COUNT;
+		
+		int re_totalRow=boardCommentDao.getCount(re_dto);
+		
+		int re_totalPageCount=(int)Math.ceil(re_totalRow/(double)PAGE_ROW_COUNT);
+		
+		int re_startPageNum=1+((re_pageNum-1)/PAGE_DISPLAY_COUNT)*PAGE_DISPLAY_COUNT;
+		
+		int re_endPageNum=re_startPageNum+PAGE_DISPLAY_COUNT-1;
+		if(re_totalPageCount < re_endPageNum) {
+				re_endPageNum=re_totalPageCount;
+		}
+		re_dto.setRe_startRowNum(re_startRowNum);
+		re_dto.setRe_endRowNum(re_endRowNum);
+		
+		List<BoardCommentDto> commentList=boardCommentDao.getList(re_dto);
+		request.setAttribute("commentList", commentList);
+		request.setAttribute("re_startPageNum", re_startPageNum);
+		request.setAttribute("re_endPageNum", re_endPageNum);
+		request.setAttribute("re_pageNum", re_pageNum);
+		request.setAttribute("re_totalPageCount", re_totalPageCount);
+		request.setAttribute("re_totalRow", re_totalRow);
 		
 		if(keyword !=null) {//검색 키워드 전달된 경우
 			if(condition.equals("titlecontent")) {//제목+내용
@@ -162,9 +195,10 @@ public class BoardServiceImpl implements BoardService{
 		BoardDto dto2=boardDao.getData(dto);
 		//request에 글 정보 담기
 		request.setAttribute("dto", dto2);
+		int pageNum=Integer.parseInt(request.getParameter("pageNum"));
+		request.setAttribute("pageNum", pageNum);
 		
-		List<BoardCommentDto> commentList=boardCommentDao.getList(num);
-		request.setAttribute("commentList", commentList);
+		
 	}
 
 	@Override
