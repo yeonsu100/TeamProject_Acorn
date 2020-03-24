@@ -95,7 +95,7 @@ public class BoardController {
 		@RequestMapping(value= "/board/comment_insert", 
 				method = RequestMethod.POST)
 		public ModelAndView authCommentInsert(HttpServletRequest request,
-				@RequestParam int ref_group) {
+				@RequestParam int ref_group){
 			service.saveComment(request);
 			return new ModelAndView("redirect:/board/detail.go?num="+ref_group);
 		}
