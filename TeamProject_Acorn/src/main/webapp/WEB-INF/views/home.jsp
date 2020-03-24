@@ -73,6 +73,7 @@
 <body>
 <jsp:include page="include/navbar.jsp"/>
 
+
 <div class="section-top">
 	<div class="metro">
 		<div class="l1">
@@ -112,6 +113,6 @@
 		</c:otherwise>
 	</c:choose>
 </div>
-
+<jsp:include page="include/msgbtn.jsp"/>
 </body>
 </html>
