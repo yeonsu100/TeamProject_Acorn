@@ -205,7 +205,7 @@
 			</form>
 		</div>
 	</div>
-	<!--  댓글 페이징 구역 -->
+	<!--  댓글 페이징 구역 | 현재 오류 작업 중-->
 <div class="page-display">
 		<ul class="pagination">
 		<c:choose>
