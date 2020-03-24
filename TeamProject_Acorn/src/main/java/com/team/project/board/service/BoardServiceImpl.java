@@ -120,14 +120,6 @@ public class BoardServiceImpl implements BoardService{
 	public void getDetail(HttpServletRequest request) {
 		//파라미터로 전달되는 글번호
 		int num=Integer.parseInt(request.getParameter("num"));
-		int re_pageNum=1;
-		String re_strPageNum=request.getParameter("re_pageNum");
-		if(re_strPageNum != null) {
-			re_pageNum=Integer.parseInt(re_strPageNum);
-		}
-		int re_strRowNum=1+(re_pageNum-1)*PAGE_ROW_COUNT;
-		int re_endRowNum=pageNum
-		
 		
 		//검색과 고나련된 파라미터를 읽어와 본다.
 		String keyword=request.getParameter("keyword");
