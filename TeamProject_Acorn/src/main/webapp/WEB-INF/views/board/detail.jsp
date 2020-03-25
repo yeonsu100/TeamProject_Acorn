@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,7 +71,7 @@
 </jsp:include>
 <div class="container">
 	<ol class="breadcrumb">
-		<li><a href="${pageContext.request.contextPath }/board/list.go?condition=${condition }&keyword=${encodedKeyword }">목록</a></li>
+		<li><a href="${pageContext.request.contextPath }/board/list.go?pageNum=${pageNum }&condition=${condition }&keyword=${encodedKeyword }">목록</a></li>
 	</ol>
 	<c:if test="${not empty keyword }">
 		<p> <strong>${keyword }</strong> 검색어로 검색된
@@ -141,14 +141,14 @@
 								</c:choose>
 								<c:choose>
 									<c:when test="${tmp.num ne tmp.comment_group}">
-										<strong style="color:green">@${tmp.target_id} 에게</strong> |
+										<strong style="color:#B8B6B6">@${tmp.target_id}</strong>
 										<strong>${tmp.writer}</strong>
 									</c:when>
 									<c:otherwise>
 										 <span>${tmp.writer }</span>
 									</c:otherwise>
 								</c:choose>
-								<span>${tmp.regdate } </span>
+								<span>${tmp.regdate }</span>
 								<a href="javascript:" class="reply_link">답글</a> |
 								<c:choose>
 									<%-- 로그인된 아이디와 댓글의 작성자가 같으면 --%>
@@ -205,7 +205,7 @@
 			</form>
 		</div>
 	</div>
-	<!--  댓글 페이징 구역 | 현재 오류 작업 중-->
+	<!--  댓글 페이징 구역 -->
 <div class="page-display">
 		<ul class="pagination">
 		<c:choose>
@@ -356,6 +356,5 @@
 		}
 	}
 </script>
-<jsp:include page="../include/msgbtn.jsp"/>
 </body>
 </html>

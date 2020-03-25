@@ -12,7 +12,7 @@
 			INNER JOIN T_user
 			ON T_board_comment.writer = T_user.userid
 			WHERE ref_group=#{ref_group}
-			ORDER BY comment_group ASC, num ASC) result1)
+			ORDER BY comment_group DESC, num ASC) result1)
 			WHERE rnum BETWEEN #{re_startRowNum} AND #{re_endRowNum}
 	</select>
 	<update id="delete" parameterType="int">
