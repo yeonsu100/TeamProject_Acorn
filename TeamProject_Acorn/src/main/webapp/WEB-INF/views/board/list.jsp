@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,11 +50,11 @@
 				<td>
 					<c:choose>
 						<c:when test="${tmp.countComment gt 0}">
-							<a href="detail.go?num=${tmp.num }&condition=${condition }&keyword=${encodedKeyword }" style="color:black">${tmp.title }</a>
-							<a>[<a style="color:#FF0000">${tmp.countComment}</a>]</a>
+							<a href="detail.go?num=${tmp.num }&pageNum=${pageNum}&condition=${condition }&keyword=${encodedKeyword }" style="color:black">${tmp.title }</a>
+							<a>(<a style="color:#ff0000">${tmp.countComment}</a>)</a>
 						</c:when>
 						<c:otherwise>
-							<a href="detail.go?num=${tmp.num }&condition=${condition }&keyword=${encodedKeyword }" style="color:black">${tmp.title }</a>
+							<a href="detail.go?num=${tmp.num }&pageNum=${pageNum}&condition=${condition }&keyword=${encodedKeyword }" style="color:black">${tmp.title }</a>
 						</c:otherwise>
 					</c:choose> 
 				</td>
