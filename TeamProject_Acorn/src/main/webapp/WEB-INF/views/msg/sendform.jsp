@@ -17,6 +17,24 @@
 </style>
 </head>
 <body>
+<script>
+
+
+$(document).ready(function(){
+    $("#idRec").on("click", function(){
+        $("#userlist").modal("show").load("userlist.go");
+    });
+});
+
+
+</script>
+<div class="modal fade" id="userlist" style="background-color:white">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			
+		</div>
+	</div>
+</div>
 <div class="container">
 	<form action="send.go" method="post">
 		<div class="form-group">
@@ -25,7 +43,7 @@
 		</div>
 		<div class="form-group">
 			<label for="idRec">받는 사람</label>
-			<input class="form-control" type="text" name="idRec" id="idRec" value="${userid }" readonly="readonly"/>
+			<input class="form-control" type="text" name="idRec" id="idRec" readonly="readonly"/>
 		</div>
 		<div class="form-group">
 			<label for="title">제목</label>

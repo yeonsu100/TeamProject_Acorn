@@ -137,6 +137,16 @@ public class MsgServiceImpl implements MsgService{
 		map.put("count", unreadCount);
 		return map;
 	}
+	
+	@Override
+	public List<UsersDto> getIdList(HttpServletRequest request) {
+		MsgDto dto=new MsgDto();
+		//로그인된 아이디
+		String id=(String)request.getSession().getAttribute("id");
+		dto.setIdSend(id);
+		List<UsersDto> list=dao.getIdList(dto);
+		return list;
+	}
 
 	@Override
 	public void checkSaved(HttpServletRequest request) {
@@ -228,7 +238,7 @@ public class MsgServiceImpl implements MsgService{
 	}
 
 	@Override
-	public void idList(HttpServletRequest request) {
+	public void userList(HttpServletRequest request) {
 		//한 페이지에 나타낼 row 의 갯수
 		final int PAGE_ROW_COUNT_ID=5;
 		//하단 디스플레이 페이지 갯수
@@ -237,13 +247,13 @@ public class MsgServiceImpl implements MsgService{
 		MsgDto dto=new MsgDto();
 		//로그인된 아이디
 		String id=(String)request.getSession().getAttribute("id");
-		String id2=request.getParameter("inputId");
+		//String id2=request.getParameter("inputId");
 		
 		dto.setIdSend(id);
-		dto.setIdRec(id2);
+		//dto.setIdRec(id2);
 		
 		//total row
-		int totalRow=dao.getIdCount(dto);
+		int totalRow=dao.getUserCount(dto);
 		//보여줄 페이지의 번호
 		int pageNum=1;
 		
@@ -271,7 +281,7 @@ public class MsgServiceImpl implements MsgService{
 		
 		// DB에서 메시지 목록을 얻어온다.
 		List<UsersDto> list=new ArrayList<>();
-		list=dao.getIdList(dto);
+		list=dao.getUserList(dto);
 		
 		request.setAttribute("list", list);
 		request.setAttribute("pageNum", pageNum);
@@ -280,4 +290,6 @@ public class MsgServiceImpl implements MsgService{
 		request.setAttribute("totalPageCount", totalPageCount);
 		request.setAttribute("totalRow", totalRow);
 	}
+
+
 }

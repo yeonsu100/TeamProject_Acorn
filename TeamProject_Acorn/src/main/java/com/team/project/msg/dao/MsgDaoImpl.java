@@ -15,14 +15,14 @@ public class MsgDaoImpl implements MsgDao{
 	private SqlSession session;
 	
 	@Override
-	public int getIdCount(MsgDto dto) {
-		int count=session.selectOne("msg.getIdCount", dto);
+	public int getUserCount(MsgDto dto) {
+		int count=session.selectOne("msg.getUserCount", dto);
 		return count;
 	}
 
 	@Override
-	public List<UsersDto> getIdList(MsgDto dto) {
-		List<UsersDto> list=session.selectList("msg.getIdList", dto);
+	public List<UsersDto> getUserList(MsgDto dto) {
+		List<UsersDto> list=session.selectList("msg.getUserList", dto);
 		return list;
 	}
 	
@@ -118,6 +118,12 @@ public class MsgDaoImpl implements MsgDao{
 	@Override
 	public void restoreSavedDel(int num) {
 		session.update("msg.restoreSavedDel", num);
+	}
+
+	@Override
+	public List<UsersDto> getIdList(MsgDto dto) {
+		List<UsersDto> list=session.selectList("msg.getIdList", dto);
+		return list;
 	}
 
 }
