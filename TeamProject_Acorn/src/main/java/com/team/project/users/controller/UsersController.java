@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.team.project.exception.AccessException;
+import com.team.project.exception.AdminAccessException;
 import com.team.project.users.dto.UsersDto;
 import com.team.project.users.service.UsersService;
 
@@ -26,6 +28,16 @@ import com.team.project.users.service.UsersService;
 public class UsersController {
 	@Autowired
 	private UsersService service;
+	
+	//(임시) admin창 요청처리
+	@RequestMapping("/admin/main")
+	public String admin_main(HttpServletRequest request) {
+		String isAdmin=(String)request.getSession().getAttribute("isAdmin");
+		if(isAdmin==null) {
+			throw new AdminAccessException();
+		}
+		return "admin/main";
+	}
 	
 	//비밀번호 수정하기 폼 요청 처리
 	@RequestMapping("/users/pwd_updateform")

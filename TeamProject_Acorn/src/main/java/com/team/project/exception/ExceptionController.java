@@ -45,4 +45,14 @@ public class ExceptionController {
 		mView.setViewName("error/forbidden");
 		return mView;
 	}
+	
+	// admin main.go Exception 
+	@ResponseStatus(HttpStatus.FORBIDDEN)
+	@ExceptionHandler(AdminAccessException.class)
+	public ModelAndView AccessForbidden() {
+		ModelAndView mView=new ModelAndView();
+		mView.addObject("msg", "접근 권한이 없습니다.");
+		mView.setViewName("error/forbidden");
+		return mView;
+	}
 }
