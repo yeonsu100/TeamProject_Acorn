@@ -40,6 +40,10 @@
 				<a href="${pageContext.request.contextPath }/file/list.go"><span class="glyphicon glyphicon-floppy-save"></span> 자료실</a></li>
 			<li <c:if test="${param.category eq 'mytrello' }">class="active" </c:if>> 
 				<a href="${pageContext.request.contextPath }/mytrello/list.go"><span class="glyphicon glyphicon-list"></span> 체크 리스트</a></li>
+			<c:if test="${not empty isAdmin}">
+				<li <c:if test="${param.category eq 'admin' }">class="active" </c:if>> 
+				<a href="${pageContext.request.contextPath }/admin/main.go"><span class="glyphicon glyphicon-wrench"></span> 관리</a></li>
+			</c:if>
 		</ul>
 		
 		<c:choose>
