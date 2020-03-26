@@ -1,23 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="msg">
-	<select id="getIdCount" parameterType="msgDto" resultType="int">
-		SELECT COUNT(userId)
+	<select id="getIdList" parameterType="msgDto" resultType="usersDto">
+		SELECT userId
 		FROM T_user
-		<!--WHERE userId LIKE '%'||${idRec}||'%'-->
 		WHERE userId != #{idSend}
-	</select>
-	<select id="getIdList" resultType="usersDto" parameterType="msgDto">
-		SELECT*
-		FROM
-		(SELECT result1.*, ROWNUM AS rnum
-		FROM
-		(SELECT userId
-		FROM T_user
-		<!--WHERE userId LIKE '%'||${idRec}||'%'-->
-		WHERE userId != #{idSend}
-		ORDER BY userId ASC) result1)
-		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+		AND userId LIKE '%'||#{idRec}||'%'
+		ORDER BY userId ASC
 	</select>
 	<select id="getCount" resultType="int" parameterType="msgDto">
 		SELECT NVL(MAX(ROWNUM), 0)

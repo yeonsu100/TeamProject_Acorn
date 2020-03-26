@@ -6,10 +6,6 @@ import com.team.project.msg.dto.MsgDto;
 import com.team.project.users.dto.UsersDto;
 
 public interface MsgDao {
-	// 검색된 아이디 개수
-	public int getIdCount(MsgDto dto);
-	// 검색된 아이디 목록
-	public List<UsersDto> getIdList(MsgDto dto);
 	// 메시지 갯수
 	public int getCount(MsgDto dto);
 	// 메시지 목록
@@ -42,4 +38,6 @@ public interface MsgDao {
 	public void sendMsg(MsgDto dto);
 	// 접속된 아이디의 안읽은 메시지 개수 읽어오기
 	public int getUnreadCount(MsgDto dto);
+	// idlist
+	public List<UsersDto> getIdList(MsgDto dto);
 }

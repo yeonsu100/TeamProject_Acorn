@@ -49,7 +49,14 @@
 		<tbody>
 		<c:forEach var="tmp" items="${requestScope.list }">
 			<tr>
-				<td>${tmp.idSend }</td>
+				<c:choose>
+					<c:when test="${pageType eq 'sent' }">
+						<td>${tmp.idRec }</td>
+					</c:when>
+					<c:otherwise>
+						<td>${tmp.idSend }</td>
+					</c:otherwise>
+				</c:choose>
 				<c:choose>
 					<c:when test="${pageType ne null }">
 						<td>
