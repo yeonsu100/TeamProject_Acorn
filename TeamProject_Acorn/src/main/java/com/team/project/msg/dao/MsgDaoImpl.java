@@ -13,19 +13,7 @@ import com.team.project.users.dto.UsersDto;
 public class MsgDaoImpl implements MsgDao{
 	@Autowired
 	private SqlSession session;
-	
-	@Override
-	public int getUserCount(MsgDto dto) {
-		int count=session.selectOne("msg.getUserCount", dto);
-		return count;
-	}
 
-	@Override
-	public List<UsersDto> getUserList(MsgDto dto) {
-		List<UsersDto> list=session.selectList("msg.getUserList", dto);
-		return list;
-	}
-	
 	@Override
 	public int getCount(MsgDto dto) {
 		// 검색 조건에 맞는 파일의 전체 갯수를 select 해서

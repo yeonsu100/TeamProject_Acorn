@@ -30,22 +30,6 @@ public class MsgController {
 		return list;
 	}
 	
-	@RequestMapping("/msg/userlist")
-	public ModelAndView userList(ModelAndView mView,
-			HttpServletRequest request) {
-	service.userList(request);
-	mView.setViewName("msg/userlist");
-	return mView;
-	}
-	
-//	@ResponseBody
-//	@RequestMapping("/msg/searchid")
-//	public ModelAndView idList(ModelAndView mView, HttpServletRequest request) {
-//		service.idList(request);
-//		mView.setViewName("msg/searchid");
-//		return mView;
-//	}
-	
 	//메시지 보관하기
 	@RequestMapping(value="/msg/checksaved", method=RequestMethod.POST)
 	public String save(HttpServletRequest request) {

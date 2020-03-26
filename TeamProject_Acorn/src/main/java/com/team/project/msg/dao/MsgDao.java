@@ -6,10 +6,6 @@ import com.team.project.msg.dto.MsgDto;
 import com.team.project.users.dto.UsersDto;
 
 public interface MsgDao {
-	// 검색된 아이디 개수
-	public int getUserCount(MsgDto dto);
-	// 검색된 아이디 목록
-	public List<UsersDto> getUserList(MsgDto dto);
 	// 메시지 갯수
 	public int getCount(MsgDto dto);
 	// 메시지 목록

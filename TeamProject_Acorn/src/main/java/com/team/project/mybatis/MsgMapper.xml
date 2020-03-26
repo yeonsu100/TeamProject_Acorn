@@ -5,25 +5,8 @@
 		SELECT userId
 		FROM T_user
 		WHERE userId != #{idSend}
+		AND userId LIKE '%'||#{idRec}||'%'
 		ORDER BY userId ASC
-	</select>
-	<select id="getUserCount" parameterType="msgDto" resultType="int">
-		SELECT COUNT(userId)
-		FROM T_user
-		<!--WHERE userId LIKE '%'||${idRec}||'%'-->
-		WHERE userId != #{idSend}
-	</select>
-	<select id="getUserList" resultType="usersDto" parameterType="msgDto">
-		SELECT*
-		FROM
-		(SELECT result1.*, ROWNUM AS rnum
-		FROM
-		(SELECT userId
-		FROM T_user
-		<!--WHERE userId LIKE '%'||${idRec}||'%'-->
-		WHERE userId != #{idSend}
-		ORDER BY userId ASC) result1)
-		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
 	<select id="getCount" resultType="int" parameterType="msgDto">
 		SELECT NVL(MAX(ROWNUM), 0)
