@@ -16,6 +16,7 @@
 </style>
 </head>
 <body>
+<jsp:include page="msgnav.jsp"/>
 <div class="container">
 	<form action="send.go" method="post">
 		<div class="form-group">

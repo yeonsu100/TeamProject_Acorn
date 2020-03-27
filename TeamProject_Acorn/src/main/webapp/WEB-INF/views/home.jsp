@@ -112,6 +112,6 @@
 		</c:otherwise>
 	</c:choose>
 </div>
-
+<jsp:include page="include/msgbtn.jsp"></jsp:include>
 </body>
 </html>

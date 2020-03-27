@@ -224,3 +224,6 @@ CREATE SEQUENCE T_suggest_seq;
 
 -- T_suggest 의 profile column 삭제
 ALTER TABLE T_suggest DROP (profile);
+
+ALTER TABLE T_board ADD(countComment NUMBER);
+

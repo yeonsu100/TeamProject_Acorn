@@ -9,6 +9,9 @@
 <title>/views/msg/list.jsp</title>
 <jsp:include page="../include/resource.jsp"/>
 </head>
+<style>
+body{padding-top: 0px;}
+</style>
 <body>
 <jsp:include page="msgnav.jsp"/>
 <div class="container">
@@ -31,7 +34,7 @@
 			<col class="col-xs-2"/>
 			<col class="col-xs-2"/>
 		</colgroup>
-		<thead>
+		<thead class="thead-light">
 			<tr>
 				<c:choose>
 					<c:when test="${pageType eq 'sent' }">
