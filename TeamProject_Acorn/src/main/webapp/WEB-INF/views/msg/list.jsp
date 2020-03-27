@@ -7,23 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>/views/msg/list.jsp</title>
-<jsp:include page="../include/resource.jsp"/>
+<jsp:include page="../include/resource_boot4.jsp"/>
 </head>
 <body>
 <jsp:include page="msgnav.jsp"/>
 <div class="container">
-	<c:choose>
-		<c:when test="${empty pageType }">
-			<h3>받은 메시지</h3>
-		</c:when>
-		<c:when test="${pageType eq 'sent' }">
-			<h3>보낸 메시지</h3>
-		</c:when>
-		<c:when test="${pageType eq 'saved' }">
-			<h3>보관함</h3>
-		</c:when>
-	</c:choose>
-	
+		
 	<table class="table table-striped table-condensed">
 		<colgroup>
 			<col class="col-xs-2"/>
@@ -78,47 +67,47 @@
 		</tbody>
 	</table>
 	
-	<a href="sendform.go">메시지 쓰기</a>
+	<a href="sendform.go" class="btn btn-primary" style="position:fixed; bottom:85px; left:10px;">메시지 보내기</a>
 	
-	<div class="page-display">
-		<ul class="pagination pagination-sm">
+	<nav aria-label="Search pages" style="position:fixed; bottom:20px; left:10px;">
+		<ul class="pagination">
 		<c:choose>
 			<c:when test="${pageType ne null }">
 				<c:choose>
 					<c:when test="${startPageNum ne 1 }">
-						<li>
-							<a href="list.go?pageNum=${startPageNum-1 }&pageType=${pageType }">&laquo;</a>
+						<li class="page-item">
+							<a class="page-link" href="list.go?pageNum=${startPageNum-1 }&pageType=${pageType }">&laquo;</a>
 						</li>
 					</c:when>
 					<c:otherwise>
-						<li class="disabled">
-							<a href="javascript:">&laquo;</a>
+						<li class="page-item disabled">
+							<a class="page-link" href="javascript:">&laquo;</a>
 						</li>
 					</c:otherwise>
 				</c:choose>
 				<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }" step="1">
 					<c:choose>
 						<c:when test="${i eq pageNum }">
-							<li class="active">
-								<a href="list.go?pageNum=${i }&pageType=${pageType }">${i }</a>
+							<li class="page-item active">
+								<a class="page-link" href="list.go?pageNum=${i }&pageType=${pageType }">${i }</a>
 							</li>
 						</c:when>
 						<c:otherwise>
-							<li>
-								<a href="list.go?pageNum=${i }&pageType=${pageType }">${i }</a>
+							<li class="page-item">
+								<a class="page-link" href="list.go?pageNum=${i }&pageType=${pageType }">${i }</a>
 							</li>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
 					<c:choose>
 						<c:when test="${endPageNum lt totalPageCount }">
-							<li>
-								<a href="list.go?pageNum=${endPageNum+1 }&pageType=${pageType }">&raquo;</a>
+							<li class="page-item">
+								<a class="page-link" href="list.go?pageNum=${endPageNum+1 }&pageType=${pageType }">&raquo;</a>
 							</li>
 						</c:when>
 						<c:otherwise>
-							<li class="disabled">
-								<a href="javascript:">&raquo;</a>
+							<li class="page-item disabled">
+								<a class="page-link" href="javascript:">&raquo;</a>
 							</li>
 						</c:otherwise>
 					</c:choose>
@@ -126,46 +115,46 @@
 			<c:otherwise>
 				<c:choose>
 					<c:when test="${startPageNum ne 1 }">
-						<li>
-							<a href="list.go?pageNum=${startPageNum-1 }">&laquo;</a>
+						<li class="page-item">
+							<a class="page-link" href="list.go?pageNum=${startPageNum-1 }">&laquo;</a>
 						</li>
 					</c:when>
 					<c:otherwise>
-						<li class="disabled">
-							<a href="javascript:">&laquo;</a>
+						<li class="page-item disabled">
+							<a class="page-link" href="javascript:">&laquo;</a>
 						</li>
 					</c:otherwise>
 				</c:choose>
 				<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }" step="1">
 					<c:choose>
 						<c:when test="${i eq pageNum }">
-							<li class="active">
-								<a href="list.go?pageNum=${i }">${i }</a>
+							<li class="page-item active">
+								<a class="page-link" href="list.go?pageNum=${i }">${i }</a>
 							</li>
 						</c:when>
 						<c:otherwise>
-							<li>
-								<a href="list.go?pageNum=${i }">${i }</a>
+							<li class="page-item">
+								<a class="page-link" href="list.go?pageNum=${i }">${i }</a>
 							</li>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
 					<c:choose>
 						<c:when test="${endPageNum lt totalPageCount }">
-							<li>
-								<a href="list.go?pageNum=${endPageNum+1 }">&raquo;</a>
+							<li class="page-item">
+								<a class="page-link" href="list.go?pageNum=${endPageNum+1 }">&raquo;</a>
 							</li>
 						</c:when>
 						<c:otherwise>
-							<li class="disabled">
-								<a href="javascript:">&raquo;</a>
+							<li class="page-item disabled">
+								<a class="page-link" href="javascript:">&raquo;</a>
 							</li>
 						</c:otherwise>
 					</c:choose>
 			</c:otherwise>
 		</c:choose>
 		</ul>
-	</div>
+	</nav>
 </div>
 </body>
 </html>

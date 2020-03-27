@@ -20,7 +20,7 @@ public class MsgServiceImpl implements MsgService{
 	private MsgDao dao;
 	
 	//한 페이지에 나타낼 row 의 갯수
-	final int PAGE_ROW_COUNT=5;
+	final int PAGE_ROW_COUNT=7;
 	//하단 디스플레이 페이지 갯수
 	final int PAGE_DISPLAY_COUNT=5;
 
