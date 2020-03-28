@@ -9,6 +9,9 @@
 <title>/views/msg/list.jsp</title>
 <jsp:include page="../include/resource.jsp"/>
 </head>
+<style>
+body{padding-top: 0px;}
+</style>
 <body>
 <jsp:include page="msgnav.jsp"/>
 <div class="container">
@@ -31,7 +34,7 @@
 			<col class="col-xs-2"/>
 			<col class="col-xs-2"/>
 		</colgroup>
-		<thead>
+		<thead class="thead-light">
 			<tr>
 				<c:choose>
 					<c:when test="${pageType eq 'sent' }">
@@ -77,8 +80,6 @@
 		</c:forEach>
 		</tbody>
 	</table>
-	
-	<a href="sendform.go">메시지 쓰기</a>
 	
 	<div class="page-display">
 		<ul class="pagination pagination-sm">
