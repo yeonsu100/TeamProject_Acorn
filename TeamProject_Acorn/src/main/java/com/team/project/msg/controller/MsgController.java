@@ -1,5 +1,6 @@
 package com.team.project.msg.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,11 +15,20 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.team.project.msg.dto.MsgDto;
 import com.team.project.msg.service.MsgService;
+import com.team.project.users.dto.UsersDto;
 
 @Controller
 public class MsgController {
 	@Autowired 
 	private MsgService service;
+	
+	//ajax로 idlist 얻어와서 map으로 반환
+	@ResponseBody
+	@RequestMapping("/msg/idlist")
+	public List<UsersDto> idList(HttpServletRequest request){
+		List<UsersDto> list=service.getIdList(request);
+		return list;
+	}
 	
 	//메시지 보관하기
 	@RequestMapping(value="/msg/checksaved", method=RequestMethod.POST)

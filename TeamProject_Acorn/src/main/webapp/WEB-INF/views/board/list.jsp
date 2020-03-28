@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,9 +13,14 @@
 <jsp:include page="../include/navbar.jsp">
 	<jsp:param value="board" name="category"/>
 </jsp:include>
+<style>
+	h1{color: #6799FF;}
+	thead{background-color: #B2CCFF;}
+</style>
 <div class="container">
 	<ol class="breadcrumb">
 		<li><a href="${pageContext.request.contextPath }/board/list.go">목록</a></li>
+		<li><a href="insertform.go">새글</a></li>	
 	</ol>
 	<c:if test="${not empty keyword }">
 		<p>
@@ -23,12 +29,13 @@
 			되었습니다.
 		</p>
 	</c:if>
-	<h1>글 목록 입니다.</h1>
+	<h1>사내 게시판</h1>
+	<p> 사내 자유게시판 입니다.</p> <br/>
 	<table class="table table-striped table-condensed">
 		<colgroup>
 			<col class="col-xs-1"/>
 			<col class="col-xs-2"/>
-			<col class="col-xs-5"/>
+			<col class="col-xs-4"/>
 			<col class="col-xs-1"/>
 			<col class="col-xs-2"/>
 		</colgroup>
@@ -49,22 +56,20 @@
 				<td>
 					<c:choose>
 						<c:when test="${tmp.countComment gt 0}">
-							<a href="detail.go?num=${tmp.num }&condition=${condition }&keyword=${encodedKeyword }" style="color:black">${tmp.title }</a>
-							<a>[<a style="color:#FF0000">${tmp.countComment}</a>]</a>
+							<a href="detail.go?num=${tmp.num }&pageNum=${pageNum}&condition=${condition }&keyword=${encodedKeyword }" style="color:black">${tmp.title }</a>
+							<a>(<a style="color:#ff0000">${tmp.countComment}</a>)</a>
 						</c:when>
 						<c:otherwise>
-							<a href="detail.go?num=${tmp.num }&condition=${condition }&keyword=${encodedKeyword }" style="color:black">${tmp.title }</a>
+							<a href="detail.go?num=${tmp.num }&pageNum=${pageNum}&condition=${condition }&keyword=${encodedKeyword }" style="color:black">${tmp.title }</a>
 						</c:otherwise>
 					</c:choose> 
 				</td>
 				<td>${tmp.viewCount }</td>
-				<td>${tmp.regdate }</td>
+				<td>${tmp.regdate}</td>
 			</tr>
 		</c:forEach>
 		</tbody>
 	</table>
-
-	<a href="insertform.go">새글 작성</a>
 
 	<div class="page-display">
 		<ul class="pagination">
@@ -123,5 +128,6 @@
 		<button type="submit">검색</button>
 	</form>
 </div>
+<jsp:include page="../include/msgbtn.jsp"/>
 </body>
 </html>

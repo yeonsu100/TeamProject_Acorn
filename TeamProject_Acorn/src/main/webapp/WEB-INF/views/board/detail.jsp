@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,7 +71,7 @@
 </jsp:include>
 <div class="container">
 	<ol class="breadcrumb">
-		<li><a href="${pageContext.request.contextPath }/board/list.go">목록</a></li>
+		<li><a href="${pageContext.request.contextPath }/board/list.go?pageNum=${pageNum }&condition=${condition }&keyword=${encodedKeyword }">목록</a></li>
 	</ol>
 	<c:if test="${not empty keyword }">
 		<p> <strong>${keyword }</strong> 검색어로 검색된
@@ -140,7 +141,7 @@
 								</c:choose>
 								<c:choose>
 									<c:when test="${tmp.num ne tmp.comment_group}">
-										<strong style="color:green">@${tmp.target_id} 에게</strong> |
+										<strong style="color:#B8B6B6">@${tmp.target_id}</strong>
 										<strong>${tmp.writer}</strong>
 									</c:when>
 									<c:otherwise>
@@ -204,14 +205,13 @@
 			</form>
 		</div>
 	</div>
-</div>
-<!--  댓글 페이징 구역 -->
+	<!--  댓글 페이징 구역 -->
 <div class="page-display">
 		<ul class="pagination">
 		<c:choose>
 			<c:when test="${re_startPageNum ne 1 }">
 				<li>
-					<a href="detail.go?pageNum=${re_startPageNum-1 }&condition=${condition }&keyword=${encodedKeyword }">
+					<a href="detail.go?num=${dto.num }&re_pageNum=${re_startPageNum-1 }">
 						&laquo;
 					</a>
 				</li>
@@ -225,21 +225,22 @@
 		<c:forEach var="i" begin="${re_startPageNum }" 
 			end="${re_endPageNum }" step="1">
 			<c:choose>
-				<c:when test="${i eq pageNum }">
-					<li class="active"><a href="detail.go?pageNum=${i }&condition=${condition }&keyword=${encodedKeyword }">${i }</a></li>
+				<c:when test="${i eq re_pageNum }">
+					<li class="active"><a href="detail.go?num=${dto.num }&re_pageNum=${i }">${i }</a></li>
 				</c:when>
 				<c:otherwise>
-					<li><a href="detail.go?pageNum=${i }&condition=${condition }&keyword=${encodedKeyword }">${i }</a></li>
+					<li><a href="detail.go?num=${dto.num }&re_pageNum=${i }">${i }</a></li>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
 
 		<c:choose>
-			<c:when test="${re_endPageNum lt totalPageCount }">
+			<c:when test="${re_endPageNum lt re_totalPageCount }">
 				<li>
-					<a href="detail.go?pageNum=${re_endPageNum+1 }&condition=${condition }&keyword=${encodedKeyword }">
+					<a href="detail.go?num=${dto.num }&re_pageNum=${re_endPageNum+1 }">
 						&raquo;
 					</a>
+					
 				</li>
 			</c:when>
 			<c:otherwise>
@@ -250,6 +251,8 @@
 		</c:choose>
 		</ul>		
 	</div>
+</div>
+
 
 <script>
 	//댓글 수정 링크를 눌렀을때 호출되는 함수 등록

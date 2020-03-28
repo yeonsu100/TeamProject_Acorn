@@ -8,11 +8,10 @@
 <head>
 <meta charset="UTF-8">
 <title>/file/list.jsp</title>
-<jsp:include page="../include/resource.jsp"></jsp:include>
+<jsp:include page="../include/resource.jsp" />
 <style>
-	h1{color:#6EE3F7;}
-	h3{color : #FF9090;}
-	thead{background-color:#B2EBF4;}
+	h1{color: #6799FF;}
+	thead{background-color: #B2CCFF;}
 </style>
 </head>
 <body>
@@ -26,6 +25,7 @@
 	</ol>
 	
 	<h1>자료실</h1>
+	<p>자료게시판 운영 목적과 맞지 않는 게시물은 관리자 권한으로 삭제될 수 있습니다.</p> <br/>
 	
 	<c:choose>
 		<c:when test="${not empty keyword }">
@@ -35,7 +35,7 @@
 			</p>
 		</c:when>
 		<c:otherwise>
-			<p>Total : <strong>${totalRow }</strong>개 게시물이 존재합니다.</p>
+			<p>총 <strong>${totalRow }</strong>개 게시물이 존재합니다.</p>
 		</c:otherwise>
 	</c:choose>
 	
@@ -133,8 +133,8 @@
 			<option value="title" <c:if test="${condition eq 'title' }">selected</c:if> >파일 제목</option>
 			<option value="writer" <c:if test="${condition eq 'writer' }">selected</c:if> >작성자</option>
 		</select>
-		<input type="text" name="keyword" id="keyword" placeholder="검색할 키워드를 입력하세요..." value="${keyword }" />
-		<button type="submit">Search</button>
+		<input type="text" name="keyword" id="keyword" placeholder="키워드를 입력하세요" value="${keyword }" />
+		<button type="submit">검색</button>
 	</form>
 	
 </div>
@@ -147,6 +147,6 @@
 		}
 	}
 </script>
-
+<jsp:include page="../include/msgbtn.jsp"/>
 </body>
 </html>

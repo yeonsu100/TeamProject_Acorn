@@ -3,6 +3,7 @@ package com.team.project.msg.dao;
 import java.util.List;
 
 import com.team.project.msg.dto.MsgDto;
+import com.team.project.users.dto.UsersDto;
 
 public interface MsgDao {
 	// 메시지 갯수
@@ -37,4 +38,6 @@ public interface MsgDao {
 	public void sendMsg(MsgDto dto);
 	// 접속된 아이디의 안읽은 메시지 개수 읽어오기
 	public int getUnreadCount(MsgDto dto);
+	// idlist
+	public List<UsersDto> getIdList(MsgDto dto);
 }

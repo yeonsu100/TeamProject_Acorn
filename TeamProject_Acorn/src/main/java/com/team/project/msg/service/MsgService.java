@@ -1,11 +1,13 @@
 package com.team.project.msg.service;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.team.project.msg.dto.MsgDto;
+import com.team.project.users.dto.UsersDto;
 
 public interface MsgService {
 	// 받은메시지 목록 메소드
@@ -24,4 +26,6 @@ public interface MsgService {
 	public Map<String, Object> checkNewMsg(HttpServletRequest request);
 	// 메시지 보관함에 저장
 	public void checkSaved(HttpServletRequest request);
+	// idlist 받아오기
+	public List<UsersDto> getIdList(HttpServletRequest request);
 }

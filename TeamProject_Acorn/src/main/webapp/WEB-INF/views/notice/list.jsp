@@ -1,33 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/views/notice/list.jsp</title>
-<jsp:include page="../include/resource.jsp"/>
+<title>/notice/list.jsp</title>
+<jsp:include page="../include/resource.jsp" />
+<style>
+	h1{color: #6799FF;}
+	thead{background-color: #B2CCFF;}
+</style>
 </head>
 <body>
 <jsp:include page="../include/navbar.jsp">
 	<jsp:param value="notice" name="category"/>
 </jsp:include>
+
 <div class="container">
 	<ol class="breadcrumb">
 		<li><a href="list.go">글목록 보기</a></li>
+		
 		<c:if test="${not empty isAdmin }">
 			<li><a href="insertform.go">새글 작성</a></li>	
 		</c:if>
 	</ol>
-	<c:if test="${not empty keyword }">
-		<p>
-			<strong>${keyword }</strong> 라는 검색어로 
-			<strong>${totalRow }</strong> 개의 글이 검색 
-			되었습니다.
-		</p>
-	</c:if>
-	<h1>공지사항 목록 입니다.</h1>
-	<table class="table table-striped table-condensed">
+	
+	<h1>공지사항</h1>
+	<p>각종 공지사항을 확인하실 수 있는 게시판 입니다.</p> <br/>
+	
+	<c:choose>
+		<c:when test="${not empty keyword }">
+			<p>
+				키워드 (<strong>${keyword }</strong>)에 해당하는 게시물 목록입니다.</br>
+				총 <strong>${totalRow }</strong>개 게시물이 검색되었습니다.
+			</p>
+		</c:when>
+		<c:otherwise>
+			<p>총 <strong>${totalRow }</strong>개 게시물이 존재합니다.</p>
+		</c:otherwise>
+	</c:choose>
+	
+	<table class="table table-striped table-hover">
 		<colgroup>
 			<col class="col-xs-1"/>
 			<col class="col-xs-2"/>
@@ -101,14 +116,15 @@
 		</ul>
 	</div>
 		<form action="list.go" method="get">
-		<label for="condition">검색조건</label>
+		<label for="condition">검색하기</label>
 		<select name="condition" id="condition">
 			<option value="title"<c:if test="${condition eq 'title' }">selected</c:if>>제목</option>
 			<option value="writer"<c:if test="${condition eq 'writer' }">selected</c:if> >작성자</option>
 		</select>
-		<input type="text" name="keyword" id="keyword" placeholder="검색어 .." value="${keyword }"/>
+		<input type="text" name="keyword" id="keyword" placeholder="키워드를 입력하세요" value="${keyword }"/>
 		<button type="submit">검색</button>
 	</form>
 </div>
+<jsp:include page="../include/msgbtn.jsp"/>
 </body>
 </html>

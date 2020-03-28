@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,7 @@
 <title>/views/suggest/list.jsp</title>
 <jsp:include page="../include/resource.jsp"/>
 <style>
+	h1{color: #6799FF;}
 	.comments ul{
 		padding: 0;
 		margin: 0;
@@ -35,6 +37,7 @@
 	.comments form button{
 		width: 15%;
 		height: 100px;
+		color: #B2CCFF;
 	}
 	/* 수정폼을 일단 숨긴다.*/
 	.suggest form{
@@ -49,13 +52,20 @@
 		border-radius: 50%;
 	}
 </style>
+</head>
+<body>
 <jsp:include page="../include/navbar.jsp">
 	<jsp:param value="suggest" name="category"/>
 </jsp:include>
-</head>
-<body>
+
 <div class="container">
-	<h2>건의 사항 게시판 입니다.</h2>
+	<ol class="breadcrumb">
+		<li><a href="list.go">전체 목록 보기</a></li>
+	</ol>
+
+	<h1>건의사항 게시판</h1>
+	<p>게시판 운영 목적과 맞지 않는 게시물은 관리자 권한으로 삭제될 수 있습니다.</p> <br/>
+	
 	<div class="comments">
 		<ul>
 		<c:forEach items="${list }" var="tmp">
@@ -199,9 +209,8 @@
 	});
 	
 	function deleteConfirm(num){
-		var isDelete=confirm("글을 삭제 하시겠습니까?");
+		var isDelete=confirm("확인 버튼을 누르면 해당 게시물이 삭제됩니다.");
 		if(isDelete){
-			// ajax 요청
 			$.ajax({
 				url:"delete.go",
 				method:"post",
@@ -211,5 +220,6 @@
 		}
 	}
 </script>
+<jsp:include page="../include/msgbtn.jsp"/>
 </body>
 </html>

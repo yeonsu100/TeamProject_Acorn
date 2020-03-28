@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.team.project.msg.dao.MsgDao;
 import com.team.project.msg.dto.MsgDto;
+import com.team.project.users.dto.UsersDto;
 
 @Service
 public class MsgServiceImpl implements MsgService{
@@ -136,6 +137,18 @@ public class MsgServiceImpl implements MsgService{
 		map.put("count", unreadCount);
 		return map;
 	}
+	
+	@Override
+	public List<UsersDto> getIdList(HttpServletRequest request) {
+		MsgDto dto=new MsgDto();
+		//로그인된 아이디
+		String id=(String)request.getSession().getAttribute("id");
+		String id2=request.getParameter("idkey");
+		dto.setIdSend(id);
+		dto.setIdRec(id2);
+		List<UsersDto> list=dao.getIdList(dto);
+		return list;
+	}
 
 	@Override
 	public void checkSaved(HttpServletRequest request) {
@@ -225,4 +238,5 @@ public class MsgServiceImpl implements MsgService{
 		}
 		return pageNum;
 	}
+
 }

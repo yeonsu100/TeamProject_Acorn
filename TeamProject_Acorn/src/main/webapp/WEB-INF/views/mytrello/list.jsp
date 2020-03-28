@@ -7,9 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>/mytrello/list.jsp</title>
-<jsp:include page="../include/resource.jsp"></jsp:include>
+<jsp:include page="../include/resource.jsp" />
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"> </script>
 <style>
+	h1{color: #6799FF;}
 	.txtb{
 		width: 100%;
 		border: none;
@@ -19,25 +20,22 @@
 		outline: none;
 		font-size: 18px;
 	}
-	
 	h3{
 		margin: 10px 0;
 	}
-	
 	.task{
 		width: 100%;
-		background: rgba(255, 255, 255, 0.5);
+		background: #D9E5FF;
 		padding: 18px;
 		margin: 6px 0;
 		overflow: hidden;
 	}
-	
 	.task i{
 		float: right;
+		color: #6799FF;
 		margin-left: 20px;
 		cursor: pointer;
 	}
-	
 	.comp .task{
 		background: rgba(0, 0, 0, 0.5);
 		color: #fff;
@@ -51,6 +49,10 @@
 </jsp:include>
 
 <div class="container">
+	<ol class="breadcrumb">
+		<li><a href="list.go">오늘의 할 일</a></li>
+	</ol>
+
 	<input type="text" class="txtb" placeholder="할 일 입력" />
 	<div class="notcomp">
 		<h3>해야할 업무 목록</h3>
@@ -91,6 +93,6 @@
 		}
 	});
 </script>
-
+<jsp:include page="../include/msgbtn.jsp"/>
 </body>
 </html>
