@@ -67,10 +67,10 @@
 		</tbody>
 	</table>
 	
-	<a href="sendform.go" class="btn btn-primary" style="position:fixed; bottom:85px; left:10px;">메시지 보내기</a>
+	<a href="sendform.go" class="btn btn-primary">메시지 보내기</a>
 	
-	<nav aria-label="Search pages" style="position:fixed; bottom:20px; left:10px;">
-		<ul class="pagination">
+	<nav aria-label="Search pages">
+		<ul class="pagination pagination-sm" style="text-align:right;">
 		<c:choose>
 			<c:when test="${pageType ne null }">
 				<c:choose>
