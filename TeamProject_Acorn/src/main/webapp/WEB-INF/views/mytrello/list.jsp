@@ -49,9 +49,7 @@
 </jsp:include>
 
 <div class="container">
-	<ol class="breadcrumb">
-		<li><a href="list.go">오늘의 할 일</a></li>
-	</ol>
+
 
 	<input type="text" class="txtb" placeholder="할 일 입력" />
 	<div class="notcomp">

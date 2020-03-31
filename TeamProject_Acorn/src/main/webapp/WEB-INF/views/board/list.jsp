@@ -14,14 +14,10 @@
 	<jsp:param value="board" name="category"/>
 </jsp:include>
 <style>
-	h1{color: #6799FF;}
-	thead{background-color: #B2CCFF;}
+	h1{color: #F1648A;}
+	thead{background-color: #F1A4BA;}
 </style>
 <div class="container">
-	<ol class="breadcrumb">
-		<li><a href="${pageContext.request.contextPath }/board/list.go">목록</a></li>
-		<li><a href="insertform.go">새글</a></li>	
-	</ol>
 	<c:if test="${not empty keyword }">
 		<p>
 			<strong>${keyword }</strong> 라는 검색어로 
@@ -57,7 +53,7 @@
 					<c:choose>
 						<c:when test="${tmp.countComment gt 0}">
 							<a href="detail.go?num=${tmp.num }&pageNum=${pageNum}&condition=${condition }&keyword=${encodedKeyword }" style="color:black">${tmp.title }</a>
-							<a>(<a style="color:#ff0000">${tmp.countComment}</a>)</a>
+							<a>(<a style="color:#F1648A">${tmp.countComment}</a>)</a>
 						</c:when>
 						<c:otherwise>
 							<a href="detail.go?num=${tmp.num }&pageNum=${pageNum}&condition=${condition }&keyword=${encodedKeyword }" style="color:black">${tmp.title }</a>

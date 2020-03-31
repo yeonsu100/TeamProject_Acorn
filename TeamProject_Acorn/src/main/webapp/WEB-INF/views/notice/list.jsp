@@ -19,13 +19,7 @@
 </jsp:include>
 
 <div class="container">
-	<ol class="breadcrumb">
-		<li><a href="list.go">글목록 보기</a></li>
-		
-		<c:if test="${not empty isAdmin }">
-			<li><a href="insertform.go">새글 작성</a></li>	
-		</c:if>
-	</ol>
+
 	
 	<h1>공지사항</h1>
 	<p>각종 공지사항을 확인하실 수 있는 게시판 입니다.</p> <br/>
