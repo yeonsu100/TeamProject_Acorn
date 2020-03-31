@@ -2,27 +2,25 @@ package com.team.project.msg.dto;
 
 public class MsgDto {
 	
-	private int num;
-	private String idSend;
-	private String idRec;
-	private String title;
-	private String content;
-	private String sendDate;
-	private String readDate;
-	private String sendDel;
-	private String recDel;
-	private String saved;
-	private int startRowNum;
-	private int endRowNum;
-	private int prevNum; //이전글의 글번호를 담을 필드
-	private int nextNum; //다음글의 글번호를 담을 필드
+	private int num;		//메시지 번호(외부노출x)
+	private String idSend;	//보낸사람
+	private String idRec;	//받는사람
+	private String title;	//제목
+	private String content;	//내용
+	private String sendDate;//보낸시간
+	private String readDate;//읽은시간
+	private String sendDel;	//보낸메시지에서 삭제여부
+	private String recDel;	//받은메시지에서 삭제여부
+	private String saved;	//보관여부
+	private int startRowNum;//리스트페이지 첫글번호
+	private int endRowNum;	//리스트페이지 끝글번호
 		
 	public MsgDto() {}
 
 	
 
 	public MsgDto(int num, String idSend, String idRec, String title, String content, String sendDate, String readDate,
-			String sendDel, String recDel, String saved, int startRowNum, int endRowNum, int prevNum, int nextNum) {
+			String sendDel, String recDel, String saved, int startRowNum, int endRowNum) {
 		super();
 		this.num = num;
 		this.idSend = idSend;
@@ -36,8 +34,6 @@ public class MsgDto {
 		this.saved = saved;
 		this.startRowNum = startRowNum;
 		this.endRowNum = endRowNum;
-		this.prevNum = prevNum;
-		this.nextNum = nextNum;
 	}
 
 
@@ -112,22 +108,6 @@ public class MsgDto {
 
 	public void setEndRowNum(int endRowNum) {
 		this.endRowNum = endRowNum;
-	}
-
-	public int getPrevNum() {
-		return prevNum;
-	}
-
-	public void setPrevNum(int prevNum) {
-		this.prevNum = prevNum;
-	}
-
-	public int getNextNum() {
-		return nextNum;
-	}
-
-	public void setNextNum(int nextNum) {
-		this.nextNum = nextNum;
 	}
 
 	public String getSendDel() {

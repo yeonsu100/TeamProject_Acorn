@@ -19,7 +19,7 @@
 <script type="text/javascript">
 function popupOpen(){
 	var popUrl = "${pageContext.request.contextPath }/msg/list.go";
-	var popOption = "width=560, height=600, resizable=no, scrollbars=yes, status=no;";
+	var popOption = "width=560, height=580, resizable=no, scrollbars=yes, status=no;";
 		window.open(popUrl,"쪽지함",popOption);
 }
 </script> 
