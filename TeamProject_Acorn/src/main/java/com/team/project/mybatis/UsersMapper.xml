@@ -55,7 +55,7 @@
 		where pnum=#{pnum}
 	</select>
 	<select id="getData" parameterType="String" resultType="usersDto">
-		SELECT e.empno, e.ename, e.hdate, e.pnum, u.userid, u.email, u.profile
+		SELECT e.empno, e.ename, TO_CHAR(hdate, 'YYYY-MM-DD') AS hdate, e.pnum, u.userid, u.email, u.profile
 		FROM T_user u, T_emp e
 		WHERE e.empno=u.empno
 		AND u.userid=#{id}

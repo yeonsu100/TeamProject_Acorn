@@ -21,7 +21,6 @@
 </style>
 </head>
 <body>
-<jsp:include page="msgnav.jsp"/>
 <script>
 
 
