@@ -19,9 +19,9 @@ public class MsgServiceImpl implements MsgService{
 	@Autowired
 	private MsgDao dao;
 	
-	//한 페이지에 나타낼 row 의 갯수
-	final int PAGE_ROW_COUNT=7;
-	//하단 디스플레이 페이지 갯수
+	//페이지당 글 개수
+	final int PAGE_ROW_COUNT=5;
+	//한번에 보여지는 페이지개수
 	final int PAGE_DISPLAY_COUNT=5;
 
 	@Override
@@ -47,12 +47,10 @@ public class MsgServiceImpl implements MsgService{
 			totalRow=dao.getCount(dto);
 		}
 		
-		//보여줄 페이지의 번호
+		//목록 띄울때 처음 보여줄 페이지의 번호
 		int pageNum;
-		//보여줄 페이지의 번호가 파라미터로 전달되는지 읽어와 본다.	
 		String strPageNum=request.getParameter("pageNum");
-		if(strPageNum != null){//페이지 번호가 파라미터로 넘어온다면
-			//페이지 번호를 설정한다.
+		if(strPageNum != null){
 			pageNum=Integer.parseInt(strPageNum);
 		}else {
 			pageNum=1;

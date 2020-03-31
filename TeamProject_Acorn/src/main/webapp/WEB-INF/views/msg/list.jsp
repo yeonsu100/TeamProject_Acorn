@@ -8,31 +8,37 @@
 <meta charset="UTF-8">
 <title>/views/msg/list.jsp</title>
 <jsp:include page="../include/resource_boot4.jsp"/>
+<style>	
+.title {
+	display: inline-block;
+	max-width: 200px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+table {
+    table-layout: fixed;
+    word-wrap: break-word;
+}
+</style>
 </head>
 <body>
 <jsp:include page="msgnav.jsp"/>
-<div class="container">
-		
+<div class="container" style="font-size:14px;">
 	<table class="table table-striped table-condensed">
-		<colgroup>
-			<col class="col-xs-2"/>
-			<col class="col-xs-5"/>
-			<col class="col-xs-2"/>
-			<col class="col-xs-2"/>
-		</colgroup>
 		<thead>
 			<tr>
 				<c:choose>
 					<c:when test="${pageType eq 'sent' }">
-						<th>받는 사람</th>
+						<th style="width:20%">받는 사람</th>
 					</c:when>
 					<c:otherwise>
 						<th>보낸 사람</th>
 					</c:otherwise>
 				</c:choose>
-				<th>제목</th>
-				<th>보낸 시간</th>
-				<th>읽은 시간</th>
+				<th style="width:44%">제목</th>
+				<th style="width:18%">보낸 시간</th>
+				<th style="width:18%">읽은 시간</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -40,37 +46,39 @@
 			<tr>
 				<c:choose>
 					<c:when test="${pageType eq 'sent' }">
-						<td>${tmp.idRec }</td>
+						<td class="align-middle">${tmp.idRec }</td>
 					</c:when>
 					<c:otherwise>
-						<td>${tmp.idSend }</td>
+						<td class="align-middle">${tmp.idSend }</td>
 					</c:otherwise>
 				</c:choose>
 				<c:choose>
 					<c:when test="${pageType ne null }">
-						<td>
-							<a href="detail.go?num=${tmp.num }&pageNum=${pageNum}&pageType=${pageType}">${tmp.title }</a>
+						<td class="align-middle">
+							<a class="title" href="detail.go?num=${tmp.num }&pageNum=${pageNum}&pageType=${pageType}">${tmp.title }</a>
 						</td>
 					</c:when>
 					<c:otherwise>
-						<td>
-							<a href="detail.go?num=${tmp.num }&pageNum=${pageNum}">${tmp.title }</a>
+						<td class="align-middle">
+							<a class="title" href="detail.go?num=${tmp.num }&pageNum=${pageNum}">${tmp.title }</a>
 						</td>
 					</c:otherwise>
 				</c:choose>
 				
 				
-				<td>${tmp.sendDate}</td>
-				<td>${tmp.readDate}</td>
+				<td class="align-middle">${tmp.sendDate}</td>
+				<td class="align-middle">${tmp.readDate}</td>
 			</tr>
 		</c:forEach>
 		</tbody>
 	</table>
 	
-	<a href="sendform.go" class="btn btn-primary" style="position:fixed; bottom:85px; left:10px;">메시지 보내기</a>
-	
-	<nav aria-label="Search pages" style="position:fixed; bottom:20px; left:10px;">
-		<ul class="pagination">
+	<div class="text-right">
+		<a href="sendform.go" class="btn btn-primary btn-sm">메시지 보내기</a>
+	</div>
+		
+	<nav aria-label="Search pages">
+		<ul class="pagination pagination-sm">
 		<c:choose>
 			<c:when test="${pageType ne null }">
 				<c:choose>

@@ -38,6 +38,6 @@ public interface MsgDao {
 	public void sendMsg(MsgDto dto);
 	// 접속된 아이디의 안읽은 메시지 개수 읽어오기
 	public int getUnreadCount(MsgDto dto);
-	// idlist
+	// 메시지 보내기용 id list
 	public List<UsersDto> getIdList(MsgDto dto);
 }
