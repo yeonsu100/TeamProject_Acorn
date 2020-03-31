@@ -46,7 +46,7 @@ public class ExceptionController {
 		return mView;
 	}
 	
-	// admin main.go Exception 
+	// emp main.go Exception 
 	@ResponseStatus(HttpStatus.FORBIDDEN)
 	@ExceptionHandler(AdminAccessException.class)
 	public ModelAndView AccessForbidden() {

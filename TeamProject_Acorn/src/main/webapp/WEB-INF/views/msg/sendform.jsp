@@ -120,6 +120,7 @@ function setBtnState(){
 	</div>
 </div>
 <div class="container">
+	<h3>메시지 작성</h3>
 	<form action="send.go" method="post">
 		<div class="form-group">
 			<label for="idSend">보내는 사람</label>

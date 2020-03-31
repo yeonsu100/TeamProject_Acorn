@@ -84,9 +84,12 @@ public class SuggestServiceImpl implements SuggestService{
 	@Override
 	public void deleteSuggest(int num, HttpServletRequest request) {
 		String id=(String)request.getSession().getAttribute("id");
+		String admin=(String)request.getSession().getAttribute("isAdmin");
 		String sugId=suggestDao.getData(num).getSugId();
-		if(!id.equals(sugId)) {
+		if(!id.equals(sugId)&& admin==null) {
 			throw new CanNotDeleteException();
+		}else {
+			suggestDao.delete(num);
 		}
 		suggestDao.delete(num);
 	}

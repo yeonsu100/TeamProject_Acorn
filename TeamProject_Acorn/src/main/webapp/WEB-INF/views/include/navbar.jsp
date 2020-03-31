@@ -17,7 +17,7 @@
 		<a class="navbar-brand" href="${pageContext.request.contextPath }/home.go">
 			<div class="logo-image">
 	            <img src="${pageContext.request.contextPath }/resources/images/GitHub_Logo.png" class="logo-image">
-	      </div>
+            </div>
 		</a>
 		<button class="navbar-toggle"
 				data-toggle="collapse"
@@ -42,7 +42,7 @@
 				<a href="${pageContext.request.contextPath }/mytrello/list.go"><span class="glyphicon glyphicon-list"></span> 체크 리스트</a></li>
 			<c:if test="${not empty isAdmin}">
 				<li <c:if test="${param.category eq 'admin' }">class="active" </c:if>> 
-				<a href="${pageContext.request.contextPath }/admin/main.go"><span class="glyphicon glyphicon-wrench"></span> 관리</a></li>
+				<a href="${pageContext.request.contextPath }/emp/main.go"><span class="glyphicon glyphicon-wrench"></span> 관리</a></li>
 			</c:if>
 		</ul>
 		

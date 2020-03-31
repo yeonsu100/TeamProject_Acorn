@@ -30,13 +30,13 @@ public class UsersController {
 	private UsersService service;
 	
 	//(임시) admin창 요청처리
-	@RequestMapping("/admin/main")
+	@RequestMapping("/emp/main")
 	public String admin_main(HttpServletRequest request) {
 		String isAdmin=(String)request.getSession().getAttribute("isAdmin");
 		if(isAdmin==null) {
 			throw new AdminAccessException();
 		}
-		return "admin/main";
+		return "emp/main";
 	}
 	
 	//비밀번호 수정하기 폼 요청 처리
