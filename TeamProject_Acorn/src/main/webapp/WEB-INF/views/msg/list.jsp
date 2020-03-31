@@ -22,11 +22,24 @@ table {
 }
 </style>
 </head>
+<style>
+body{padding-top: 0px;}
+</style>
 <body>
 <jsp:include page="msgnav.jsp"/>
 <div class="container" style="font-size:14px;">
 	<table class="table table-striped table-condensed">
+<<<<<<< HEAD
 		<thead>
+=======
+		<colgroup>
+			<col class="col-xs-2"/>
+			<col class="col-xs-5"/>
+			<col class="col-xs-2"/>
+			<col class="col-xs-2"/>
+		</colgroup>
+		<thead class="thead-light">
+>>>>>>> refs/heads/master
 			<tr>
 				<c:choose>
 					<c:when test="${pageType eq 'sent' }">
@@ -73,11 +86,15 @@ table {
 		</tbody>
 	</table>
 	
+<<<<<<< HEAD
 	<div class="text-right">
 		<a href="sendform.go" class="btn btn-primary btn-sm">메시지 보내기</a>
 	</div>
 		
 	<nav aria-label="Search pages">
+=======
+	<div class="page-display">
+>>>>>>> refs/heads/master
 		<ul class="pagination pagination-sm">
 		<c:choose>
 			<c:when test="${pageType ne null }">
