@@ -203,8 +203,11 @@ public class BoardServiceImpl implements BoardService{
 	public void deleteContent(int num, HttpServletRequest request) {
 		String id=(String)request.getSession().getAttribute("id");
 		String writer=boardDao.getData(num).getWriter();
-		if(!id.equals(writer)) {
+		String admin=(String)request.getSession().getAttribute("isAdmin");
+		if(!id.equals(writer)&& admin==null) {
 			throw new CanNotDeleteException();
+		}else {
+			boardDao.delete(num);
 		}
 		boardDao.delete(num);
 	}
