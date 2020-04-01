@@ -4,13 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/emp/insert.jsp</title>
-<jsp:include page="../include/resource.jsp"/>
+<title>Insert title here</title>
 </head>
 <body>
 <div class="container">
 <script>
-	alert("${dto.ename } 사원의 데이터가 추가 되었습니다.");
+	alert("회원 가입 정보가 삭제되었습니다.");
 	location.href="${pageContext.request.contextPath }/emp/main.go";
 </script>	
 </div>
