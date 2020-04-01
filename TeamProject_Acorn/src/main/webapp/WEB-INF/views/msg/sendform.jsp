@@ -126,8 +126,17 @@ function setBtnState(){
 			<input class="form-control" type="text" value="${id }" disabled/>
 		</div>
 		<div class="form-group">
-			<label for="idRec">받는 사람</label>
-			<input class="form-control" type="text" name="idRec" id="idRec" readonly="readonly"/>
+			<c:choose>
+				<c:when test="${not empty requestScope.idRec}">
+					<label for="idRec">받는 사람</label>
+					<input class="form-control" type="text" name="idRec" readonly="readonly" value="${idRec }"/>
+				</c:when>
+				<c:otherwise>
+					<label for="idRec">받는 사람</label>
+					<input class="form-control" type="text" name="idRec" id="idRec" readonly="readonly"/>
+				</c:otherwise>
+			</c:choose>
+			
 		</div>
 		<div class="form-group">
 			<label for="title">제목</label>
