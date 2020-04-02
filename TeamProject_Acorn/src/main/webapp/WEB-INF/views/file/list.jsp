@@ -74,7 +74,7 @@
 		</tbody>
 	</table>
 	
-	<div>
+	<div class="text-right">
 		<button type="button" class="btn btn-outline-primary">
 			<a href="upload_form.go">파일 업로드하기</a></h3>
 		</button>
