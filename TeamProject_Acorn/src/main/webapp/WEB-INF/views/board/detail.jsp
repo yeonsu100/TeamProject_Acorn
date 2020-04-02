@@ -105,12 +105,16 @@
 		</tr>
 	</table>
 	<div class="contents">${dto.content }</div>
-	<c:if test="${dto.writer eq id }">
-		<a href="updateform.go?num=${dto.num }">
-			수정
-		</a>
+	<button type="button" class="btn btn-outline-primary">
+		<c:if test="${dto.writer eq id }">
+			<a href="updateform.go?num=${dto.num }">
+				수정
+			</a>
+	</button>
+	<button type="button" class="btn btn-outline-primary">
 		<a href="javascript:deleteConfirm()">삭제</a>
 	</c:if>
+	</button>
 	<div class="comments">
 		<ul>
 		<c:forEach items="${commentList }" var="tmp">
