@@ -49,7 +49,7 @@
 		<c:choose>
 			<c:when test="${empty sessionScope.id }">
 				<div class="pull-right">
-				<a class="btn btn-primary navbar-btn btn-xs" href="${pageContext.request.contextPath }/users/loginform.go">로그인</a>
+				<a class="btn btn-primary navbar-btn btn-xs" href="${pageContext.request.contextPath }/home.go">로그인</a>
 				<a class="btn btn-info navbar-btn btn-xs" href="${pageContext.request.contextPath }/users/signup_checkform.go">계정 생성</a>
 				</div>
 			</c:when>
@@ -57,7 +57,7 @@
 			<c:otherwise>
 				<p class="navbar-text pull-right"><i class="fas fa-user"></i>
 				사용자 (<strong><a class="navbar-link" href="${pageContext.request.contextPath }/users/info.go">${id }</a></strong>)님 환영합니다!  &nbsp;| &nbsp;  
-				<a class="navbar-link" href="${pageContext.request.contextPath }/users/logout.go"><i class="fas fa-door-open"></i> 로그아웃</a>
+				<a class="navbar-link" href="${pageContext.request.contextPath }/users/logout.go" onclick="return confirm('로그아웃 하시겠습니까?')"><i class="fas fa-door-open"></i> 로그아웃</a>
 				</p>
 			</c:otherwise>
 		</c:choose>

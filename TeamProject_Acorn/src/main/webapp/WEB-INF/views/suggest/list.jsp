@@ -80,14 +80,17 @@
 						<span>${tmp.sugId }</span>
 						<span>${tmp.regdate }</span>
 						<c:choose>
-							<c:when test="${not empty isAdmin }">
-								<a href="javascript:deleteConfirm(${tmp.num })">삭제</a>
-							</c:when>
 							<c:when test="${id eq tmp.sugId}">
 								<a href="javascript:" class="suggest-update-link">수정</a>&nbsp;&nbsp;
 								<a href="javascript:deleteConfirm(${tmp.num })">삭제</a>
 							</c:when>
+							<c:otherwise>
+								<c:if test="${not empty isAdmin }">
+									<a href="javascript:deleteConfirm(${tmp.num })">삭제</a>
+								</c:if>
+							</c:otherwise>
 						</c:choose>
+						
 					</dt>
 					<dd>
 						<pre>${tmp.sugContent }</pre>

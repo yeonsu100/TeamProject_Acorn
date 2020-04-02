@@ -12,8 +12,6 @@
 		display: none;
 	}
 </style>
-<script src="${pageContext.request.contextPath }/resources/js/jquery-3.3.1.js"></script>
-<script src="${pageContext.request.contextPath }/resources/js/bootstrap.js"></script>
 </head>
 <body>
 <jsp:include page="../include/navbar.jsp"/>
@@ -221,7 +219,7 @@
 			$("#email_notmatch").show();
 		}
 		//에러가 있다면 에러 메세지 띄우기
-		if(!isPwdEqual && isPwdDirty){
+		if(!isPwdEqual && isPwd2Dirty){
 			$("#pwd2_notequal").show();
 		}
 		if(!isPwdInput && isPwdDirty){

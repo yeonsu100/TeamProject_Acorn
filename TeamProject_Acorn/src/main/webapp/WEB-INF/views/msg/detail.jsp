@@ -29,6 +29,9 @@ table{
 				</tr>
 			</c:when>
 			<c:otherwise>
+				<form action="sendform.go" method="post" id="reply">
+					<input type="hidden" name="idRec" value="${dto.idSend }" />
+				</form>
 				<tr>
 					<th style="width:30%">보낸 사람</th>
 					<td style="width:70%">${dto.idSend}</td>
@@ -51,13 +54,13 @@ table{
 	<c:choose>
 		<c:when test="${pageType ne null}">
 			<div class="btn-group btn-group-sm float-right" role="group" aria-label="...">
-				<button class="btn btn-secondary" type="button" onclick="location.href='list.go?pageNum=${pageNum }&pageType=${pageType}'">목록보기</button>
+				<button class="btn btn-secondary" type="button" onclick="location.href='list.go?pageNum=${pageNum }&pageType=${pageType}'">목록</button>
 				<c:choose>
 					<c:when test="${pageType eq 'sent' }">
-						<button class="btn btn-secondary" type="button" onclick="location.href='javascript:deleteSendConfirm()'">삭제하기</button>
+						<button class="btn btn-secondary" type="button" onclick="location.href='javascript:deleteSendConfirm()'">삭제</button>
 					</c:when>
 					<c:when test="${pageType eq 'saved' }">
-						<button class="btn btn-secondary" type="button" onclick="location.href='javascript:deleteSavedConfirm()'">삭제하기</button>
+						<button class="btn btn-secondary" type="button" onclick="location.href='javascript:deleteSavedConfirm()'">삭제</button>
 					</c:when>
 				</c:choose>
 			</div>
@@ -68,10 +71,10 @@ table{
 				<input type="hidden" name="pageNum" value="${pageNum }" />
 			</form>
 			<div class="btn-group btn-group-sm float-right" role="group" aria-label="...">
-				<button class="btn btn-secondary" type="button" onclick="location.href='list.go?pageNum=${pageNum }'">목록보기</button>
-				<button class="btn btn-secondary" type="button" onclick="location.href='javascript:deleteRecConfirm()'">삭제하기</button>
+				<button class="btn btn-secondary" type="button" onclick="location.href='list.go?pageNum=${pageNum }'">목록</button>
+				<button class="btn btn-secondary" type="button" onclick="location.href='javascript:deleteRecConfirm()'">삭제</button>
 				<c:if test="${empty dto.saved }">
-					<button class="btn btn-secondary" type="submit" form="saveforms" value="submit">보관하기</button>
+					<button class="btn btn-secondary" type="submit" form="saveforms" value="submit">보관</button>
 				</c:if>
 			</div>
 		</c:otherwise>

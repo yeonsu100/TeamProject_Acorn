@@ -11,13 +11,14 @@ public class UsersDto {
 	private String profile;
 	private String isadmin;
 	private String newPwd;
+	private int startRowNum; // 시작 번호를 담을 필드
+	private int endRowNum;   // 끝 번호를 담을 필드
 	
 	//디폴트 생성자
 	public UsersDto() {}
 
-	
 	public UsersDto(int empno, String ename, String hdate, String pnum, String userid, String pwd, String email,
-			String profile, String isadmin, String newPwd) {
+			String profile, String isadmin, String newPwd, int startRowNum, int endRowNum) {
 		super();
 		this.empno = empno;
 		this.ename = ename;
@@ -29,8 +30,27 @@ public class UsersDto {
 		this.profile = profile;
 		this.isadmin = isadmin;
 		this.newPwd = newPwd;
+		this.startRowNum = startRowNum;
+		this.endRowNum = endRowNum;
 	}
 
+
+
+	public int getStartRowNum() {
+		return startRowNum;
+	}
+
+	public void setStartRowNum(int startRowNum) {
+		this.startRowNum = startRowNum;
+	}
+
+	public int getEndRowNum() {
+		return endRowNum;
+	}
+
+	public void setEndRowNum(int endRowNum) {
+		this.endRowNum = endRowNum;
+	}
 
 	public String getNewPwd() {
 		return newPwd;
