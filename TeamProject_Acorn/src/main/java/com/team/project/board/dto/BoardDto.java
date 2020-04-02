@@ -1,14 +1,14 @@
 package com.team.project.board.dto;
 
 public class BoardDto {
-	private int num;
-	private String writer;
-	private String title;
-	private String content;
-	private int viewCount;
-	private String regdate;
-	private int startRowNum;
-	private int endRowNum;
+	private int num; //글번호
+	private String writer; //작성자
+	private String title; //제목
+	private String content; //내용
+	private int viewCount; //조회수
+	private String regdate; //작성일
+	private int startRowNum; //시작페이지
+	private int endRowNum; //마지막페이지
 	private int prevNum; //이전글의 글번호를 담을 필드
 	private int nextNum; //다음글의 글번호를 담을 필드
 	private int countComment; //댓글 수를 담을 필드
