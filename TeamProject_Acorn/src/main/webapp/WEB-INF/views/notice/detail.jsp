@@ -114,6 +114,15 @@
 	</table>
 	<div class="contents">${dto.content }</div>
 </div>
+<div>
+	<button type="button" class="btn btn-outline-primary">
+		<a href="updateform.go?num=${dto.num }">수정</a>
+	</button>
+	<button type="button" class="btn btn-outline-primary">
+		<a href="javascript:deleteConfirm()">삭제</a>
+	</button>
+</div>
+
 <script>
 	function deleteConfirm(){
 		var isDelete=confirm("글을 삭제 하시겠습니까?");

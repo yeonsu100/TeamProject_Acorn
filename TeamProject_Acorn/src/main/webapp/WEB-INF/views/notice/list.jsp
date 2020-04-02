@@ -67,6 +67,11 @@
 		</c:forEach>
 		</tbody>
 	</table>
+	<div>
+		<button type="button" class="btn btn-outline-primary">
+			<a href="insertform.go">공지사항 작성</a>
+		</button>
+	</div>
 	<div class="page-display">
 		<ul class="pagination pagination-sm">
 		<c:choose>

@@ -74,7 +74,11 @@
 		</tbody>
 	</table>
 	
-	<h3><a href="upload_form.go">파일 업로드하기</a></h3>
+	<div>
+		<button type="button" class="btn btn-outline-primary">
+			<a href="upload_form.go">파일 업로드하기</a></h3>
+		</button>
+	</div>
 	
 	<div class="page-display pager">
 		<ul class="pagination pagination-sm">
