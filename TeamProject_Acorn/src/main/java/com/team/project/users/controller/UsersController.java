@@ -29,14 +29,15 @@ public class UsersController {
 	@Autowired
 	private UsersService service;
 	
-	//(임시) admin창 요청처리
 	@RequestMapping("/emp/main")
-	public String admin_main(HttpServletRequest request) {
+	public ModelAndView admin_main(ModelAndView mView, HttpServletRequest request) {
 		String isAdmin=(String)request.getSession().getAttribute("isAdmin");
 		if(isAdmin==null) {
 			throw new AdminAccessException();
 		}
-		return "emp/main";
+		service.empMainList(request);
+		mView.setViewName("emp/main");
+		return mView;
 	}
 	
 	//비밀번호 수정하기 폼 요청 처리
@@ -124,14 +125,6 @@ public class UsersController {
 		Map<String, Object> map=service.isExistId(inputId);
 		return map;
 	}
-	
-//	//중복 전화번호 여부 체크
-//	@ResponseBody
-//	@RequestMapping("/emp/checkpnum")
-//	public Map<String, Object> checkpnum(@RequestParam String inputPnum){
-//		Map<String, Object> map=service.isSamePnum(inputPnum);
-//		return map;
-//	}
 	
 	//사원 추가 요청 처리
 	@RequestMapping(value = "/emp/insert", method = RequestMethod.POST)
@@ -252,5 +245,21 @@ public class UsersController {
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/home.go";
+	}
+	
+	@RequestMapping("/users/delete")
+	public ModelAndView userDelete(HttpServletRequest request,
+			ModelAndView mView) {		
+		service.deleteUser(request);
+		mView.setViewName("users/delete");
+		return mView;
+	}
+	
+	@RequestMapping("/emp/delete")
+	public ModelAndView empDelete(HttpServletRequest request,
+			ModelAndView mView) {		
+		service.deleteEmp(request);
+		mView.setViewName("emp/delete");
+		return mView;
 	}
 }
