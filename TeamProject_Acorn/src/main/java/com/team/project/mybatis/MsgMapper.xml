@@ -75,7 +75,9 @@
 		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
 	<select id="getData" parameterType="msgDto" resultType="msgDto">
-		SELECT num, idSend, idRec, title, content, sendDate, readDate, saved
+		SELECT num, idSend, idRec, title, content, 
+			TO_CHAR(sendDate, 'YY/MM/DD HH24:MM:SS') AS sendDate, 
+			TO_CHAR(readDate, 'YY/MM/DD HH24:MM:SS') AS readDate, saved
 		FROM T_msg
 		WHERE num=#{num}		
 	</select>
