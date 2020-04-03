@@ -171,15 +171,15 @@
 							<!-- 덧글 대상 -->
 							<input type="hidden" name="target_id" value="${tmp.writer }" />
 							<input type="hidden" name="comment_group" value="${tmp.comment_group }" />
-							<textarea name="content"><c:if test="${empty id }">로그인이 필요합니다.</c:if></textarea>
-							<button type="submit">등록</button>
+							<textarea name="content" id="content"><c:if test="${empty id }">로그인이 필요합니다.</c:if></textarea>
+							<button type="submit" disabled id="insertBtn" class="btn btn-primary">등록</button>
 						</form>	
 						<!-- 로그인한 아이디와 댓글의 작성자와 같으면 수정폼 출력 -->				
 						<c:if test="${id eq tmp.writer }">
 							<form class="comment-update-form" action="comment_update.go" method="post">
 								<input type="hidden" name="num" value="${tmp.num }" />
-								<textarea name="content">${tmp.content }</textarea>
-								<button type="submit">수정</button>
+								<textarea name="updatecontent">${tmp.content }</textarea>
+								<button type="submit" disabled>수정</button>
 							</form>
 						</c:if>
 					</li>				
@@ -332,7 +332,17 @@
 			}
 		}
 	});
-
+	
+	//댓글 미 입력시 미제출
+	$("#content").on("input",function(){
+		var insertreply=$("#content").val();
+		if(insertreply.length!=0){
+			$("#insertBtn").removeAttr("disabled");
+		}else{
+			$("#insertBtn").attr("disabled","disabled");
+		}
+	});
+	
 	//답글 달기 링크를 클릭했을때 실행할 함수 등록
 	$(".comment .reply_link").click(function(){
 		$(this)
