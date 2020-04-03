@@ -68,9 +68,7 @@
 	</table>
 	
 	<div class="text-right">
-		<button type="button" class="btn btn-success">
-			<a href="insertform.go">새글 작성</a>
-		</button>
+			<a href="insertform.go" class="btn btn-primary">글쓰기  &nbsp;<span class="glyphicon glyphicon-pencil"/></a>
 	</div>
 	
 	<div class="page-display">
