@@ -4,19 +4,29 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 <style>
+	.navbar-inverse, .navbar-inverse > li > a:hover {
+    	background-color: #F1BDCD;
+	}
 	.logo-image{
-		width: 32px;
-	    height: 32px;
+		width: 135px;
+		height: 22px;
 	    visibility: visible;
 	    border-radius: 20%;
 	}
+	.nav li{
+		color: #F1648A;
+	}
+	.nav span{
+		color: #F1648A;
+	}
+
 </style>
-<div class="navbar navbar-default navbar-fixed-top ">		
+<div class="navbar navbar-inverse navbar-fixed-top ">	
 	<div class="container">
 	<div class="navbar-header">
 		<a class="navbar-brand" href="${pageContext.request.contextPath }/home.go">
 			<div class="logo-image">
-	            <img src="${pageContext.request.contextPath }/resources/images/bana_logo_img04.png" class="logo-image">
+	            <img src="${pageContext.request.contextPath }/resources/images/bana_logo_1.png" class="logo-image" >
             </div>
 		</a>
 		<button class="navbar-toggle"

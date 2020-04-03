@@ -67,7 +67,7 @@
 		</c:forEach>
 		</tbody>
 	</table>
-	<div>
+	<div class="text-right">
 		<button type="button" class="btn btn-outline-primary">
 			<a href="insertform.go">공지사항 작성</a>
 		</button>
