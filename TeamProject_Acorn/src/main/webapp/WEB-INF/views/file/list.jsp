@@ -10,7 +10,7 @@
 <title>/file/list.jsp</title>
 <jsp:include page="../include/resource.jsp" />
 <style>
-	h1{color: #6799FF;}
+	h1{color: #F1648A;}
 	thead{background-color: #B2CCFF;}
 </style>
 </head>
@@ -20,7 +20,6 @@
 </jsp:include>
 
 <div class="container">
-
 	<h1>자료실</h1>
 	<p>자료게시판 운영 목적과 맞지 않는 게시물은 관리자 권한으로 삭제될 수 있습니다.</p> <br/>
 	
