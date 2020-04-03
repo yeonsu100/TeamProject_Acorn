@@ -67,10 +67,8 @@
 		</tbody>
 	</table>
 	
-	<div>
-		<button type="button" class="btn btn-outline-primary">
-			<a href="insertform.go">새글 작성</a>
-		</button>
+	<div class="text-right">
+			<a href="insertform.go" class="btn btn-primary">글쓰기  &nbsp;<span class="glyphicon glyphicon-pencil"/></a>
 	</div>
 	
 	<div class="page-display">
@@ -128,6 +126,7 @@
 		<input type="text" name="keyword" 
 			placeholder="검색어 입력..." value="${keyword }"/>
 		<button type="submit">검색</button>
+		<jsp:include page="../include/footer.jsp"/>
 	</form>
 </div>
 <jsp:include page="../include/msgbtn.jsp"/>
