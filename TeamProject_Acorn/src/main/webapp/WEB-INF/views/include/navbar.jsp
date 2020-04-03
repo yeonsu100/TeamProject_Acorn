@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 <style>
 	.logo-image{
-		width: 78px;
+		width: 32px;
 	    height: 32px;
 	    visibility: visible;
 	    border-radius: 20%;
@@ -16,7 +16,7 @@
 	<div class="navbar-header">
 		<a class="navbar-brand" href="${pageContext.request.contextPath }/home.go">
 			<div class="logo-image">
-	            <img src="${pageContext.request.contextPath }/resources/images/GitHub_Logo.png" class="logo-image">
+	            <img src="${pageContext.request.contextPath }/resources/images/bana_logo_img04.png" class="logo-image">
             </div>
 		</a>
 		<button class="navbar-toggle"
