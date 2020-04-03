@@ -59,9 +59,6 @@
 </jsp:include>
 
 <div class="container">
-	<ol class="breadcrumb">
-		<li><a href="list.go">전체 목록 보기</a></li>
-	</ol>
 
 	<h1>건의사항 게시판</h1>
 	<p>게시판 운영 목적과 맞지 않는 게시물은 관리자 권한으로 삭제될 수 있습니다.</p> <br/>
@@ -202,8 +199,6 @@
 		// 폼 제출을 막아준다.
 		return false;
 	});
-	
-	var isInsertSug=false;
 	
 	$("#insert-sugContent").on("input",function(){
 		var insertSug=$("#insert-sugContent").val();

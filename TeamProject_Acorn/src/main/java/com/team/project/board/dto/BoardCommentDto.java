@@ -1,8 +1,8 @@
 package com.team.project.board.dto;
 
 public class BoardCommentDto {
-	private int num;
-	private String writer;
+	private int num; //댓글 번호
+	private String writer; //댓글 작성자
 	private String content; //댓글 내용
 	private String target_id; //댓글 대상자의 아이디
 	private int ref_group; //댓글의 그룹번호 (원글의 글번호가 댓글의 그룹번호)

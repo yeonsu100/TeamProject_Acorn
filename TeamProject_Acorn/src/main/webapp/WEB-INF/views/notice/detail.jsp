@@ -76,17 +76,7 @@
 	<jsp:param value="notice" name="category"/>
 </jsp:include>
 <div class="container">
-	<ul class="breadcrumb">
-		<li><a href="list.go">글목록 보기</a></li>
-		<c:if test="${not empty isAdmin }">
-			<li><a href="insertform.go">새글 작성</a></li>	
-		</c:if>
-		<c:if test="${dto.writer eq id }">
-			<li><a href="updateform.go?num=${dto.num }">글 수정하기</a></li>
-			<li><a href="javascript:deleteConfirm()">삭제</a></li>
-		</c:if>
-		<li>글 상세보기</li>
-	</ul>
+
 	<c:if test="${not empty keyword }">
 		<p> <strong>${keyword }</strong> 검색어로 검색된
 		결과 자세히 보기 입니다.</p>
@@ -124,6 +114,15 @@
 	</table>
 	<div class="contents">${dto.content }</div>
 </div>
+<div>
+	<button type="button" class="btn btn-outline-primary">
+		<a href="updateform.go?num=${dto.num }">수정</a>
+	</button>
+	<button type="button" class="btn btn-outline-primary">
+		<a href="javascript:deleteConfirm()">삭제</a>
+	</button>
+</div>
+
 <script>
 	function deleteConfirm(){
 		var isDelete=confirm("글을 삭제 하시겠습니까?");
