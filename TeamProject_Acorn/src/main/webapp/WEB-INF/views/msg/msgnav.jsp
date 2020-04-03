@@ -5,6 +5,9 @@
 
 
 <style>
+.nav-tabs{
+	padding-left: 1rem;
+}
 .nav-link{
 	color:black;
 }

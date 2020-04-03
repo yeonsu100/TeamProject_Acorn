@@ -22,7 +22,7 @@ public class MsgServiceImpl implements MsgService{
 	//페이지당 글 개수
 	final int PAGE_ROW_COUNT=7;
 	//한번에 보여지는 페이지개수
-	final int PAGE_DISPLAY_COUNT=3;
+	final int PAGE_DISPLAY_COUNT=5;
 
 	@Override
 	public void list(HttpServletRequest request) {

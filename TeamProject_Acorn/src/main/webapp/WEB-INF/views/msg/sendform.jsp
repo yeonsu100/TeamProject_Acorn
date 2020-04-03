@@ -18,6 +18,9 @@
 	.selected{
 		background-color:#ccc;
 	}
+	#idRec{
+		background-color:#fff;
+	}
 </style>
 </head>
 <body>
