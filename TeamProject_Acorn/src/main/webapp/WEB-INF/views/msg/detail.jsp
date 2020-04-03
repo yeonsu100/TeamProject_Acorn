@@ -16,6 +16,15 @@ table{
 	font-size:14px;
 	padding-top:20px;
 }
+.btn-group .btn-secondary{
+	background-color:#F1A4BA;
+	border:0;
+	outline:0;
+}
+.table-bordered th,
+.table-bordered td {
+  	border: 1px solid #F1A4BA !important;
+}
 </style>
 </head>
 <body>
