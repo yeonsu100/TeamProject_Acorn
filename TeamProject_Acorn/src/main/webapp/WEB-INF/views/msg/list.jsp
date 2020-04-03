@@ -20,6 +20,47 @@ table {
     table-layout: fixed;
     word-wrap: break-word;
 }
+.table th,
+.table td {
+	padding: 0.3rem;
+	border-top: 1px solid #F1A4BA;
+}
+.table thead th {
+  	border-bottom: 2px solid #F1A4BA;
+}
+.table td a{
+	color:#212529;
+}
+.table-hover tbody tr:hover {
+	background-color: #f5d7e0;
+}
+.btn-primary{
+	background-color:#F1648A;
+	border:0;
+	outline:0;
+}
+.btn-primary:hover{
+	background-color:#F1A4BA;
+	border:0;
+	outline:0;
+}
+.page-link {
+  color: #F1648A;
+  border: 1px solid #F1A4BA;
+}
+.page-link:hover {
+  color: #F1648A;
+  background-color: #F1A4BA;
+  border-color: #F1A4BA;
+}
+.page-item.active .page-link {
+  color: #fff;
+  background-color: #F1648A;
+  border-color: #F1A4BA;
+}
+.page-item.disabled .page-link {
+  border-color: #F1A4BA;
+}
 </style>
 </head>
 <style>
@@ -28,7 +69,7 @@ body{padding-top: 0px;}
 <body>
 <jsp:include page="msgnav.jsp"/>
 <div class="container" style="font-size:14px;">
-	<table class="table table-striped table-condensed">
+	<table class="table table-hover">
 		<thead>
 			<tr>
 				<c:choose>

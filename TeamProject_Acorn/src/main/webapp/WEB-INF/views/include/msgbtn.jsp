@@ -15,6 +15,12 @@
 	     justify-content: center;
 		 align-content: center;
 	 }
+	 .fa-comment-dots{
+	 	color:#F1648A
+	 }
+	 .fa-comment-dots:hover{
+	 	color:#F1A4BA
+	 }
 </style>
 <script type="text/javascript">
 function popupOpen(){
