@@ -345,6 +345,8 @@
 			location.href="delete.go?num=${dto.num}";
 		}
 	}
+	<jsp:include page="../include/footer.jsp"></jsp:include>
+	<jsp:include page="../include/msgbtn.jsp"></jsp:include>
 </script>
 </body>
 </html>

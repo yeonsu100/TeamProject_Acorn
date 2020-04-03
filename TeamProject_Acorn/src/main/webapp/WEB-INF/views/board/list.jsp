@@ -68,7 +68,7 @@
 	</table>
 	
 	<div class="text-right">
-		<button type="button" class="btn btn-outline-primary">
+		<button type="button" class="btn btn-success">
 			<a href="insertform.go">새글 작성</a>
 		</button>
 	</div>
@@ -128,7 +128,7 @@
 		<input type="text" name="keyword" 
 			placeholder="검색어 입력..." value="${keyword }"/>
 		<button type="submit">검색</button>
-		<jsp:include page="../include/footer.jsp"></jsp:include>
+		<jsp:include page="../include/footer.jsp"/>
 	</form>
 </div>
 <jsp:include page="../include/msgbtn.jsp"/>
