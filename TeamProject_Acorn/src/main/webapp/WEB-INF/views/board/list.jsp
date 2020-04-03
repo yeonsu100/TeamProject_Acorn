@@ -7,12 +7,14 @@
 <head>
 <meta charset="UTF-8">
 <title>/view/board/list.jsp</title>
-<jsp:include page="../include/resource.jsp"></jsp:include>
+<jsp:include page="../include/resource_boot4.jsp"></jsp:include>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/custom.css" />
 </head>
 <body>
-<jsp:include page="../include/navbar.jsp">
+<jsp:include page="../include/navbar2.jsp">
 	<jsp:param value="board" name="category"/>
 </jsp:include>
+
 <style>
 	h1{color: #F1648A;}
 	thead{background-color: #F1A4BA;}
