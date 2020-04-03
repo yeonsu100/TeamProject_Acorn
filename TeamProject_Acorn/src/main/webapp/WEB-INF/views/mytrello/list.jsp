@@ -10,7 +10,7 @@
 <jsp:include page="../include/resource.jsp" />
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"> </script>
 <style>
-	h1{color: #6799FF;}
+	h1{color: #F1648A;}
 	.txtb{
 		width: 100%;
 		border: none;
@@ -25,14 +25,14 @@
 	}
 	.task{
 		width: 100%;
-		background: #D9E5FF;
+		background: #F1A4BA;
 		padding: 18px;
 		margin: 6px 0;
 		overflow: hidden;
 	}
 	.task i{
 		float: right;
-		color: #6799FF;
+		color: #F1648A;
 		margin-left: 20px;
 		cursor: pointer;
 	}
