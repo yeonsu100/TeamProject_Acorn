@@ -37,8 +37,8 @@
 			<label for="content">내용</label>
 			<textarea class="form-control" name="content" id="content" cols="30" rows="10"></textarea>
 		</div>
-		<button class="btn btn-primary" type="button" onclick="submitContents(this);">저장</button>
-		<button class="btn btn-warning" type="reset">취소</button>
+		<button class="btn btn-primary" type="button" onclick="submitContents(this);">저장 &nbsp;<span class="glyphicon glyphicon-ok-sign"/></button>
+		<button class="btn btn-warning" type="reset">취소 &nbsp;<span class="glyphicon glyphicon-remove-sign"/></button>
 	</form>
 </div>
 
@@ -92,6 +92,7 @@
 		oEditors.getById["content"].setDefaultFont(sDefaultFont, nFontSize);
 	}
 </script>
+<jsp:include page="../include/footer.jsp"/>
 <jsp:include page="../include/msgbtn.jsp"/>
 </body>
 </html>
