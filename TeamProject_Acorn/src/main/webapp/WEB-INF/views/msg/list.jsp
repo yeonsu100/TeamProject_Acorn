@@ -44,6 +44,22 @@ table {
 	border:0;
 	outline:0;
 }
+.btn-primary:focus, .btn-primary.focus {
+	color: #fff;
+	background-color: #F1648A;
+	border: 0;
+	box-shadow: 0 0 0 0.1rem #F1A4BA;
+}
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #F1648A;
+  border-color: #F1A4BA;
+}
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.1rem #F1A4BA;
+}
 .page-link {
   color: #F1648A;
   border: 1px solid #F1A4BA;

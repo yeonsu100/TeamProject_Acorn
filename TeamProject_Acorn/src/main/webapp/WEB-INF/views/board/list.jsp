@@ -70,11 +70,11 @@
 	</table>
 	
 	<div class="text-right">
-			<a href="insertform.go" class="btn btn-primary">글쓰기  &nbsp;<span class="glyphicon glyphicon-pencil"/></a>
+			<a href="insertform.go" class="btn btn-primary btn-sm">글쓰기  &nbsp;<span class="glyphicon glyphicon-pencil"/></a>
 	</div>
 	
 	<div class="page-display">
-		<ul class="pagination">
+		<ul class="pagination pagination-sm">
 		<c:choose>
 			<c:when test="${startPageNum ne 1 }">
 				<li>
