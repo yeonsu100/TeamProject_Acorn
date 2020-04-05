@@ -122,9 +122,16 @@ public class FileServiceImpl implements FileService {
 		int num=Integer.parseInt(request.getParameter("num"));
 		FileDto dto=dao.getData(num);
 		String id=(String)request.getSession().getAttribute("id");
-		if(!id.equals(dto.getWriter())) {
+		String admin=(String)request.getSession().getAttribute("isAdmin");
+		if(!id.equals(dto.getWriter())&& admin==null) {
 			//예외를 발생 시켜서 메소드가 정상 수행되지 않도록 막는다
 			 throw new CanNotDeleteException();
+		}else {
+			String saveFileName=dto.getSaveFileName();
+			dao.delete(num);
+			String path=request.getServletContext().getRealPath("/upload")+File.separator+saveFileName;
+			File f=new File(path);
+			f.delete();
 		}
 		String saveFileName=dto.getSaveFileName();
 		dao.delete(num);

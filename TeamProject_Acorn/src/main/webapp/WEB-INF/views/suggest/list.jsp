@@ -59,9 +59,6 @@
 </jsp:include>
 
 <div class="container">
-	<ol class="breadcrumb">
-		<li><a href="list.go">전체 목록 보기</a></li>
-	</ol>
 
 	<h1>건의사항 게시판</h1>
 	<p>게시판 운영 목적과 맞지 않는 게시물은 관리자 권한으로 삭제될 수 있습니다.</p> <br/>
@@ -83,11 +80,17 @@
 						<span>${tmp.sugId }</span>
 						<span>${tmp.regdate }</span>
 						<c:choose>
-							<c:when test="${id eq tmp.sugId }">
+							<c:when test="${id eq tmp.sugId}">
 								<a href="javascript:" class="suggest-update-link">수정</a>&nbsp;&nbsp;
 								<a href="javascript:deleteConfirm(${tmp.num })">삭제</a>
 							</c:when>
+							<c:otherwise>
+								<c:if test="${not empty isAdmin }">
+									<a href="javascript:deleteConfirm(${tmp.num })">삭제</a>
+								</c:if>
+							</c:otherwise>
 						</c:choose>
+						
 					</dt>
 					<dd>
 						<pre>${tmp.sugContent }</pre>
@@ -196,8 +199,6 @@
 		// 폼 제출을 막아준다.
 		return false;
 	});
-	
-	var isInsertSug=false;
 	
 	$("#insert-sugContent").on("input",function(){
 		var insertSug=$("#insert-sugContent").val();

@@ -26,6 +26,6 @@ public interface MsgService {
 	public Map<String, Object> checkNewMsg(HttpServletRequest request);
 	// 메시지 보관함에 저장
 	public void checkSaved(HttpServletRequest request);
-	// idlist 받아오기
+	// id list 받아오기
 	public List<UsersDto> getIdList(HttpServletRequest request);
 }

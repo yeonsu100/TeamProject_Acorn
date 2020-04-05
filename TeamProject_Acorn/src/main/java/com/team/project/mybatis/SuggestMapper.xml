@@ -19,7 +19,7 @@
 	</select>
 	<select id="getData" parameterType="int"
 		resultType="suggestDto">
-		SELECT num, sugId, profile, sugContent, regdate
+		SELECT num, sugId, sugContent, regdate
 		FROM T_suggest
 		WHERE num=#{num}
 	</select>

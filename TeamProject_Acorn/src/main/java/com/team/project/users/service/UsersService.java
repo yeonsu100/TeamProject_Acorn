@@ -12,7 +12,6 @@ import com.team.project.users.dto.UsersDto;
 
 public interface UsersService {
 	public Map<String, Object> isExistId(String inputId);
-//	public Map<String, Object> isSamePnum(String pnum);
 	public void addUser(UsersDto dto);
 	public void addEmp(UsersDto dto);
 	public void validEmp(UsersDto dto, HttpSession session, ModelAndView mView);
@@ -20,7 +19,8 @@ public interface UsersService {
 	public void showInfo(String id, ModelAndView mView);
 	public String saveProfileImage(HttpServletRequest request, MultipartFile mFile);
 	public void updatePassword(UsersDto dto, ModelAndView mView);
-	public void updateUser(UsersDto dto);
-	public void deleteUser(String id);
-
+	public void deleteUser(HttpServletRequest request);
+	public void deleteEmp(HttpServletRequest request);
+	public void empMainList(HttpServletRequest request);
+	
 }

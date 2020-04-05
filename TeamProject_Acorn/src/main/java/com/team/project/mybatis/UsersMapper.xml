@@ -6,13 +6,6 @@
 		FROM T_user
 		WHERE userid=#{inputId}
 	</select>
-	<!-- 
-	<select id="isPnumExist" parameterType="String" resultType="String">
-		SELECT pnum
-		FROM T_emp
-		WHERE pnum=#{inputPnum}
-	</select>
-	 -->
 	<select id="isUserExist" parameterType="int" resultType="String">
 		SELECT userid
 		FROM T_user
@@ -55,7 +48,7 @@
 		where pnum=#{pnum}
 	</select>
 	<select id="getData" parameterType="String" resultType="usersDto">
-		SELECT e.empno, e.ename, e.hdate, e.pnum, u.userid, u.email, u.profile
+		SELECT e.empno, e.ename, TO_CHAR(hdate, 'YYYY-MM-DD') AS hdate, e.pnum, u.userid, u.email, u.profile
 		FROM T_user u, T_emp e
 		WHERE e.empno=u.empno
 		AND u.userid=#{id}
@@ -72,12 +65,36 @@
 		SET pwd=#{pwd}
 		WHERE userid=#{userid}
 	</update>
-	
-	<update id="updateUser" parameterType="usersDto">
-		
-	</update>
-	
 	<delete id="delete" parameterType="String">
 		
+	</delete>
+	<select id="getCount" parameterType="usersDto" resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM T_emp
+		<if test="ename != null">
+			WHERE ename LIKE '%'||#{ename}||'%'
+		</if>
+	</select>
+	<select id="getList" parameterType="usersDto" resultType="usersDto">
+		SELECT*
+		FROM
+		(SELECT result1.*, ROWNUM AS rnum
+		FROM
+		(SELECT e.empno, e.ename, e.pnum, u.userid, u.email, TO_CHAR(hdate, 'YYYY-MM-DD') AS hdate
+		FROM T_emp e LEFT JOIN T_user u
+		ON e.empno=u.empno
+		<if test="ename != null">
+			WHERE e.ename LIKE '%'||#{ename}||'%'
+		</if>
+		ORDER BY empno ASC) result1)
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+	<delete id="deleteUser" parameterType="int">
+		DELETE FROM T_user
+		WHERE empno=#{empno}	
+	</delete>
+	<delete id="deleteEmp" parameterType="int">
+		DELETE FROM T_emp
+		WHERE empno=#{empno}	
 	</delete>
 </mapper>

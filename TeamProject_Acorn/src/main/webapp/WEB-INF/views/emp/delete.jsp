@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="${pageContext.request.contextPath }/emp/insertform.go">사원 정보 추가</a>
+<div class="container">
+<script>
+	alert("사원 데이터가 삭제 되었습니다.");
+	location.href="${pageContext.request.contextPath }/emp/main.go";
+</script>	
+</div>
 </body>
 </html>

@@ -8,31 +8,81 @@
 <meta charset="UTF-8">
 <title>/views/msg/list.jsp</title>
 <jsp:include page="../include/resource_boot4.jsp"/>
+<style>	
+.title {
+	display: inline-block;
+	max-width: 200px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+table {
+    table-layout: fixed;
+    word-wrap: break-word;
+}
+.table th,
+.table td {
+	padding: 0.3rem;
+	border-top: 1px solid #F1A4BA;
+}
+.table thead th {
+  	border-bottom: 2px solid #F1A4BA;
+}
+.table td a{
+	color:#212529;
+}
+.table-hover tbody tr:hover {
+	background-color: #f5d7e0;
+}
+.btn-primary{
+	background-color:#F1648A;
+	border:0;
+	outline:0;
+}
+.btn-primary:hover{
+	background-color:#F1A4BA;
+	border:0;
+	outline:0;
+}
+.page-link {
+  color: #F1648A;
+  border: 1px solid #F1A4BA;
+}
+.page-link:hover {
+  color: #F1648A;
+  background-color: #F1A4BA;
+  border-color: #F1A4BA;
+}
+.page-item.active .page-link {
+  color: #fff;
+  background-color: #F1648A;
+  border-color: #F1A4BA;
+}
+.page-item.disabled .page-link {
+  border-color: #F1A4BA;
+}
+</style>
 </head>
+<style>
+body{padding-top: 0px;}
+</style>
 <body>
 <jsp:include page="msgnav.jsp"/>
-<div class="container">
-		
-	<table class="table table-striped table-condensed">
-		<colgroup>
-			<col class="col-xs-2"/>
-			<col class="col-xs-5"/>
-			<col class="col-xs-2"/>
-			<col class="col-xs-2"/>
-		</colgroup>
+<div class="container" style="font-size:14px;">
+	<table class="table table-hover">
 		<thead>
 			<tr>
 				<c:choose>
 					<c:when test="${pageType eq 'sent' }">
-						<th>받는 사람</th>
+						<th style="width:20%">받는 사람</th>
 					</c:when>
 					<c:otherwise>
 						<th>보낸 사람</th>
 					</c:otherwise>
 				</c:choose>
-				<th>제목</th>
-				<th>보낸 시간</th>
-				<th>읽은 시간</th>
+				<th style="width:44%">제목</th>
+				<th style="width:18%">보낸 시간</th>
+				<th style="width:18%">읽은 시간</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -40,37 +90,39 @@
 			<tr>
 				<c:choose>
 					<c:when test="${pageType eq 'sent' }">
-						<td>${tmp.idRec }</td>
+						<td class="align-middle">${tmp.idRec }</td>
 					</c:when>
 					<c:otherwise>
-						<td>${tmp.idSend }</td>
+						<td class="align-middle">${tmp.idSend }</td>
 					</c:otherwise>
 				</c:choose>
 				<c:choose>
 					<c:when test="${pageType ne null }">
-						<td>
-							<a href="detail.go?num=${tmp.num }&pageNum=${pageNum}&pageType=${pageType}">${tmp.title }</a>
+						<td class="align-middle">
+							<a class="title" href="detail.go?num=${tmp.num }&pageNum=${pageNum}&pageType=${pageType}">${tmp.title }</a>
 						</td>
 					</c:when>
 					<c:otherwise>
-						<td>
-							<a href="detail.go?num=${tmp.num }&pageNum=${pageNum}">${tmp.title }</a>
+						<td class="align-middle">
+							<a class="title" href="detail.go?num=${tmp.num }&pageNum=${pageNum}">${tmp.title }</a>
 						</td>
 					</c:otherwise>
 				</c:choose>
 				
 				
-				<td>${tmp.sendDate}</td>
-				<td>${tmp.readDate}</td>
+				<td class="align-middle">${tmp.sendDate}</td>
+				<td class="align-middle">${tmp.readDate}</td>
 			</tr>
 		</c:forEach>
 		</tbody>
 	</table>
 	
-	<a href="sendform.go" class="btn btn-primary">메시지 보내기</a>
-	
+	<div class="text-right">
+		<a href="sendform.go" class="btn btn-primary btn-sm">메시지 보내기</a>
+	</div>
+		
 	<nav aria-label="Search pages">
-		<ul class="pagination pagination-sm" style="text-align:right;">
+		<ul class="pagination pagination-sm">
 		<c:choose>
 			<c:when test="${pageType ne null }">
 				<c:choose>

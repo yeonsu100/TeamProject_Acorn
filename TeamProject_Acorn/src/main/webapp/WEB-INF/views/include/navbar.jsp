@@ -4,20 +4,30 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 <style>
+	.navbar-inverse, .navbar-inverse > li > a:hover {
+    	background-color: #F1BDCD;
+	}
 	.logo-image{
-		width: 78px;
-	    height: 32px;
+		width: 135px;
+		height: 22px;
 	    visibility: visible;
 	    border-radius: 20%;
 	}
+	.nav li{
+		color: #F1648A;
+	}
+	.nav span{
+		color: #F1648A;
+	}
+
 </style>
-<div class="navbar navbar-default navbar-fixed-top ">		
+<div class="navbar navbar-inverse navbar-fixed-top ">	
 	<div class="container">
 	<div class="navbar-header">
 		<a class="navbar-brand" href="${pageContext.request.contextPath }/home.go">
 			<div class="logo-image">
-	            <img src="${pageContext.request.contextPath }/resources/images/GitHub_Logo.png" class="logo-image">
-	      </div>
+	            <img src="${pageContext.request.contextPath }/resources/images/bana_logo_1.png" class="logo-image" >
+            </div>
 		</a>
 		<button class="navbar-toggle"
 				data-toggle="collapse"
@@ -42,14 +52,14 @@
 				<a href="${pageContext.request.contextPath }/mytrello/list.go"><span class="glyphicon glyphicon-list"></span> 체크 리스트</a></li>
 			<c:if test="${not empty isAdmin}">
 				<li <c:if test="${param.category eq 'admin' }">class="active" </c:if>> 
-				<a href="${pageContext.request.contextPath }/admin/main.go"><span class="glyphicon glyphicon-wrench"></span> 관리</a></li>
+				<a href="${pageContext.request.contextPath }/emp/main.go"><span class="glyphicon glyphicon-wrench"></span> 관리</a></li>
 			</c:if>
 		</ul>
 		
 		<c:choose>
 			<c:when test="${empty sessionScope.id }">
 				<div class="pull-right">
-				<a class="btn btn-primary navbar-btn btn-xs" href="${pageContext.request.contextPath }/users/loginform.go">로그인</a>
+				<a class="btn btn-primary navbar-btn btn-xs" href="${pageContext.request.contextPath }/home.go">로그인</a>
 				<a class="btn btn-info navbar-btn btn-xs" href="${pageContext.request.contextPath }/users/signup_checkform.go">계정 생성</a>
 				</div>
 			</c:when>
@@ -57,7 +67,7 @@
 			<c:otherwise>
 				<p class="navbar-text pull-right"><i class="fas fa-user"></i>
 				사용자 (<strong><a class="navbar-link" href="${pageContext.request.contextPath }/users/info.go">${id }</a></strong>)님 환영합니다!  &nbsp;| &nbsp;  
-				<a class="navbar-link" href="${pageContext.request.contextPath }/users/logout.go"><i class="fas fa-door-open"></i> 로그아웃</a>
+				<a class="navbar-link" href="${pageContext.request.contextPath }/users/logout.go" onclick="return confirm('로그아웃 하시겠습니까?')"><i class="fas fa-door-open"></i> 로그아웃</a>
 				</p>
 			</c:otherwise>
 		</c:choose>

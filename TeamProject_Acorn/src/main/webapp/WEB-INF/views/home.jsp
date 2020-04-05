@@ -18,7 +18,7 @@
 		padding: 0;
 		width: 100%;
 		height: 100%;
-		background: #333;
+		background: #FFFFFF;
 	}
 	.section-top{
 		width: 100%;
@@ -40,7 +40,7 @@
 		width: 100px;
 		height: 100px;
 		float: left;
-		background: #B2CCFF;
+		background: #F1BDCD;
 		margin: 4px;
 		cursor: pointer;
 		text-align: center;
@@ -51,17 +51,18 @@
 		transform: scale(0.9);
 	}
 	.item i{
-		font-size: 36px;
+		font-size: 38px;
 		line-height: 90px;
 		opacity: 0.8;
+		color: #F1648A;
 	}
 	.item span{
-		opacity: 0.8;
 		position: absolute;
 		bottom: 6px;
 		left: 6px;
 		font-size: 15px;
 		text-align: center; 
+		color: #F1648A;
 	}
 	.i1{
 		width: 208px;
@@ -73,7 +74,6 @@
 <body>
 <jsp:include page="include/navbar.jsp"/>
 
-
 <div class="section-top">
 	<div class="metro">
 		<div class="l1">
@@ -81,7 +81,6 @@
 				<a href="${pageContext.request.contextPath }/notice/list.go"><i class="glyphicon glyphicon-bullhorn"></i>
 				<span>Notice</span></a>
 			</li>
-			
 			<li class="item i2">
 				<a href="${pageContext.request.contextPath }/board/list.go"><i class="glyphicon glyphicon-pencil"></i>
 				<span>Board</span></a>

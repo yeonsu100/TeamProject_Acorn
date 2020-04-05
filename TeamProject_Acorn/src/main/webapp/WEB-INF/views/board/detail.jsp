@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/board/detail.jsp</title>
-<jsp:include page="../include/resource.jsp"></jsp:include>
+<jsp:include page="../include/resource.jsp"/>
 <style>
 	/* 글 내용을 출력할 div 에 적용할 css */
 	.contents, table{
@@ -252,7 +252,7 @@
 		</ul>		
 	</div>
 </div>
-
+<jsp:include page="../include/footer.jsp"/>
 
 <script>
 	//댓글 수정 링크를 눌렀을때 호출되는 함수 등록
@@ -332,9 +332,7 @@
 			}
 		}
 	});
-	
-	
-	
+
 	//답글 달기 링크를 클릭했을때 실행할 함수 등록
 	$(".comment .reply_link").click(function(){
 		$(this)

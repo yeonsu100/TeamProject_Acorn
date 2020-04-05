@@ -11,13 +11,17 @@ public class UsersDto {
 	private String profile;
 	private String isadmin;
 	private String newPwd;
+	private int startRowNum;
+	private int endRowNum;
+	private String title;
+	private String content;
 	
 	//디폴트 생성자
 	public UsersDto() {}
 
-	
 	public UsersDto(int empno, String ename, String hdate, String pnum, String userid, String pwd, String email,
-			String profile, String isadmin, String newPwd) {
+			String profile, String isadmin, String newPwd, int startRowNum, int endRowNum, String title,
+			String content) {
 		super();
 		this.empno = empno;
 		this.ename = ename;
@@ -29,18 +33,11 @@ public class UsersDto {
 		this.profile = profile;
 		this.isadmin = isadmin;
 		this.newPwd = newPwd;
+		this.startRowNum = startRowNum;
+		this.endRowNum = endRowNum;
+		this.title = title;
+		this.content = content;
 	}
-
-
-	public String getNewPwd() {
-		return newPwd;
-	}
-
-
-	public void setNewPwd(String newPwd) {
-		this.newPwd = newPwd;
-	}
-
 
 	public int getEmpno() {
 		return empno;
@@ -113,4 +110,45 @@ public class UsersDto {
 	public void setIsadmin(String isadmin) {
 		this.isadmin = isadmin;
 	}
+
+	public String getNewPwd() {
+		return newPwd;
+	}
+
+	public void setNewPwd(String newPwd) {
+		this.newPwd = newPwd;
+	}
+
+	public int getStartRowNum() {
+		return startRowNum;
+	}
+
+	public void setStartRowNum(int startRowNum) {
+		this.startRowNum = startRowNum;
+	}
+
+	public int getEndRowNum() {
+		return endRowNum;
+	}
+
+	public void setEndRowNum(int endRowNum) {
+		this.endRowNum = endRowNum;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
 }

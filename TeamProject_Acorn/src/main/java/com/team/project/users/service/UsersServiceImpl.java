@@ -1,7 +1,10 @@
 package com.team.project.users.service;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,11 +29,8 @@ public class UsersServiceImpl implements UsersService{
 	
 	@Override
 	public void addUser(UsersDto dto) {
-		//비밀번호를 암호화 한다.
 		String encodedPwd=new BCryptPasswordEncoder().encode(dto.getPwd());
-		//암호화된 비밀번호를 UsersDto 에 다시 넣어준다.
 		dto.setPwd(encodedPwd);
-		//UsersDao 객체를 이용해서 DB 에 저장하기 
 		dao.insertUser(dto);
 	}
 	
@@ -41,32 +41,25 @@ public class UsersServiceImpl implements UsersService{
 	
 	@Override
 	public void validUser(UsersDto dto, HttpSession session, ModelAndView mView) {
-		//아이디 비밀번호가 유효한지 여부 
 		boolean isValid=false;
-		//아이디를 이용해서 저장된 비밀 번호를 읽어온다. 
 		String pwdHash=dao.getPwdHash(dto.getUserid());
 		String isAdmin=dao.getIsAdmin(dto.getUserid());
-		if(pwdHash != null) {//비밀번호가 존재하고 
-			//입력한 비밀번호와 일치 하다면 로그인 성공
+		if(pwdHash != null) {
 			isValid=BCrypt.checkpw(dto.getPwd(), pwdHash);
 		}
 		if(isValid) {
-			//로그인 처리를 한다.
 			session.setAttribute("id", dto.getUserid());
 			session.setAttribute("isAdmin", isAdmin);
-		}
-		
+		}		
 	}
 	
 	@Override
 	public void validEmp(UsersDto dto, HttpSession session, ModelAndView mView) {
 		
-		//전화번호를 통해 이름을 검색
 		String ename=dao.getEname(dto.getPnum());
-		if(ename != null && ename.equals(dto.getEname())) {//해당 이름 사원이 존재하고 입력한 이름과 일치하면
-			int empno=dao.getEmpno(dto.getPnum());	//사번을 읽어와서
-			boolean isUserExist=dao.isUserExist(empno); //이미 가입한 사원인지 여부를 검사해서
-			//사원명, 사번, 이미 가입된 사원인지 여부를 전달 
+		if(ename != null && ename.equals(dto.getEname())) {
+			int empno=dao.getEmpno(dto.getPnum());
+			boolean isUserExist=dao.isUserExist(empno);
 			session.setAttribute("isUserExist", isUserExist);
 			session.setAttribute("ename", ename);
 			session.setAttribute("empno", empno);
@@ -80,14 +73,6 @@ public class UsersServiceImpl implements UsersService{
 		map.put("isExist", isExist);
 		return map;
 	}
-//	
-//	@Override
-//	public Map<String, Object> isSamePnum(String inputPnum) {
-//		boolean isSame=dao.isPnumExist(inputPnum);
-//		Map<String, Object> map=new HashMap<>();
-//		map.put("isSame", isSame);
-//		return map;
-//	}
 
 	@Override
 	public void showInfo(String id, ModelAndView mView) {
@@ -97,75 +82,97 @@ public class UsersServiceImpl implements UsersService{
 
 	@Override
 	public String saveProfileImage(HttpServletRequest request, MultipartFile mFile) {
-		//파일을 저장할 폴더의 절대 경로를 얻어온다.
 		String realPath=request.getServletContext().getRealPath("/upload");
-		//원본 파일명
 		String orgFileName=mFile.getOriginalFilename();
-		//저장할 파일의 상세 경로
 		String filePath=realPath+File.separator;
-		//디렉토리를 만들 파일 객체 생성
 		File file=new File(filePath);
-		if(!file.exists()){//디렉토리가 존재하지 않는다면
-			file.mkdir();//디렉토리를 만든다.
+		if(!file.exists()){
+			file.mkdir();
 		}
-		//파일 시스템에 저장할 파일명을 만든다. (겹치치 않게)
 		String saveFileName=
 				System.currentTimeMillis()+orgFileName;
 		try{
-			//upload 폴더에 파일을 저장한다.
 			mFile.transferTo(new File(filePath+saveFileName));
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		
-		//UsersDao 객체를 이용해서 프로파일 이미지
-		//경로를 DB 에 저장하기
 		String path="/upload/"+saveFileName;			
-		//로그인된 아이디
-		String id=(String)
-				request.getSession().getAttribute("id");
-		//아이디와 프로파일 이미지 경로를 dto 에 담고 
+		String id=(String)request.getSession().getAttribute("id");
 		UsersDto dto=new UsersDto();
 		dto.setUserid(id);;
 		dto.setProfile(path);
-		// UsersDao 를 이용해서 DB 에 반영하기 
 		dao.updateProfile(dto);
 		
-		//이미지 경로 리턴해주기 
 		return path;
 	}
 
 	@Override
 	public void updatePassword(UsersDto dto, ModelAndView mView) {
-		//1. 예전 비밀번호가 맞는 정보인지 확인
 		String pwdHash=dao.getPwdHash(dto.getUserid());
 		boolean isValid=BCrypt.checkpw(dto.getPwd(), pwdHash);
-		//2. 만일 맞다면 새로 비밀번호를 암호화 해서 저장하기
 		if(isValid) {
-			//새 비밀번호를 암호화 해서 dto 에 담고 
 			String encodedPwd=new BCryptPasswordEncoder()
 					.encode(dto.getNewPwd());
 			dto.setPwd(encodedPwd);
-			//DB 에 수정 반영하기
 			dao.updatePwd(dto);
 			mView.addObject("isSuccess", true);
 		}else {
 			mView.addObject("isSuccess", false);
 		}
-		
 	}
 
 	@Override
-	public void updateUser(UsersDto dto) {
-		// TODO Auto-generated method stub
+	public void empMainList(HttpServletRequest request) {
+		UsersDto dto=new UsersDto();
+		String keyword=request.getParameter("keyword");
+		if(keyword != null) {
+			dto.setEname(keyword);
+		}
+		final int PAGE_ROW_COUNT=10;
+		final int PAGE_DISPLAY_COUNT=5;
+		int pageNum=1;
+		String strPageNum=request.getParameter("pageNum");
+		if(strPageNum != null){
+			pageNum=Integer.parseInt(strPageNum);
+		}else {
+			pageNum=1;
+		}
+		int startRowNum=1+(pageNum-1)*PAGE_ROW_COUNT;
+		int endRowNum=pageNum*PAGE_ROW_COUNT;
+		int totalRow=dao.getCount(dto);
+		int totalPageCount=(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
+		int startPageNum=1+((pageNum-1)/PAGE_DISPLAY_COUNT)*PAGE_DISPLAY_COUNT;
+		int endPageNum=startPageNum+PAGE_DISPLAY_COUNT-1;
+		if(totalPageCount < endPageNum){
+			endPageNum=totalPageCount;
+		}	
+		dto.setStartRowNum(startRowNum);
+		dto.setEndRowNum(endRowNum);
 		
+		List<UsersDto> list=dao.getList(dto);
+
+		request.setAttribute("list", list);
+		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("startPageNum", startPageNum);
+		request.setAttribute("endPageNum", endPageNum);
+		request.setAttribute("totalPageCount", totalPageCount);
+		request.setAttribute("totalRow", totalRow);
 	}
 
 	@Override
-	public void deleteUser(String id) {
-		// TODO Auto-generated method stub
-		
+	public void deleteUser(HttpServletRequest request) {
+		String eno=request.getParameter("empno");
+		int empno=Integer.parseInt(eno);
+		dao.deleteUser(empno);
 	}
 
-
+	@Override
+	public void deleteEmp(HttpServletRequest request) {
+		String eno=request.getParameter("empno");
+		int empno=Integer.parseInt(eno);
+		dao.deleteEmp(empno);
+		dao.deleteUser(empno);
+	}
+	
 }
