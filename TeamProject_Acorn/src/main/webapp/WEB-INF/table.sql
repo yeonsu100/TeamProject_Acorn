@@ -215,15 +215,9 @@ CREATE SEQUENCE T_msg_seq;
 CREATE TABLE T_suggest(
 num NUMBER PRIMARY KEY, -- 건의 게시판 관리 할 번호
 sugId VARCHAR2(100),     -- 건의자 아이디
-profile VARCHAR2(100),   -- 건의자 프로필
 sugContent VARCHAR2(500),-- 건의 내용
 regdate DATE            -- 건의 날짜
 );
 -- 건의 게시판 시퀀스
 CREATE SEQUENCE T_suggest_seq;
-
--- T_suggest 의 profile column 삭제
-ALTER TABLE T_suggest DROP (profile);
-
-ALTER TABLE T_board ADD(countComment NUMBER);
 
