@@ -9,20 +9,18 @@
 <title>/board/detail.jsp</title>
 <jsp:include page="../include/resource.jsp"/>
 <style>
-	/* 글 내용을 출력할 div 에 적용할 css */
 	.contents, table{
 		width: 100%;
 		border: 1px dotted #cecece;
 		box-shadow: 3px 3px 5px 6px #ccc;
 	}
-	/* 댓글에 관련된 css */
 	.comments ul{
 		padding: 0;
 		margin: 0;
 		list-style-type: none;
 	}
 	.comments ul li{
-		border-top: 1px solid #888; /* li 의 윗쪽 경계선 */
+		border-top: 1px solid #888;
 	}
 	.comments dt{
 		margin-top: 5px;
@@ -44,7 +42,6 @@
 		width: 15%;
 		height: 100px;
 	}
-	/* 댓글에 댓글을 다는 폼과 수정폼을 일단 숨긴다. */
 	.comment form{
 		display: none;
 	}
@@ -70,9 +67,6 @@
 	<jsp:param value="board" name="category"/>
 </jsp:include>
 <div class="container">
-	<ol class="breadcrumb">
-		<li><a href="${pageContext.request.contextPath }/board/list.go?pageNum=${pageNum }&condition=${condition }&keyword=${encodedKeyword }">목록</a></li>
-	</ol>
 	<c:if test="${not empty keyword }">
 		<p> <strong>${keyword }</strong> 검색어로 검색된
 		결과 자세히 보기 입니다.</p>
@@ -110,16 +104,16 @@
 		</tr>
 	</table>
 	<div class="contents">${dto.content }</div>
-	<%-- 
-		글 작성자와 로그인 된 아이디가 같을때만 기능을 제공해 준다. 
-		즉, 본인이 작성한 글만 수정할수 있도록 하기 위해
-	--%>
-	<c:if test="${dto.writer eq id }">
-		<a href="updateform.go?num=${dto.num }">
-			수정
-		</a>
-		<a href="javascript:deleteConfirm()">삭제</a>
-	</c:if>
+	<button type="button" style="color: #F1648A">
+		<c:if test="${dto.writer eq id }">
+			<a href="updateform.go?num=${dto.num }">
+				수정
+			</a>
+	</button>
+	<button type="button">
+			<a href="javascript:deleteConfirm()">삭제</a>
+			</c:if>
+	</button>
 	<div class="comments">
 		<ul>
 		<c:forEach items="${commentList }" var="tmp">
@@ -141,7 +135,7 @@
 								</c:choose>
 								<c:choose>
 									<c:when test="${tmp.num ne tmp.comment_group}">
-										<strong style="color:#B8B6B6">@${tmp.target_id}</strong>
+										<strong style="color:#139c11">@${tmp.target_id}</strong>
 										<strong>${tmp.writer}</strong>
 									</c:when>
 									<c:otherwise>
@@ -151,7 +145,6 @@
 								<span>${tmp.regdate }</span>
 								<a href="javascript:" class="reply_link">답글</a> |
 								<c:choose>
-									<%-- 로그인된 아이디와 댓글의 작성자가 같으면 --%>
 									<c:when test="${id eq tmp.writer }">
 										<a href="javascript:" class="comment-update-link">수정</a> |
 										<a href="javascript:deleteComment(${tmp.num })">삭제</a>
@@ -206,7 +199,7 @@
 		</div>
 	</div>
 	<!--  댓글 페이징 구역 -->
-<div class="page-display">
+<div class="page-display text-center">
 		<ul class="pagination">
 		<c:choose>
 			<c:when test="${re_startPageNum ne 1 }">

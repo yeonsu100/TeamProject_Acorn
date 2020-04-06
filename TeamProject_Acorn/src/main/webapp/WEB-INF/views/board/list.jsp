@@ -13,6 +13,9 @@
 <jsp:include page="../include/navbar.jsp">
 	<jsp:param value="board" name="category"/>
 </jsp:include>
+<jsp:include page="../include/navbar.jsp">
+	<jsp:param value="notice" name="category"/>
+</jsp:include>
 <style>
 	h1{color: #F1648A;}
 	thead{background-color: #F1A4BA;}
@@ -70,7 +73,7 @@
 			<a href="insertform.go" class="btn btn-primary">글쓰기  &nbsp;<span class="glyphicon glyphicon-pencil"/></a>
 	</div>
 	
-	<div class="page-display">
+	<div class="page-display text-center">
 		<ul class="pagination">
 		<c:choose>
 			<c:when test="${startPageNum ne 1 }">
