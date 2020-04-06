@@ -7,18 +7,17 @@
 <head>
 <meta charset="UTF-8">
 <title>/view/board/list.jsp</title>
-<jsp:include page="../include/resource_boot4.jsp"></jsp:include>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/custom.css" />
-</head>
-<body>
-<jsp:include page="../include/navbar2.jsp">
-	<jsp:param value="board" name="category"/>
-</jsp:include>
-
+<jsp:include page="../include/resource.jsp"></jsp:include>
 <style>
 	h1{color: #F1648A;}
 	thead{background-color: #F1A4BA;}
 </style>
+</head>
+<body>
+<jsp:include page="../include/navbar.jsp">
+	<jsp:param value="board" name="category"/>
+</jsp:include>
+
 <div class="container">
 	<c:if test="${not empty keyword }">
 		<p>
@@ -128,9 +127,9 @@
 		<input type="text" name="keyword" 
 			placeholder="검색어 입력..." value="${keyword }"/>
 		<button type="submit">검색</button>
-		<jsp:include page="../include/footer.jsp"/>
 	</form>
 </div>
+<jsp:include page="../include/footer.jsp"/>
 <jsp:include page="../include/msgbtn.jsp"/>
 </body>
 </html>

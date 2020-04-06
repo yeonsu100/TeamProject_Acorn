@@ -4,16 +4,49 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 <style>
-	.logo-image{
-		width: 4rem;
-		height: 4rem;
-	    visibility: visible;
-	    
-	}
+.logo-image{
+	width: 12rem;
+	height: 2rem;
+    visibility: visible;
+    
+}
+.navbar{
+	background-color:#FFF;
+}
+.navbar-light .navbar-text{
+	color:black;
+}
+.navbar-expand-md .navbar-nav .nav-link {
+	padding-right: 1rem;
+	padding-left: 1rem;
+}
+.navbar-nav .nav-item .nav-link.active{
+	color:#F1648A;
+	font-weight:bold;
+	border-bottom: 3px solid #F1648A;
+}
+.navbar-nav .nav-item .nav-link:hover{
+	color:#F1648A;
+	font-weight:bold;
+	border-bottom: 3px solid #F1648A;
+}
+.navbar-nav .nav-item .nav-link:not(:disabled):not(.disabled):active, .navbar-nav .nav-item .nav-link:not(:disabled):not(.disabled).active{
+	color:#F1648A;
+	font-weight:bold;
+	border-bottom: 3px solid #F1648A;
+}
+.navbar-nav .nav-item .nav-link{
+	color:black;
+}
+.navbar-nav .nav-item.active .nav-link{
+	color:#F1648A;
+	font-weight:bold;
+}
 </style>
-<nav class="navbar navbar-fixed-top navbar-expand-sm navbar-light bg-light">
+<nav class="navbar navbar-fixed-top navbar-expand-md navbar-light py-0">
+<div class="container">
 	<a class="navbar-brand" href="${pageContext.request.contextPath }/home.go">
-		<img src="${pageContext.request.contextPath }/resources/images/bana_logo_4.png" class="logo-image" >
+		<img src="${pageContext.request.contextPath }/resources/images/bana_logo_1.png" class="logo-image" >
 	</a>
 	<button class="navbar-toggler" data-toggle="collapse" data-target="#one" type="button" 
 			aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,7 +54,7 @@
 	</button>
 	
 	<div class="collapse navbar-collapse" id="one">
-		<ul class="navbar-nav mr-auto">
+		<ul class="navbar-nav">
 			<li class="nav-item <c:if test="${param.category eq 'notice' }">active </c:if>"> 
 				<a class="nav-link" href="${pageContext.request.contextPath }/notice/list.go"><span class="glyphicon glyphicon-bullhorn"></span> 공지사항</a></li>
 			<li class="nav-item <c:if test="${param.category eq 'board' }">active </c:if>"> 
@@ -47,12 +80,13 @@
 			</c:when>
 			
 			<c:otherwise>
-				<p class="navbar-text pull-right"><i class="fas fa-user"></i>
-				사용자 (<strong><a class="navbar-link" href="${pageContext.request.contextPath }/users/info.go">${id }</a></strong>)님 환영합니다!  &nbsp;| &nbsp;  
-				<a class="navbar-link" href="${pageContext.request.contextPath }/users/logout.go" onclick="return confirm('로그아웃 하시겠습니까?')"><i class="fas fa-door-open"></i> 로그아웃</a>
+				<p class="navbar-text pull-right" style="margin-top:10px;margin-bottom:10px;">
+					<i class="fas fa-user"></i>
+					<strong><a class="navbar-link" href="${pageContext.request.contextPath }/users/info.go">${id }</a></strong>님 환영합니다!  &nbsp;| &nbsp;  
+					<a class="navbar-link" href="${pageContext.request.contextPath }/users/logout.go" onclick="return confirm('로그아웃 하시겠습니까?')"><i class="fas fa-door-open"></i> 로그아웃</a>
 				</p>
 			</c:otherwise>
 		</c:choose>
 	</div>
-	
+</div>
 </nav>
