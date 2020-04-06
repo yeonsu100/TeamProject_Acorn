@@ -49,8 +49,7 @@
 </jsp:include>
 
 <div class="container">
-
-
+	<h1>체크 리스트</h1>
 	<input type="text" class="txtb" placeholder="할 일 입력" />
 	<div class="notcomp">
 		<h3>해야할 업무 목록</h3>
