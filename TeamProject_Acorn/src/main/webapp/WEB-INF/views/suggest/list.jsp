@@ -161,6 +161,7 @@
 	</div>
 </div>
 <script>
+
 	// 게시글 수정 링크를 눌렀을때 호출되는 함수 등록
 	$(".suggest-update-link").click(function(){
 		$(this)
@@ -168,38 +169,28 @@
 		.find(".suggest-update-form")
 		.slideToggle(200);
 	});
+	
 	// 게시글 수정 폼에 submit 이벤트가 일어났을때 호출되는 함수 등록
 	$(".suggest-update-form").on("submit", function(){
-		// "update.do"
 		var url=$(this).attr("action");
-		//폼에 작성된 내용을 query 문자열로 읽어온다.
-		// num=댓글번호&content=댓글내용
 		var data=$(this).serialize();
-		//이벤트가 일어난 폼을 선택해서 변수에 담아 놓는다.
 		var $this=$(this);
 		$.ajax({
 			url:url,
 			method:"post",
 			data:data,
 			success:function(responseData){
-				// responseData : {isSuccess:true}
 				if(responseData.isSuccess){
-					//폼을 안보이게 한다 
 					$this.slideUp(200);
-					//폼에 입력한 내용 읽어오기
-					var content=$this.find("textarea").val();
-					//pre 요소에 수정 반영하기 
+					var content=$this.find("textarea").val(); 
 					$this.parent().find("pre").text(content);
 				}
 			}
 		});
-		// 폼 제출 막기 
-		// ajax 는 페이지 전환 없이 실행되기 떄문에
-		// 폼을 제출하면 페이지가 전환 되므로 
-		// 폼 제출을 막아준다.
 		return false;
 	});
 	
+	// 작성시 빈 값일 경우 버튼 제출 막기
 	$("#insert-sugContent").on("input",function(){
 		var insertSug=$("#insert-sugContent").val();
 		if(insertSug.length!=0){
@@ -208,6 +199,7 @@
 			$("#insertBtn").attr("disabled","disabled");
 		}
 	});
+	// 수정시 빈 값일 경우 버튼 제출 막기
 	$("#update-sugContent").on("input",function(){
 		var updateSug=$("#update-sugContent").val();
 		if(updateSug.length!=0){
