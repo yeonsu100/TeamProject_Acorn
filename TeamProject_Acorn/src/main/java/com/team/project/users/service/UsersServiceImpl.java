@@ -17,6 +17,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.team.project.board.dao.BoardDao;
+import com.team.project.board.dto.BoardDto;
 import com.team.project.users.dao.UsersDao;
 import com.team.project.users.dto.UsersDto;
 
@@ -25,7 +27,11 @@ public class UsersServiceImpl implements UsersService{
 	
 	@Autowired
 	private UsersDao dao;
+	@Autowired
+	private BoardDao b_dao;
 	
+	static final int PAGE_ROW_COUNT=10; 
+	static final int PAGE_DISPLAY_COUNT=10;
 	
 	@Override
 	public void addUser(UsersDto dto) {
@@ -55,7 +61,6 @@ public class UsersServiceImpl implements UsersService{
 	
 	@Override
 	public void validEmp(UsersDto dto, HttpSession session, ModelAndView mView) {
-		
 		String ename=dao.getEname(dto.getPnum());
 		if(ename != null && ename.equals(dto.getEname())) {
 			int empno=dao.getEmpno(dto.getPnum());
@@ -173,6 +178,63 @@ public class UsersServiceImpl implements UsersService{
 		int empno=Integer.parseInt(eno);
 		dao.deleteEmp(empno);
 		dao.deleteUser(empno);
+	}
+
+	@Override
+	public void getList(HttpServletRequest request) {
+		String keyword=request.getParameter("keyword");
+		String condition=request.getParameter("condition");
+		BoardDto dto=new BoardDto();
+
+		if(keyword != null) {
+			if(condition.equals("titlecontent")) {
+				dto.setTitle(keyword);
+				dto.setContent(keyword);
+			}else if(condition.equals("title")) {
+				dto.setTitle(keyword);
+			}else if(condition.equals("writer")) {
+				dto.setWriter(keyword);
+			}
+			
+			request.setAttribute("condition", condition);
+			String encodedKeyword=null;
+			try {
+				encodedKeyword=URLEncoder.encode(keyword, "utf-8");
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+			request.setAttribute("encodedKeyword", encodedKeyword);
+			request.setAttribute("keyword", keyword);
+		}		
+
+		int pageNum=1;
+		String strPageNum=request.getParameter("pageNum");
+		if(strPageNum != null){
+			pageNum=Integer.parseInt(strPageNum);
+		}
+		int startRowNum=1+(pageNum-1)*PAGE_ROW_COUNT;
+		int endRowNum=pageNum*PAGE_ROW_COUNT;
+
+		int totalRow=b_dao.getCount(dto);
+		int totalPageCount=
+				(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
+		int startPageNum=
+			1+((pageNum-1)/PAGE_DISPLAY_COUNT)*PAGE_DISPLAY_COUNT;
+		int endPageNum=startPageNum+PAGE_DISPLAY_COUNT-1;
+		if(totalPageCount < endPageNum){
+			endPageNum=totalPageCount;
+		}
+		dto.setStartRowNum(startRowNum);
+		dto.setEndRowNum(endRowNum);
+
+		List<BoardDto> list=b_dao.getList(dto);
+		
+		request.setAttribute("list", list);
+		request.setAttribute("startPageNum", startPageNum);
+		request.setAttribute("endPageNum", endPageNum);
+		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("totalPageCount", totalPageCount);	
+		request.setAttribute("totalRow", totalRow);			
 	}
 	
 }

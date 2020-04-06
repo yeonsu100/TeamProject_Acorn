@@ -16,7 +16,6 @@ public class UsersDto {
 	private String title;
 	private String content;
 	
-	//디폴트 생성자
 	public UsersDto() {}
 
 	public UsersDto(int empno, String ename, String hdate, String pnum, String userid, String pwd, String email,
