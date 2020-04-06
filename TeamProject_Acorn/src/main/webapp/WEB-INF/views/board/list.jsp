@@ -22,8 +22,7 @@
 	<c:if test="${not empty keyword }">
 		<p>
 			<strong>${keyword }</strong> 라는 검색어로 
-			<strong>${totalRow }</strong> 개의 글이 검색 
-			되었습니다.
+			<strong>${totalRow }</strong> 개의 글이 검색 되었습니다.
 		</p>
 	</c:if>
 	<h1>사내 게시판</h1>
