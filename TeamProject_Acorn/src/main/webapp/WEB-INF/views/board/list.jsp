@@ -7,15 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>/view/board/list.jsp</title>
-<jsp:include page="../include/resource.jsp"></jsp:include>
 </head>
 <body>
 <jsp:include page="../include/navbar.jsp">
 	<jsp:param value="board" name="category"/>
 </jsp:include>
-<jsp:include page="../include/navbar.jsp">
-	<jsp:param value="notice" name="category"/>
-</jsp:include>
+<jsp:include page="../include/resource.jsp"/>
 <style>
 	h1{color: #F1648A;}
 	thead{background-color: #F1A4BA;}
