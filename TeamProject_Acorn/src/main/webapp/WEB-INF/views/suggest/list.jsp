@@ -100,7 +100,7 @@
 					<form class="suggest-update-form" action="update.go" method="post">
 						<input type="hidden" name="num" value="${tmp.num }" />
 						<textarea class="form-control" rows="3" name="sugContent" id="update-sugContent">${tmp.sugContent }</textarea>
-						<button type="submit">수정</button>
+						<button type="submit" class="btn btn-primary" disabled id="updateBtn">수정</button>
 					</form>
 				</c:if>
 			</li>
@@ -206,6 +206,14 @@
 			$("#insertBtn").removeAttr("disabled");
 		}else{
 			$("#insertBtn").attr("disabled","disabled");
+		}
+	});
+	$("#update-sugContent").on("input",function(){
+		var updateSug=$("#update-sugContent").val();
+		if(updateSug.length!=0){
+			$("#updateBtn").removeAttr("disabled");
+		}else{
+			$("#updateBtn").attr("disabled","disabled");
 		}
 	});
 	
