@@ -9,6 +9,9 @@
 <title>/views/msg/list.jsp</title>
 <jsp:include page="../include/resource_boot4.jsp"/>
 <style>	
+body{
+	margin-top: 0px;
+}
 .title {
 	display: inline-block;
 	max-width: 200px;
@@ -22,7 +25,6 @@ table {
 }
 .table th,
 .table td {
-	padding: 0.3rem;
 	border-top: 1px solid #F1A4BA;
 }
 .table thead th {
@@ -80,12 +82,12 @@ table {
 </style>
 </head>
 <style>
-body{padding-top: 0px;}
+
 </style>
 <body>
 <jsp:include page="msgnav.jsp"/>
-<div class="container" style="font-size:14px;">
-	<table class="table table-hover">
+<div class="container">
+	<table class="table table-hover table-sm">
 		<thead>
 			<tr>
 				<c:choose>
