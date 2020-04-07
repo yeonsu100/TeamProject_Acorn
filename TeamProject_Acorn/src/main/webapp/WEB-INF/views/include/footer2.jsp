@@ -11,6 +11,19 @@ hr {
 	height: 1px; 
 	border: 0; 
 }
+.page-footer{
+	flex-shrink: 0;
+}
+html, body{
+	height:100%;
+}
+body{
+	display:flex;
+	flex-direction: column;
+}
+.container{
+	flex: 1 0 auto;
+}
 </style>
 <!-- Footer -->
 <footer class="page-footer font-small blue-grey lighten-5">
