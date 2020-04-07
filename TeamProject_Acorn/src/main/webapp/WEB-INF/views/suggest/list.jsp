@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/views/suggest/list.jsp</title>
-<jsp:include page="../include/resource.jsp"/>
+<jsp:include page="../include/resource_boot4.jsp"/>
 <style>
 	h1{color: #6799FF;}
 	.comments ul{
@@ -54,7 +54,7 @@
 </style>
 </head>
 <body>
-<jsp:include page="../include/navbar.jsp">
+<jsp:include page="../include/navbar2.jsp">
 	<jsp:param value="suggest" name="category"/>
 </jsp:include>
 
@@ -107,58 +107,60 @@
 		</c:forEach>
 		</ul>
 		<form action="insert.go" method="post">
-			<div class="form-group">
-				<input type="hidden" name="sugId" value="${id }" />
-				<input type="hidden" name="sugProfile" value="${tmp.profile}"/>
-				<c:if test="${not empty id}">
-					<textarea class="form-control" rows="3" id="insert-sugContent" name="sugContent"></textarea>
-					<button class="btn btn-primary" type="submit" disabled id="insertBtn">등록</button>
-				</c:if>
-			</div>
+			<input type="hidden" name="sugId" value="${id }" />
+			<input type="hidden" name="sugProfile" value="${tmp.profile}"/>
+			<c:if test="${not empty id}">
+				<div class="input-group">
+					<textarea class="form-control" id="insert-sugContent" name="sugContent"></textarea>
+					<div class="input-group-append">
+						<button class="btn btn-primary" type="submit" disabled id="insertBtn">등록</button>
+					</div>
+				</div>
+			</c:if>
 		</form>
 	</div>
-	<div class="page-display">
+	<nav aria-label="Search pages">
 		<ul class="pagination pagination-sm">
 		<c:choose>
 			<c:when test="${startPageNum ne 1 }">
-				<li>
-					<a href="list.go?pageNum=${startPageNum-1 }">&laquo;</a>
+				<li class="page-item">
+					<a class="page-link" href="list.go?pageNum=${startPageNum-1 }">&laquo;</a>
 				</li>
 			</c:when>
 			<c:otherwise>
-				<li class="disabled">
-					<a href="javascript:">&laquo;</a>
+				<li class="page-item disabled">
+					<a class="page-link" href="javascript:">&laquo;</a>
 				</li>
 			</c:otherwise>
 		</c:choose>
 		<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }" step="1">
 			<c:choose>
 				<c:when test="${i eq pageNum }">
-					<li class="active">
-						<a href="list.go?pageNum=${i }">${i }</a>
+					<li class="page-item active">
+						<a class="page-link" href="list.go?pageNum=${i }">${i }</a>
 					</li>
 				</c:when>
 				<c:otherwise>
-					<li>
-						<a href="list.go?pageNum=${i }">${i }</a>
+					<li class="page-item">
+						<a class="page-link" href="list.go?pageNum=${i }">${i }</a>
 					</li>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
 			<c:choose>
 				<c:when test="${endPageNum lt totalPageCount }">
-					<li>
-						<a href="list.go?pageNum=${endPageNum+1 }">&raquo;</a>
+					<li class="page-item">
+						<a class="page-link" href="list.go?pageNum=${endPageNum+1 }">&raquo;</a>
 					</li>
 				</c:when>
 				<c:otherwise>
-					<li class="disabled">
-						<a href="javascript:">&raquo;</a>
+					<li class="page-item disabled">
+						<a class="page-link" href="javascript:">&raquo;</a>
 					</li>
 				</c:otherwise>
 			</c:choose>
 		</ul>
-	</div>
+	</nav>
 </div>
 <script>
 	// 게시글 수정 링크를 눌렀을때 호출되는 함수 등록

@@ -5,16 +5,18 @@
 <head>
 <meta charset="UTF-8">
 <title>/emp/insertform.jsp</title>
-<jsp:include page="../include/resource.jsp"/>
+<jsp:include page="../include/resource_boot4.jsp"/>
 <style>
 	/* 페이지 로딩 시점에 도움말과 피드백 아이콘은 일단 숨기기 */
 	.help-block, .form-control-feedback{
 		display: none;
 	}
 </style>
+<jsp:include page="../include/navbar2.jsp"></jsp:include>
+<jsp:include page="../include/msgbtn.jsp"></jsp:include>
 </head>
 <body>
-<jsp:include page="../include/navbar.jsp"/>
+
 <div class="container">
 <h1>사원 추가 페이지</h1>
 	<form action="insert.go" method="post" id="empInsertForm">
@@ -205,8 +207,7 @@
 			$("button[type=submit]").attr("disabled","disabled");
 		}
 	}
-	
 </script>
-<jsp:include page="../include/msgbtn.jsp"/>
 </body>
+<jsp:include page="../include/footer2.jsp"></jsp:include>
 </html>

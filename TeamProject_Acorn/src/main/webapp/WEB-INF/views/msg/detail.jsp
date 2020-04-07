@@ -8,6 +8,9 @@
 <title>/msg/detail.jsp</title>
 <jsp:include page="../include/resource_boot4.jsp"></jsp:include>
 <style>
+body{
+	margin-top: 1rem;
+}
 table{
 	table-layout: fixed;
     word-wrap: break-word;

@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/mytrello/list.jsp</title>
-<jsp:include page="../include/resource.jsp" />
+<jsp:include page="../include/resource_boot4.jsp" />
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"> </script>
 <style>
 	h1{color: #F1648A;}
@@ -41,12 +41,13 @@
 		color: #fff;
 	}
 </style>
+<jsp:include page="../include/navbar2.jsp">
+	<jsp:param value="mytrello" name="category"/>
+</jsp:include>
 </head>
 
 <body>
-<jsp:include page="../include/navbar.jsp">
-	<jsp:param value="mytrello" name="category"/>
-</jsp:include>
+
 
 <div class="container">
 	<h1>체크 리스트</h1>
@@ -91,7 +92,7 @@
 	});
 </script>
 <br/><br/><br/>
+</body>
 <jsp:include page="../include/footer2.jsp"/>
 <jsp:include page="../include/msgbtn.jsp"/>
-</body>
 </html>

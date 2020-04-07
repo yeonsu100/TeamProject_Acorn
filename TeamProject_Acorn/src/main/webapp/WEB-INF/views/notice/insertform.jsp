@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/notice/insertform.jsp</title>
-<jsp:include page="../include/resource.jsp"></jsp:include>
+<jsp:include page="../include/resource_boot4.jsp"></jsp:include>
 <style>
 	/* textarea의 크기가 SmartEditor의 크기가 된다.*/
 	#content{
@@ -14,11 +14,12 @@
 		height:400px;
 	}
 </style>
-</head>
-<body>
-<jsp:include page="../include/navbar.jsp">
+<jsp:include page="../include/navbar2.jsp">
 	<jsp:param value="notice" name="category"/>
 </jsp:include>
+</head>
+<body>
+
 <div class="container">
 	<ol class="breadcrumb">
 		<li><a href="${pageContext.request.contextPath }/notice/list.go">목록</a></li>
@@ -91,6 +92,7 @@
 		oEditors.getById["content"].setDefaultFont(sDefaultFont, nFontSize);
 	}
 </script>
-<jsp:include page="../include/msgbtn.jsp"/>
 </body>
+<jsp:include page="../include/footer2.jsp"/>
+<jsp:include page="../include/msgbtn.jsp"/>
 </html>
