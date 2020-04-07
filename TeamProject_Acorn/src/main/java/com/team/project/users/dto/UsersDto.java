@@ -17,6 +17,10 @@ public class UsersDto {
 	private String content;
 	
 	public UsersDto() {}
+	
+	
+	
+	
 
 	public UsersDto(int empno, String ename, String hdate, String pnum, String userid, String pwd, String email,
 			String profile, String isadmin, String newPwd, int startRowNum, int endRowNum, String title,
