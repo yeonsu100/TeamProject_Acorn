@@ -4,16 +4,19 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
 <style>
-
-	 .badge {
-	     position: absolute;
-	     top: 0;
-	     right: 0;
-	     height: 20px;
-	     border-radius: 50%;
-	     background-color: red;
-	     justify-content: center;
-		 align-content: center;
+	
+	.counter {
+	    position: relative;
+	    top: -35px;
+	    left: 60px;
+	    z-index: 2;
+	    padding: 1px 7px;
+	    margin-left: -23px;
+	    font-size: 11px;
+	    font-weight:bold;
+	    color: #fff;
+	    background-color: #fe1212;
+	    border-radius: 10em;
 	 }
 	 .fa-comment-dots{
 	 	color:#F1648A
@@ -58,9 +61,9 @@ $(document).ready(function(){
 });
 </script>
 <div style="position:fixed; bottom:5px; right:5px;">
+	<span class="counter counter-lg" id="msgCount"></span>
 	<a href="javascript:popupOpen();">
-		<i class="far fa-comment-dots fa-4x badge-wrapper" >
-			<span class="badge badge-light" id="msgCount"></span>
-		</i>
+		<i class="far fa-comment-dots fa-4x" ></i>
 	</a>
+		
 </div>

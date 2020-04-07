@@ -28,6 +28,7 @@
 		<div class="form-group has-feedback">
 			<label class="control-label" for="pnum">전화번호</label>
 			<input class="form-control" type="text" id="pnum" name="pnum"/>
+			<p class="help-block" id="pnum_exist">이미 존재하는 전화번호입니다</p>
 			<p class="help-block" id="pnum_error">-를 제외하고 입력하세요</p>
 			<p class="help-block" id="pnum_required">반드시 입력하세요</p>
 			<span class="glyphicon glyphicon-remove form-control-feedback"></span>
@@ -62,6 +63,8 @@
 	
 	//전화번호를 형식에 맞게 입력했는지 여부 
 	var isPnumMatch=false;
+	//전화번호가 사용가능한지(중복이 아닌지) 여부
+	var isPnumUsable=false;
 	//입사일을 형식에 맞게 입력했는지 여부
 	var isHdateMatch=false;
 	
@@ -69,22 +72,39 @@
 	$("#pnum").on("input", function(){
 		isPnumDirty=true;
 		
-		//입력한 전화번오 받아오기
-		var pnum=$("#pnum").val();
+		var inputPnum=$("#pnum").val();
+		$.ajax({
+			url:"${pageContext.request.contextPath }/users/checkpnum.go",
+			method:"GET",
+			data:{inputPnum:inputPnum},
+			success:function(responseData){
+				if(responseData.isExist){//이미 존재하는 아이디라면 
+					isPnumUsable=false;
+				}else{
+					isPnumUsable=true;
+				}
+				//아이디 에러 여부 
+				var isError= !isPnumUsable || !isPnumInput || !isPnumMatch;
+				//아이디 상태 바꾸기 
+				setState("#pnum", isError );
+			}
+		});
 		
-		if(pnum.match("-")){//전화번호에 -를 넣었다면
+		
+		
+		if(inputPnum.match("-")){//전화번호에 -를 넣었다면
 			isPnumMatch=false;
 		}else{				//- 안넣고 제대로 입력했다면
 			isPnumMatch=true;
 		}
 		
-		if(pnum.length == 0){ //전화번호를 입력하지 않았다면
+		if(inputPnum.length == 0){ //전화번호를 입력하지 않았다면
 			isPnumInput=false;
 		}else{					//입력 했다면 
 			isPnumInput=true;
 		}
 		//전화번호 에러 여부 
-		var isError= !isPnumInput || !isPnumMatch;
+		var isError= !isPnumInput || !isPnumMatch || !isPnumUsable;
 		//전화번호 상태 바꾸기 
 		setState("#pnum", isError);
 	});
@@ -174,9 +194,12 @@
 		if(isHdateInput && !isHdateMatch){
 			$("#hdate_error").show();
 		}
+		if(!isPnumUsable && isPnumDirty){
+			$("#pnum_exist").show();
+		}
 		
 		//버튼의 상태 바꾸기 
-		if(isEnameInput && isPnumInput && isPnumMatch && isHdateInput && isHdateMatch){
+		if(isEnameInput && isPnumInput && isPnumMatch && isHdateInput && isHdateMatch && isPnumUsable){
 			$("button[type=submit]").removeAttr("disabled");
 		}else{
 			$("button[type=submit]").attr("disabled","disabled");

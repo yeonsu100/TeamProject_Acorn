@@ -41,43 +41,22 @@
 		<button class="btn btn-warning" type="button"  onclick="location.href='list.go' ">취소</button>
 	</form>
 </div>
-<%--
-	[ SmartEditor 를 사용하기 위한 설정 ]
-	1. WebContent 에 SmartEditor 폴드를 복사해서 붙여넣기
-	2. WebContent 에 upload 폴더 만들어두기
-	3. WebContent/WEB-INF/lib 폴더에
-		commons-io.jar 파일과 commons-fileupload.jar 파일 붙여 넣기
-	4. <textarea id="content" name="content">
-		content가 아래의 javascript 에서 사용되기 때문에 다른이름으로 바꾸고
-		싶으면 javascript 에서 content 를 찾아서 모두 다른 이름으로 바꾸어 주면 된다.
-	5. textarea 의 크기가 SmartEditor 의 크기가 된다.
-	6. 폼을 제출하고 싶으면 submitContents(this)라는 javascript 가 
-	      폼 안에 있는 버튼에서 실행되면 된다. 
- --%>
 <!-- SmartEditor 에서 필요한 javascript 로딩  -->
 <script src="${pageContext.request.contextPath }/SmartEditor/js/HuskyEZCreator.js"></script>
 <script>
 	var oEditors = [];
-	
-	//추가 글꼴 목록
-	//var aAdditionalFontSet = [["MS UI Gothic", "MS UI Gothic"], ["Comic Sans MS", "Comic Sans MS"],["TEST","TEST"]];
-	
 	nhn.husky.EZCreator.createInIFrame({
 		oAppRef: oEditors,
 		elPlaceHolder: "content",
 		sSkinURI: "${pageContext.request.contextPath}/SmartEditor/SmartEditor2Skin.html",	
 		htParams : {
-			bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
-			bUseVerticalResizer : true,		// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-			bUseModeChanger : true,			// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
-			//aAdditionalFontList : aAdditionalFontSet,		// 추가 글꼴 목록
+			bUseToolbar : true,				
+			bUseVerticalResizer : true,		
+			bUseModeChanger : true,			
 			fOnBeforeUnload : function(){
-				//alert("완료!");
 			}
-		}, //boolean
+		}, 
 		fOnAppLoad : function(){
-			//예제 코드
-			//oEditors.getById["ir1"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
 		},
 		fCreator: "createSEditor2"
 	});
@@ -91,15 +70,15 @@
 		var sHTML = oEditors.getById["content"].getIR();
 		alert(sHTML);
 	}
+	// 빈 값 일 경우 제출 막기
 	function submitContents(elClickedObj) {
-		oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);	// 에디터의 내용이 textarea에 적용됩니다.
+		oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);	
 		var content=document.getElementById("content").value;
 		if(content == "" ||content == null|| content == "&nbsp;" || content == "<p>&nbsp;</p>"){
 			alert("내용을 입력하세요.");
             oEditors.getById["content"].exec("FOCUS"); //포커싱
             return false;
 		}
-		// 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("content").value를 이용해서 처리하면 됩니다.
 		try {
 			elClickedObj.form.submit();
 		} catch(e) {}

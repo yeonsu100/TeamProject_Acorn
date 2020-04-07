@@ -26,7 +26,6 @@ public class SuggestController {
 	@RequestMapping("/suggest/list")
 	public ModelAndView list(ModelAndView mView,
 			HttpServletRequest request) {
-		// 파일 목록과 페이징 처리에 필요한 값들을 request에 담아주는 서비스 메소드 호출하기
 		service.list(request);
 		mView.setViewName("suggest/list");
 		return mView;
@@ -36,7 +35,6 @@ public class SuggestController {
 	@RequestMapping(value = "/suggest/insert", method = RequestMethod.POST )
 	public ModelAndView authInsert(HttpServletRequest request,
 			@ModelAttribute SuggestDto dto) {
-		// 세션에 있는 작성자 아이디 읽어오기
 		String sugId=(String)request.getSession().getAttribute("id");
 		dto.setSugId(sugId);
 		service.addSuggest(request, dto);
@@ -56,14 +54,13 @@ public class SuggestController {
 		return map;
 		
 	}
+	
 	// 한 줄 게시판 삭제 요청처리
 	@RequestMapping("/suggest/delete")
 	public ModelAndView 
 		authSuggestDelete(HttpServletRequest request,
 				@RequestParam int num){
-		//서비스를 이용해서 글을 삭제하기 
 		service.deleteSuggest(num, request);
-		//글 목록 보기로 리다일렉트 이동 
 		return new ModelAndView("redirect:/suggest/list.go");
 	}
 }
