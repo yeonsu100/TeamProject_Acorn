@@ -9,6 +9,9 @@
 <title>/views/msg/list.jsp</title>
 <jsp:include page="../include/resource_boot4.jsp"/>
 <style>	
+body{
+	margin-top: 0px;
+}
 .title {
 	display: inline-block;
 	max-width: 200px;
@@ -22,7 +25,6 @@ table {
 }
 .table th,
 .table td {
-	padding: 0.3rem;
 	border-top: 1px solid #F1A4BA;
 }
 .table thead th {
@@ -44,6 +46,22 @@ table {
 	border:0;
 	outline:0;
 }
+.btn-primary:focus, .btn-primary.focus {
+	color: #fff;
+	background-color: #F1648A;
+	border: 0;
+	box-shadow: 0 0 0 0.1rem #F1A4BA;
+}
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #F1648A;
+  border-color: #F1A4BA;
+}
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.1rem #F1A4BA;
+}
 .page-link {
   color: #F1648A;
   border: 1px solid #F1A4BA;
@@ -64,12 +82,12 @@ table {
 </style>
 </head>
 <style>
-body{padding-top: 0px;}
+
 </style>
 <body>
 <jsp:include page="msgnav.jsp"/>
-<div class="container" style="font-size:14px;">
-	<table class="table table-hover">
+<div class="container">
+	<table class="table table-hover table-sm">
 		<thead>
 			<tr>
 				<c:choose>

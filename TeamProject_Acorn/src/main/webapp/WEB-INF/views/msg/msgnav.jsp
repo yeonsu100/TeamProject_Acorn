@@ -25,6 +25,13 @@
 	font-weight:bold;
 	border-bottom: 3px solid #F1648A;
 }
+.nav-tabs .nav-link:not(:disabled):not(.disabled):active, .nav-tabs .nav-link:not(:disabled):not(.disabled).active{
+	color:#F1648A;
+	background-color: #fff;
+	border:none;
+	font-weight:bold;
+	border-bottom: 3px solid #F1648A;
+}
 .nav-tabs, .nav-tabs .nav-link:focus, .nav-tabs .nav-link {
 	border:none;
 }

@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/views/home.jsp</title>
-<jsp:include page="include/resource.jsp"/>
+<jsp:include page="include/resource_boot4.jsp"/>
 
 <style>
 	*{
@@ -72,45 +72,38 @@
 </head>
 
 <body>
-<jsp:include page="include/navbar.jsp"/>
+<jsp:include page="include/navbar2.jsp"/>
 
 <div class="section-top">
 	<div class="metro">
 		<div class="l1">
 			<li class="item i1">
-				<a href="${pageContext.request.contextPath }/notice/list.go"><i class="glyphicon glyphicon-bullhorn"></i>
+				<a href="${pageContext.request.contextPath }/notice/list.go"><i class="fas fa-bullhorn"></i>
 				<span>Notice</span></a>
 			</li>
 			<li class="item i2">
-				<a href="${pageContext.request.contextPath }/board/list.go"><i class="glyphicon glyphicon-pencil"></i>
+				<a href="${pageContext.request.contextPath }/board/list.go"><i class="fas fa-pencil-alt"></i>
 				<span>Board</span></a>
 			</li>
 		</div>
 		<div class="l2">
 			<li class="item i3">
-				<a href="${pageContext.request.contextPath }/suggest/list.go"><i class="glyphicon glyphicon-inbox"></i>
+				<a href="${pageContext.request.contextPath }/suggest/list.go"><i class="fas fa-envelope-open-text"></i>
 				<span>Suggest</span></a>
 			</li>
 			
 			<li class="item i4">
-				<a href="${pageContext.request.contextPath }/file/list.go"><i class="glyphicon glyphicon-floppy-save"></i>
+				<a href="${pageContext.request.contextPath }/file/list.go"><i class="fas fa-download"></i>
 				<span>Web Hard</span></a>
 			</li>
 			
 			<li class="item i5">
-				<a href="${pageContext.request.contextPath }/mytrello/list.go"><i class="glyphicon glyphicon-th-list"></i>
+				<a href="${pageContext.request.contextPath }/mytrello/list.go"><i class="fas fa-tasks"></i>
 				<span>To Do</span></a>
 			</li>
 		</div>
 	</div>
 	
-	<c:choose>
-		<c:when test="${empty sessionScope.isAdmin }">
-		</c:when>
-		<c:otherwise>
-			<a href="emp/insertform.go">사원 추가(임시)</a>
-		</c:otherwise>
-	</c:choose>
 </div>
 <br/><br/><br/>
 <jsp:include page="include/footer2.jsp"/>

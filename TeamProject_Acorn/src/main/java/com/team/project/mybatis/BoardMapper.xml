@@ -25,7 +25,7 @@
 			(SELECT result1.*, ROWNUM AS rnum
 			FROM
 				(SELECT num, writer, title, viewCount, countComment,
-				TO_CHAR(regdate, 'YY.MM.DD') AS regdate
+				TO_CHAR(regdate, 'YY-MM-DD HH24:MM') AS regdate
 				FROM T_board
 				<choose>
 					<when test="title != null and content != null">
@@ -55,7 +55,7 @@
 		SELECT result1.*
 		FROM
 			(SELECT num, writer, title, content, viewCount, 
-			TO_CHAR(regdate, 'YY.MM.DD') AS regdate,
+			TO_CHAR(regdate, 'YY.MM.DD HH24:MM') AS regdate,
 			LAG(num, 1, 0) OVER(ORDER BY num DESC) AS prevNum,
 			LEAD(num, 1, 0) OVER(ORDER BY num DESC) AS nextNum
 			FROM T_board
@@ -79,7 +79,7 @@
 		SELECT result1.*
 		FROM
 			(SELECT num, writer, title, content, viewCount, 
-			TO_CHAR(regdate, 'YY.MM.DD') AS regdate,
+			TO_CHAR(regdate, 'YY.MM.DD HH24:MM') AS regdate,
 			LAG(num, 1, 0) OVER(ORDER BY num DESC) AS prevNum,
 			LEAD(num, 1, 0) OVER(ORDER BY num DESC) AS nextNum
 			FROM T_board
