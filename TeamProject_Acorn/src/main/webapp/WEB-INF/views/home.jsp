@@ -40,7 +40,7 @@
 		width: 100px;
 		height: 100px;
 		float: left;
-		background: #F1BDCD;
+		background: #F1C4DA;
 		margin: 4px;
 		cursor: pointer;
 		text-align: center;
