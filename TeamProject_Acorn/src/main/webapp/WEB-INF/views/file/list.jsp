@@ -2,13 +2,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>/file/list.jsp</title>
-<jsp:include page="../include/resource.jsp" />
+<jsp:include page="../include/resource.jsp"></jsp:include>
 <style>
 	h1{color: #F1648A;}
 	thead{background-color: #B2CCFF;}

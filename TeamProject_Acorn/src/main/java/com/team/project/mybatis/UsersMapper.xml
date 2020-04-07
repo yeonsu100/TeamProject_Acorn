@@ -6,6 +6,11 @@
 		FROM T_user
 		WHERE userid=#{inputId}
 	</select>
+	<select id="isPnumExist" parameterType="String" resultType="String">
+		SELECT pnum
+		FROM T_emp
+		WHERE pnum=#{inputPnum}
+	</select>
 	<select id="isUserExist" parameterType="int" resultType="String">
 		SELECT userid
 		FROM T_user

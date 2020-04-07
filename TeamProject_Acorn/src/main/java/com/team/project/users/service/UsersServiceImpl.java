@@ -78,6 +78,15 @@ public class UsersServiceImpl implements UsersService{
 		map.put("isExist", isExist);
 		return map;
 	}
+	
+	@Override
+	public Map<String, Object> isExistPnum(String inputPnum) {
+		boolean isExist=dao.isPnumExist(inputPnum);
+		Map<String, Object> map=new HashMap<>();
+		map.put("isExist", isExist);
+		return map;
+	}
+	
 
 	@Override
 	public void showInfo(String id, ModelAndView mView) {
@@ -236,5 +245,6 @@ public class UsersServiceImpl implements UsersService{
 		request.setAttribute("totalPageCount", totalPageCount);	
 		request.setAttribute("totalRow", totalRow);			
 	}
+
 	
 }
