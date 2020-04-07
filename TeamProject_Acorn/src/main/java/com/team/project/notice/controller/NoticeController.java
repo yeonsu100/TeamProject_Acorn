@@ -23,15 +23,16 @@ public class NoticeController {
 	private NoticeService service;
 	@Autowired
 	private NoticeDao noticeDao;
+	
 	// 파일 목록보기 
 	@RequestMapping("/notice/list")
 	public ModelAndView list(ModelAndView mView,
 			HttpServletRequest request) {
-		// 파일 목록과 페이징 처리에 필요한 값들을 request에 담아주는 서비스 메소드 호출하기
 		service.list(request);
 		mView.setViewName("notice/list");
 		return mView;
 	}
+	
 	// 글작성 폼 요청
 	@RequestMapping("/notice/insertform")
 	public ModelAndView authInsertForm(HttpServletRequest request) {
@@ -42,11 +43,11 @@ public class NoticeController {
 		}
 		return new ModelAndView("notice/insertform");
 	}
+	
 	// 글작성 요청
 	@RequestMapping(value = "/notice/insert", method = RequestMethod.POST )
 	public ModelAndView authInsert(HttpServletRequest request,
 			@ModelAttribute NoticeDto dto) {
-		// 세션에 있는 작성자 아이디 읽어오기
 		String writer=(String)request.getSession().getAttribute("id");
 		dto.setWriter(writer);
 		service.addContent(request, dto);
@@ -58,18 +59,17 @@ public class NoticeController {
 	public ModelAndView 
 		authDelete(HttpServletRequest request,
 				@RequestParam int num){
-		//서비스를 이용해서 글을 삭제하기 
 		service.deleteContent(num, request);
-		//글 목록 보기로 리다일렉트 이동 
 		return new ModelAndView("redirect:/notice/list.go");
 	}
+	
 	// 글 자세히 보기
 	@RequestMapping("/notice/detail")
 	public String detail(HttpServletRequest request){
 		service.detail(request);
-		//view page 로 forward 이동해서 글 자세히 보기 
 		return "notice/detail";
 	}
+	
 	// 글 업데이트 폼 요청 처리
 	@RequestMapping("/notice/updateform")
 	public ModelAndView authUpdateForm(HttpServletRequest request,
@@ -80,7 +80,6 @@ public class NoticeController {
 		if(!id.equals(writer)) {
 			throw new UpdateException();
 		}
-		// 1. 파라미터로 전달되는 수정 할 글번호를 읽어온다.
 		service.detail(request);
 		mView.setViewName("notice/updateform");
 		return mView;

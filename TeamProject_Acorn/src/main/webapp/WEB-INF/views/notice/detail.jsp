@@ -118,8 +118,8 @@
 	<button type="button" class="btn btn-outline-primary">
 		<a href="updateform.go?num=${dto.num }">수정</a>
 	</button>
-	<button type="button" class="btn btn-outline-primary">
-		<a href="javascript:deleteConfirm()">삭제</a>
+	<button type="button" class="btn btn-outline-primary" onclick="location.href='javascript:deleteConfirm()'">
+		삭제
 	</button>
 </div>
 

@@ -16,9 +16,7 @@ public class NoticeDaoImpl implements NoticeDao{
 	//  글 갯수 메소드
 	@Override
 	public int getCount(NoticeDto dto) {
-		// 검색 조건에 맞는 파일의 전체 갯수를 select 해서
 		int count=session.selectOne("notice.getCount", dto);
-				// 리턴한다.
 		return count;
 	}
 	
@@ -47,18 +45,21 @@ public class NoticeDaoImpl implements NoticeDao{
 		dto=session.selectOne("notice.getData2", dto.getNum());
 		return dto;
 	}
-
+	
+	// 글 업데이트
 	@Override
 	public void update(NoticeDto dto) {
 		session.update("notice.update", dto);
 	}
 
+	// 글 하나의 정보
 	@Override
 	public NoticeDto getDate(int num) {
 		NoticeDto dto=session.selectOne("notice.getData2", num);
 		return dto;
 	}
-
+	
+	// 조회수 증가 
 	@Override
 	public int addCount(int num) {
 		int count=session.update("notice.addCount",num);
