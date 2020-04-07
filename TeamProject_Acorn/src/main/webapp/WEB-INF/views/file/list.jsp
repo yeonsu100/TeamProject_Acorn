@@ -146,7 +146,12 @@
 		}
 	}
 </script>
+<<<<<<< HEAD
 <jsp:include page="../include/footer.jsp"/>
+=======
+<br/><br/><br/>
+<jsp:include page="../include/footer2.jsp"/>
+>>>>>>> branch 'master' of https://github.com/yeonsu100/TeamProject_Acorn.git
 <jsp:include page="../include/msgbtn.jsp"/>
 </body>
 </html>

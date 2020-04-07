@@ -69,7 +69,7 @@
 		</tr>
 		<tr>
 			<th scope="row">내가 작성한 글</th>
-			<td><a href="#">목록 보기</a></td>
+			<td><a href="../board/mylist.go">목록 보기</a></td>
 		</tr>
 	</table>
 </div>

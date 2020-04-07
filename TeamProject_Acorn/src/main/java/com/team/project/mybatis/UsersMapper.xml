@@ -97,5 +97,4 @@
 		DELETE FROM T_emp
 		WHERE empno=#{empno}	
 	</delete>
-
 </mapper>

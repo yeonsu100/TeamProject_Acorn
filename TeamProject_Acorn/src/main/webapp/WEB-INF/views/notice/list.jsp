@@ -178,6 +178,8 @@ thead{background-color: #F1A4BA;}
 		<button type="submit">검색</button>
 	</form>
 </div>
+<br/><br/><br/>
+<jsp:include page="../include/footer2.jsp"/>
 <jsp:include page="../include/msgbtn.jsp"/>
 </body>
 </html>
