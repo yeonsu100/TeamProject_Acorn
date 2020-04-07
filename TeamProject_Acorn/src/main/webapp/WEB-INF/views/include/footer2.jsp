@@ -8,7 +8,7 @@
 <!-- Footer -->
 <footer class="page-footer font-small blue-grey lighten-5">
 
-  <div style="background-color: #F1A4BA;">
+  <div style="background-color: #F1C4DA;">
     <div class="container">
 
     </div>
@@ -26,8 +26,8 @@
         <h5 class="text-uppercase font-weight-bold"><strong>MISSION</strong></h5>
         <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
         <p>
-	        1. 우리는 항상 고객을 먼저 생각한다. <br/>
-			2. 우리는 최고의 품질, 최상의 맛을 제공한다. <br/>
+	        1. 우리는 항상 고객을 먼저 생각한다. <br/><br/>
+			2. 우리는 최고의 품질, 최상의 맛을 제공한다. <br/><br/>
 			3. 우리는 2030년까지 글로벌 기업으로 도약한다. <br/>
 		</p>
 

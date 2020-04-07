@@ -25,7 +25,7 @@
 	}
 	.task{
 		width: 100%;
-		background: #F1A4BA;
+		background: #F1C4DA;
 		padding: 18px;
 		margin: 6px 0;
 		overflow: hidden;
