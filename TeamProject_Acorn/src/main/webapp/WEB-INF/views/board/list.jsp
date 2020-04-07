@@ -38,7 +38,7 @@
 			<tr>
 				<th>글번호</th>
 				<th>작성자</th>
-				<th>제목</th>
+				<th>제목 (댓글수)</th>
 				<th>조회수</th>
 				<th>등록일</th>
 			</tr>
@@ -125,9 +125,10 @@
 		<input type="text" name="keyword" 
 			placeholder="검색어 입력..." value="${keyword }"/>
 		<button type="submit">검색</button>
-		<jsp:include page="../include/footer.jsp"/>
 	</form>
 </div>
+<br/><br/><br/>
+<jsp:include page="../include/footer2.jsp"/>
 <jsp:include page="../include/msgbtn.jsp"/>
 </body>
 </html>
