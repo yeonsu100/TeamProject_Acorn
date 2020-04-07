@@ -105,6 +105,7 @@
 		</a>
 		<a href="javascript:deleteConfirm()" class="btn btn-primary btn-sm">삭제</a>
 	</c:if>
+	<a href="list.go">목록보기</a>
 	<div class="comments">
 		<ul>
 		<c:forEach items="${commentList }" var="tmp">
@@ -156,14 +157,14 @@
 							<!-- 덧글 대상 -->
 							<input type="hidden" name="target_id" value="${tmp.writer }" />
 							<input type="hidden" name="comment_group" value="${tmp.comment_group }" />
-							<textarea name="content"><c:if test="${empty id }">로그인이 필요합니다.</c:if></textarea>
-							<button type="submit">등록</button>
+							<textarea class="form-control" id="addReplyComment" name="content"><c:if test="${empty id }">로그인이 필요합니다.</c:if></textarea>
+							<button disabled id="addReplyBtn" type="submit">등록</button>
 						</form>			
 						<c:if test="${id eq tmp.writer }">
 							<form class="comment-update-form" action="comment_update.go" method="post">
 								<input type="hidden" name="num" value="${tmp.num }" />
-								<textarea name="content">${tmp.content }</textarea>
-								<button style="color:BLUE" type="submit">수정</button>
+								<textarea class="form-control" id="updateReplyComment" name="content">${tmp.content }</textarea>
+								<button disabled id="updateReplyBtn" type="submit">수정</button>
 							</form>
 						</c:if>
 					</li>				
@@ -333,7 +334,24 @@
 	});
 	
 	// 대댓글의 답글 빈 값일 경우 버튼 제출 막기
+	$("#addReplyComment").on("input",function(){
+		var addReplyComment=$("#addReplyComment").val();
+		if(addReplyComment.length!=0){
+			$("#addReplyBtn").removeAttr("disabled");
+		}else{
+			$("#addReplyBtn").attr("disabled","disabled");
+		}
+	});
 	
+	// 대댓글의 수정 빈 내용 제출 막기
+	$("#updateReplyComment").on("input",function(){
+		var updateReplyComment=$("#updateReplyComment").val();
+		if(updateReplyComment.length!=0){
+			$("#updateReplyBtn").removeAttr("disabled");
+		}else{
+			$("#updateReplyBtn").attr("disabled","disabled");
+		}
+	});
 	
 	
 </script>
