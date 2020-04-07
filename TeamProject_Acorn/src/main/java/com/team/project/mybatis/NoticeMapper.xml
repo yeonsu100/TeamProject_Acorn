@@ -18,7 +18,7 @@
 		FROM
 		(SELECT result1.*, ROWNUM AS rnum
 		FROM
-		(SELECT num,writer,title,viewCount,regdate
+		(SELECT num,writer,title,viewCount,TO_CHAR(regdate, 'YY-MM-DD HH24:MM') AS regdate
 		FROM T_notice
 		<choose>
 			<when test="title != null">
@@ -45,7 +45,7 @@
 		SELECT result1.*
 		FROM
 			(SELECT num, writer, title, content, viewCount, 
-			TO_CHAR(regdate, 'YY.MM.DD HH24:MI') AS regdate,
+			TO_CHAR(regdate, 'YY-MM-DD HH24:MI') AS regdate,
 			LAG(num, 1, 0) OVER(ORDER BY num DESC) AS prevNum,
 			LEAD(num, 1, 0) OVER(ORDER BY num DESC) AS nextNum
 			FROM T_notice

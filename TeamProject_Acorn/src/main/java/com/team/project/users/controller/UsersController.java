@@ -29,6 +29,7 @@ public class UsersController {
 	@Autowired
 	private UsersService service;
 	
+	//사원정보 메인페이지 요청
 	@RequestMapping("/emp/main")
 	public ModelAndView admin_main(ModelAndView mView, HttpServletRequest request) {
 		String isAdmin=(String)request.getSession().getAttribute("isAdmin");
@@ -40,7 +41,7 @@ public class UsersController {
 		return mView;
 	}
 	
-	//비밀번호 수정하기 폼 요청 처리
+	//비밀번호 수정하기 폼 요청
 	@RequestMapping("/users/pwd_updateform")
 	public ModelAndView authPwdForm(HttpServletRequest request,
 			ModelAndView mView) {
@@ -71,17 +72,12 @@ public class UsersController {
 	}
 	
 	//프로필 이미지파일 업로드 요청
-	// ajax 파일 업로드 처리, JSON 문자열을 리턴해 주어야 한다. 
 	@ResponseBody
 	@RequestMapping(value = "/users/profile_upload", 
 			method = RequestMethod.POST)
 	public Map<String, Object> profileUpload(HttpServletRequest request,
 			@RequestParam MultipartFile profileImage){
 		String path=service.saveProfileImage(request, profileImage);
-		/*
-		 *  {"savedPath":"/upload/xxxx.jpg"} 형식의 JSON 문자열을 리턴해주도록
-		 *  Map 객체를 구성해서 리턴해준다. 
-		 */
 		Map<String, Object> map=new HashMap<>();
 		map.put("savedPath", path);
 		return map;
@@ -123,6 +119,14 @@ public class UsersController {
 	@RequestMapping("/users/checkid")
 	public Map<String, Object> checkid(@RequestParam String inputId){
 		Map<String, Object> map=service.isExistId(inputId);
+		return map;
+	}
+	
+	//중복 전화번호 체크
+	@ResponseBody
+	@RequestMapping("/users/checkpnum")
+	public Map<String, Object> checkpnum(@RequestParam String inputPnum){
+		Map<String, Object> map=service.isExistPnum(inputPnum);
 		return map;
 	}
 	

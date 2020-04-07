@@ -12,6 +12,7 @@ import com.team.project.users.dto.UsersDto;
 
 public interface UsersService {
 	public Map<String, Object> isExistId(String inputId);
+	public Map<String, Object> isExistPnum(String inputPnum);
 	public void addUser(UsersDto dto);
 	public void addEmp(UsersDto dto);
 	public void validEmp(UsersDto dto, HttpSession session, ModelAndView mView);

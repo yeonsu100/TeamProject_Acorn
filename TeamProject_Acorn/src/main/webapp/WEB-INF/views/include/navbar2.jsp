@@ -38,6 +38,7 @@
 	color:#F1648A;
 	font-weight:bold;
 	border-bottom: 3px solid #F1648A;
+	transition: all .5s ease;
 }
 .navbar-nav .nav-item .nav-link span:not(:disabled):not(.disabled):active, 
 .navbar-nav .nav-item .nav-link span:not(:disabled):not(.disabled).active{

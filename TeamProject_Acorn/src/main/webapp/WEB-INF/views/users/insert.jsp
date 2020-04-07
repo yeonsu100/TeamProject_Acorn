@@ -10,7 +10,7 @@
 <body>
 <div class="container">
 	<script>
-		alert("<strong>${dto.userid }</strong> 회원님 가입 되었습니다.");
+		alert("${dto.userid } 회원님 가입 되었습니다.");
 		location.href="${pageContext.request.contextPath }/home.go";
 	</script>
 </div>

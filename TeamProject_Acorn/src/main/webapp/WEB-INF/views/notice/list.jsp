@@ -123,9 +123,13 @@ thead{background-color: #F1A4BA;}
 		</c:forEach>
 		</tbody>
 	</table>
-	<div class="text-right">
-		<a href="insertform.go" class="btn btn-primary btn-sm">공지사항 작성</a>
-	</div>
+	
+	<c:if test="${not empty isAdmin}">
+		<div class="text-right">
+			<a href="insertform.go" class="btn btn-primary btn-sm">공지사항 작성</a>
+		</div>
+	</c:if>
+	
 	<nav aria-label="Search pages">
 		<ul class="pagination pagination-sm">
 		<c:choose>
