@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>/views/home.jsp</title>
 <jsp:include page="include/resource_boot4.jsp"/>
+<jsp:include page="include/navbar2.jsp"/>
 
 <style>
 	*{
@@ -72,35 +73,37 @@
 </head>
 
 <body>
-<jsp:include page="include/navbar2.jsp"/>
-
 <div class="section-top">
 	<div class="metro">
 		<div class="l1">
-			<li class="item i1">
-				<a href="${pageContext.request.contextPath }/notice/list.go"><i class="fas fa-bullhorn"></i>
-				<span>Notice</span></a>
-			</li>
-			<li class="item i2">
-				<a href="${pageContext.request.contextPath }/board/list.go"><i class="fas fa-pencil-alt"></i>
-				<span>Board</span></a>
-			</li>
+			<ul>
+				<li class="item i1">
+					<a href="${pageContext.request.contextPath }/notice/list.go"><i class="fas fa-bullhorn"></i>
+					<span>Notice</span></a>
+				</li>
+				<li class="item i2">
+					<a href="${pageContext.request.contextPath }/board/list.go"><i class="fas fa-pencil-alt"></i>
+					<span>Board</span></a>
+				</li>
+			</ul>
 		</div>
 		<div class="l2">
-			<li class="item i3">
-				<a href="${pageContext.request.contextPath }/suggest/list.go"><i class="fas fa-envelope-open-text"></i>
-				<span>Suggest</span></a>
-			</li>
-			
-			<li class="item i4">
-				<a href="${pageContext.request.contextPath }/file/list.go"><i class="fas fa-download"></i>
-				<span>Web Hard</span></a>
-			</li>
-			
-			<li class="item i5">
-				<a href="${pageContext.request.contextPath }/mytrello/list.go"><i class="fas fa-tasks"></i>
-				<span>To Do</span></a>
-			</li>
+			<ul>
+				<li class="item i3">
+					<a href="${pageContext.request.contextPath }/suggest/list.go"><i class="fas fa-envelope-open-text"></i>
+					<span>Suggest</span></a>
+				</li>
+				
+				<li class="item i4">
+					<a href="${pageContext.request.contextPath }/file/list.go"><i class="fas fa-download"></i>
+					<span>Web Hard</span></a>
+				</li>
+				
+				<li class="item i5">
+					<a href="${pageContext.request.contextPath }/mytrello/list.go"><i class="fas fa-tasks"></i>
+					<span>To Do</span></a>
+				</li>
+			</ul>
 		</div>
 	</div>
 	

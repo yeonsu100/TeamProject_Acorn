@@ -22,7 +22,7 @@ thead{background-color: #F1A4BA;}
 	color:#212529;
 }
 .table-hover tbody tr:hover {
-	background-color: #f5d7e0;
+	background-color: #F1C4DA;
 }
 .btn-primary{
 	background-color:#F1648A;
@@ -30,7 +30,7 @@ thead{background-color: #F1A4BA;}
 	outline:0;
 }
 .btn-primary:hover{
-	background-color:#F1A4BA;
+	background-color:#F1C4DA;
 	border:0;
 	outline:0;
 }
@@ -38,34 +38,34 @@ thead{background-color: #F1A4BA;}
 	color: #fff;
 	background-color: #F1648A;
 	border: 0;
-	box-shadow: 0 0 0 0.1rem #F1A4BA;
+	box-shadow: 0 0 0 0.1rem #F1C4DA;
 }
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
   color: #fff;
   background-color: #F1648A;
-  border-color: #F1A4BA;
+  border-color: #F1C4DA;
 }
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.1rem #F1A4BA;
+  box-shadow: 0 0 0 0.1rem #F1C4DA;
 }
 .page-link {
   color: #F1648A;
-  border: 1px solid #F1A4BA;
+  border: 1px solid #F1C4DA;
 }
 .page-link:hover {
   color: #F1648A;
-  background-color: #F1A4BA;
-  border-color: #F1A4BA;
+  background-color: #F1C4DA;
+  border-color: #F1C4DA;
 }
 .page-item.active .page-link {
   color: #fff;
   background-color: #F1648A;
-  border-color: #F1A4BA;
+  border-color: #F1C4DA;
 }
 .page-item.disabled .page-link {
-  border-color: #F1A4BA;
+  border-color: #F1C4DA;
 }
 </style>
 </head>
