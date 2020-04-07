@@ -9,55 +9,102 @@
 <title>/views/suggest/list.jsp</title>
 <jsp:include page="../include/resource_boot4.jsp"/>
 <style>
-	h1{color: #6799FF;}
-	.comments ul{
-		padding: 0;
-		margin: 0;
-		list-style-type: none;
-	}
-	.comments ul li{
-		border-top: 1px solid #888; /* li 의 윗쪽 경계선 */
-	}
-	.comments dt{
-		margin-top: 5px;
-	}
-	.comments dd{
-		margin-left: 26px;
-	}
-	.comments form textarea, .comments form button{
-		float: left;
-	}
-	.comments li{
-		clear: left;
-	}
-	.comments form textarea{
-		width: 85%;
-		height: 100px;
-	}
-	.comments form button{
-		width: 15%;
-		height: 100px;
-		color: #B2CCFF;
-	}
-	/* 수정폼을 일단 숨긴다.*/
-	.suggest form{
-		display: none;
-	}
-	.suggest{
-		position: relative;
-	}
-	.comments .user-img{
-		width: 20px;
-		height: 20px;
-		border-radius: 50%;
-	}
+h1{color: #F1648A;}
+.comments ul{
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+}
+.comments ul li{
+	border-top: 1px solid #888; /* li 의 윗쪽 경계선 */
+}
+.comments dt{
+	margin-top: 5px;
+}
+.comments dd{
+	margin-left: 26px;
+}
+.comments form textarea, .comments form button{
+	float: left;
+}
+.comments li{
+	clear: left;
+}
+.comments form textarea{
+	width: 85%;
+	height: 100px;
+}
+.comments form button{
+	width: 15%;
+	height: 100px;
+	color: #B2CCFF;
+}
+/* 수정폼을 일단 숨긴다.*/
+.suggest form{
+	display: none;
+}
+.suggest{
+	position: relative;
+}
+.comments .user-img{
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+}
+.btn-primary{
+	background-color:#F1648A;
+	border:0;
+	outline:0;
+}
+.btn-primary:hover{
+	background-color:#F1A4BA;
+	border:0;
+	outline:0;
+}
+.btn-primary:disabled{
+	background-color:#F1A4BA;
+	border:0;
+	outline:0;
+}
+.btn-primary:focus, .btn-primary.focus {
+	color: #fff;
+	background-color: #F1648A;
+	border: 0;
+	box-shadow: 0 0 0 0.1rem #F1A4BA;
+}
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+	color: #fff;
+	background-color: #F1648A;
+	border-color: #F1A4BA;
+}
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+	box-shadow: 0 0 0 0.1rem #F1A4BA;
+}
+.page-link {
+	color: #F1648A;
+	border: 1px solid #F1A4BA;
+}
+.page-link:hover {
+	color: #F1648A;
+	background-color: #F1A4BA;
+	border-color: #F1A4BA;
+}
+.page-item.active .page-link {
+	color: #fff;
+	background-color: #F1648A;
+	border-color: #F1A4BA;
+}
+.page-item.disabled .page-link {
+	border-color: #F1A4BA;
+}
 </style>
-</head>
-<body>
 <jsp:include page="../include/navbar2.jsp">
 	<jsp:param value="suggest" name="category"/>
 </jsp:include>
-
+</head>
+<body>
 <div class="container">
 
 	<h1>건의사항 게시판</h1>
@@ -81,12 +128,12 @@
 						<span>${tmp.regdate }</span>
 						<c:choose>
 							<c:when test="${id eq tmp.sugId}">
-								<a href="javascript:" class="suggest-update-link">수정</a>&nbsp;&nbsp;
-								<a href="javascript:deleteConfirm(${tmp.num })">삭제</a>
+								<a href="javascript:" class="suggest-update-link" style="color: #F1648A;">수정</a>&nbsp;&nbsp;
+								<a href="javascript:deleteConfirm(${tmp.num })" style="color: #F1648A;">삭제</a>
 							</c:when>
 							<c:otherwise>
 								<c:if test="${not empty isAdmin }">
-									<a href="javascript:deleteConfirm(${tmp.num })">삭제</a>
+									<a href="javascript:deleteConfirm(${tmp.num })" style="color: #F1648A;">삭제</a>
 								</c:if>
 							</c:otherwise>
 						</c:choose>
@@ -110,16 +157,12 @@
 			<input type="hidden" name="sugId" value="${id }" />
 			<input type="hidden" name="sugProfile" value="${tmp.profile}"/>
 			<c:if test="${not empty id}">
-				<div class="input-group">
-					<textarea class="form-control" id="insert-sugContent" name="sugContent"></textarea>
-					<div class="input-group-append">
-						<button class="btn btn-primary" type="submit" disabled id="insertBtn">등록</button>
-					</div>
-				</div>
+				<textarea class="form-control" id="insert-sugContent" name="sugContent"></textarea>
+				<button class="btn btn-primary" type="submit" disabled id="insertBtn">등록</button>
 			</c:if>
 		</form>
 	</div>
-	<nav aria-label="Search pages">
+	<nav aria-label="Search pages" style="margin-top:8rem;">
 		<ul class="pagination pagination-sm">
 		<c:choose>
 			<c:when test="${startPageNum ne 1 }">

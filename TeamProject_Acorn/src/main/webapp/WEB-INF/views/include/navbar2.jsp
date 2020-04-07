@@ -85,8 +85,8 @@
 		<c:choose>
 			<c:when test="${empty sessionScope.id }">
 				<div class="ml-auto">
-				<a class="btn btn-primary navbar-btn btn-xs" href="${pageContext.request.contextPath }/home.go">로그인</a>
-				<a class="btn btn-info navbar-btn btn-xs" href="${pageContext.request.contextPath }/users/signup_checkform.go">계정 생성</a>
+				<a class="btn btn-primary navbar-btn btn-sm my-3" href="${pageContext.request.contextPath }/home.go">로그인</a>
+				<a class="btn btn-info navbar-btn btn-sm my-3" href="${pageContext.request.contextPath }/users/signup_checkform.go">계정 생성</a>
 				</div>
 			</c:when>
 			

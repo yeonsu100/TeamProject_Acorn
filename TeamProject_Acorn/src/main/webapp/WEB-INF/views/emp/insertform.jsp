@@ -11,6 +11,9 @@
 	.help-block, .form-control-feedback{
 		display: none;
 	}
+	.form-row{
+		margin-top:1rem;
+	}
 </style>
 <jsp:include page="../include/navbar2.jsp"></jsp:include>
 <jsp:include page="../include/msgbtn.jsp"></jsp:include>
@@ -20,32 +23,26 @@
 <div class="container">
 <h1>사원 추가 페이지</h1>
 	<form action="insert.go" method="post" id="empInsertForm">
-		<div class="form-group has-feedback">
+		<div class="form-row">
 			<label class="control-label" for="ename">이름</label>
 			<input class="form-control" type="text" id="ename" name="ename"/>
-			<p class="help-block" id="ename_required">반드시 입력 하세요</p>
-			<span class="glyphicon glyphicon-remove form-control-feedback"></span>
-			<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+			<p class="invalid-feedback" id="ename_required">반드시 입력 하세요</p>
 		</div>
-		<div class="form-group has-feedback">
+		<div class="form-row">
 			<label class="control-label" for="pnum">전화번호</label>
 			<input class="form-control" type="text" id="pnum" name="pnum"/>
-			<p class="help-block" id="pnum_exist">이미 존재하는 전화번호입니다</p>
-			<p class="help-block" id="pnum_error">-를 제외하고 입력하세요</p>
-			<p class="help-block" id="pnum_required">반드시 입력하세요</p>
-			<span class="glyphicon glyphicon-remove form-control-feedback"></span>
-			<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+			<p class="invalid-feedback" id="pnum_exist">이미 존재하는 전화번호입니다</p>
+			<p class="invalid-feedback" id="pnum_error">-를 제외하고 입력하세요</p>
+			<p class="invalid-feedback" id="pnum_required">반드시 입력하세요</p>
 		</div>
-		<div class="form-group has-feedback">
+		<div class="form-row">
 			<label class="control-label" for="hdate">입사일</label>
 			<input class="form-control" type="text" id="hdate" name="hdate"/>
-			<p class="help-block" id="hdate_error">특수기호(., /, -)를 제외한 8자리 숫자(YYYYMMDD) 형식으로 입력하세요</p>
-			<p class="help-block" id="hdate_required">반드시 입력하세요</p>
-			<span class="glyphicon glyphicon-remove form-control-feedback"></span>
-			<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+			<p class="invalid-feedback" id="hdate_error">특수기호(., /, -)를 제외한 8자리 숫자(YYYYMMDD) 형식으로 입력하세요</p>
+			<p class="invalid-feedback" id="hdate_required">반드시 입력하세요</p>
 		</div>
-		<button disabled="disabled" class="btn btn-primary" type="submit">추가</button>
-		<button class="btn btn-warning" type="reset">취소</button>
+		<button disabled="disabled" class="btn btn-primary btn-sm mt-3" type="submit">추가</button>
+		<button class="btn btn-secondary btn-sm mt-3" type="reset">취소</button>
 	</form>
 </div>
 <script>
@@ -159,25 +156,21 @@
 	function setState(sel, isError){
 		//일단 UI 를 초기 상태로 바꿔준다.
 		$(sel)
+		.removeClass("is-valid is-invalid")
 		.parent()
-		.removeClass("has-success has-error")
-		.find(".help-block, .form-control-feedback")
+		.find(".invalid-feedback")
 		.hide();
 		
 		//입력란의 색상과 아이콘을 바꿔주는 작업 
 		if(isError){
 			//입력란이 error 인 상태
 			$(sel)
-			.parent()
-			.addClass("has-error")
-			.find(".glyphicon-remove")
+			.addClass("is-invalid")
 			.show();
 		}else{
 			//입력란이 success 인 상태
 			$(sel)
-			.parent()
-			.addClass("has-success")
-			.find(".glyphicon-ok")
+			.addClass("is-valid")
 			.show();
 		}
 		
