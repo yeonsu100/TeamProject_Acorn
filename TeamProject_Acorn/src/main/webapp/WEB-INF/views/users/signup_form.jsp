@@ -5,60 +5,55 @@
 <head>
 <meta charset="UTF-8">
 <title>/users/signup_form.jsp</title>
-<jsp:include page="../include/resource.jsp"/>
+<jsp:include page="../include/resource_boot4.jsp"/>
 <style>
 	/* 페이지 로딩 시점에 도움말과 피드백 아이콘은 일단 숨기기 */
 	.help-block, .form-control-feedback{
 		display: none;
 	}
+	.form-row{
+		margin-top:1rem;
+	}
 </style>
+<jsp:include page="../include/navbar2.jsp"/>
 </head>
 <body>
-<jsp:include page="../include/navbar.jsp"/>
 <div class="container">
 	<h1>회원 가입 페이지</h1>
 	<form action="signup.go" method="post" id="signupForm">
-		<div class="form-group has-feedback">
+		<div class="form-row">
 			<label class="control-label" for="userid">아이디</label>
 			<input class="form-control" type="text" id="userid" name="userid"/>
-			<p class="help-block" id="id_notusable">사용 불가능한 아이디 입니다.</p>
-			<p class="help-block" id="id_required">반드시 입력 하세요</p>
-			<span class="glyphicon glyphicon-remove form-control-feedback"></span>
-			<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+			<p class="invalid-feedback" id="id_notusable">사용 불가능한 아이디 입니다.</p>
+			<p class="invalid-feedback" id="id_required">반드시 입력 하세요</p>
 		</div>
-		<div class="form-group has-feedback">
+		<div class="form-row">
 			<label class="control-label" for="pwd">비밀번호</label>
 			<input class="form-control" type="password" id="pwd" name="pwd"/>
-			<p class="help-block" id="pwd_required">반드시 입력하세요</p>
-			<p class="help-block" id="pwd_tooshort">비밀번호가 너무 짧습니다. 5자 이상 입력해 주세요</p>
-			<span class="glyphicon glyphicon-remove form-control-feedback"></span>
-			<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+			<p class="invalid-feedback" id="pwd_required">반드시 입력하세요</p>
+			<p class="invalid-feedback" id="pwd_tooshort">비밀번호가 너무 짧습니다. 5자 이상 입력해 주세요</p>
 		</div>
-		<div class="form-group">
+		<div class="form-row">
 			<label class="control-label" for="pwd2">비밀번호 확인</label>
 			<input class="form-control" type="password" id="pwd2" name="pwd2"/>
-			<p class="help-block" id="pwd2_notequal">입력한 비밀번호와 다릅니다</p>
-			<span class="glyphicon glyphicon-remove form-control-feedback"></span>
-			<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+			<p class="invalid-feedback" id="pwd2_notequal">입력한 비밀번호와 다릅니다</p>
 		</div>
-		<div class="form-group has-feedback">
+		<div class="form-row">
 			<label class="control-label" for="email">이메일</label>
 			<input class="form-control" type="email" id="email" name="email" />
-			<p class="help-block" id="email_notmatch">잘못된 이메일 주소입니다.</p>
-			<span class="glyphicon glyphicon-remove form-control-feedback"></span>
-			<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+			<p class="invalid-feedback" id="email_notmatch">잘못된 이메일 주소입니다.</p>
 		</div>
-		<div class="form-group">
+		<div class="form-row">
 			<label class="control-label" for="ename">이름</label>
 			<input type="text" class="form-control" id="ename" value="${ename }" disabled/>
 		</div>
 		<input type="hidden" name="empno" value="${empno}" }/>
-		<div class="form-group">
+		<div class="form-row">
 			<label class="control-label" for="empno">사번</label>
 			<input type="text" class="form-control" id="empno" value="${empno }" disabled/>
 		</div>
-		<button disabled="disabled" class="btn btn-primary" type="submit">가입</button>
-		<button class="btn btn-warning" type="reset">취소</button>
+		<button disabled="disabled" class="btn btn-primary btn-sm mt-3" type="submit">가입</button>
+		<button class="btn btn-secondary btn-sm mt-3" type="reset">취소</button>
 		<input type="hidden" name="profile" value="/resources/images/default_user.jpeg" />
 	</form>
 </div>
@@ -193,25 +188,21 @@
 	function setState(sel, isError){
 		//일단 UI 를 초기 상태로 바꿔준다.
 		$(sel)
+		.removeClass("is-valid is-invalid")
 		.parent()
-		.removeClass("has-success has-error")
-		.find(".help-block, .form-control-feedback")
+		.find(".invalid-feedback")
 		.hide();
 		
 		//입력란의 색상과 아이콘을 바꿔주는 작업 
 		if(isError){
 			//입력란이 error 인 상태
 			$(sel)
-			.parent()
-			.addClass("has-error")
-			.find(".glyphicon-remove")
+			.addClass("is-invalid")
 			.show();
 		}else{
 			//입력란이 success 인 상태
 			$(sel)
-			.parent()
-			.addClass("has-success")
-			.find(".glyphicon-ok")
+			.addClass("is-valid")
 			.show();
 		}
 		//에러가 있다면 에러 메세지 띄우기

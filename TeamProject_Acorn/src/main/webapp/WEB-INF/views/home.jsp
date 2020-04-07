@@ -69,14 +69,12 @@
 	}
 
 </style>
-</head>
-
-<body>
 <jsp:include page="include/navbar2.jsp"/>
-
+</head>
+<body>
 <div class="section-top">
 	<div class="metro">
-		<div class="l1">
+		<ul class="l1">
 			<li class="item i1">
 				<a href="${pageContext.request.contextPath }/notice/list.go"><i class="fas fa-bullhorn"></i>
 				<span>Notice</span></a>
@@ -85,8 +83,8 @@
 				<a href="${pageContext.request.contextPath }/board/list.go"><i class="fas fa-pencil-alt"></i>
 				<span>Board</span></a>
 			</li>
-		</div>
-		<div class="l2">
+		</ul>
+		<ul class="l2">
 			<li class="item i3">
 				<a href="${pageContext.request.contextPath }/suggest/list.go"><i class="fas fa-envelope-open-text"></i>
 				<span>Suggest</span></a>
@@ -101,7 +99,7 @@
 				<a href="${pageContext.request.contextPath }/mytrello/list.go"><i class="fas fa-tasks"></i>
 				<span>To Do</span></a>
 			</li>
-		</div>
+		</ul>
 	</div>
 	
 </div>

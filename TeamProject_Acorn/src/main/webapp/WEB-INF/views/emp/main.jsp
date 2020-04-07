@@ -68,11 +68,11 @@ thead{background-color: #F1A4BA;}
   border-color: #F1A4BA;
 }
 </style>
-</head>
-<body>
 <jsp:include page="../include/navbar2.jsp">
 	<jsp:param value="admin" name="category"/>
 </jsp:include>
+</head>
+<body>
 <div class="container">
 	
 	<h1>사원 목록</h1>
@@ -171,6 +171,7 @@ thead{background-color: #F1A4BA;}
 			<button type="submit">검색</button>
 		</form>
 </div>
-<jsp:include page="../include/msgbtn.jsp"/>
 </body>
+<jsp:include page="../include/footer2.jsp"/>
+<jsp:include page="../include/msgbtn.jsp"/>
 </html>
