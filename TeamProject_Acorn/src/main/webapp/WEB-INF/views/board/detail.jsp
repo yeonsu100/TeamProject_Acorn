@@ -183,7 +183,7 @@
 				<input type="hidden" name="target_id" value="${dto.writer }"/>
 				<c:if test="${empty id }">로그인이 필요합니다.</c:if>
 				<textarea class="form-control" id="insert-boardContent" name="content"></textarea>
-				<button  class="btn btn-primary" type="submit"  style="color:RED" disabled id="insertBtn">등록</button>
+				<button  class="btn btn-primary" type="submit" disabled id="insertBtn">등록</button>
 			</form>
 		</div>
 	</div>
@@ -331,6 +331,9 @@
 			$("#insertBtn").attr("disabled","disabled");
 		}
 	});
+	
+	// 대댓글의 답글 빈 값일 경우 버튼 제출 막기
+	
 	
 	
 </script>
