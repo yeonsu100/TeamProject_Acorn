@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>/views/home.jsp</title>
 <jsp:include page="include/resource_boot4.jsp"/>
+<jsp:include page="include/navbar2.jsp"/>
 
 <style>
 	*{
@@ -40,7 +41,7 @@
 		width: 100px;
 		height: 100px;
 		float: left;
-		background: #F1BDCD;
+		background: #F1C4DA;
 		margin: 4px;
 		cursor: pointer;
 		text-align: center;
@@ -69,14 +70,49 @@
 	}
 
 </style>
+<<<<<<< HEAD
 </head>
 
-<body>
+=======
 <jsp:include page="include/navbar2.jsp"/>
-
+</head>
+>>>>>>> branch 'master' of https://github.com/yeonsu100/TeamProject_Acorn.git
+<body>
 <div class="section-top">
 	<div class="metro">
+<<<<<<< HEAD
 		<div class="l1">
+			<ul>
+				<li class="item i1">
+					<a href="${pageContext.request.contextPath }/notice/list.go"><i class="fas fa-bullhorn"></i>
+					<span>Notice</span></a>
+				</li>
+				<li class="item i2">
+					<a href="${pageContext.request.contextPath }/board/list.go"><i class="fas fa-pencil-alt"></i>
+					<span>Board</span></a>
+				</li>
+			</ul>
+		</div>
+		<div class="l2">
+			<ul>
+				<li class="item i3">
+					<a href="${pageContext.request.contextPath }/suggest/list.go"><i class="fas fa-envelope-open-text"></i>
+					<span>Suggest</span></a>
+				</li>
+				
+				<li class="item i4">
+					<a href="${pageContext.request.contextPath }/file/list.go"><i class="fas fa-download"></i>
+					<span>Web Hard</span></a>
+				</li>
+				
+				<li class="item i5">
+					<a href="${pageContext.request.contextPath }/mytrello/list.go"><i class="fas fa-tasks"></i>
+					<span>To Do</span></a>
+				</li>
+			</ul>
+		</div>
+=======
+		<ul class="l1">
 			<li class="item i1">
 				<a href="${pageContext.request.contextPath }/notice/list.go"><i class="fas fa-bullhorn"></i>
 				<span>Notice</span></a>
@@ -85,8 +121,8 @@
 				<a href="${pageContext.request.contextPath }/board/list.go"><i class="fas fa-pencil-alt"></i>
 				<span>Board</span></a>
 			</li>
-		</div>
-		<div class="l2">
+		</ul>
+		<ul class="l2">
 			<li class="item i3">
 				<a href="${pageContext.request.contextPath }/suggest/list.go"><i class="fas fa-envelope-open-text"></i>
 				<span>Suggest</span></a>
@@ -101,7 +137,8 @@
 				<a href="${pageContext.request.contextPath }/mytrello/list.go"><i class="fas fa-tasks"></i>
 				<span>To Do</span></a>
 			</li>
-		</div>
+		</ul>
+>>>>>>> branch 'master' of https://github.com/yeonsu100/TeamProject_Acorn.git
 	</div>
 	
 </div>

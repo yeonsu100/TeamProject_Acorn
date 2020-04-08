@@ -22,7 +22,7 @@ thead{background-color: #F1A4BA;}
 	color:#212529;
 }
 .table-hover tbody tr:hover {
-	background-color: #f5d7e0;
+	background-color: #F1C4DA;
 }
 .btn-primary{
 	background-color:#F1648A;
@@ -30,7 +30,7 @@ thead{background-color: #F1A4BA;}
 	outline:0;
 }
 .btn-primary:hover{
-	background-color:#F1A4BA;
+	background-color:#F1C4DA;
 	border:0;
 	outline:0;
 }
@@ -38,34 +38,34 @@ thead{background-color: #F1A4BA;}
 	color: #fff;
 	background-color: #F1648A;
 	border: 0;
-	box-shadow: 0 0 0 0.1rem #F1A4BA;
+	box-shadow: 0 0 0 0.1rem #F1C4DA;
 }
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
   color: #fff;
   background-color: #F1648A;
-  border-color: #F1A4BA;
+  border-color: #F1C4DA;
 }
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.1rem #F1A4BA;
+  box-shadow: 0 0 0 0.1rem #F1C4DA;
 }
 .page-link {
   color: #F1648A;
-  border: 1px solid #F1A4BA;
+  border: 1px solid #F1C4DA;
 }
 .page-link:hover {
   color: #F1648A;
-  background-color: #F1A4BA;
-  border-color: #F1A4BA;
+  background-color: #F1C4DA;
+  border-color: #F1C4DA;
 }
 .page-item.active .page-link {
   color: #fff;
   background-color: #F1648A;
-  border-color: #F1A4BA;
+  border-color: #F1C4DA;
 }
 .page-item.disabled .page-link {
-  border-color: #F1A4BA;
+  border-color: #F1C4DA;
 }
 </style>
 </head>
@@ -73,7 +73,6 @@ thead{background-color: #F1A4BA;}
 <jsp:include page="../include/navbar2.jsp">
 	<jsp:param value="board" name="category"/>
 </jsp:include>
-
 <div class="container">
 	<h1>게시판</h1>
 	<p> 자유게시판 입니다.</p> <br/>
@@ -174,14 +173,14 @@ thead{background-color: #F1A4BA;}
 	</nav>
 	<%-- 글 검색 기능 폼 --%>
 	<form action="list.go" method="get">
-		<label for="condition">검색조건</label>
+		<label for="condition">검색 조건</label>
 		<select name="condition" id="condition">
 			<option value="titlecontent" <c:if test="${condition eq 'titlecontent' }">selected</c:if> >제목+내용</option>
 			<option value="title" <c:if test="${condition eq 'title' }">selected</c:if> >제목</option>
 			<option value="writer" <c:if test="${condition eq 'writer' }">selected</c:if> >작성자</option>
 		</select>
 		<input type="text" name="keyword" 
-			placeholder="검색어 입력..." value="${keyword }"/>
+			placeholder="키워드를 입력하세요..." value="${keyword }"/>
 		<button type="submit">검색</button>
 	</form>
 </div>

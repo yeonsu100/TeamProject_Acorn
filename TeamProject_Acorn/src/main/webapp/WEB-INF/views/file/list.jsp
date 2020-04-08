@@ -7,14 +7,70 @@
 <head>
 <meta charset="UTF-8">
 <title>/file/list.jsp</title>
-<jsp:include page="../include/resource.jsp"></jsp:include>
+<jsp:include page="../include/resource_boot4.jsp"></jsp:include>
 <style>
-	h1{color: #F1648A;}
-	thead{background-color: #B2CCFF;}
+h1{color: #F1648A;}
+thead{background-color: #F1A4BA;}
+.table th,
+.table td {
+	border-top: 1px solid #F1A4BA;
+}
+.table thead th {
+  	border-bottom: 2px solid #F1A4BA;
+}
+.table td a{
+	color:#212529;
+}
+.table-hover tbody tr:hover {
+	background-color: #f5d7e0;
+}
+.btn-primary{
+	background-color:#F1648A;
+	border:0;
+	outline:0;
+}
+.btn-primary:hover{
+	background-color:#F1A4BA;
+	border:0;
+	outline:0;
+}
+.btn-primary:focus, .btn-primary.focus {
+	color: #fff;
+	background-color: #F1648A;
+	border: 0;
+	box-shadow: 0 0 0 0.1rem #F1A4BA;
+}
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #F1648A;
+  border-color: #F1A4BA;
+}
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.1rem #F1A4BA;
+}
+.page-link {
+  color: #F1648A;
+  border: 1px solid #F1A4BA;
+}
+.page-link:hover {
+  color: #F1648A;
+  background-color: #F1A4BA;
+  border-color: #F1A4BA;
+}
+.page-item.active .page-link {
+  color: #fff;
+  background-color: #F1648A;
+  border-color: #F1A4BA;
+}
+.page-item.disabled .page-link {
+  border-color: #F1A4BA;
+}
 </style>
 </head>
 <body>
-<jsp:include page="../include/navbar.jsp">
+<jsp:include page="../include/navbar2.jsp">
 	<jsp:param value="file" name="category" />
 </jsp:include>
 
@@ -34,7 +90,7 @@
 		</c:otherwise>
 	</c:choose>
 	
-	<table class="table table-striped table-hover">
+	<table class="table table-striped table-hover table-sm">
 		<thead>
 			<tr>
 				<th>번호</th>
@@ -73,23 +129,20 @@
 	</table>
 	
 	<div class="text-right">
-		<button type="button" class="btn btn-outline-primary">
-			<a href="upload_form.go">파일 업로드하기</a></h3>
-		</button>
+			<a href="upload_form.go" class="btn btn-primary btn-sm">파일 업로드</a>
 	</div>
 	
-	<div class="page-display pager">
+	<nav aria-label="Search pages">
 		<ul class="pagination pagination-sm">
-		
 		<c:choose>
 			<c:when test="${startPageNum ne 1 }">
-				<li>
-					<a href="list.go?pageNum=${startPageNum-1 }&condition=${condition}&keyword=${encodedKeyword}">&laquo;</a>
+				<li class="page-item">
+					<a class="page-link" href="list.go?pageNum=${startPageNum-1 }&condition=${condition}&keyword=${encodedKeyword}">&laquo;</a>
 				</li>
 			</c:when>
 			<c:otherwise>
-				<li class="disabled">
-					<a href="javascript:">&laquo;</a>
+				<li class="page-item disabled">
+					<a class="page-link" href="javascript:">&laquo;</a>
 				</li>
 			</c:otherwise>
 		</c:choose>
@@ -97,13 +150,13 @@
 		<c:forEach var="w" begin="${startPageNum }" end="${endPageNum }" step="1">
 			<c:choose>
 				<c:when test="${w eq pageNum }">
-					<li class="active">
-						<a href="list.go?pageNum=${w }&condition=${condition}&keyword=${encodedKeyword}">${w }</a>
+					<li class="page-item active">
+						<a class="page-link" href="list.go?pageNum=${w }&condition=${condition}&keyword=${encodedKeyword}">${w }</a>
 					</li>
 				</c:when>
 				<c:otherwise>
-					<li>
-						<a href="list.go?pageNum=${w }&condition=${condition}&keyword=${encodedKeyword}">${w }</a>
+					<li class="page-item">
+						<a class="page-link" href="list.go?pageNum=${w }&condition=${condition}&keyword=${encodedKeyword}">${w }</a>
 					</li>
 				</c:otherwise>
 			</c:choose>	
@@ -111,28 +164,28 @@
 		
 			<c:choose>
 				<c:when test="${endPageNum lt totalPageNum }">
-					<li>
-						<a href="list.go?pageNum=${endPageNum+1 }&condition=${condition}&keyword=${encodedKeyword}">&raquo;</a>
+					<li class="page-item">
+						<a class="page-link" href="list.go?pageNum=${endPageNum+1 }&condition=${condition}&keyword=${encodedKeyword}">&raquo;</a>
 					</li>
 				</c:when>
 				<c:otherwise>
-					<li class="disabled">
-						<a href="javascript:">&raquo;</a>
+					<li class="page-item disabled">
+						<a class="page-link" href="javascript:">&raquo;</a>
 					</li>
 				</c:otherwise>
 			</c:choose>
 
 		</ul>
-	</div>
+	</nav>
 	
 	<form action="list.go" method="get">
-		<label for="condition">검색하기</label>
+		<label for="condition">검색 조건</label>
 		<select name="condition" id="condition">
 			<option value="titlename" <c:if test="${condition eq 'titlename' }">selected</c:if> >파일 제목 또는 파일명</option>
 			<option value="title" <c:if test="${condition eq 'title' }">selected</c:if> >파일 제목</option>
 			<option value="writer" <c:if test="${condition eq 'writer' }">selected</c:if> >작성자</option>
 		</select>
-		<input type="text" name="keyword" id="keyword" placeholder="키워드를 입력하세요" value="${keyword }" />
+		<input type="text" name="keyword" id="keyword" placeholder="키워드를 입력하세요..." value="${keyword }" />
 		<button type="submit">검색</button>
 	</form>
 	

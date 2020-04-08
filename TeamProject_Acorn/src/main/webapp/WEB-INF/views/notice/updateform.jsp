@@ -5,12 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>/cafe/private/updateform.jsp</title>
-<jsp:include page="../include/resource.jsp"></jsp:include>
-</head>
-<body>
-<jsp:include page="../include/navbar.jsp">
+<jsp:include page="../include/resource_boot4.jsp"></jsp:include>
+<jsp:include page="../include/navbar2.jsp">
 	<jsp:param value="cafe" name="category"/>
 </jsp:include>
+</head>
+<body>
+
 <div class="container">
 	<ul class="breadcrumb">
 		<li><a href="${pageContext.request.contextPath }/notice/list.go">목록</a></li>
@@ -79,6 +80,7 @@
 		oEditors.getById["content"].setDefaultFont(sDefaultFont, nFontSize);
 	}
 </script>
-<jsp:include page="../include/msgbtn.jsp"/>
 </body>
+<jsp:include page="../include/footer2.jsp"/>
+<jsp:include page="../include/msgbtn.jsp"/>
 </html>

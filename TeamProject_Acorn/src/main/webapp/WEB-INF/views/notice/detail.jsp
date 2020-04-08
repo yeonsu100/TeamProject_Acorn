@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/notice/detail.jsp</title>
-<jsp:include page="../include/resource.jsp"></jsp:include>
+<jsp:include page="../include/resource_boot4.jsp"></jsp:include>
 <style>
 	.contents, table{
 		width:100%;
@@ -70,11 +70,12 @@
 		border-radius: 50%;
 	}
 </style>
-</head>
-<body>
-<jsp:include page="../include/navbar.jsp">
+<jsp:include page="../include/navbar2.jsp">
 	<jsp:param value="notice" name="category"/>
 </jsp:include>
+</head>
+<body>
+
 <div class="container">
 
 	<c:if test="${not empty keyword }">
@@ -132,6 +133,7 @@
 		}
 	}
 </script>
-<jsp:include page="../include/msgbtn.jsp"/>
 </body>
+<jsp:include page="../include/footer2.jsp"/>
+<jsp:include page="../include/msgbtn.jsp"/>
 </html>
