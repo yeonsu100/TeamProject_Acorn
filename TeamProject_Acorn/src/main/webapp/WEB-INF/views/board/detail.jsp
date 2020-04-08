@@ -172,8 +172,13 @@
 			<td colspan="4">${dto.content }</td>
 		</tr>
 	</table>
+	<div class="contents">${dto.content }</div>
+	<%-- 
+		글 작성자와 로그인 된 아이디가 같을때만 기능을 제공해 준다. 
+		즉, 본인이 작성한 글만 수정할수 있도록 하기 위해
+	--%>
 
-	
+
 	<div class="comments">
 		<ul>
 		<c:forEach items="${commentList }" var="tmp">
@@ -255,11 +260,17 @@
 	</div>
 	<div class="btn-group btn-group-sm float-right" role="group" aria-label="..." style="margin-top:0.7rem;">
 		<a href="list.go" class="btn btn-secondary">목록</a>
-		<c:if test="${dto.writer eq id }">
-			<a href="updateform.go?num=${dto.num }" class="btn btn-secondary">수정</a>
-			<a href="javascript:deleteConfirm()" class="btn btn-secondary">삭제</a>
-		</c:if>
-		
+			<c:choose>
+				<c:when test="${dto.writer eq id}">
+					<a href ="updateform.go?num=${dto.num }" class="btn btn-secondary">수정</a>
+					<a href="javascript:deleteConfirm()" class="btn btn-secondary">삭제</a>
+				</c:when>
+			<c:otherwise>
+				<c:if test="${not empty isAdmin }">
+					<a href="javascript:deleteConfirm()" class="btn btn-secondary">삭제</a>
+				</c:if>
+			</c:otherwise>
+			</c:choose>
 	</div>
 	<!--  댓글 페이징 구역 -->
 	<nav aria-label="Search pages" style="margin-top:8rem;">

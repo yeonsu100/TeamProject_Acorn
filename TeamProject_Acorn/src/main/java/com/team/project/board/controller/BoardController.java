@@ -14,17 +14,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.team.project.board.dao.BoardDao;
 import com.team.project.board.dto.BoardCommentDto;
 import com.team.project.board.dto.BoardDto;
 import com.team.project.board.service.BoardService;
+import com.team.project.exception.UpdateException;
 
 @Controller
 public class BoardController {
 	@Autowired
 	private BoardService service;
+	@Autowired
+	private BoardDao boardDao;
 	
 	@RequestMapping("/board/list")
-	public ModelAndView list(HttpServletRequest request) {
+	public ModelAndView authlist(HttpServletRequest request) {
 		service.getList(request);
 		return new ModelAndView("board/list");
 	}
@@ -45,7 +49,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/board/detail")
-	public String detail(HttpServletRequest request) {
+	public String authdetail(HttpServletRequest request) {
 		service.getDetail(request);
 		return "board/detail";
 	}
@@ -59,6 +63,12 @@ public class BoardController {
 	@RequestMapping("board/updateform")
 	public ModelAndView authUpdateform(HttpServletRequest request,
 			@RequestParam int num, ModelAndView mView) {
+		// 작성자와 로그인된 아이디가 같지 않으면 업데이트 폼 Exception 발생
+		String id=(String)request.getSession().getAttribute("id");
+		String writer=boardDao.getData(num).getWriter();
+		if(!id.equals(writer)) {
+			throw new UpdateException();
+		}
 		service.getUpdateData(mView, num);
 		mView.setViewName("board/updateform");
 		return mView;
@@ -69,7 +79,7 @@ public class BoardController {
 		public ModelAndView 
 			authUpdate(HttpServletRequest request,
 					@ModelAttribute BoardDto dto){
-			service.updateContent(dto);
+			service.updateContent(dto, request);
 			return new ModelAndView
 				("redirect:/board/detail.go?num="+dto.getNum());
 		}
