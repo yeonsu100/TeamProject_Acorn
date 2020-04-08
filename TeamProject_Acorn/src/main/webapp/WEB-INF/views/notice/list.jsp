@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/notice/list.jsp</title>
+<title>** banapresso **</title>
+<link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.ico">
 <jsp:include page="../include/resource_boot4.jsp" />
 <style>
 h1{color: #F1648A;}
@@ -81,14 +82,29 @@ thead{background-color: #F1A4BA;}
 	<h1>공지사항</h1>
 	<p>각종 공지사항을 확인하실 수 있는 게시판 입니다.</p> <br/>
 	
+	<form action="list.go" method="get">
+		<div class="input-group input-group-sm" style="width:35%;">
+			<select class="custom-select" name="condition" id="condition" style="max-width:35%;">
+				<option selected>검색 조건 선택</option>
+				<option value="title"<c:if test="${condition eq 'title' }">selected</c:if>>제목</option>
+				<option value="titlecontent"<c:if test="${condition eq 'titlecontent' }">selected</c:if> >제목+내용</option>
+			</select>
+			<input class="form-control" type="text" name="keyword" 
+				placeholder="키워드를 입력하세요..." value="${keyword }"/>
+			<div class="input-group-append">
+				<button class="btn btn-primary btn-sm" type="submit">검색</button>
+			</div>
+		</div>
+	</form>
+	
 	<c:if test="${not empty keyword }">
-		<p>
-			키워드 (<strong>${keyword }</strong>)에 해당하는 게시물 목록입니다.</br>
-			총 <strong>${totalRow }</strong>개 게시물이 검색되었습니다.
-		</p>
+		<span style="float:right;font-size:0.7rem;">
+			<strong>${keyword }</strong> 라는 검색어로 
+			<strong>${totalRow }</strong> 개의 글이 검색 되었습니다.
+		</span>
 	</c:if>
 	
-	<table class="table table-sm table-hover">
+	<table class="table table-sm table-hover mt-3">
 		<colgroup>
 			<col class="col-xs-1"/>
 			<col class="col-xs-2"/>

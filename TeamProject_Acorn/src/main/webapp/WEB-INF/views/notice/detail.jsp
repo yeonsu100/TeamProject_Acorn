@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/notice/detail.jsp</title>
+<title>** banapresso **</title>
+<link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.ico">
 <jsp:include page="../include/resource_boot4.jsp"></jsp:include>
 <style>
 
@@ -151,13 +152,22 @@ outline:0;
 		결과 자세히 보기 입니다.</p>
 	</c:if>
 	<div style="margin-bottom:0.5rem;">
-		<c:if test="${dto.prevNum ne 0 }">
-			<a href="detail.go?num=${dto.prevNum }&condition=${condition}&keyword=${encodedKeyword}" class="btn btn-primary btn-sm">이전글</a>
-		</c:if>
-	
-		<c:if test="${dto.nextNum ne 0 }">
-			<a href="detail.go?num=${dto.nextNum }&condition=${condition}&keyword=${encodedKeyword}" class="btn btn-primary btn-sm">다음글</a>
-		</c:if>	
+		<c:choose>
+			<c:when test="${dto.prevNum ne 0 }">
+				<a href="detail.go?num=${dto.prevNum }&condition=${condition}&keyword=${encodedKeyword}" class="btn btn-primary btn-sm">이전글</a>
+			</c:when>
+			<c:otherwise>
+				<button disabled="disabled" class="btn btn-primary btn-sm">이전글</button>
+			</c:otherwise>
+		</c:choose>
+		<c:choose>
+			<c:when test="${dto.nextNum ne 0 }">
+				<a href="detail.go?num=${dto.nextNum }&condition=${condition}&keyword=${encodedKeyword}" class="btn btn-primary btn-sm">다음글</a>
+			</c:when>
+			<c:otherwise>
+				<button disabled="disabled" class="btn btn-primary btn-sm">다음글</button>
+			</c:otherwise>
+		</c:choose>
 	</div>
 	<table class="table table-bordered table-sm">
 		<colgroup>

@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/views/msg/list.jsp</title>
+<title>** banapresso **</title>
+<link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.ico">
 <jsp:include page="../include/resource_boot4.jsp"/>
 <style>	
 body{

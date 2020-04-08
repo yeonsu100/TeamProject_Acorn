@@ -6,8 +6,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<<<<<<< HEAD
 <title>/file/upload.jsp</title>
 <jsp:include page="../include/resource_boot4.jsp"/>
+=======
+<title>** banapresso **</title>
+<link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.ico">
+<jsp:include page="../include/resource.jsp"></jsp:include>
+>>>>>>> branch 'master' of https://github.com/yeonsu100/TeamProject_Acorn.git
 </head>
 <body>
 

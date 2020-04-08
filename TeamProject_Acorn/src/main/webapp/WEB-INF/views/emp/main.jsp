@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Employee Main</title>
+<title>** banapresso **</title>
+<link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.ico">
 <jsp:include page="../include/resource_boot4.jsp"></jsp:include>
 <style>
 h1{color: #F1648A;}
@@ -76,9 +77,26 @@ thead{background-color: #F1A4BA;}
 <div class="container">
 	
 	<h1>사원 목록</h1>
+<<<<<<< HEAD
 	<p>바나프레소의 모든 임직원 목록입니다.</p> <br/>
 	
 	<table class="table table-hover table-sm">
+=======
+	<p>설띵</p> <br/>		
+	
+	<form action="main.go" method="get">
+		<div class="input-group input-group-sm" style="width:25%;">
+			<input class="form-control" type="text" name="keyword" 
+				placeholder="사원명을 입력하세요..."/>
+			<div class="input-group-append">
+				<button class="btn btn-primary btn-sm" type="submit">검색</button>
+			</div>
+		</div>
+	</form>
+	
+	
+	<table class="table table-hover table-sm mt-3">
+>>>>>>> branch 'master' of https://github.com/yeonsu100/TeamProject_Acorn.git
 		<colgroup>
 			<col class="col-xs-2"/>
 			<col class="col-xs-1"/>
@@ -125,8 +143,8 @@ thead{background-color: #F1A4BA;}
 			href="${pageContext.request.contextPath }/emp/insertform.go">사원 정보 추가</a>
 	</div>
 	
-	<nav aria-label="Search pages">
-		<ul class="pagination pagination-sm">
+	<nav aria-label="Search pages" class="d-flex">
+		<ul class="pagination pagination-sm mx-auto">
 		<c:choose>
 			<c:when test="${startPageNum ne 1 }">
 				<li class="page-item">
@@ -167,11 +185,7 @@ thead{background-color: #F1A4BA;}
 			</c:choose>
 		</ul>
 	</nav>
- 		<form action="main.go" method="get">
-			<label for="keyword">사원 검색</label>
-			<input type="text" name="keyword" id="keyword" placeholder="사원명을 입력하세요..."/>
-			<button type="submit">검색</button>
-		</form>
+ 		
 </div>
 </body>
 <jsp:include page="../include/footer2.jsp"/>

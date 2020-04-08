@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/board/detail.jsp</title>
+<title>** banapresso **</title>
+<link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.ico">
 <jsp:include page="../include/resource_boot4.jsp"/>
 <style>
 .btn-primary{
@@ -103,6 +104,9 @@
 	height: 25px;
 	border-radius: 50%;
 }
+.page-item{
+	border-top:none !important;
+}
 .btn-group .btn-secondary{
 	background-color:#F1648A;
 	border:0;
@@ -143,13 +147,22 @@
 		<p> <strong>${keyword }</strong> 키워드로 검색된 결과 목록입니다.</p>
 	</c:if>
 	<div style="margin-bottom:0.5rem;">
-		<c:if test="${dto.prevNum ne 0 }">
-			<a href="detail.go?num=${dto.prevNum }&condition=${condition}&keyword=${encodedKeyword}" class="btn btn-primary btn-sm">이전글</a>
-		</c:if>
-
-		<c:if test="${dto.nextNum ne 0 }">
-			<a href="detail.go?num=${dto.nextNum }&condition=${condition}&keyword=${encodedKeyword}" class="btn btn-primary btn-sm">다음글</a>
-		</c:if>	
+		<c:choose>
+			<c:when test="${dto.prevNum ne 0 }">
+				<a href="detail.go?num=${dto.prevNum }&condition=${condition}&keyword=${encodedKeyword}" class="btn btn-primary btn-sm">이전글</a>
+			</c:when>
+			<c:otherwise>
+				<button disabled="disabled" class="btn btn-primary btn-sm">이전글</button>
+			</c:otherwise>
+		</c:choose>
+		<c:choose>
+			<c:when test="${dto.nextNum ne 0 }">
+				<a href="detail.go?num=${dto.nextNum }&condition=${condition}&keyword=${encodedKeyword}" class="btn btn-primary btn-sm">다음글</a>
+			</c:when>
+			<c:otherwise>
+				<button disabled="disabled" class="btn btn-primary btn-sm">다음글</button>
+			</c:otherwise>
+		</c:choose>
 	</div>
 	<table class="table table-bordered table-sm">
 		<colgroup>
@@ -174,17 +187,7 @@
 		글 작성자와 로그인 된 아이디가 같을때만 기능을 제공해 준다. 
 		즉, 본인이 작성한 글만 수정할수 있도록 하기 위해
 	--%>
-	<c:choose>
-		<c:when test="${dto.writer eq id}">
-			<a href="updateform.go?num=${dto.num }">수정</a>
-			<a href="javascript:deleteConfirm()">삭제</a>
-		</c:when>
-		<c:otherwise>
-			<c:if test="${not empty isAdmin }">
-				<a href="javascript:deleteConfirm()">삭제</a>
-			</c:if>
-		</c:otherwise>
-	</c:choose>
+
 
 	<div class="comments">
 		<ul>
@@ -253,6 +256,7 @@
 			</c:choose>
 		</c:forEach>
 		</ul>
+<<<<<<< HEAD
 		
 		<!-- 게시글의 댓글폼 -->
 		<form action="comment_insert.go" method="post" style="margin-top:0.5rem;">
@@ -266,16 +270,26 @@
 		</form>
 	</div>
 	<div class="btn-group btn-group-sm float-right" role="group" aria-label="..." style="margin-top:0.7rem;">
+=======
+
+	<div class="btn-group btn-group-sm float-right" role="group" aria-label="...">
+>>>>>>> branch 'master' of https://github.com/yeonsu100/TeamProject_Acorn.git
 		<a href="list.go" class="btn btn-secondary">목록</a>
-		<c:if test="${dto.writer eq id }">
-			<a href="updateform.go?num=${dto.num }" class="btn btn-secondary">수정</a>
-			<a href="javascript:deleteConfirm()" class="btn btn-secondary">삭제</a>
-		</c:if>
-		
+			<c:choose>
+				<c:when test="${dto.writer eq id}">
+					<a href ="updateform.go?num=${dto.num }" class="btn btn-secondary">수정</a>
+					<a href="javascript:deleteConfirm()" class="btn btn-secondary">삭제</a>
+				</c:when>
+			<c:otherwise>
+				<c:if test="${not empty isAdmin }">
+					<a href="javascript:deleteConfirm()" class="btn btn-secondary">삭제</a>
+				</c:if>
+			</c:otherwise>
+			</c:choose>
 	</div>
 	<!--  댓글 페이징 구역 -->
-	<nav aria-label="Search pages" style="margin-top:8rem;">
-		<ul class="pagination pagination-sm">
+	<nav aria-label="Search pages" class="d-flex">
+		<ul class="pagination pagination-sm mx-auto">
 		<c:choose>
 			<c:when test="${re_startPageNum ne 1 }">
 				<li class="page-item">
@@ -318,6 +332,16 @@
 		</c:choose>
 		</ul>		
 	</nav>
+	<!-- 게시글의 댓글폼 -->
+	<form action="comment_insert.go" method="post">
+		<input type="hidden" name="ref_group" value="${dto.num }"/>
+		<input type="hidden" name="target_id" value="${dto.writer }"/>
+		<div class="input-group mt-2">
+			<textarea class="form-control" id="insert-boardContent" name="content"></textarea>
+			<button  class="btn btn-primary" type="submit" disabled id="insertBtn">등록</button>
+		</div>
+	</form>
+	</div>
 </div>
 
 <script>
