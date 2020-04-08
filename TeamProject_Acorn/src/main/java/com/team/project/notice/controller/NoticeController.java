@@ -26,7 +26,7 @@ public class NoticeController {
 	
 	// 파일 목록보기 
 	@RequestMapping("/notice/list")
-	public ModelAndView list(ModelAndView mView,
+	public ModelAndView authlist(ModelAndView mView,
 			HttpServletRequest request) {
 		service.list(request);
 		mView.setViewName("notice/list");
@@ -65,7 +65,7 @@ public class NoticeController {
 	
 	// 글 자세히 보기
 	@RequestMapping("/notice/detail")
-	public String detail(HttpServletRequest request){
+	public String authdetail(HttpServletRequest request){
 		service.detail(request);
 		return "notice/detail";
 	}

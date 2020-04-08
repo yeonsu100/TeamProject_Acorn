@@ -90,7 +90,6 @@
 								</c:if>
 							</c:otherwise>
 						</c:choose>
-						
 					</dt>
 					<dd>
 						<pre>${tmp.sugContent }</pre>

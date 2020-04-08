@@ -15,6 +15,7 @@ import com.team.project.board.dao.BoardDao;
 import com.team.project.board.dto.BoardCommentDto;
 import com.team.project.board.dto.BoardDto;
 import com.team.project.exception.CanNotDeleteException;
+import com.team.project.exception.UpdateException;
 
 @Service
 public class BoardServiceImpl implements BoardService{
@@ -179,7 +180,12 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public void updateContent(BoardDto dto) {
+	public void updateContent(BoardDto dto, HttpServletRequest request) {
+		String id=(String)request.getSession().getAttribute("id");
+		String writer=boardDao.getData(dto).getWriter();
+		if(!id.equals(writer)) {
+			throw new UpdateException();
+		}
 		boardDao.update(dto);
 	}
 
