@@ -13,7 +13,7 @@ public interface BoardService {
 	public void getDetail(HttpServletRequest request);
 	public void deleteContent(int num, HttpServletRequest request);
 	public void getUpdateData(ModelAndView mView, int num);
-	public void updateContent(BoardDto dto);
+	public void updateContent(BoardDto dto, HttpServletRequest request);
 	//원글 조회수 증가 메소드
 	public void addViewCount(int num);
 	public void saveComment(HttpServletRequest request);

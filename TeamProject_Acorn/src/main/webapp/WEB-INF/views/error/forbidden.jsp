@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/error/forbidden.jsp</title>
+<title>Forbidden Error</title>
+<link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.ico">/title>
 <jsp:include page="../include/resource.jsp"></jsp:include>
 </head>
 <body>

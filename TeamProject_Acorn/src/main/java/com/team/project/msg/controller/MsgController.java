@@ -70,7 +70,7 @@ public class MsgController {
 	
 	//받은메시지 목록보기 
 	@RequestMapping("/msg/list")
-	public ModelAndView list(ModelAndView mView,
+	public ModelAndView authlist(ModelAndView mView,
 			HttpServletRequest request) {
 		//메시지 목록과 페이징 처리에 필요한 값들을 request에 담아주는 서비스 메소드 호출하기
 		service.list(request);
@@ -80,7 +80,7 @@ public class MsgController {
 	
 	//메시지 내용 보기
 	@RequestMapping("/msg/detail")
-	public String detail(HttpServletRequest request){
+	public String authdetail(HttpServletRequest request){
 		service.detail(request);
 		//view page 로 forward 이동
 		return "msg/detail";

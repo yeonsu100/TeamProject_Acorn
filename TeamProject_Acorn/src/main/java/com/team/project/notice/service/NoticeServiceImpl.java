@@ -45,7 +45,7 @@ public class NoticeServiceImpl implements NoticeService{
 			request.setAttribute("encodedKeyword", encodedKeyword);
 			request.setAttribute("condition", condition);
 		}	
-		final int PAGE_ROW_COUNT=5;
+		final int PAGE_ROW_COUNT=10;
 		final int PAGE_DISPLAY_COUNT=5;
 		int pageNum=1;
 		String strPageNum=request.getParameter("pageNum");

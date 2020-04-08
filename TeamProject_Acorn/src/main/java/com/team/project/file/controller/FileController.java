@@ -19,7 +19,7 @@ public class FileController {
 	private FileService service;
 	
 	@RequestMapping("/file/list")
-	public ModelAndView list(ModelAndView mView, HttpServletRequest request) {
+	public ModelAndView authlist(ModelAndView mView, HttpServletRequest request) {
 		service.list(request);
 		mView.setViewName("file/list");
 		return mView;
@@ -37,7 +37,7 @@ public class FileController {
 	}
 	
 	@RequestMapping("/file/download")
-	public ModelAndView download(ModelAndView mView, @RequestParam int num) {
+	public ModelAndView authdownload(ModelAndView mView, @RequestParam int num) {
 		service.getFileData(mView, num);
 		service.addDownCount(num);
 		mView.setViewName("fileDownView");
