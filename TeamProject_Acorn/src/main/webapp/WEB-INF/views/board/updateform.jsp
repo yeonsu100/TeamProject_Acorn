@@ -7,7 +7,8 @@
 <title>/views/board/updateform.jsp</title>
 <head>
 <meta charset="UTF-8">
-<title>/board/updateform.jsp</title>
+<title>** banapresso **</title>
+<link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.ico">
 <jsp:include page="../include/resource_boot4.jsp"></jsp:include>
 <style>
 #content{
