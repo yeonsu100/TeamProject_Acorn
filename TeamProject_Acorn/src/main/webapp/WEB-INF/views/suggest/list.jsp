@@ -137,6 +137,7 @@ h1{color: #F1648A;}
 								</c:if>
 							</c:otherwise>
 						</c:choose>
+
 						${tmp.regdate }
 						</span>
 					</dt>
