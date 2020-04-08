@@ -8,15 +8,7 @@
 <title>/notice/detail.jsp</title>
 <jsp:include page="../include/resource_boot4.jsp"></jsp:include>
 <style>
-.contents, table{
-	width:100%;
-	border:1px dotted #cecece;
-	box-shadow: 3px 3px 5px 6px #ccc;
-}
-/* 글 내용의 경계선 표시 */
-.content{
-	border: 1px dotted #cecece;
-}
+
 /* 글 내용안에 있는 이미지의 크기 제한 */
 .content img{
 	max-width: 100%;
@@ -143,7 +135,7 @@ outline:0;
 }
 .table-bordered th,
 .table-bordered td {
-  	border: 1px solid #F1A4BA !important;
+  	border: 2px solid #F1A4BA !important;
 }
 </style>
 <jsp:include page="../include/navbar2.jsp">
@@ -186,10 +178,15 @@ outline:0;
 			<td colspan="4">${dto.content }</td>
 		</tr>
 	</table>
+	
 	<div class="btn-group btn-group-sm float-right" role="group" aria-label="..." style="margin-top:0.7rem;">
-		<a href="updateform.go?num=${dto.num }" class="btn btn-secondary btn-sm">수정</a>
-		<a href="javascript:deleteConfirm()" class="btn btn-secondary btn-sm">삭제</a>
+		<a href="list.go" class="btn btn-secondary btn-sm">목록</a>
+		<c:if test="${not empty isAdmin}">
+			<a href="updateform.go?num=${dto.num }" class="btn btn-secondary btn-sm">수정</a>
+			<a href="javascript:deleteConfirm()" class="btn btn-secondary btn-sm">삭제</a>
+		</c:if>
 	</div>
+	
 </div>
 <script>
 	function deleteConfirm(){
