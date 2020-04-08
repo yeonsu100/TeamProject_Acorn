@@ -167,7 +167,7 @@ thead{background-color: #F1A4BA;}
 	</nav>
  		<form action="main.go" method="get">
 			<label for="keyword">사원 검색</label>
-			<input type="text" name="keyword" id="keyword" placeholder="사원명을 입력하세요"/>
+			<input type="text" name="keyword" id="keyword" placeholder="사원명을 입력하세요..."/>
 			<button type="submit">검색</button>
 		</form>
 </div>
