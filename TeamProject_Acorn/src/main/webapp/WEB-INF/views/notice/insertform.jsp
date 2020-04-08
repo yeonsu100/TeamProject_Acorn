@@ -21,10 +21,6 @@
 <body>
 
 <div class="container">
-	<ol class="breadcrumb">
-		<li><a href="${pageContext.request.contextPath }/notice/list.go">목록</a></li>
-		<li>새글 작성</li>
-	</ol>
 	<form action="insert.go" method="post">
 		<div class="form-group">
 			<label for="writer">작성자</label>
