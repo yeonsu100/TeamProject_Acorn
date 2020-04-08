@@ -11,7 +11,7 @@
 <body>
 <div class="container">
 	<script>
-		alert("저장 하였습니다.");
+		alert("성공적으로 저장하였습니다!");
 		location.href="${pageContext.request.contextPath }/notice/list.go";
 	</script>
 </div>

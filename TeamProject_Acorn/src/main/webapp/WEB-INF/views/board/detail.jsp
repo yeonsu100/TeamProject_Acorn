@@ -140,8 +140,7 @@
 <body>
 <div class="container">
 	<c:if test="${not empty keyword }">
-		<p> <strong>${keyword }</strong> 검색어로 검색된
-		결과 자세히 보기 입니다.</p>
+		<p> <strong>${keyword }</strong> 키워드로 검색된 결과 목록입니다.</p>
 	</c:if>
 	<div style="margin-bottom:0.5rem;">
 		<c:if test="${dto.prevNum ne 0 }">
@@ -171,7 +170,6 @@
 			<td colspan="4">${dto.content }</td>
 		</tr>
 	</table>
-	<div class="contents">${dto.content }</div>
 	<%-- 
 		글 작성자와 로그인 된 아이디가 같을때만 기능을 제공해 준다. 
 		즉, 본인이 작성한 글만 수정할수 있도록 하기 위해
@@ -237,8 +235,8 @@
 							<!-- 덧글 대상 -->
 							<input type="hidden" name="target_id" value="${tmp.writer }" />
 							<input type="hidden" name="comment_group" value="${tmp.comment_group }" />
-							<textarea class="form-control addReplyComment" name="content"><c:if test="${empty id }">로그인이 필요합니다.</c:if></textarea>
-							<button disabled type="submit" class="btn btn-primary addReplyBtn">등록</button>
+							<textarea class="form-control addReplyComment" name="content"><c:if test="${empty id }">로그인한 사용자만 댓글 등록이 가능합니다.</c:if></textarea>
+							<button disabled type="submit" class="btn btn-primary addReplyBtn">댓글 등록</button>
 						</form>			
 						<c:if test="${id eq tmp.writer }">
 							<form class="comment-update-form" action="comment_update.go" method="post">
@@ -250,7 +248,7 @@
 					</li>				
 				</c:when>
 				<c:otherwise>
-					<li <c:if test="${tmp.num ne tmp.comment_group }">style="padding-left:50px;"</c:if> >삭제된 댓글 입니다.</li>
+					<li <c:if test="${tmp.num ne tmp.comment_group }">style="padding-left:50px;"</c:if> >삭제된 댓글입니다.</li>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
@@ -261,7 +259,7 @@
 			<div class="comment_form">
 				<input type="hidden" name="ref_group" value="${dto.num }"/>
 				<input type="hidden" name="target_id" value="${dto.writer }"/>
-				<c:if test="${empty id }">로그인이 필요합니다.</c:if>
+				<c:if test="${empty id }">로그인한 사용자만 댓글 등록이 가능합니다.</c:if>
 				<textarea class="form-control" id="insert-boardContent" name="content"></textarea>
 				<button  class="btn btn-primary" type="submit" disabled id="insertBtn">등록</button>
 			</div>
@@ -353,7 +351,7 @@
 	
 	//댓글 삭제를 눌렀을때 호출
 	function deleteComment(num){
-		var isDelete=confirm("확인을 누르면 댓글이 삭제 됩니다.");
+		var isDelete=confirm("확인 버튼을 누르면 해당 댓글이 삭제됩니다.");
 		if(isDelete){
 			$.ajax({
 				url:"comment_delete.go",
@@ -362,7 +360,7 @@
 				success:function(responseData){
 					if(responseData.isSuccess){
 						var sel="#comment"+num;
-						$(sel).text("삭제된 댓글 입니다.");
+						$(sel).text("삭제된 댓글입니다.");
 					}
 				}
 			});
@@ -373,7 +371,7 @@
 	$(".comments form").on("submit", function(){
 		var isLogin=${not empty id};
 		if(isLogin==false){
-			alert("로그인 페이지로 이동 합니다.");
+			alert("로그인 페이지로 이동합니다.");
 			location.href="${pageContext.request.contextPath}/users/loginform.go?url=${pageContext.request.contextPath}/board/detail.go?num=${dto.num}";
 			return false; 
 		}
@@ -401,7 +399,7 @@
 		}
 	});
 	function deleteConfirm(){
-		var isDelete=confirm("글을 삭제 하시 겠습니까?");
+		var isDelete=confirm("글을 삭제 하시겠습니까?");
 		if(isDelete){
 			location.href="delete.go?num=${dto.num}";
 		}

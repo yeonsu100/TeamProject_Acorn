@@ -16,7 +16,7 @@ h1{color: #F1648A;}
 	list-style-type: none;
 }
 .comments ul li{
-	border-top: 1px solid #888; /* li 의 윗쪽 경계선 */
+	border-top: 1px solid #F1648A; /* li 의 윗쪽 경계선 */
 }
 .comments dt{
 	margin-top: 5px;
@@ -37,7 +37,7 @@ h1{color: #F1648A;}
 .comments form button{
 	width: 15%;
 	height: 100px;
-	color: #B2CCFF;
+	color: #F1C4DA;
 }
 /* 수정폼을 일단 숨긴다.*/
 .suggest form{
@@ -57,12 +57,12 @@ h1{color: #F1648A;}
 	outline:0;
 }
 .btn-primary:hover{
-	background-color:#F1A4BA;
+	background-color:#F1648A;
 	border:0;
 	outline:0;
 }
 .btn-primary:disabled{
-	background-color:#F1A4BA;
+	background-color:#F1648A;
 	border:0;
 	outline:0;
 }
@@ -70,17 +70,17 @@ h1{color: #F1648A;}
 	color: #fff;
 	background-color: #F1648A;
 	border: 0;
-	box-shadow: 0 0 0 0.1rem #F1A4BA;
+	box-shadow: 0 0 0 0.1rem #F1648A;
 }
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
 	color: #fff;
 	background-color: #F1648A;
-	border-color: #F1A4BA;
+	border-color: #F1C4DA;
 }
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-primary.dropdown-toggle:focus {
-	box-shadow: 0 0 0 0.1rem #F1A4BA;
+	box-shadow: 0 0 0 0.1rem #F1C4DA;
 }
 .page-link {
 	color: #F1648A;
@@ -88,16 +88,16 @@ h1{color: #F1648A;}
 }
 .page-link:hover {
 	color: #F1648A;
-	background-color: #F1A4BA;
-	border-color: #F1A4BA;
+	background-color: #F1C4DA;
+	border-color: #F1C4DA;
 }
 .page-item.active .page-link {
 	color: #fff;
 	background-color: #F1648A;
-	border-color: #F1A4BA;
+	border-color: #F1C4DA;
 }
 .page-item.disabled .page-link {
-	border-color: #F1A4BA;
+	border-color: #F1C4DA;
 }
 </style>
 <jsp:include page="../include/navbar2.jsp">
@@ -108,7 +108,7 @@ h1{color: #F1648A;}
 <div class="container">
 
 	<h1>건의사항 게시판</h1>
-	<p>게시판 운영 목적과 맞지 않는 게시물은 관리자 권한으로 삭제될 수 있습니다.</p> <br/>
+	<p>더 나은 바나프레소가 될 수 있도록 의견을 제시하는 게시판입니다. 운영목적에 맞지 않는 글은 관리자 권한으로 삭제될 수 있습니다.</p> <br/>
 	
 	<div class="comments">
 		<ul>

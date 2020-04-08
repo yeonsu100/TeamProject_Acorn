@@ -48,7 +48,7 @@ h1{color: #F1648A;}
 
 <div class="container">
 	<h1>파일 업로드</h1>
-	<p>업로드 규정에 맞게 올려주시기 바랍니다. 선정적, 폭력적, 비방 또는 허위 사실 등의 운영 목적에 맞지않는 게시물의 경우 사전 예고없이 삭제될 수 있습니다.</p>
+	<p>업로드 규정에 맞게 올려주시기 바랍니다. 선정적, 폭력적, 비방 또는 허위 사실 등의 운영 목적에 맞지 않는 게시물의 경우 사전 예고없이 삭제될 수 있습니다.</p>
 	<form action="upload.go" method="post" enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="title">파일 제목</label>

@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/file/list.jsp</title>
-<jsp:include page="../include/resource_boot4.jsp"></jsp:include>
+<jsp:include page="../include/resource_boot4.jsp"/>
 <style>
 h1{color: #F1648A;}
 thead{background-color: #F1A4BA;}
@@ -22,7 +22,7 @@ thead{background-color: #F1A4BA;}
 	color:#212529;
 }
 .table-hover tbody tr:hover {
-	background-color: #f5d7e0;
+	background-color: #F1C4DA;
 }
 .btn-primary{
 	background-color:#F1648A;
@@ -30,7 +30,7 @@ thead{background-color: #F1A4BA;}
 	outline:0;
 }
 .btn-primary:hover{
-	background-color:#F1A4BA;
+	background-color:#F1C4DA;
 	border:0;
 	outline:0;
 }
@@ -38,34 +38,34 @@ thead{background-color: #F1A4BA;}
 	color: #fff;
 	background-color: #F1648A;
 	border: 0;
-	box-shadow: 0 0 0 0.1rem #F1A4BA;
+	box-shadow: 0 0 0 0.1rem #F1C4DA;
 }
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
   color: #fff;
   background-color: #F1648A;
-  border-color: #F1A4BA;
+  border-color: #F1C4DA;
 }
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.1rem #F1A4BA;
+  box-shadow: 0 0 0 0.1rem #F1C4DA;
 }
 .page-link {
   color: #F1648A;
-  border: 1px solid #F1A4BA;
+  border: 1px solid #F1C4DA;
 }
 .page-link:hover {
   color: #F1648A;
-  background-color: #F1A4BA;
-  border-color: #F1A4BA;
+  background-color: #F1C4DA;
+  border-color: #F1C4DA;
 }
 .page-item.active .page-link {
   color: #fff;
   background-color: #F1648A;
-  border-color: #F1A4BA;
+  border-color: #F1C4DA;
 }
 .page-item.disabled .page-link {
-  border-color: #F1A4BA;
+  border-color: #F1C4DA;
 }
 </style>
 </head>
@@ -76,12 +76,12 @@ thead{background-color: #F1A4BA;}
 
 <div class="container">
 	<h1>자료실</h1>
-	<p>자료게시판 운영 목적과 맞지 않는 게시물은 관리자 권한으로 삭제될 수 있습니다.</p> <br/>		
+	<p>업무상 필요한 자료를 공유할 수 있는 자료실입니다. 운영목적에 맞지 않는 게시물은 관리자 권한으로 삭제될 수 있습니다.</p> <br/>	
 	
 	<c:if test="${not empty keyword }">
 		<p>
-			키워드 (<strong>${keyword }</strong>)에 해당하는 게시물 목록입니다.</br>
-			총 <strong>${totalRow }</strong>개 게시물이 검색되었습니다.
+			<strong>${keyword }</strong> 라는 키워드로
+			<strong>${totalRow }</strong> 개의 글이 검색 되었습니다.
 		</p>
 	</c:if>
 	
@@ -116,11 +116,11 @@ thead{background-color: #F1A4BA;}
 				<td>
 					<c:choose>
 						<c:when test="${id eq tmp.writer}">
-							<a href="javascript:deleteConfirm(${tmp.num })">삭제</a>
+							<a href="javascript:deleteConfirm(${tmp.num })"><i class="fa fa-trash" aria-hidden="true"></i></a>
 						</c:when>
 						<c:otherwise>
 							<c:if test="${not empty isAdmin }">
-								<a href="javascript:deleteConfirm(${tmp.num })">삭제</a>
+								<a href="javascript:deleteConfirm(${tmp.num })"><i class="fa fa-trash" aria-hidden="true"></i></a>
 							</c:if>
 						</c:otherwise>
 					</c:choose>

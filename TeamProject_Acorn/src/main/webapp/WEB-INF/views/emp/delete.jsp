@@ -9,7 +9,7 @@
 <body>
 <div class="container">
 <script>
-	alert("사원 데이터가 삭제 되었습니다.");
+	alert("${dto.ename } 사원 데이터가 삭제 되었습니다.");
 	location.href="${pageContext.request.contextPath }/emp/main.go";
 </script>	
 </div>

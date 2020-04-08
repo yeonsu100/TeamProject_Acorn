@@ -61,20 +61,20 @@
 		<div class="form-row">
 			<label class="control-label" for="ename">이름</label>
 			<input class="form-control" type="text" id="ename" name="ename"/>
-			<p class="invalid-feedback" id="ename_required">반드시 입력 하세요</p>
+			<p class="invalid-feedback" id="ename_required">반드시 입력해야하는 정보입니다.</p>
 		</div>
 		<div class="form-row">
 			<label class="control-label" for="pnum">전화번호</label>
 			<input class="form-control" type="text" id="pnum" name="pnum"/>
-			<p class="invalid-feedback" id="pnum_exist">이미 존재하는 전화번호입니다</p>
+			<p class="invalid-feedback" id="pnum_exist">이미 존재하는 전화번호입니다.</p>
 			<p class="invalid-feedback" id="pnum_error">-를 제외하고 입력하세요</p>
-			<p class="invalid-feedback" id="pnum_required">반드시 입력하세요</p>
+			<p class="invalid-feedback" id="pnum_required">반드시 입력해야하는 정보입니다.</p>
 		</div>
 		<div class="form-row">
 			<label class="control-label" for="hdate">입사일</label>
 			<input class="form-control" type="text" id="hdate" name="hdate"/>
-			<p class="invalid-feedback" id="hdate_error">특수기호(., /, -)를 제외한 8자리 숫자(YYYYMMDD) 형식으로 입력하세요</p>
-			<p class="invalid-feedback" id="hdate_required">반드시 입력하세요</p>
+			<p class="invalid-feedback" id="hdate_error">특수기호(., /, -)를 제외한 8자리 숫자(YYYYMMDD) 형식으로 입력하세요.</p>
+			<p class="invalid-feedback" id="hdate_required">반드시 입력해야하는 정보입니다.</p>
 		</div>
 		<button disabled="disabled" class="btn btn-primary btn-sm mt-3" type="submit">추가</button>
 		<button class="btn btn-secondary btn-sm mt-3" type="button" onclick="location.href='main.go'">취소</button>
@@ -112,21 +112,21 @@
 			method:"GET",
 			data:{inputPnum:inputPnum},
 			success:function(responseData){
-				if(responseData.isExist){//이미 존재하는 아이디라면 
+				if(responseData.isExist){			// 이미 존재하는 아이디라면 
 					isPnumUsable=false;
 				}else{
 					isPnumUsable=true;
 				}
-				//아이디 에러 여부 
+				// 아이디 에러 여부 
 				var isError= !isPnumUsable || !isPnumInput || !isPnumMatch;
-				//아이디 상태 바꾸기 
+				// 아이디 상태 바꾸기 
 				setState("#pnum", isError );
 			}
 		});
 		
 		
 		
-		if(inputPnum.match("-")){//전화번호에 -를 넣었다면
+		if(inputPnum.match("-")){			//전화번호에 -를 넣었다면
 			isPnumMatch=false;
 		}else{				//- 안넣고 제대로 입력했다면
 			isPnumMatch=true;

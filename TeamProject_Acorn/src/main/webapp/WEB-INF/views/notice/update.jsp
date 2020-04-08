@@ -12,7 +12,7 @@
 <body>>
 <div class="container">
 		<script>
-			alert("글을 수정했습니다.");
+			alert("게시글 수정을 완료했습니다.");
 			location.href="${pageContext.request.contextPath }/notice/detail.go?num=${num}";
 		</script>
 </div>

@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/view/board/list.jsp</title>
-<jsp:include page="../include/resource_boot4.jsp"></jsp:include>
+<jsp:include page="../include/resource_boot4.jsp"/>
 <style>
 h1{color: #F1648A;}
 thead{background-color: #F1A4BA;}
@@ -75,7 +75,7 @@ thead{background-color: #F1A4BA;}
 </jsp:include>
 <div class="container">
 	<h1>게시판</h1>
-	<p> 자유게시판 입니다.</p> <br/>
+	<p>자유롭게 소통할 수 있는 자유 게시판 입니다. 운영목적에 맞지 않는 글은 관리자 권한으로 삭제될 수 있습니다.</p> <br/>
 	
 	<%-- 글 검색 기능 폼 --%>
 	<form action="list.go" method="get">
@@ -94,7 +94,7 @@ thead{background-color: #F1A4BA;}
 			
 			<c:if test="${not empty keyword }">
 				<span style="float:right;">
-					<strong>${keyword }</strong> 라는 검색어로 
+					<strong>${keyword }</strong> 라는 키워드로 
 					<strong>${totalRow }</strong> 개의 글이 검색 되었습니다.
 				</span>
 			</c:if>

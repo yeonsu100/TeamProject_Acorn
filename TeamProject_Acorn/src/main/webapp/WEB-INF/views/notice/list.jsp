@@ -99,8 +99,7 @@ thead{background-color: #F1A4BA;}
 		<thead>
 			<tr>
 				<th>글번호</th>
-				<th>작성자</th>
-				<th>제목</th>
+				<th>[분류] 제목</th>
 				<th>조회수</th>
 				<th>등록일</th>
 			</tr>
@@ -109,7 +108,6 @@ thead{background-color: #F1A4BA;}
 		<c:forEach var="tmp" items="${requestScope.list }">
 			<tr>
 				<td>${tmp.num }</td>
-				<td>${tmp.writer }</td>
 				<td>
 					<a class="title" href="detail.go?num=${tmp.num }&condition=${condition }&keyword=${encodedKeyword }">${tmp.title }</a>
 				</td>

@@ -14,7 +14,8 @@
 	.txtb{
 		width: 100%;
 		border: none;
-		border-bottom: 2px solid #000;
+		border-top: 2px solid #F6F6F6;
+		border-bottom: 2px solid #F1648A;
 		background: none;
 		padding: 10px;
 		outline: none;
@@ -51,13 +52,15 @@
 
 <div class="container">
 	<h1>체크 리스트</h1>
-	<input type="text" class="txtb mb-2" placeholder="할 일 입력" />
+	<p>업무 효율을 높여주는 개인 체크 리스트 입니다.</p>
+	
+	<br/><input type="text" class="txtb mb-2" placeholder="task 단위로 할 일을 입력하세요..." />
 	<div class="notcomp">
 		<h4>해야할 업무 목록</h4>
 	</div>
 	
 	<div class="comp">
-		<h4>완료된 업무 목록</h4>	
+		<br/><br/><h4>완료된 업무 목록</h4>
 	</div>
 </div>
 

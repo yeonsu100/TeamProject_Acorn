@@ -175,6 +175,7 @@ outline:0;
 			<td colspan="3">${dto.title }</td>
 		</tr>
 		<tr>
+			<th>내용</th>
 			<td colspan="4">${dto.content }</td>
 		</tr>
 	</table>
@@ -193,7 +194,6 @@ outline:0;
 		var isDelete=confirm("글을 삭제 하시겠습니까?");
 		if(isDelete){
 			location.href="delete.go?num=${dto.num}";
-			
 		}
 	}
 </script>

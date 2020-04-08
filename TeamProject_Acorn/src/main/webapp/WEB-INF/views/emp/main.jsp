@@ -22,7 +22,7 @@ thead{background-color: #F1A4BA;}
 	color:#212529;
 }
 .table-hover tbody tr:hover {
-	background-color: #f5d7e0;
+	background-color: #F1C4DA;
 }
 .btn-primary{
 	background-color:#F1648A;
@@ -30,7 +30,7 @@ thead{background-color: #F1A4BA;}
 	outline:0;
 }
 .btn-primary:hover{
-	background-color:#F1A4BA;
+	background-color:#F1C4DA;
 	border:0;
 	outline:0;
 }
@@ -38,21 +38,21 @@ thead{background-color: #F1A4BA;}
 	color: #fff;
 	background-color: #F1648A;
 	border: 0;
-	box-shadow: 0 0 0 0.1rem #F1A4BA;
+	box-shadow: 0 0 0 0.1rem #F1C4DA;
 }
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
   color: #fff;
   background-color: #F1648A;
-  border-color: #F1A4BA;
+  border-color: #F1C4DA;
 }
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.1rem #F1A4BA;
+  box-shadow: 0 0 0 0.1rem #F1C4DA;
 }
 .page-link {
   color: #F1648A;
-  border: 1px solid #F1A4BA;
+  border: 1px solid #F1C4DA;
 }
 .page-link:hover {
   color: #F1648A;
@@ -61,11 +61,11 @@ thead{background-color: #F1A4BA;}
 }
 .page-item.active .page-link {
   color: #fff;
-  background-color: #F1648A;
-  border-color: #F1A4BA;
+  background-color: #F1C4DA;
+  border-color: #F1C4DA;
 }
 .page-item.disabled .page-link {
-  border-color: #F1A4BA;
+  border-color: #F1C4DA;
 }
 </style>
 <jsp:include page="../include/navbar2.jsp">
@@ -76,6 +76,8 @@ thead{background-color: #F1A4BA;}
 <div class="container">
 	
 	<h1>사원 목록</h1>
+	<p>바나프레소의 모든 임직원 목록입니다.</p> <br/>
+	
 	<table class="table table-hover table-sm">
 		<colgroup>
 			<col class="col-xs-2"/>
@@ -92,9 +94,9 @@ thead{background-color: #F1A4BA;}
 				<th>이름</th>
 				<th>전화번호</th>
 				<th>아이디</th>
-				<th>이메일</th>
+				<th>이메일 주소</th>
 				<th>입사일</th>
-				<th>사원/아이디 삭제</th>
+				<th>사원 삭제 / 아이디 삭제</th>
 			</tr>
 		</thead>
 		<tbody>
