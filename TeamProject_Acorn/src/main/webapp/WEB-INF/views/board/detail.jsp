@@ -224,7 +224,6 @@
 					<a href="detail.go?num=${dto.num }&re_pageNum=${re_endPageNum+1 }">
 						&raquo;
 					</a>
-					
 				</li>
 			</c:when>
 			<c:otherwise>
@@ -235,8 +234,7 @@
 		</c:choose>
 		</ul>		
 	</div>
-</div>
-<jsp:include page="../include/footer.jsp"/>
+<jsp:include page="../include/footer2.jsp"/>
 
 <script>
 	//댓글 수정 링크 눌렀을때 호출

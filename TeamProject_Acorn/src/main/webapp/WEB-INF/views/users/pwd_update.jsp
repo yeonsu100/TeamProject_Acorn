@@ -6,7 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>/users/pwd_update.jsp</title>
-<jsp:include page="../include/resource.jsp"/>
+<jsp:include page="include/resource_boot4.jsp"/>
+<jsp:include page="include/navbar2.jsp"/>
 </head>
 <body>
 <div class="container">
