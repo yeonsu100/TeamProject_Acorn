@@ -5,24 +5,55 @@
 <head>
 <meta charset="UTF-8">
 <title>/views/board/insertform.jsp</title>
-<jsp:include page="../include/resource.jsp"></jsp:include>
+<jsp:include page="../include/resource_boot4.jsp"></jsp:include>
 <style>
-	#content{
-		display: none;
-		width: 100%;
-		height: 400px;
-	}
+#content{
+	display: none;
+	width: 100%;
+	height: 400px;
+}
+.btn-secondary{
+	border:0;
+	outline:0;
+}
+.btn-primary{
+	background-color:#F1648A;
+	border:0;
+	outline:0;
+}
+.btn-primary:hover{
+	background-color:#F1A4BA;
+	border:0;
+	outline:0;
+}
+.btn-primary:disabled{
+	background-color:#F1A4BA;
+	border:0;
+	outline:0;
+}
+.btn-primary:focus, .btn-primary.focus {
+	color: #fff;
+	background-color: #F1648A;
+	border: 0;
+	box-shadow: 0 0 0 0.1rem #F1A4BA;
+}
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+	color: #fff;
+	background-color: #F1648A;
+	border-color: #F1A4BA;
+}
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+	box-shadow: 0 0 0 0.1rem #F1A4BA;
+}
 </style>
-</head>
-<body>
-<jsp:include page="../include/navbar.jsp">
+<jsp:include page="../include/navbar2.jsp">
 	<jsp:param value="board" name="category"/>
 </jsp:include>
+</head>
+<body>
 <div class="container">
-	<ol class="breadcrumb">
-		<li><a href="${pageContext.request.contextPath }/board/list.go">목록</a></li>
-		<li>새글 작성</li>
-	</ol>
 	<form action="insert.go" method="post">
 		<div class="form-group">
 			<label for="writer">작성자</label>
@@ -37,8 +68,8 @@
 			<label for="content">내용</label>
 			<textarea class="form-control" name="content" id="content" cols="30" rows="10"></textarea>
 		</div>
-		<button class="btn btn-primary" type="button" onclick="submitContents(this);">저장 &nbsp;<span class="glyphicon glyphicon-ok-sign"/></button>
-		<button class="btn btn-warning" type="reset">취소 &nbsp;<span class="glyphicon glyphicon-remove-sign"/></button>
+		<button class="btn btn-primary btn-sm" type="button" onclick="submitContents(this);">저장</button>
+		<button class="btn btn-secondary btn-sm" type="button" onclick="location.href='list.go'">취소</button>
 	</form>
 </div>
 

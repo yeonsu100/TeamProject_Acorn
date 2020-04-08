@@ -8,17 +8,56 @@
 <head>
 <meta charset="UTF-8">
 <title>/board/updateform.jsp</title>
-<jsp:include page="../include/resource.jsp"></jsp:include>
-</head>
-<body>
-<jsp:include page="../include/navbar.jsp">
+<jsp:include page="../include/resource_boot4.jsp"></jsp:include>
+<style>
+#content{
+	display:none;
+	width:100%;
+	height:400px;
+}
+.btn-secondary{
+	border:0;
+	outline:0;
+}
+.btn-primary{
+	background-color:#F1648A;
+	border:0;
+	outline:0;
+}
+.btn-primary:hover{
+	background-color:#F1A4BA;
+	border:0;
+	outline:0;
+}
+.btn-primary:disabled{
+	background-color:#F1A4BA;
+	border:0;
+	outline:0;
+}
+.btn-primary:focus, .btn-primary.focus {
+	color: #fff;
+	background-color: #F1648A;
+	border: 0;
+	box-shadow: 0 0 0 0.1rem #F1A4BA;
+}
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+	color: #fff;
+	background-color: #F1648A;
+	border-color: #F1A4BA;
+}
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+	box-shadow: 0 0 0 0.1rem #F1A4BA;
+}
+</style>
+<jsp:include page="../include/navbar2.jsp">
 	<jsp:param value="board" name="category"/>
 </jsp:include>
+</head>
+<body>
+
 <div class="container">
-	<ol class="breadcrumb">
-		<li><a href="${pageContext.request.contextPath }/board/list.go">목록</a></li>
-		<li>글 수정 양식</li>
-	</ol>	
 	<form action="update.go" method="post">
 		<input type="hidden" name="num" value="${dto.num }"/>
 		<div class="form-group">
@@ -36,8 +75,8 @@
 				${dto.content }
 			</textarea>
 		</div>
-		<button class="btn btn-primary" type="submit" onclick="submitContents(this);">수정확인</button>
-		<button class="btn btn-warning" type="reset">취소</button>
+		<button class="btn btn-primary btn-sm" type="button" onclick="submitContents(this);">수정확인</button>
+		<button class="btn btn-secondary btn-sm" type="button" onclick="location.href='detail.go?num=${dto.num}'" >취소</button>
 	</form>
 </div>
 <script src="${pageContext.request.contextPath }/SmartEditor/js/HuskyEZCreator.js"></script>
