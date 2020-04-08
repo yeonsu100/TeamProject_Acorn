@@ -74,6 +74,10 @@
 			<th scope="row">내가 작성한 글</th>
 			<td><a href="${pageContext.request.contextPath }/board/list.go?condition=writer&keyword=${dto.userid }">목록 보기</a></td>
 		</tr>
+		<tr>
+			<th scope="row">내가 업로드한 파일</th>
+			<td><a href="${pageContext.request.contextPath }/file/list.go?condition=writer&keyword=${dto.userid }">목록 보기</a></td>
+		</tr>
 	</table>
 </div>
 
