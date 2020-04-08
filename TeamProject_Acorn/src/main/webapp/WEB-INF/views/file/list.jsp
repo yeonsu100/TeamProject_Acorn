@@ -78,14 +78,30 @@ thead{background-color: #F1A4BA;}
 	<h1>자료실</h1>
 	<p>자료게시판 운영 목적과 맞지 않는 게시물은 관리자 권한으로 삭제될 수 있습니다.</p> <br/>		
 	
+	<form action="list.go" method="get">
+		<div class="input-group input-group-sm" style="width:35%;">
+			<select class="custom-select" name="condition" id="condition" style="max-width:35%;">
+				<option selected>검색 조건 선택</option>
+				<option value="titlename" <c:if test="${condition eq 'titlename' }">selected</c:if> >제목+파일명</option>
+				<option value="title" <c:if test="${condition eq 'title' }">selected</c:if> >제목</option>
+				<option value="writer" <c:if test="${condition eq 'writer' }">selected</c:if> >작성자</option>
+			</select>
+			<input class="form-control" type="text" name="keyword" 
+				placeholder="키워드를 입력하세요..." value="${keyword }"/>
+			<div class="input-group-append">
+				<button class="btn btn-primary btn-sm" type="submit">검색</button>
+			</div>
+		</div>
+	</form>
+	
 	<c:if test="${not empty keyword }">
-		<p>
-			키워드 (<strong>${keyword }</strong>)에 해당하는 게시물 목록입니다.</br>
-			총 <strong>${totalRow }</strong>개 게시물이 검색되었습니다.
-		</p>
+		<span style="float:right;font-size:0.7rem;">
+			<strong>${keyword }</strong> 라는 검색어로 
+			<strong>${totalRow }</strong> 개의 글이 검색 되었습니다.
+		</span>
 	</c:if>
 	
-	<table class="table table-hover table-sm">
+	<table class="table table-hover table-sm mt-3">
 		<thead>
 			<tr>
 				<th>번호</th>
@@ -173,16 +189,7 @@ thead{background-color: #F1A4BA;}
 		</ul>
 	</nav>
 	
-	<form action="list.go" method="get">
-		<label for="condition">검색 조건</label>
-		<select name="condition" id="condition">
-			<option value="titlename" <c:if test="${condition eq 'titlename' }">selected</c:if> >파일 제목 또는 파일명</option>
-			<option value="title" <c:if test="${condition eq 'title' }">selected</c:if> >파일 제목</option>
-			<option value="writer" <c:if test="${condition eq 'writer' }">selected</c:if> >작성자</option>
-		</select>
-		<input type="text" name="keyword" id="keyword" placeholder="키워드를 입력하세요..." value="${keyword }" />
-		<button type="submit">검색</button>
-	</form>
+	
 	
 </div>
 
