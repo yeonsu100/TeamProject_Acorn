@@ -72,7 +72,7 @@
 </style>
 </head>
 <body>
-<div class="section-top">
+<div class="container section-top">
 	<div class="metro">
 		<div class="l1">
 			<ul>
@@ -108,7 +108,8 @@
 	
 </div>
 <br/><br/><br/>
-<jsp:include page="include/footer2.jsp"/>
+
 <jsp:include page="include/msgbtn.jsp"/>
 </body>
+<jsp:include page="include/footer2.jsp"/>
 </html>

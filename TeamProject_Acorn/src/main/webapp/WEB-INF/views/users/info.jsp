@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>/users/info.jsp</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
-<jsp:include page="../include/resource.jsp"/>
+<jsp:include page="../include/resource_boot4.jsp"/>
 <style>
 	#profileLink img{
 		width: 50px;
@@ -30,12 +30,11 @@
 	}
 	
 </style>
-</head>
-<body>
-<jsp:include page="../include/navbar.jsp">
+<jsp:include page="../include/navbar2.jsp">
 	<jsp:param value="users" name="category"/>
 </jsp:include>
-
+</head>
+<body>
 <div class="container">
 	<h1>개인 정보 페이지</h1>
 	<table>
@@ -103,6 +102,7 @@
 	});
 	
 </script>
+<jsp:include page="../include/footer2.jsp"/>
 <jsp:include page="../include/msgbtn.jsp"/>
 </body>
 </html>
