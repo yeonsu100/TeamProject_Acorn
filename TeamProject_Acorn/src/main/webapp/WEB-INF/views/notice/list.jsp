@@ -81,17 +81,12 @@ thead{background-color: #F1A4BA;}
 	<h1>공지사항</h1>
 	<p>각종 공지사항을 확인하실 수 있는 게시판 입니다.</p> <br/>
 	
-	<c:choose>
-		<c:when test="${not empty keyword }">
-			<p>
-				키워드 (<strong>${keyword }</strong>)에 해당하는 게시물 목록입니다.</br>
-				총 <strong>${totalRow }</strong>개 게시물이 검색되었습니다.
-			</p>
-		</c:when>
-		<c:otherwise>
-			<p>총 <strong>${totalRow }</strong>개 게시물이 존재합니다.</p>
-		</c:otherwise>
-	</c:choose>
+	<c:if test="${not empty keyword }">
+		<p>
+			키워드 (<strong>${keyword }</strong>)에 해당하는 게시물 목록입니다.</br>
+			총 <strong>${totalRow }</strong>개 게시물이 검색되었습니다.
+		</p>
+	</c:if>
 	
 	<table class="table table-sm table-hover">
 		<colgroup>
@@ -131,8 +126,8 @@ thead{background-color: #F1A4BA;}
 		</div>
 	</c:if>
 	
-	<nav aria-label="Search pages">
-		<ul class="pagination pagination-sm">
+	<nav aria-label="Search pages" class="d-flex">
+		<ul class="pagination pagination-sm mx-auto">
 		<c:choose>
 			<c:when test="${startPageNum ne 1 }">
 				<li class="page-item">

@@ -24,6 +24,9 @@ body{
 .container{
 	flex: 1 0 auto;
 }
+a{
+	color:#F1648A;
+}
 </style>
 <!-- Footer -->
 <footer class="page-footer font-small blue-grey lighten-5">

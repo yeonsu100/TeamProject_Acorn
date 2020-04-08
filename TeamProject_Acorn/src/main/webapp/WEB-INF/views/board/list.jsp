@@ -76,13 +76,31 @@ thead{background-color: #F1A4BA;}
 <div class="container">
 	<h1>게시판</h1>
 	<p> 자유게시판 입니다.</p> <br/>
-	<c:if test="${not empty keyword }">
-		<p>
-			<strong>${keyword }</strong> 라는 검색어로 
-			<strong>${totalRow }</strong> 개의 글이 검색 
-			되었습니다.
-		</p>
-	</c:if>
+	
+	<%-- 글 검색 기능 폼 --%>
+	<form action="list.go" method="get">
+		<div class="input-group input-group-sm mb-2">
+			<select class="custom-select" name="condition" id="condition" >
+				<option selected>검색 조건 선택</option>
+				<option value="titlecontent" <c:if test="${condition eq 'titlecontent' }">selected</c:if> >제목+내용</option>
+				<option value="title" <c:if test="${condition eq 'title' }">selected</c:if> >제목</option>
+				<option value="writer" <c:if test="${condition eq 'writer' }">selected</c:if> >작성자</option>
+			</select>
+			<input type="text" name="keyword" 
+				placeholder="키워드를 입력하세요..." value="${keyword }"/>
+			<div class="input-group-append">
+				<button class="btn btn-primary btn-sm" type="submit">검색</button>
+			</div>
+			
+			<c:if test="${not empty keyword }">
+				<span style="float:right;">
+					<strong>${keyword }</strong> 라는 검색어로 
+					<strong>${totalRow }</strong> 개의 글이 검색 되었습니다.
+				</span>
+			</c:if>
+		</div>
+	</form>
+	
 	<table class="table table-sm table-hover">
 		<colgroup>
 			<col class="col-xs-1"/>
@@ -124,11 +142,11 @@ thead{background-color: #F1A4BA;}
 	</table>
 	
 	<div class="text-right">
-			<a href="insertform.go" class="btn btn-primary btn-sm">글쓰기  &nbsp;<span class="fas fa-pencil-alt"/></a>
+			<a href="insertform.go" class="btn btn-primary btn-sm">글쓰기</a>
 	</div>
 	
-	<nav aria-label="Search pages">
-		<ul class="pagination pagination-sm">
+	<nav aria-label="Search pages" class="d-flex">
+		<ul class="pagination pagination-sm mx-auto">
 		<c:choose>
 			<c:when test="${startPageNum ne 1 }">
 				<li class="page-item">
@@ -171,18 +189,7 @@ thead{background-color: #F1A4BA;}
 		</c:choose>
 		</ul>		
 	</nav>
-	<%-- 글 검색 기능 폼 --%>
-	<form action="list.go" method="get">
-		<label for="condition">검색 조건</label>
-		<select name="condition" id="condition">
-			<option value="titlecontent" <c:if test="${condition eq 'titlecontent' }">selected</c:if> >제목+내용</option>
-			<option value="title" <c:if test="${condition eq 'title' }">selected</c:if> >제목</option>
-			<option value="writer" <c:if test="${condition eq 'writer' }">selected</c:if> >작성자</option>
-		</select>
-		<input type="text" name="keyword" 
-			placeholder="키워드를 입력하세요..." value="${keyword }"/>
-		<button type="submit">검색</button>
-	</form>
+	
 </div>
 <br/><br/><br/>
 <jsp:include page="../include/footer2.jsp"/>

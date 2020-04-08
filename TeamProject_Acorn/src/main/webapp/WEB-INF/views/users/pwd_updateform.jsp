@@ -5,38 +5,74 @@
 <head>
 <meta charset="UTF-8">
 <title>/users/pwd_updateform.jsp</title>
-<jsp:include page="../include/resource.jsp"/>
+<jsp:include page="../include/resource_boot4.jsp"/>
 <style>
-	/* 페이지 로딩 시점에 도움말과 피드백 아이콘은 일단 숨기기 */
-	.help-block, .form-control-feedback{
-		display: none;
-	}
+/* 페이지 로딩 시점에 도움말과 피드백 아이콘은 일단 숨기기 */
+.help-block, .form-control-feedback{
+	display: none;
+}
+.form-row{
+	margin-bottom:1rem;
+}
+.btn-secondary{
+	border:0;
+	outline:0;
+}
+.btn-primary{
+	background-color:#F1648A;
+	border:0;
+	outline:0;
+}
+.btn-primary:disabled{
+	background-color:#F1A4BA;
+	border:0;
+	outline:0;
+}
+.btn-primary:hover{
+	background-color:#F1A4BA;
+	border:0;
+	outline:0;
+}
+.btn-primary:focus, .btn-primary.focus {
+	color: #fff;
+	background-color: #F1648A;
+	border: 0;
+	box-shadow: 0 0 0 0.1rem #F1A4BA;
+}
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #F1648A;
+  border-color: #F1A4BA;
+}
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.1rem #F1A4BA;
+}
 </style>
+<jsp:include page="../include/navbar2.jsp"/>
 </head>
 <body>
-<jsp:include page="../include/navbar.jsp"/>
+
 <div class="container">
 	<h1>비밀번호 수정 페이지</h1>
 	<form action="pwd_update.go" method="post">
-		<div class="form-group has-feedback">
+		<div class="form-row">
 			<label class="control-label" for="pwd">기존 비밀번호</label>
 			<input class="form-control" type="password" id="pwd" name="pwd"/>
 		</div>
-		<div class="form-group has-feedback">
+		<div class="form-row">
 			<label class="control-label" for="newPwd">비밀번호</label>
 			<input class="form-control" type="password" id="newPwd" name="newPwd"/>
-			<p class="help-block" id="pwd_required">반드시 입력하세요</p>
-			<span class="glyphicon glyphicon-remove form-control-feedback"></span>
-			<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+			<p class="invalid-feedback" id="pwd_required">반드시 입력하세요</p>
 		</div>
-		<div class="form-group">
+		<div class="form-row">
 			<label class="control-label" for="newPwd2">비밀번호 확인</label>
 			<input class="form-control" type="password" id="newPwd2" name="newPwd2"/>
-			<p class="help-block" id="pwd2_notequal">입력한 비밀번호와 다릅니다</p>
-			<span class="glyphicon glyphicon-remove form-control-feedback"></span>
-			<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+			<p class="invalid-feedback" id="pwd2_notequal">입력한 비밀번호와 다릅니다</p>
 		</div>
-		<button disabled="disabled" class="btn btn-primary" type="submit">수정확인</button>
+		<button disabled="disabled" class="btn btn-primary btn-sm" type="submit">수정확인</button>
+		<button class="btn btn-secondary btn-sm" type="button" onclick="location.href='info.go'">취소</button>
 	</form>
 </div>
 <script>
@@ -90,28 +126,24 @@
 	});
 	
 	//입력란의 상태를 바꾸는 함수 
-	function setState(sel, isError){
+		function setState(sel, isError){
 		//일단 UI 를 초기 상태로 바꿔준다.
 		$(sel)
+		.removeClass("is-valid is-invalid")
 		.parent()
-		.removeClass("has-success has-error")
-		.find(".help-block, .form-control-feedback")
+		.find(".invalid-feedback")
 		.hide();
 		
 		//입력란의 색상과 아이콘을 바꿔주는 작업 
 		if(isError){
 			//입력란이 error 인 상태
 			$(sel)
-			.parent()
-			.addClass("has-error")
-			.find(".glyphicon-remove")
+			.addClass("is-invalid")
 			.show();
 		}else{
 			//입력란이 success 인 상태
 			$(sel)
-			.parent()
-			.addClass("has-success")
-			.find(".glyphicon-ok")
+			.addClass("is-valid")
 			.show();
 		}
 		
@@ -131,5 +163,7 @@
 		}
 	}
 </script>
+<jsp:include page="../include/footer2.jsp"/>
+<jsp:include page="../include/msgbtn.jsp"/>
 </body>
 </html>

@@ -6,21 +6,21 @@
 <head>
 <meta charset="UTF-8">
 <title>/views/board/insertform.jsp</title>
-<jsp:include page="../include/resource.jsp"></jsp:include>
+<jsp:include page="../include/resource_boot4.jsp"></jsp:include>
 <style>
-	#content{
-		width: 100%;
-		height: 200px;
-	}
-	
-	body{padding-top: 0px;}
-	
-	.selected{
-		background-color:#ccc;
-	}
-	#idRec{
-		background-color:#fff;
-	}
+#content{
+	width: 100%;
+	height: 200px;
+}
+
+body{margin-top: 0rem;}
+
+.selected{
+	background-color:#ccc;
+}
+#idRec{
+	background-color:#fff;
+}
 </style>
 </head>
 <body>
@@ -115,8 +115,8 @@ function setBtnState(){
 				</table>
 			</div>
 			<div class="modal-footer">
-		        <button type="button" class="btn btn-primary" id="idSelect">확인</button>
-		        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+		        <button type="button" class="btn btn-primary btn-sm" id="idSelect">확인</button>
+		        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">닫기</button>
 	      	</div>
 		</div>
 	</div>
@@ -149,8 +149,8 @@ function setBtnState(){
 			<label for="content">내용</label>
 			<textarea class="form-control" name="content" id="content" cols="30" rows="10"></textarea>
 		</div>
-		<button class="btn btn-primary" type="submit" disabled="disabled">보내기</button>
-		<button class="btn btn-warning" type="button" onclick="location.href='list.go'">취소</button>
+		<button class="btn btn-primary btn-sm" type="submit" disabled="disabled">보내기</button>
+		<button class="btn btn-secondary btn-sm" type="button" onclick="location.href='list.go'">취소</button>
 	</form>
 </div>
 <script>
