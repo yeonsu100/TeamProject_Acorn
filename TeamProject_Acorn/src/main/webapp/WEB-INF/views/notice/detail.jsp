@@ -85,11 +85,11 @@
 	<h3>공지사항 입니다.</h3>
 
 	<c:if test="${dto.prevNum ne 0 }">
-		<a href="detail.go?num=${dto.prevNum }&condition=${condition}&keyword=${encodedKeyword}">이전글</a>
+		<a href="detail.go?num=${dto.prevNum }&condition=${condition}&keyword=${encodedKeyword}" class="btn btn-primary btn-sm">이전글</a>
 	</c:if>
 
 	<c:if test="${dto.nextNum ne 0 }">
-		<a href="detail.go?num=${dto.nextNum }&condition=${condition}&keyword=${encodedKeyword}">다음글</a>
+		<a href="detail.go?num=${dto.nextNum }&condition=${condition}&keyword=${encodedKeyword}" class="btn btn-primary btn-sm">다음글</a>
 	</c:if>	
 	<table class="table table-bordered table-condensed">
 		<colgroup>
@@ -114,16 +114,9 @@
 		</tr>
 	</table>
 	<div class="contents">${dto.content }</div>
+	<a href="updateform.go?num=${dto.num }" class="btn btn-primary btn-sm">수정</a>
+	<button type="button" class="btn btn-primary btn-sm" onclick="location.href='javascript:deleteConfirm()'">삭제</button>
 </div>
-<div>
-	<button type="button" class="btn btn-outline-primary">
-		<a href="updateform.go?num=${dto.num }">수정</a>
-	</button>
-	<button type="button" class="btn btn-outline-primary" onclick="location.href='javascript:deleteConfirm()'">
-		삭제
-	</button>
-</div>
-
 <script>
 	function deleteConfirm(){
 		var isDelete=confirm("글을 삭제 하시겠습니까?");
