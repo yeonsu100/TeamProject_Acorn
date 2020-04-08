@@ -114,9 +114,16 @@ thead{background-color: #F1A4BA;}
 				<td>${tmp.downCount }</td>
 				<td>${tmp.regdate }</td>
 				<td>
-					<c:if test="${id eq tmp.writer }">
-						<a href="javascript:deleteConfirm(${tmp.num })">삭제</a>
-					</c:if>
+					<c:choose>
+						<c:when test="${id eq tmp.writer}">
+							<a href="javascript:deleteConfirm(${tmp.num })">삭제</a>
+						</c:when>
+						<c:otherwise>
+							<c:if test="${not empty isAdmin }">
+								<a href="javascript:deleteConfirm(${tmp.num })">삭제</a>
+							</c:if>
+						</c:otherwise>
+					</c:choose>
 				</td>
 			</tr>
 		</c:forEach>

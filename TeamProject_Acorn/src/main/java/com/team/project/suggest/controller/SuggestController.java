@@ -24,7 +24,7 @@ public class SuggestController {
 	
 	// 게시판 목록 보기 
 	@RequestMapping("/suggest/list")
-	public ModelAndView list(ModelAndView mView,
+	public ModelAndView authlist(ModelAndView mView,
 			HttpServletRequest request) {
 		service.list(request);
 		mView.setViewName("suggest/list");
