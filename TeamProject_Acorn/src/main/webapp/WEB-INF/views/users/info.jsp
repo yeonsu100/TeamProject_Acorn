@@ -30,6 +30,7 @@
 	}
 	
 </style>
+
 <jsp:include page="../include/navbar2.jsp">
 	<jsp:param value="users" name="category"/>
 </jsp:include>
