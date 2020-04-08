@@ -295,7 +295,6 @@
 					<a class="page-link" href="detail.go?num=${dto.num }&re_pageNum=${re_endPageNum+1 }">
 						&raquo;
 					</a>
-					
 				</li>
 			</c:when>
 			<c:otherwise>
@@ -305,8 +304,13 @@
 			</c:otherwise>
 		</c:choose>
 		</ul>		
+<<<<<<< HEAD
+	</div>
+<jsp:include page="../include/footer2.jsp"/>
+=======
 	</nav>
 </div>
+>>>>>>> branch 'master' of https://github.com/yeonsu100/TeamProject_Acorn.git
 
 <script>
 	//댓글 수정 링크 눌렀을때 호출

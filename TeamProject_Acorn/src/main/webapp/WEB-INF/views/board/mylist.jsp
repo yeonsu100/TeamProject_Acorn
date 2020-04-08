@@ -125,7 +125,7 @@
 		<input type="text" name="keyword" 
 			placeholder="검색어 입력..." value="${keyword }"/>
 		<button type="submit">검색</button>
-		<jsp:include page="../include/footer.jsp"/>
+		<jsp:include page="../include/footer2.jsp"/>
 	</form>
 </div>
 <jsp:include page="../include/msgbtn.jsp"/>
