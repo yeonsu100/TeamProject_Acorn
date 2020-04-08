@@ -55,6 +55,16 @@ public class UsersDaoImpl implements UsersDao{
 	}
 	
 	@Override
+	public boolean isPnumExist(String inputPnum) {
+		String pnum=session.selectOne("users.isPnumExist", inputPnum);
+		if(pnum==null) {
+			return false;
+		}else {
+			return true;
+		}
+	}
+	
+	@Override
 	public boolean isUserExist(int inputEmpno) {
 		String userid=session.selectOne("users.isUserExist", inputEmpno);
 		if(userid==null) {
@@ -109,4 +119,6 @@ public class UsersDaoImpl implements UsersDao{
 	public void deleteEmp(int empno) {
 		session.delete("users.deleteEmp", empno);
 	}
+
+	
 }

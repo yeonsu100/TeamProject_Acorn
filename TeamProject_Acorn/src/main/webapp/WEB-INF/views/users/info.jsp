@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>/users/info.jsp</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
-<jsp:include page="../include/resource.jsp"></jsp:include>
+<jsp:include page="../include/resource_boot4.jsp"/>
 <style>
 	#profileLink img{
 		width: 50px;
@@ -22,17 +22,22 @@
 	}
 	th, td {
 		padding: 20px;
-		border: 1px solid #000000;
+		border: 2px solid #F1A4BA;
 	}
 	th{
 		font-weight: bold;
 	    border-left: 8px solid #F1648A;
 	}
-	
+	a{
+		color:#F1648A;
+	}
 </style>
+
+<jsp:include page="../include/navbar2.jsp">
+	<jsp:param value="users" name="category"/>
+</jsp:include>
 </head>
 <body>
-<jsp:include page="../include/navbar.jsp"/>
 <div class="container">
 	<h1>개인 정보 페이지</h1>
 	<table>
@@ -46,7 +51,7 @@
 				<a href="javascript:" id="profileLink">
 					<c:choose>
 						<c:when test="${empty dto.profile }">
-							<img src="${pageContext.request.contextPath }/resources/images/default_user.jpeg"/>
+							<img src="${pageContext.request.contextPath }/resources/images/bana_logo_4.png"/>
 						</c:when>
 						<c:otherwise>
 							<img src="${pageContext.request.contextPath }${dto.profile}"/>
@@ -69,7 +74,11 @@
 		</tr>
 		<tr>
 			<th scope="row">내가 작성한 글</th>
-			<td><a href="#">목록 보기</a></td>
+			<td><a href="${pageContext.request.contextPath }/board/list.go?condition=writer&keyword=${dto.userid }">목록 보기</a></td>
+		</tr>
+		<tr>
+			<th scope="row">내가 업로드한 파일</th>
+			<td><a href="${pageContext.request.contextPath }/file/list.go?condition=writer&keyword=${dto.userid }">목록 보기</a></td>
 		</tr>
 	</table>
 </div>
@@ -96,6 +105,7 @@
 	});
 	
 </script>
+<jsp:include page="../include/footer2.jsp"/>
 <jsp:include page="../include/msgbtn.jsp"/>
 </body>
 </html>

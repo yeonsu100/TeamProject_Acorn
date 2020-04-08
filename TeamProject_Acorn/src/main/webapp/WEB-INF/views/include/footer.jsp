@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
 
 <style>
 	.footer-bs {
@@ -59,6 +57,12 @@
 	.footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { border-left:solid 1px rgba(255,255,255,0.10); }
 }
 
+img{
+	width: 90px;
+	height: 90px;
+	align: center;
+}
+
 </style>
 
 
@@ -68,32 +72,42 @@
     <footer class="footer-bs">
         <div class="row">
         	<div class="col-md-3 footer-brand animated fadeInLeft">
-            	<img src="${pageContext.request.contextPath }/resources/images/bana.png"/>
-                <p></br></p>
-                <p>©Acorn Academy</br>2Class - Team_Third, </br>All rights reserved</p>
+            	<img src="${pageContext.request.contextPath }/resources/images/bana_logo_4.png"/> <br/><br/>
+                <p>
+                	상호명 : (주)바나프레소 <br/>
+                	대표자명 : 주바나 <br/>
+                	소재지 : 서울시 강남구 테헤란로 124 <br/>
+                	대표전화 : 02-538-3747 <br/>
+                	이메일  : admin@banapresoso.com
+                </p>
             </div>
         	<div class="col-md-4 footer-nav animated fadeInUp">
-            	<h4>Menu —</h4>
-            	<div class="col-md-6">
-                    <ul class="pages">
-                        <li><a href="${pageContext.request.contextPath }/notice/list.go">Notice</a></li>
-                        <li><a href="${pageContext.request.contextPath }/board/list.go">Board</a></li>
-                        <li><a href="${pageContext.request.contextPath }/suggest/list.go">Suggest</a></li>
-                        <li><a href="${pageContext.request.contextPath }/file/list.go">File</a></li>
-                        <li><a href="${pageContext.request.contextPath }/mytrello/list.go">ToDo</a></li>
-                    </ul>
-                </div>
+	        	<h4>VISION —</h4>
+	            	<div class="col-md-20">
+	                   <p>"고객이 만족하는 한 잔의 행복"</p> <br/><br/>
+	                
+	                <h4>MISSION —</h4>
+	                   <p>
+						1. 우리는 항상 고객을 먼저 생각한다. <br/>
+						2. 우리는 최고의 품질, 최상의 맛을 제공한다. <br/>
+						3. 우리는 2030년까지 글로벌 기업으로 도약한다. <br/>
+						</p>
+	                </div>
             </div>
-        	<div class="col-md-2 footer-social animated fadeInDown">
-            	<h4>Member ㅡ</h4>
-            	<ul>
-                	<li><a href="https://github.com/yeonsu100" target="_blank"><p>백연수</p></a></li>
-                	<li><a href="https://github.com/2ee30" target="_blank"><p>이상명</p></a></li>
-                	<li><a href=https://github.com/Maltitols target="_blank"><p>이창호</p></a></li>
-                	<li><a href=https://github.com/KIMMINJUNN target="_blank"><p>김철언</p></a></li>
-                	<li><a href=https://github.com/gkstjrgh4 target="_blank"><p>한석호</p></a></li>
-                </ul>
+        	<div class="col-md-3 footer-nav animated fadeInUp">
+	        	<h4>SITE MAP —</h4>
+	            	<div class="col-md-6">
+	                   <ul class="pages">
+	                        <li><a href="${pageContext.request.contextPath }/notice/list.go">Notice</a></li>
+	                        <li><a href="${pageContext.request.contextPath }/board/list.go">Board</a></li>
+	                        <li><a href="${pageContext.request.contextPath }/suggest/list.go">Suggest</a></li>
+	                        <li><a href="${pageContext.request.contextPath }/file/list.go">File</a></li>
+	                        <li><a href="${pageContext.request.contextPath }/mytrello/list.go">ToDo</a></li>
+                   		</ul>
+	                </div>
             </div>
         </div>
     </footer>
+    <section style="text-align:center; margin:3px auto; color: #F1648A;"><p>Copyright©2020 by <strong>Team_acorn</strong></p></section>
+    
     </div>

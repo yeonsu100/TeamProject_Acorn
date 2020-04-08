@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/mytrello/list.jsp</title>
-<jsp:include page="../include/resource.jsp" />
+<jsp:include page="../include/resource_boot4.jsp" />
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"> </script>
 <style>
 	h1{color: #F1648A;}
@@ -25,7 +25,7 @@
 	}
 	.task{
 		width: 100%;
-		background: #F1A4BA;
+		background: #F1C4DA;
 		padding: 18px;
 		margin: 6px 0;
 		overflow: hidden;
@@ -41,22 +41,23 @@
 		color: #fff;
 	}
 </style>
+<jsp:include page="../include/navbar2.jsp">
+	<jsp:param value="mytrello" name="category"/>
+</jsp:include>
 </head>
 
 <body>
-<jsp:include page="../include/navbar.jsp">
-	<jsp:param value="mytrello" name="category"/>
-</jsp:include>
+
 
 <div class="container">
 	<h1>체크 리스트</h1>
-	<input type="text" class="txtb" placeholder="할 일 입력" />
+	<input type="text" class="txtb mb-2" placeholder="할 일 입력" />
 	<div class="notcomp">
-		<h3>해야할 업무 목록</h3>
+		<h4>해야할 업무 목록</h4>
 	</div>
 	
 	<div class="comp">
-		<h3>완료된 업무 목록</h3>	
+		<h4>완료된 업무 목록</h4>	
 	</div>
 </div>
 
@@ -90,6 +91,8 @@
 		}
 	});
 </script>
-<jsp:include page="../include/msgbtn.jsp"/>
+<br/><br/><br/>
 </body>
+<jsp:include page="../include/footer2.jsp"/>
+<jsp:include page="../include/msgbtn.jsp"/>
 </html>

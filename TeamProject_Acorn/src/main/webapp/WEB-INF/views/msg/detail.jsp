@@ -8,6 +8,9 @@
 <title>/msg/detail.jsp</title>
 <jsp:include page="../include/resource_boot4.jsp"></jsp:include>
 <style>
+body{
+	margin-top: 1rem;
+}
 table{
 	table-layout: fixed;
     word-wrap: break-word;
@@ -17,13 +20,32 @@ table{
 	padding-top:20px;
 }
 .btn-group .btn-secondary{
+	background-color:#F1648A;
+	border:0;
+	outline:0;
+}
+.btn-group .btn-secondary:hover{
 	background-color:#F1A4BA;
 	border:0;
 	outline:0;
 }
+.btn-group .btn-secondary:focus, .btn-group .btn-secondary.focus {
+	color: #fff;
+	background-color: #F1648A;
+	border: 0;
+	box-shadow: 0 0 0 0.1rem #F1A4BA;
+}
+.btn-group .btn-secondary:not(:disabled):not(.disabled):active, .btn-group .btn-secondary:not(:disabled):not(.disabled).active{
+  color: #fff;
+  background-color: #F1648A;
+  border-color: #F1A4BA;
+}
+.btn-group .btn-secondary:not(:disabled):not(.disabled):active:focus, .btn-group .btn-secondary:not(:disabled):not(.disabled).active:focus{
+  box-shadow: 0 0 0 0.1rem #F1A4BA;
+}
 .table-bordered th,
 .table-bordered td {
-  	border: 1px solid #F1A4BA !important;
+  	border: 2px solid #F1A4BA !important;
 }
 </style>
 </head>

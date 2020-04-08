@@ -7,57 +7,104 @@
 <head>
 <meta charset="UTF-8">
 <title>/views/suggest/list.jsp</title>
-<jsp:include page="../include/resource.jsp"/>
+<jsp:include page="../include/resource_boot4.jsp"/>
 <style>
-	h1{color: #6799FF;}
-	.comments ul{
-		padding: 0;
-		margin: 0;
-		list-style-type: none;
-	}
-	.comments ul li{
-		border-top: 1px solid #888; /* li 의 윗쪽 경계선 */
-	}
-	.comments dt{
-		margin-top: 5px;
-	}
-	.comments dd{
-		margin-left: 26px;
-	}
-	.comments form textarea, .comments form button{
-		float: left;
-	}
-	.comments li{
-		clear: left;
-	}
-	.comments form textarea{
-		width: 85%;
-		height: 100px;
-	}
-	.comments form button{
-		width: 15%;
-		height: 100px;
-		color: #B2CCFF;
-	}
-	/* 수정폼을 일단 숨긴다.*/
-	.suggest form{
-		display: none;
-	}
-	.suggest{
-		position: relative;
-	}
-	.comments .user-img{
-		width: 20px;
-		height: 20px;
-		border-radius: 50%;
-	}
+h1{color: #F1648A;}
+.comments ul{
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+}
+.comments ul li{
+	border-top: 1px solid #888; /* li 의 윗쪽 경계선 */
+}
+.comments dt{
+	margin-top: 5px;
+}
+.comments dd{
+	margin-left: 26px;
+}
+.comments form textarea, .comments form button{
+	float: left;
+}
+.comments li{
+	clear: left;
+}
+.comments form textarea{
+	width: 85%;
+	height: 100px;
+}
+.comments form button{
+	width: 15%;
+	height: 100px;
+	color: #B2CCFF;
+}
+/* 수정폼을 일단 숨긴다.*/
+.suggest form{
+	display: none;
+}
+.suggest{
+	position: relative;
+}
+.comments .user-img{
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+}
+.btn-primary{
+	background-color:#F1648A;
+	border:0;
+	outline:0;
+}
+.btn-primary:hover{
+	background-color:#F1A4BA;
+	border:0;
+	outline:0;
+}
+.btn-primary:disabled{
+	background-color:#F1A4BA;
+	border:0;
+	outline:0;
+}
+.btn-primary:focus, .btn-primary.focus {
+	color: #fff;
+	background-color: #F1648A;
+	border: 0;
+	box-shadow: 0 0 0 0.1rem #F1A4BA;
+}
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+	color: #fff;
+	background-color: #F1648A;
+	border-color: #F1A4BA;
+}
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+	box-shadow: 0 0 0 0.1rem #F1A4BA;
+}
+.page-link {
+	color: #F1648A;
+	border: 1px solid #F1A4BA;
+}
+.page-link:hover {
+	color: #F1648A;
+	background-color: #F1A4BA;
+	border-color: #F1A4BA;
+}
+.page-item.active .page-link {
+	color: #fff;
+	background-color: #F1648A;
+	border-color: #F1A4BA;
+}
+.page-item.disabled .page-link {
+	border-color: #F1A4BA;
+}
 </style>
-</head>
-<body>
-<jsp:include page="../include/navbar.jsp">
+<jsp:include page="../include/navbar2.jsp">
 	<jsp:param value="suggest" name="category"/>
 </jsp:include>
-
+</head>
+<body>
 <div class="container">
 
 	<h1>건의사항 게시판</h1>
@@ -78,18 +125,21 @@
 							</c:otherwise>
 						</c:choose>
 						<span>${tmp.sugId }</span>
-						<span>${tmp.regdate }</span>
+						<span style="float:right;">
 						<c:choose>
 							<c:when test="${id eq tmp.sugId}">
-								<a href="javascript:" class="suggest-update-link">수정</a>&nbsp;&nbsp;
-								<a href="javascript:deleteConfirm(${tmp.num })">삭제</a>
+								<a href="javascript:" class="suggest-update-link" style="color: #F1648A;">수정</a>&nbsp;|
+								<a href="javascript:deleteConfirm(${tmp.num })" style="color: #F1648A;">삭제</a>&nbsp;
 							</c:when>
 							<c:otherwise>
 								<c:if test="${not empty isAdmin }">
-									<a href="javascript:deleteConfirm(${tmp.num })">삭제</a>
+									<a href="javascript:deleteConfirm(${tmp.num })" style="color: #F1648A;">삭제</a>&nbsp;
 								</c:if>
 							</c:otherwise>
 						</c:choose>
+
+						${tmp.regdate }
+						</span>
 					</dt>
 					<dd>
 						<pre>${tmp.sugContent }</pre>
@@ -98,73 +148,70 @@
 				<c:if test="${id eq tmp.sugId }">
 					<form class="suggest-update-form" action="update.go" method="post">
 						<input type="hidden" name="num" value="${tmp.num }" />
-						<textarea class="form-control" rows="3" name="sugContent" id="update-sugContent">${tmp.sugContent }</textarea>
-						<button type="submit" class="btn btn-primary" disabled id="updateBtn">수정</button>
+						<textarea class="form-control update-sugContent" rows="3" name="sugContent">${tmp.sugContent }</textarea>
+						<button type="submit" class="btn btn-primary updateBtn" disabled>수정</button>
 					</form>
 				</c:if>
 			</li>
 		</c:forEach>
 		</ul>
 		<form action="insert.go" method="post">
-			<div class="form-group">
-				<input type="hidden" name="sugId" value="${id }" />
-				<input type="hidden" name="sugProfile" value="${tmp.profile}"/>
-				<c:if test="${not empty id}">
-					<textarea class="form-control" rows="3" id="insert-sugContent" name="sugContent"></textarea>
-					<button class="btn btn-primary" type="submit" disabled id="insertBtn">등록</button>
-				</c:if>
-			</div>
+			<input type="hidden" name="sugId" value="${id }" />
+			<input type="hidden" name="sugProfile" value="${tmp.profile}"/>
+			<c:if test="${not empty id}">
+				<textarea class="form-control" id="insert-sugContent" name="sugContent"></textarea>
+				<button class="btn btn-primary" type="submit" disabled id="insertBtn">등록</button>
+			</c:if>
 		</form>
 	</div>
-	<div class="page-display">
+	<nav aria-label="Search pages" style="margin-top:8rem;">
 		<ul class="pagination pagination-sm">
 		<c:choose>
 			<c:when test="${startPageNum ne 1 }">
-				<li>
-					<a href="list.go?pageNum=${startPageNum-1 }">&laquo;</a>
+				<li class="page-item">
+					<a class="page-link" href="list.go?pageNum=${startPageNum-1 }">&laquo;</a>
 				</li>
 			</c:when>
 			<c:otherwise>
-				<li class="disabled">
-					<a href="javascript:">&laquo;</a>
+				<li class="page-item disabled">
+					<a class="page-link" href="javascript:">&laquo;</a>
 				</li>
 			</c:otherwise>
 		</c:choose>
 		<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }" step="1">
 			<c:choose>
 				<c:when test="${i eq pageNum }">
-					<li class="active">
-						<a href="list.go?pageNum=${i }">${i }</a>
+					<li class="page-item active">
+						<a class="page-link" href="list.go?pageNum=${i }">${i }</a>
 					</li>
 				</c:when>
 				<c:otherwise>
-					<li>
-						<a href="list.go?pageNum=${i }">${i }</a>
+					<li class="page-item">
+						<a class="page-link" href="list.go?pageNum=${i }">${i }</a>
 					</li>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
 			<c:choose>
 				<c:when test="${endPageNum lt totalPageCount }">
-					<li>
-						<a href="list.go?pageNum=${endPageNum+1 }">&raquo;</a>
+					<li class="page-item">
+						<a class="page-link" href="list.go?pageNum=${endPageNum+1 }">&raquo;</a>
 					</li>
 				</c:when>
 				<c:otherwise>
-					<li class="disabled">
-						<a href="javascript:">&raquo;</a>
+					<li class="page-item disabled">
+						<a class="page-link" href="javascript:">&raquo;</a>
 					</li>
 				</c:otherwise>
 			</c:choose>
 		</ul>
-	</div>
+	</nav>
 </div>
 <script>
-
 	// 게시글 수정 링크를 눌렀을때 호출되는 함수 등록
 	$(".suggest-update-link").click(function(){
 		$(this)
-		.parent().parent().parent()
+		.parent().parent().parent().parent()
 		.find(".suggest-update-form")
 		.slideToggle(200);
 	});
@@ -199,12 +246,12 @@
 		}
 	});
 	// 수정시 빈 값일 경우 버튼 제출 막기
-	$("#update-sugContent").on("input",function(){
-		var updateSug=$("#update-sugContent").val();
+	$(".update-sugContent").on("input",function(){
+		var updateSug=$(this).val();
 		if(updateSug.length!=0){
-			$("#updateBtn").removeAttr("disabled");
+			$(this).parent().find(".updateBtn").removeAttr("disabled");
 		}else{
-			$("#updateBtn").attr("disabled","disabled");
+			$(this).parent().find(".updateBtn").attr("disabled","disabled");
 		}
 	});
 	
@@ -220,6 +267,8 @@
 		}
 	}
 </script>
+<br/><br/><br/>
+<jsp:include page="../include/footer2.jsp"/>
 <jsp:include page="../include/msgbtn.jsp"/>
 </body>
 </html>
