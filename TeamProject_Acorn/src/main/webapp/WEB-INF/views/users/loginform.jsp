@@ -5,8 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/users/loginform</title>
-<jsp:include page="include/resource_boot4.jsp"/>
-<jsp:include page="include/navbar2.jsp"/>
+<jsp:include page="../include/resource_boot4.jsp"/>
 <style>	
 	body {
 	  padding-top: 40px;
