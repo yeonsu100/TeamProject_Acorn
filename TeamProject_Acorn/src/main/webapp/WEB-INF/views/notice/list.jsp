@@ -174,12 +174,12 @@ thead{background-color: #F1A4BA;}
 		</ul>
 	</nav>
 		<form action="list.go" method="get">
-		<label for="condition">검색하기</label>
+		<label for="condition">검색 조건</label>
 		<select name="condition" id="condition">
 			<option value="title"<c:if test="${condition eq 'title' }">selected</c:if>>제목</option>
 			<option value="writer"<c:if test="${condition eq 'writer' }">selected</c:if> >작성자</option>
 		</select>
-		<input type="text" name="keyword" id="keyword" placeholder="키워드를 입력하세요" value="${keyword }"/>
+		<input type="text" name="keyword" id="keyword" placeholder="키워드를 입력하세요..." value="${keyword }"/>
 		<button type="submit">검색</button>
 	</form>
 </div>

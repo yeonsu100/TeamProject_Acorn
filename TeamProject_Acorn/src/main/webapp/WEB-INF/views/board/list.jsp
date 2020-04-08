@@ -73,7 +73,6 @@ thead{background-color: #F1A4BA;}
 <jsp:include page="../include/navbar2.jsp">
 	<jsp:param value="board" name="category"/>
 </jsp:include>
-
 <div class="container">
 	<h1>게시판</h1>
 	<p> 자유게시판 입니다.</p> <br/>
@@ -174,14 +173,14 @@ thead{background-color: #F1A4BA;}
 	</nav>
 	<%-- 글 검색 기능 폼 --%>
 	<form action="list.go" method="get">
-		<label for="condition">검색조건</label>
+		<label for="condition">검색 조건</label>
 		<select name="condition" id="condition">
 			<option value="titlecontent" <c:if test="${condition eq 'titlecontent' }">selected</c:if> >제목+내용</option>
 			<option value="title" <c:if test="${condition eq 'title' }">selected</c:if> >제목</option>
 			<option value="writer" <c:if test="${condition eq 'writer' }">selected</c:if> >작성자</option>
 		</select>
 		<input type="text" name="keyword" 
-			placeholder="검색어 입력..." value="${keyword }"/>
+			placeholder="키워드를 입력하세요..." value="${keyword }"/>
 		<button type="submit">검색</button>
 	</form>
 </div>
