@@ -45,7 +45,7 @@ table{
 }
 .table-bordered th,
 .table-bordered td {
-  	border: 1px solid #F1A4BA !important;
+  	border: 2px solid #F1A4BA !important;
 }
 </style>
 </head>

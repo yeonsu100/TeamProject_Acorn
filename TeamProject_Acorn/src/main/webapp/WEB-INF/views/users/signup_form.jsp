@@ -7,13 +7,48 @@
 <title>/users/signup_form.jsp</title>
 <jsp:include page="../include/resource_boot4.jsp"/>
 <style>
-	/* 페이지 로딩 시점에 도움말과 피드백 아이콘은 일단 숨기기 */
-	.help-block, .form-control-feedback{
-		display: none;
-	}
-	.form-row{
-		margin-top:1rem;
-	}
+/* 페이지 로딩 시점에 도움말과 피드백 아이콘은 일단 숨기기 */
+.help-block, .form-control-feedback{
+	display: none;
+}
+.form-row{
+	margin-top:1rem;
+}
+.btn-secondary{
+	border:0;
+	outline:0;
+}
+.btn-primary{
+	background-color:#F1648A;
+	border:0;
+	outline:0;
+}
+.btn-primary:disabled{
+	background-color:#F1A4BA;
+	border:0;
+	outline:0;
+}
+.btn-primary:hover{
+	background-color:#F1A4BA;
+	border:0;
+	outline:0;
+}
+.btn-primary:focus, .btn-primary.focus {
+	color: #fff;
+	background-color: #F1648A;
+	border: 0;
+	box-shadow: 0 0 0 0.1rem #F1A4BA;
+}
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #F1648A;
+  border-color: #F1A4BA;
+}
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.1rem #F1A4BA;
+}
 </style>
 <jsp:include page="../include/navbar2.jsp"/>
 </head>

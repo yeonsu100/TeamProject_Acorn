@@ -14,6 +14,10 @@ h1{color: #F1648A;}
 	border:0;
 	outline:0;
 }
+.btn-secondary{
+	border:0;
+	outline:0;
+}
 .btn-primary:hover{
 	background-color:#F1A4BA;
 	border:0;
@@ -55,7 +59,7 @@ h1{color: #F1648A;}
 			<input class="form-control" type="file" name="myFile" id="myFile" />
 		</div>
 		<button class="btn btn-primary btn-sm" type="submit">저장하기</button>
-		<button class="btn btn-default btn-sm" type="reset">초기화하기</button>
+		<button class="btn btn-secondary btn-sm" type="reset">초기화하기</button>
 	</form>
 </div>
 </body>

@@ -7,13 +7,48 @@
 <title>/emp/insertform.jsp</title>
 <jsp:include page="../include/resource_boot4.jsp"/>
 <style>
-	/* 페이지 로딩 시점에 도움말과 피드백 아이콘은 일단 숨기기 */
-	.help-block, .form-control-feedback{
-		display: none;
-	}
-	.form-row{
-		margin-top:1rem;
-	}
+/* 페이지 로딩 시점에 도움말과 피드백 아이콘은 일단 숨기기 */
+.help-block, .form-control-feedback{
+	display: none;
+}
+.form-row{
+	margin-top:1rem;
+}
+.btn-secondary{
+	border:0;
+	outline:0;
+}
+.btn-primary{
+	background-color:#F1648A;
+	border:0;
+	outline:0;
+}
+.btn-primary:hover{
+	background-color:#F1A4BA;
+	border:0;
+	outline:0;
+}
+.btn-primary:disabled{
+	background-color:#F1A4BA;
+	border:0;
+	outline:0;
+}
+.btn-primary:focus, .btn-primary.focus {
+	color: #fff;
+	background-color: #F1648A;
+	border: 0;
+	box-shadow: 0 0 0 0.1rem #F1A4BA;
+}
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+	color: #fff;
+	background-color: #F1648A;
+	border-color: #F1A4BA;
+}
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+	box-shadow: 0 0 0 0.1rem #F1A4BA;
+}
 </style>
 <jsp:include page="../include/navbar2.jsp"></jsp:include>
 <jsp:include page="../include/msgbtn.jsp"></jsp:include>
@@ -42,7 +77,7 @@
 			<p class="invalid-feedback" id="hdate_required">반드시 입력하세요</p>
 		</div>
 		<button disabled="disabled" class="btn btn-primary btn-sm mt-3" type="submit">추가</button>
-		<button class="btn btn-secondary btn-sm mt-3" type="reset">취소</button>
+		<button class="btn btn-secondary btn-sm mt-3" type="button" onclick="location.href='main.go'">취소</button>
 	</form>
 </div>
 <script>

@@ -6,9 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>/users/pwd_update.jsp</title>
+<<<<<<< HEAD
 <jsp:include page="../include/resource_boot4.jsp">
 	<jsp:include page="../include/navbar2.jsp"/>
 </jsp:include>
+=======
+>>>>>>> branch 'master' of https://github.com/yeonsu100/TeamProject_Acorn.git
 </head>
 <body>
 <div class="container">
