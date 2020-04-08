@@ -13,10 +13,6 @@
 <body>
 
 <div class="container">
-	<ul class="breadcrumb">
-		<li><a href="${pageContext.request.contextPath }/notice/list.go">목록</a></li>
-		<li>글 수정중</li>
-	</ul>
 	<form action="update.go" method="post">
 		<input type="hidden" name="num" value="${dto.num }"/>
 		<div class="form-group">
