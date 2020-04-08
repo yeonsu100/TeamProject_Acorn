@@ -31,8 +31,9 @@ public class NoticeServiceImpl implements NoticeService{
 		if(keyword != null) {
 			if(condition.equals("title")) {
 				dto.setTitle(keyword);
-			}else if(condition.equals("writer")) {
-				dto.setWriter(keyword);
+			}else if(condition.equals("titlecontent")) {
+				dto.setTitle(keyword);
+				dto.setContent(keyword);
 			}
 			String encodedKeyword=null;
 			try {

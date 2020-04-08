@@ -92,6 +92,9 @@ h1{color: #F1648A;}
 	background-color: #F1A4BA;
 	border-color: #F1A4BA;
 }
+.page-item{
+	border-top:none !important;
+}
 .page-item.active .page-link {
 	color: #fff;
 	background-color: #F1648A;
@@ -156,17 +159,9 @@ h1{color: #F1648A;}
 			</li>
 		</c:forEach>
 		</ul>
-		<form action="insert.go" method="post">
-			<input type="hidden" name="sugId" value="${id }" />
-			<input type="hidden" name="sugProfile" value="${tmp.profile}"/>
-			<c:if test="${not empty id}">
-				<textarea class="form-control" id="insert-sugContent" name="sugContent"></textarea>
-				<button class="btn btn-primary" type="submit" disabled id="insertBtn">등록</button>
-			</c:if>
-		</form>
-	</div>
-	<nav aria-label="Search pages" style="margin-top:8rem;">
-		<ul class="pagination pagination-sm">
+	
+	<nav aria-label="Search pages" class="d-flex" style="margin-top:1rem;margin-bottom:1rem;">
+		<ul class="pagination pagination-sm mx-auto">
 		<c:choose>
 			<c:when test="${startPageNum ne 1 }">
 				<li class="page-item">
@@ -207,6 +202,17 @@ h1{color: #F1648A;}
 			</c:choose>
 		</ul>
 	</nav>
+	<form action="insert.go" method="post">
+		<input type="hidden" name="sugId" value="${id }" />
+		<input type="hidden" name="sugProfile" value="${tmp.profile}"/>
+		<c:if test="${not empty id}">
+			<div class="input-group">
+				<textarea class="form-control" id="insert-sugContent" name="sugContent"></textarea>
+				<button class="btn btn-primary" type="submit" disabled id="insertBtn">등록</button>
+			</div>
+		</c:if>
+	</form>
+	</div>
 </div>
 <script>
 	// 게시글 수정 링크를 눌렀을때 호출되는 함수 등록

@@ -80,29 +80,29 @@ thead{background-color: #F1A4BA;}
 	
 	<%-- 글 검색 기능 폼 --%>
 	<form action="list.go" method="get">
-		<div class="input-group input-group-sm mb-2">
-			<select class="custom-select" name="condition" id="condition" >
+		<div class="input-group input-group-sm" style="width:35%;">
+			<select class="custom-select" name="condition" id="condition" style="max-width:35%;">
 				<option selected>검색 조건 선택</option>
 				<option value="titlecontent" <c:if test="${condition eq 'titlecontent' }">selected</c:if> >제목+내용</option>
 				<option value="title" <c:if test="${condition eq 'title' }">selected</c:if> >제목</option>
 				<option value="writer" <c:if test="${condition eq 'writer' }">selected</c:if> >작성자</option>
 			</select>
-			<input type="text" name="keyword" 
+			<input class="form-control" type="text" name="keyword" 
 				placeholder="키워드를 입력하세요..." value="${keyword }"/>
 			<div class="input-group-append">
 				<button class="btn btn-primary btn-sm" type="submit">검색</button>
 			</div>
-			
-			<c:if test="${not empty keyword }">
-				<span style="float:right;">
-					<strong>${keyword }</strong> 라는 검색어로 
-					<strong>${totalRow }</strong> 개의 글이 검색 되었습니다.
-				</span>
-			</c:if>
 		</div>
 	</form>
 	
-	<table class="table table-sm table-hover">
+	<c:if test="${not empty keyword }">
+		<span style="float:right;font-size:0.7rem;">
+			<strong>${keyword }</strong> 라는 검색어로 
+			<strong>${totalRow }</strong> 개의 글이 검색 되었습니다.
+		</span>
+	</c:if>
+
+	<table class="table table-sm table-hover mt-3">
 		<colgroup>
 			<col class="col-xs-1"/>
 			<col class="col-xs-2"/>

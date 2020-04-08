@@ -5,11 +5,12 @@
 		SELECT NVL(MAX(ROWNUM), 0)
 		FROM T_notice
 		<choose>
+			<when test="title != null and content != null ">
+				WHERE title LIKE '%${title}%'
+				OR content LIKE '%${content}%'
+			</when>
 			<when test="title != null">
 				WHERE title LIKE '%${title}%'
-			</when>
-			<when test="writer != null">
-				WHERE writer LIKE '%${writer}%'
 			</when>
 		</choose>
 	</select>
@@ -21,11 +22,12 @@
 		(SELECT num,writer,title,viewCount,TO_CHAR(regdate, 'YY-MM-DD HH24:MM') AS regdate
 		FROM T_notice
 		<choose>
+			<when test="title != null and content != null ">
+				WHERE title LIKE '%${title}%'
+				OR content LIKE '%${content}%'
+			</when>
 			<when test="title != null">
 				WHERE title LIKE '%${title}%'
-			</when>
-			<when test="writer != null">
-				WHERE writer LIKE '%${writer}%'
 			</when>
 		</choose>
 		ORDER BY num DESC) result1)
