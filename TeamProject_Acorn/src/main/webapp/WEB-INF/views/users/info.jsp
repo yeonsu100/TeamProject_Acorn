@@ -30,14 +30,8 @@
 	}
 	
 </style>
-<<<<<<< HEAD
-</head>
-<body>
-<jsp:include page="include/resource_boot4.jsp"/>
-<jsp:include page="include/navbar2.jsp">
-=======
+
 <jsp:include page="../include/navbar2.jsp">
->>>>>>> branch 'master' of https://github.com/yeonsu100/TeamProject_Acorn.git
 	<jsp:param value="users" name="category"/>
 </jsp:include>
 </head>
