@@ -7,12 +7,47 @@
 <title>/notice/insertform.jsp</title>
 <jsp:include page="../include/resource_boot4.jsp"></jsp:include>
 <style>
-	/* textarea의 크기가 SmartEditor의 크기가 된다.*/
-	#content{
-		display:nome;
-		width:100%;
-		height:400px;
-	}
+/* textarea의 크기가 SmartEditor의 크기가 된다.*/
+#content{
+	display:none;
+	width:100%;
+	height:400px;
+}
+.btn-secondary{
+	border:0;
+	outline:0;
+}
+.btn-primary{
+	background-color:#F1648A;
+	border:0;
+	outline:0;
+}
+.btn-primary:hover{
+	background-color:#F1A4BA;
+	border:0;
+	outline:0;
+}
+.btn-primary:disabled{
+	background-color:#F1A4BA;
+	border:0;
+	outline:0;
+}
+.btn-primary:focus, .btn-primary.focus {
+	color: #fff;
+	background-color: #F1648A;
+	border: 0;
+	box-shadow: 0 0 0 0.1rem #F1A4BA;
+}
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+	color: #fff;
+	background-color: #F1648A;
+	border-color: #F1A4BA;
+}
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+	box-shadow: 0 0 0 0.1rem #F1A4BA;
+}
 </style>
 <jsp:include page="../include/navbar2.jsp">
 	<jsp:param value="notice" name="category"/>
@@ -21,10 +56,6 @@
 <body>
 
 <div class="container">
-	<ol class="breadcrumb">
-		<li><a href="${pageContext.request.contextPath }/notice/list.go">목록</a></li>
-		<li>새글 작성</li>
-	</ol>
 	<form action="insert.go" method="post">
 		<div class="form-group">
 			<label for="writer">작성자</label>
@@ -38,8 +69,8 @@
 			<label for="content">내용</label>
 			<textarea class="form-control" name="content" id="content" cols="30" rows="10"></textarea>
 		</div>
-		<button class="btn btn-primary" type="button" onclick="submitContents(this);">저장</button>
-		<button class="btn btn-warning" type="button"  onclick="location.href='list.go' ">취소</button>
+		<button class="btn btn-primary btn-sm" type="button" onclick="submitContents(this);">저장</button>
+		<button class="btn btn-secondary btn-sm" type="button"  onclick="location.href='list.go' ">취소</button>
 	</form>
 </div>
 <!-- SmartEditor 에서 필요한 javascript 로딩  -->

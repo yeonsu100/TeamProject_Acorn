@@ -10,7 +10,7 @@
 		FROM
 			(SELECT result1.*, ROWNUM AS rnum
 			FROM
-				(SELECT num,sugId,sugContent,regdate, T_user.profile
+				(SELECT num,sugId,sugContent,TO_CHAR(regdate, 'YY-MM-DD HH:MI:SS')AS regdate, T_user.profile
 				FROM T_suggest
 				INNER JOIN T_user
 				ON T_suggest.sugId = T_user.userid

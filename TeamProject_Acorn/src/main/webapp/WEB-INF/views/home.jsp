@@ -70,17 +70,10 @@
 	}
 
 </style>
-<<<<<<< HEAD
 </head>
-
-=======
-<jsp:include page="include/navbar2.jsp"/>
-</head>
->>>>>>> branch 'master' of https://github.com/yeonsu100/TeamProject_Acorn.git
 <body>
-<div class="section-top">
+<div class="container section-top">
 	<div class="metro">
-<<<<<<< HEAD
 		<div class="l1">
 			<ul>
 				<li class="item i1">
@@ -111,39 +104,12 @@
 				</li>
 			</ul>
 		</div>
-=======
-		<ul class="l1">
-			<li class="item i1">
-				<a href="${pageContext.request.contextPath }/notice/list.go"><i class="fas fa-bullhorn"></i>
-				<span>Notice</span></a>
-			</li>
-			<li class="item i2">
-				<a href="${pageContext.request.contextPath }/board/list.go"><i class="fas fa-pencil-alt"></i>
-				<span>Board</span></a>
-			</li>
-		</ul>
-		<ul class="l2">
-			<li class="item i3">
-				<a href="${pageContext.request.contextPath }/suggest/list.go"><i class="fas fa-envelope-open-text"></i>
-				<span>Suggest</span></a>
-			</li>
-			
-			<li class="item i4">
-				<a href="${pageContext.request.contextPath }/file/list.go"><i class="fas fa-download"></i>
-				<span>Web Hard</span></a>
-			</li>
-			
-			<li class="item i5">
-				<a href="${pageContext.request.contextPath }/mytrello/list.go"><i class="fas fa-tasks"></i>
-				<span>To Do</span></a>
-			</li>
-		</ul>
->>>>>>> branch 'master' of https://github.com/yeonsu100/TeamProject_Acorn.git
 	</div>
 	
 </div>
 <br/><br/><br/>
-<jsp:include page="include/footer2.jsp"/>
+
 <jsp:include page="include/msgbtn.jsp"/>
 </body>
+<jsp:include page="include/footer2.jsp"/>
 </html>

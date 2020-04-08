@@ -125,19 +125,20 @@ h1{color: #F1648A;}
 							</c:otherwise>
 						</c:choose>
 						<span>${tmp.sugId }</span>
-						<span>${tmp.regdate }</span>
+						<span style="float:right;">
 						<c:choose>
 							<c:when test="${id eq tmp.sugId}">
-								<a href="javascript:" class="suggest-update-link" style="color: #F1648A;">수정</a>&nbsp;&nbsp;
-								<a href="javascript:deleteConfirm(${tmp.num })" style="color: #F1648A;">삭제</a>
+								<a href="javascript:" class="suggest-update-link" style="color: #F1648A;">수정</a>&nbsp;|
+								<a href="javascript:deleteConfirm(${tmp.num })" style="color: #F1648A;">삭제</a>&nbsp;
 							</c:when>
 							<c:otherwise>
 								<c:if test="${not empty isAdmin }">
-									<a href="javascript:deleteConfirm(${tmp.num })" style="color: #F1648A;">삭제</a>
+									<a href="javascript:deleteConfirm(${tmp.num })" style="color: #F1648A;">삭제</a>&nbsp;&nbsp;
 								</c:if>
 							</c:otherwise>
 						</c:choose>
-						
+						${tmp.regdate }
+						</span>
 					</dt>
 					<dd>
 						<pre>${tmp.sugContent }</pre>
@@ -146,8 +147,8 @@ h1{color: #F1648A;}
 				<c:if test="${id eq tmp.sugId }">
 					<form class="suggest-update-form" action="update.go" method="post">
 						<input type="hidden" name="num" value="${tmp.num }" />
-						<textarea class="form-control" rows="3" name="sugContent" id="update-sugContent">${tmp.sugContent }</textarea>
-						<button type="submit" class="btn btn-primary" disabled id="updateBtn">수정</button>
+						<textarea class="form-control update-sugContent" rows="3" name="sugContent">${tmp.sugContent }</textarea>
+						<button type="submit" class="btn btn-primary updateBtn" disabled>수정</button>
 					</form>
 				</c:if>
 			</li>
@@ -209,7 +210,7 @@ h1{color: #F1648A;}
 	// 게시글 수정 링크를 눌렀을때 호출되는 함수 등록
 	$(".suggest-update-link").click(function(){
 		$(this)
-		.parent().parent().parent()
+		.parent().parent().parent().parent()
 		.find(".suggest-update-form")
 		.slideToggle(200);
 	});
@@ -244,12 +245,12 @@ h1{color: #F1648A;}
 		}
 	});
 	// 수정시 빈 값일 경우 버튼 제출 막기
-	$("#update-sugContent").on("input",function(){
-		var updateSug=$("#update-sugContent").val();
+	$(".update-sugContent").on("input",function(){
+		var updateSug=$(this).val();
 		if(updateSug.length!=0){
-			$("#updateBtn").removeAttr("disabled");
+			$(this).parent().find(".updateBtn").removeAttr("disabled");
 		}else{
-			$("#updateBtn").attr("disabled","disabled");
+			$(this).parent().find(".updateBtn").attr("disabled","disabled");
 		}
 	});
 	

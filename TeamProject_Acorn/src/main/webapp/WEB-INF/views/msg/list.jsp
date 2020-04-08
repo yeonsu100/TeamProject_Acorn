@@ -93,19 +93,37 @@ table {
 				<c:choose>
 					<c:when test="${pageType eq 'sent' }">
 						<th style="width:20%">받는 사람</th>
+						<th style="width:44%">제목</th>
+						<th style="width:18%">보낸 시간</th>
+						<th style="width:18%">읽은 시간</th>
 					</c:when>
 					<c:otherwise>
-						<th>보낸 사람</th>
+						<th style="width:20%">보낸 사람</th>
+						<th style="width:58%">제목</th>
+						<th style="width:22%">보낸 시간</th>
 					</c:otherwise>
 				</c:choose>
-				<th style="width:44%">제목</th>
-				<th style="width:18%">보낸 시간</th>
-				<th style="width:18%">읽은 시간</th>
+				
 			</tr>
 		</thead>
 		<tbody>
 		<c:forEach var="tmp" items="${requestScope.list }">
-			<tr>
+			<c:choose>
+				<c:when test="${empty pageType }">
+					<c:choose>
+						<c:when test="${not empty tmp.readDate }">
+							<tr style="color:#c9c9c9 !important">
+						</c:when>
+						<c:otherwise>
+							<tr>
+						</c:otherwise>
+					</c:choose>
+				</c:when>
+				<c:otherwise>
+					<tr>
+				</c:otherwise>
+			</c:choose>
+			
 				<c:choose>
 					<c:when test="${pageType eq 'sent' }">
 						<td class="align-middle">${tmp.idRec }</td>
@@ -122,14 +140,21 @@ table {
 					</c:when>
 					<c:otherwise>
 						<td class="align-middle">
-							<a class="title" href="detail.go?num=${tmp.num }&pageNum=${pageNum}">${tmp.title }</a>
+							<a class="title" href="detail.go?num=${tmp.num }&pageNum=${pageNum}" 
+								<c:if test="${not empty tmp.readDate }"> style="color:#c9c9c9;"</c:if>>${tmp.title }</a>
 						</td>
 					</c:otherwise>
 				</c:choose>
 				
-				
-				<td class="align-middle">${tmp.sendDate}</td>
-				<td class="align-middle">${tmp.readDate}</td>
+				<c:choose>
+					<c:when test="${pageType eq 'sent' }">
+						<td class="align-middle">${tmp.sendDate}</td>
+						<td class="align-middle">${tmp.readDate}</td>
+					</c:when>
+					<c:otherwise>
+						<td class="align-middle">${tmp.sendDate}</td>
+					</c:otherwise>
+				</c:choose>
 			</tr>
 		</c:forEach>
 		</tbody>
