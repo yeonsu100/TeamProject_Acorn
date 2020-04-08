@@ -133,7 +133,7 @@ h1{color: #F1648A;}
 							</c:when>
 							<c:otherwise>
 								<c:if test="${not empty isAdmin }">
-									<a href="javascript:deleteConfirm(${tmp.num })" style="color: #F1648A;">삭제</a>&nbsp;&nbsp;
+									<a href="javascript:deleteConfirm(${tmp.num })" style="color: #F1648A;">삭제</a>&nbsp;
 								</c:if>
 							</c:otherwise>
 						</c:choose>

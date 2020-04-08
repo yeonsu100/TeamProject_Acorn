@@ -76,21 +76,16 @@ thead{background-color: #F1A4BA;}
 
 <div class="container">
 	<h1>자료실</h1>
-	<p>자료게시판 운영 목적과 맞지 않는 게시물은 관리자 권한으로 삭제될 수 있습니다.</p> <br/>
+	<p>자료게시판 운영 목적과 맞지 않는 게시물은 관리자 권한으로 삭제될 수 있습니다.</p> <br/>		
 	
-	<c:choose>
-		<c:when test="${not empty keyword }">
-			<p>
-				키워드 (<strong>${keyword }</strong>)에 해당하는 게시물 목록입니다.</br>
-				총 <strong>${totalRow }</strong>개 게시물이 검색되었습니다.
-			</p>
-		</c:when>
-		<c:otherwise>
-			<p>총 <strong>${totalRow }</strong>개 게시물이 존재합니다.</p>
-		</c:otherwise>
-	</c:choose>
+	<c:if test="${not empty keyword }">
+		<p>
+			키워드 (<strong>${keyword }</strong>)에 해당하는 게시물 목록입니다.</br>
+			총 <strong>${totalRow }</strong>개 게시물이 검색되었습니다.
+		</p>
+	</c:if>
 	
-	<table class="table table-striped table-hover table-sm">
+	<table class="table table-hover table-sm">
 		<thead>
 			<tr>
 				<th>번호</th>
@@ -132,8 +127,8 @@ thead{background-color: #F1A4BA;}
 			<a href="upload_form.go" class="btn btn-primary btn-sm">파일 업로드</a>
 	</div>
 	
-	<nav aria-label="Search pages">
-		<ul class="pagination pagination-sm">
+	<nav aria-label="Search pages" class="d-flex">
+		<ul class="pagination pagination-sm mx-auto">
 		<c:choose>
 			<c:when test="${startPageNum ne 1 }">
 				<li class="page-item">

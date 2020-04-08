@@ -22,13 +22,15 @@
 	}
 	th, td {
 		padding: 20px;
-		border: 1px solid #000000;
+		border: 2px solid #F1A4BA;
 	}
 	th{
 		font-weight: bold;
 	    border-left: 8px solid #F1648A;
 	}
-	
+	a{
+		color:#F1648A;
+	}
 </style>
 
 <jsp:include page="../include/navbar2.jsp">
