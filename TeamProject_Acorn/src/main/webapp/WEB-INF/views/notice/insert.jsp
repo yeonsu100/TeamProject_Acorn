@@ -6,13 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>** banapresso **</title>
-<link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="https://www.banapresso.com/ico_logo.ico">
 <jsp:include page="../include/resource.jsp"></jsp:include>
 </head>
 <body>
 <div class="container">
 	<script>
-		alert("저장 하였습니다.");
+		alert("성공적으로 저장하였습니다!");
 		location.href="${pageContext.request.contextPath }/notice/list.go";
 	</script>
 </div>

@@ -7,11 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>** banapresso **</title>
-<link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="https://www.banapresso.com/ico_logo.ico">
 <jsp:include page="../include/resource_boot4.jsp"></jsp:include>
 <style>
 h1{color: #F1648A;}
-thead{background-color: #F1A4BA;}
+thead{
+	background-color: #F1A4BA;
+	vertical-align: inherit;
+  	font-weight: bold;
+}
 .table th,
 .table td {
 	border-top: 1px solid #F1A4BA;
@@ -23,7 +27,7 @@ thead{background-color: #F1A4BA;}
 	color:#212529;
 }
 .table-hover tbody tr:hover {
-	background-color: #f5d7e0;
+	background-color: #F1C4DA;
 }
 .btn-primary{
 	background-color:#F1648A;
@@ -31,7 +35,7 @@ thead{background-color: #F1A4BA;}
 	outline:0;
 }
 .btn-primary:hover{
-	background-color:#F1A4BA;
+	background-color:#F1C4DA;
 	border:0;
 	outline:0;
 }
@@ -39,34 +43,34 @@ thead{background-color: #F1A4BA;}
 	color: #fff;
 	background-color: #F1648A;
 	border: 0;
-	box-shadow: 0 0 0 0.1rem #F1A4BA;
+	box-shadow: 0 0 0 0.1rem #F1C4DA;
 }
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
   color: #fff;
   background-color: #F1648A;
-  border-color: #F1A4BA;
+  border-color: #F1C4DA;
 }
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.1rem #F1A4BA;
+  box-shadow: 0 0 0 0.1rem #F1C4DA;
 }
 .page-link {
   color: #F1648A;
-  border: 1px solid #F1A4BA;
+  border: 1px solid #F1C4DA;
 }
 .page-link:hover {
   color: #F1648A;
-  background-color: #F1A4BA;
-  border-color: #F1A4BA;
+  background-color: #F1C4DA;
+  border-color: #F1C4DA;
 }
 .page-item.active .page-link {
   color: #fff;
   background-color: #F1648A;
-  border-color: #F1A4BA;
+  border-color: #F1C4DA;
 }
 .page-item.disabled .page-link {
-  border-color: #F1A4BA;
+  border-color: #F1C4DA;
 }
 </style>
 </head>
@@ -77,7 +81,7 @@ thead{background-color: #F1A4BA;}
 
 <div class="container">
 	<h1>자료실</h1>
-	<p>자료게시판 운영 목적과 맞지 않는 게시물은 관리자 권한으로 삭제될 수 있습니다.</p> <br/>		
+	<p>업무상 필요한 자료를 공유할 수 있는 자료실입니다. 운영목적에 맞지 않는 게시물은 관리자 권한으로 삭제될 수 있습니다.</p> <br/>	
 	
 	<form action="list.go" method="get">
 		<div class="input-group input-group-sm" style="width:35%;">
@@ -133,11 +137,11 @@ thead{background-color: #F1A4BA;}
 				<td>
 					<c:choose>
 						<c:when test="${id eq tmp.writer}">
-							<a href="javascript:deleteConfirm(${tmp.num })">삭제</a>
+							<a href="javascript:deleteConfirm(${tmp.num })"><i class="fa fa-trash" aria-hidden="true"></i></a>
 						</c:when>
 						<c:otherwise>
 							<c:if test="${not empty isAdmin }">
-								<a href="javascript:deleteConfirm(${tmp.num })">삭제</a>
+								<a href="javascript:deleteConfirm(${tmp.num })"><i class="fa fa-trash" aria-hidden="true"></i></a>
 							</c:if>
 						</c:otherwise>
 					</c:choose>
@@ -196,17 +200,26 @@ thead{background-color: #F1A4BA;}
 
 		</ul>
 	</nav>
-	
-	
-	
+
 </div>
 
+<script src="https://unpkg.com/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
 <script>
 	function deleteConfirm(num){
-		var isDelete=confirm("확인 버튼을 누르면 "+num+"번 게시물이 삭제됩니다.");
-		if(isDelete){
-			location.href="delete.go?num="+num;
-		}
+		swal({
+			  title: "삭제 하시겠습니까?",
+			  text: "확인 버튼을 누르면 "+num+"번 게시물이 삭제됩니다.",
+			  icon: "warning",
+			  buttons: true,
+			  dangerMode: true,
+			})
+			.then((willDelete) => {
+			  if (willDelete) {
+				  location.href="delete.go?num="+num;
+			  } else {
+			    swal("삭제를 취소 하셨습니다.");
+			  }
+			});
 	}
 </script>
 <br/><br/><br/>

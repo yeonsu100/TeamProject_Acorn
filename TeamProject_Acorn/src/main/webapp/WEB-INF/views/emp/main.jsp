@@ -7,11 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>** banapresso **</title>
-<link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="https://www.banapresso.com/ico_logo.ico">
 <jsp:include page="../include/resource_boot4.jsp"></jsp:include>
 <style>
 h1{color: #F1648A;}
-thead{background-color: #F1A4BA;}
+thead{
+	background-color: #F1A4BA;
+	vertical-align: inherit;
+  	font-weight: bold;
+}
 .table th,
 .table td {
 	border-top: 1px solid #F1A4BA;
@@ -23,7 +27,7 @@ thead{background-color: #F1A4BA;}
 	color:#212529;
 }
 .table-hover tbody tr:hover {
-	background-color: #f5d7e0;
+	background-color: #F1C4DA;
 }
 .btn-primary{
 	background-color:#F1648A;
@@ -31,7 +35,7 @@ thead{background-color: #F1A4BA;}
 	outline:0;
 }
 .btn-primary:hover{
-	background-color:#F1A4BA;
+	background-color:#F1C4DA;
 	border:0;
 	outline:0;
 }
@@ -39,21 +43,21 @@ thead{background-color: #F1A4BA;}
 	color: #fff;
 	background-color: #F1648A;
 	border: 0;
-	box-shadow: 0 0 0 0.1rem #F1A4BA;
+	box-shadow: 0 0 0 0.1rem #F1C4DA;
 }
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
   color: #fff;
   background-color: #F1648A;
-  border-color: #F1A4BA;
+  border-color: #F1C4DA;
 }
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.1rem #F1A4BA;
+  box-shadow: 0 0 0 0.1rem #F1C4DA;
 }
 .page-link {
   color: #F1648A;
-  border: 1px solid #F1A4BA;
+  border: 1px solid #F1C4DA;
 }
 .page-link:hover {
   color: #F1648A;
@@ -62,11 +66,11 @@ thead{background-color: #F1A4BA;}
 }
 .page-item.active .page-link {
   color: #fff;
-  background-color: #F1648A;
-  border-color: #F1A4BA;
+  background-color: #F1C4DA;
+  border-color: #F1C4DA;
 }
 .page-item.disabled .page-link {
-  border-color: #F1A4BA;
+  border-color: #F1C4DA;
 }
 </style>
 <jsp:include page="../include/navbar2.jsp">
@@ -77,7 +81,7 @@ thead{background-color: #F1A4BA;}
 <div class="container">
 	
 	<h1>사원 목록</h1>
-	<p>설띵</p> <br/>		
+	<p>바나프레소의 모든 임직원 목록입니다.</p> <br/>	
 	
 	<form action="main.go" method="get">
 		<div class="input-group input-group-sm" style="width:25%;">
@@ -88,7 +92,6 @@ thead{background-color: #F1A4BA;}
 			</div>
 		</div>
 	</form>
-	
 	
 	<table class="table table-hover table-sm mt-3">
 		<colgroup>
@@ -106,9 +109,9 @@ thead{background-color: #F1A4BA;}
 				<th>이름</th>
 				<th>전화번호</th>
 				<th>아이디</th>
-				<th>이메일</th>
+				<th>이메일 주소</th>
 				<th>입사일</th>
-				<th>사원/아이디 삭제</th>
+				<th>사원 삭제 / 아이디 삭제</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -121,12 +124,29 @@ thead{background-color: #F1A4BA;}
 				<td>${tmp.email }</td>
 				<td>${tmp.hdate }</td>
 				<td>
-					<a href="${pageContext.request.contextPath }/emp/delete.go?empno=${tmp.empno}" onclick="return confirm('${tmp.empno}번 사원의 모든 정보를 삭제하시겠습니까?')">
+					<a href="javascript:deleteConfirm()">
 						<span class="fas fa-trash-alt"/>
 					</a> / 
-					<a href="${pageContext.request.contextPath }/users/delete.go?empno=${tmp.empno}" onclick="return confirm('${tmp.empno}번 사원의 계정을 삭제하시겠습니까?')">
+					<a href="javascript:deleteConfirm()">
 						<span class="fas fa-user-times"/>
 					</a>
+					<script type="text/javascript">
+					function deleteConfirm(){
+						swal({
+							  title: "${tmp.empno} 번 사원의 계정을 삭제하시겠습니까?",
+							  icon: "warning",
+							  buttons: true,
+							  dangerMode: true,
+							})
+							.then((willDelete) => {
+								  if (willDelete) {
+										location.href="${pageContext.request.contextPath }/emp/delete.go?empno=${tmp.empno}"
+								  } else {
+								    swal("취소");
+								  }
+								});
+					}
+					</script>
 				</td>
 			</tr>
 		</c:forEach>
@@ -181,6 +201,8 @@ thead{background-color: #F1A4BA;}
 	</nav>
  		
 </div>
+<script src="https://unpkg.com/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
+
 </body>
 <jsp:include page="../include/footer2.jsp"/>
 <jsp:include page="../include/msgbtn.jsp"/>

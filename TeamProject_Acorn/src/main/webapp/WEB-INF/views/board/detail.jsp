@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>** banapresso **</title>
-<link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="https://www.banapresso.com/ico_logo.ico">
 <jsp:include page="../include/resource_boot4.jsp"/>
 <style>
 .btn-primary{
@@ -61,6 +61,7 @@
 .comments ul{
 	padding: 0;
 	margin: 0;
+	margin-top: 55px;
 	list-style-type: none;
 }
 .comments ul li{
@@ -144,8 +145,7 @@
 <body>
 <div class="container">
 	<c:if test="${not empty keyword }">
-		<p> <strong>${keyword }</strong> 검색어로 검색된
-		결과 자세히 보기 입니다.</p>
+		<p> <strong>${keyword }</strong> 키워드로 검색된 결과 목록입니다.</p>
 	</c:if>
 	<div style="margin-bottom:0.5rem;">
 		<c:choose>
@@ -184,13 +184,25 @@
 			<td colspan="4">${dto.content }</td>
 		</tr>
 	</table>
-	<div class="contents">${dto.content }</div>
+	
 	<%-- 
 		글 작성자와 로그인 된 아이디가 같을때만 기능을 제공해 준다. 
 		즉, 본인이 작성한 글만 수정할수 있도록 하기 위해
 	--%>
-
-
+	<div class="btn-group btn-group-sm float-right" role="group" aria-label="...">
+		<a href="list.go" class="btn btn-secondary">목록</a>
+			<c:choose>
+				<c:when test="${dto.writer eq id}">
+					<a href ="updateform.go?num=${dto.num }" class="btn btn-secondary">수정</a>
+					<a href="javascript:deleteConfirm()" class="btn btn-secondary">삭제</a>
+				</c:when>
+			<c:otherwise>
+				<c:if test="${not empty isAdmin }">
+					<a href="javascript:deleteConfirm()" class="btn btn-secondary">삭제</a>
+				</c:if>
+			</c:otherwise>
+			</c:choose>
+	</div>
 	<div class="comments">
 		<ul>
 		<c:forEach items="${commentList }" var="tmp">
@@ -240,8 +252,8 @@
 							<!-- 덧글 대상 -->
 							<input type="hidden" name="target_id" value="${tmp.writer }" />
 							<input type="hidden" name="comment_group" value="${tmp.comment_group }" />
-							<textarea class="form-control addReplyComment" name="content"><c:if test="${empty id }">로그인이 필요합니다.</c:if></textarea>
-							<button disabled type="submit" class="btn btn-primary addReplyBtn">등록</button>
+							<textarea class="form-control addReplyComment" name="content"><c:if test="${empty id }">로그인한 사용자만 댓글 등록이 가능합니다.</c:if></textarea>
+							<button disabled type="submit" class="btn btn-primary addReplyBtn">댓글 등록</button>
 						</form>			
 						<c:if test="${id eq tmp.writer }">
 							<form class="comment-update-form" action="comment_update.go" method="post">
@@ -253,83 +265,70 @@
 					</li>				
 				</c:when>
 				<c:otherwise>
-					<li <c:if test="${tmp.num ne tmp.comment_group }">style="padding-left:50px;"</c:if> >삭제된 댓글 입니다.</li>
+					<li <c:if test="${tmp.num ne tmp.comment_group }">style="padding-left:50px;"</c:if> >삭제된 댓글입니다.</li>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
-		</ul>
-
-	<div class="btn-group btn-group-sm float-right" role="group" aria-label="...">
-		<a href="list.go" class="btn btn-secondary">목록</a>
+		</ul>		
+		<!--  댓글 페이징 구역 -->
+		<nav aria-label="Search pages" class="d-flex">
+			<ul class="pagination pagination-sm mx-auto">
 			<c:choose>
-				<c:when test="${dto.writer eq id}">
-					<a href ="updateform.go?num=${dto.num }" class="btn btn-secondary">수정</a>
-					<a href="javascript:deleteConfirm()" class="btn btn-secondary">삭제</a>
-				</c:when>
-			<c:otherwise>
-				<c:if test="${not empty isAdmin }">
-					<a href="javascript:deleteConfirm()" class="btn btn-secondary">삭제</a>
-				</c:if>
-			</c:otherwise>
-			</c:choose>
-	</div>
-	<!--  댓글 페이징 구역 -->
-	<nav aria-label="Search pages" class="d-flex">
-		<ul class="pagination pagination-sm mx-auto">
-		<c:choose>
-			<c:when test="${re_startPageNum ne 1 }">
-				<li class="page-item">
-					<a class="page-link" href="detail.go?num=${dto.num }&re_pageNum=${re_startPageNum-1 }">
-						&laquo;
-					</a>
-				</li>
-			</c:when>
-			<c:otherwise>
-				<li class="page-item disabled">
-					<a class="page-link" href="javascript:">&laquo;</a>
-				</li>
-			</c:otherwise>
-		</c:choose>
-		<c:forEach var="i" begin="${re_startPageNum }" 
-			end="${re_endPageNum }" step="1">
-			<c:choose>
-				<c:when test="${i eq re_pageNum }">
-					<li class="page-item active"><a class="page-link" href="detail.go?num=${dto.num }&re_pageNum=${i }">${i }</a></li>
+				<c:when test="${re_startPageNum ne 1 }">
+					<li class="page-item">
+						<a class="page-link" href="detail.go?num=${dto.num }&re_pageNum=${re_startPageNum-1 }">
+							&laquo;
+						</a>
+					</li>
 				</c:when>
 				<c:otherwise>
-					<li class="page-item"><a class="page-link" href="detail.go?num=${dto.num }&re_pageNum=${i }">${i }</a></li>
+					<li class="page-item disabled">
+						<a class="page-link" href="javascript:">&laquo;</a>
+					</li>
 				</c:otherwise>
 			</c:choose>
-		</c:forEach>
-
-		<c:choose>
-			<c:when test="${re_endPageNum lt re_totalPageCount }">
-				<li class="page-item">
-					<a class="page-link" href="detail.go?num=${dto.num }&re_pageNum=${re_endPageNum+1 }">
-						&raquo;
-					</a>
-				</li>
-			</c:when>
-			<c:otherwise>
-				<li class="page-item disabled">
-					<a class="page-link" href="javascript:">&raquo;</a>
-				</li>
-			</c:otherwise>
-		</c:choose>
-		</ul>		
-	</nav>
-	<!-- 게시글의 댓글폼 -->
-	<form action="comment_insert.go" method="post">
-		<input type="hidden" name="ref_group" value="${dto.num }"/>
-		<input type="hidden" name="target_id" value="${dto.writer }"/>
-		<div class="input-group mt-2">
-			<textarea class="form-control" id="insert-boardContent" name="content"></textarea>
-			<button  class="btn btn-primary" type="submit" disabled id="insertBtn">등록</button>
-		</div>
-	</form>
+			<c:forEach var="i" begin="${re_startPageNum }" 
+				end="${re_endPageNum }" step="1">
+				<c:choose>
+					<c:when test="${i eq re_pageNum }">
+						<li class="page-item active"><a class="page-link" href="detail.go?num=${dto.num }&re_pageNum=${i }">${i }</a></li>
+					</c:when>
+					<c:otherwise>
+						<li class="page-item"><a class="page-link" href="detail.go?num=${dto.num }&re_pageNum=${i }">${i }</a></li>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+	
+			<c:choose>
+				<c:when test="${re_endPageNum lt re_totalPageCount }">
+					<li class="page-item">
+						<a class="page-link" href="detail.go?num=${dto.num }&re_pageNum=${re_endPageNum+1 }">
+							&raquo;
+						</a>
+					</li>
+				</c:when>
+				<c:otherwise>
+					<li class="page-item disabled">
+						<a class="page-link" href="javascript:">&raquo;</a>
+					</li>
+				</c:otherwise>
+			</c:choose>
+			</ul>		
+		</nav>
+		<!-- 게시글의 댓글폼 -->
+		<form action="comment_insert.go" method="post" style="margin-top:0.5rem;">
+			<div class="comment_form">
+				<input type="hidden" name="ref_group" value="${dto.num }"/>
+				<input type="hidden" name="target_id" value="${dto.writer }"/>
+				<c:if test="${empty id }">로그인한 사용자만 댓글 등록이 가능합니다.</c:if>
+				<textarea class="form-control" id="insert-boardContent" name="content"></textarea>
+				<button  class="btn btn-primary" type="submit" disabled id="insertBtn">등록</button>
+			</div>
+		</form>
+	</div>
 	</div>
 </div>
-
+<script src="https://unpkg.com/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
 <script>
 	//댓글 수정 링크 눌렀을때 호출
 	$(".comment-update-link").click(function(){
@@ -361,27 +360,37 @@
 	
 	//댓글 삭제를 눌렀을때 호출
 	function deleteComment(num){
-		var isDelete=confirm("확인을 누르면 댓글이 삭제 됩니다.");
-		if(isDelete){
-			$.ajax({
-				url:"comment_delete.go",
-				method:"post",
-				data:{"num":num, "ref_group":${dto.num}},
-				success:function(responseData){
-					if(responseData.isSuccess){
-						var sel="#comment"+num;
-						$(sel).text("삭제된 댓글 입니다.");
-					}
-				}
+		swal({
+			  title: "삭제 하시겠습니까?",
+			  text: "댓글을 삭제하시면 복구 하실 수 없습니다.",
+			  icon: "warning",
+			  buttons: true,
+			  dangerMode: true,
+			})
+			.then((willDelete) => {
+			  if (willDelete) {
+					$.ajax({
+						url:"comment_delete.go",
+						method:"post",
+						data:{"num":num, "ref_group":${dto.num}},
+						success:function(responseData){
+							if(responseData.isSuccess){
+								var sel="#comment"+num;
+								$(sel).text("삭제된 댓글입니다.");
+							}
+						}
+					});
+			  } else {
+			    swal("삭제를 취소 하셨습니다.");
+			  }
 			});
-		}
 	}
 	
 	//폼에 submit 이벤트가 일어 났을때
 	$(".comments form").on("submit", function(){
 		var isLogin=${not empty id};
 		if(isLogin==false){
-			alert("로그인 페이지로 이동 합니다.");
+			alert("로그인 페이지로 이동합니다.");
 			location.href="${pageContext.request.contextPath}/users/loginform.go?url=${pageContext.request.contextPath}/board/detail.go?num=${dto.num}";
 			return false; 
 		}
@@ -389,10 +398,14 @@
 	$(".comments form textarea").on("click", function(){
 		var isLogin=${not empty id};
 		if(isLogin==false){
-			var isMove=confirm("로그인 페이지로 이동 하시겠습니까?");
-			if(isMove){
-				location.href="${pageContext.request.contextPath}/users/loginform.go?url=${pageContext.request.contextPath}/board/detail.go?num=${dto.num}";
-			}
+			swal("로그인창으로 가시겠습니까?", {
+				  buttons: ["취소", true],
+				})
+				.then((isMove) => {
+					if(isMove){
+						location.href="${pageContext.request.contextPath}/users/loginform.go?url=${pageContext.request.contextPath}/board/detail.go?num=${dto.num}";
+					}
+				});
 		}
 	});
 	//답글 달기 링크를 클릭했을때
@@ -409,11 +422,22 @@
 		}
 	});
 	function deleteConfirm(){
-		var isDelete=confirm("글을 삭제 하시 겠습니까?");
-		if(isDelete){
-			location.href="delete.go?num=${dto.num}";
-		}
+		swal({
+			  title: "삭제 하시겠습니까?",
+			  text: "글을 삭제하시면 복구 하실 수 없습니다.",
+			  icon: "warning",
+			  buttons: true,
+			  dangerMode: true,
+			})
+			.then((willDelete) => {
+			  if (willDelete) {
+			    location.href="delete.go?num=${dto.num}";
+			  } else {
+			    swal("삭제를 취소 하셨습니다.");
+			  }
+			});
 	}
+	
 	
 	// 작성시 빈 값일 경우 버튼 제출 막기
 	$("#insert-boardContent").on("input",function(){

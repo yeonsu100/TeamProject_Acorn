@@ -5,15 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Forbidden Error</title>
-<link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.ico">/title>
+<link rel="shortcut icon" type="image/x-icon" href="https://www.banapresso.com/ico_logo.ico">
 <jsp:include page="../include/resource.jsp"></jsp:include>
 </head>
 <body>
 
 <div class="container">
-	<h1>Forbidden Request!</h1>
-	<p class="alert alert-danger">${msg }
-	<a class="alert-link" href="${pageContext.request.contextPath }/home.go">Turn Back</a>
+	<h1>금지된 요청입니다!</h1>
+		<p class="alert alert-danger">${msg }
+		<a class="alert-link" href="${pageContext.request.contextPath }/home.go">메인 화면으로 돌아가기</a>
 	</p>
 </div>
 

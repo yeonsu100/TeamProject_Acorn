@@ -7,12 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>** banapresso **</title>
-<link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="https://www.banapresso.com/ico_logo.ico">
 <jsp:include page="../include/resource_boot4.jsp" />
 <style>
 h1{color: #F1648A;}
-thead{background-color: #F1A4BA;}
-
+thead{
+	background-color: #F1A4BA;
+	vertical-align: inherit;
+  	font-weight: bold;
+}
 .table th,
 .table td {
 	border-top: 1px solid #F1A4BA;
@@ -115,8 +118,7 @@ thead{background-color: #F1A4BA;}
 		<thead>
 			<tr>
 				<th>글번호</th>
-				<th>작성자</th>
-				<th>제목</th>
+				<th>[분류] 제목</th>
 				<th>조회수</th>
 				<th>등록일</th>
 			</tr>
@@ -125,7 +127,6 @@ thead{background-color: #F1A4BA;}
 		<c:forEach var="tmp" items="${requestScope.list }">
 			<tr>
 				<td>${tmp.num }</td>
-				<td>${tmp.writer }</td>
 				<td>
 					<a class="title" href="detail.go?num=${tmp.num }&condition=${condition }&keyword=${encodedKeyword }">${tmp.title }</a>
 				</td>

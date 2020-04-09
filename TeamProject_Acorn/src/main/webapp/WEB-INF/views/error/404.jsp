@@ -5,17 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>404 Error</title>
-<link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="https://www.banapresso.com/ico_logo.ico">
 <jsp:include page="../include/resource.jsp"/>
 </head>
 <body>
 
 <div class="container">
-	<h1>404 error!</h1>
+	<h1>에러발생 - 에러코드 404</h1>
 	<p class="alert alert-danger">
 		요청하신 페이지는 존재하지 않습니다. <br/>
-		This page is NOT exist.<br/><br/>
-		<a href="${pageContext.request.contextPath }/home.go">메인 페이지로 돌아가기</a>
+		<a href="${pageContext.request.contextPath }/home.go">메인 화면으로 돌아가기</a>
 	</p>
 </div>
 

@@ -7,11 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>** banapresso **</title>
-<link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="https://www.banapresso.com/ico_logo.ico">
 <jsp:include page="../include/resource_boot4.jsp"></jsp:include>
 <style>
 h1{color: #F1648A;}
-thead{background-color: #F1A4BA;}
+thead{
+	background-color: #F1A4BA;
+	vertical-align: inherit;
+  	font-weight: bold;
+}
 .table th,
 .table td {
 	border-top: 1px solid #F1A4BA;
@@ -76,7 +80,7 @@ thead{background-color: #F1A4BA;}
 </jsp:include>
 <div class="container">
 	<h1>게시판</h1>
-	<p> 자유게시판 입니다.</p> <br/>
+	<p>자유롭게 소통할 수 있는 자유 게시판 입니다. 운영목적에 맞지 않는 글은 관리자 권한으로 삭제될 수 있습니다.</p> <br/>
 	
 	<%-- 글 검색 기능 폼 --%>
 	<form action="list.go" method="get">
