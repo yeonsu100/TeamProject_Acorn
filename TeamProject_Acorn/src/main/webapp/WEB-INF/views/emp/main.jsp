@@ -77,12 +77,7 @@ thead{background-color: #F1A4BA;}
 <div class="container">
 	
 	<h1>사원 목록</h1>
-<<<<<<< HEAD
-	<p>바나프레소의 모든 임직원 목록입니다.</p> <br/>
-	
-	<table class="table table-hover table-sm">
-=======
-	<p>설띵</p> <br/>		
+	<p>바나프레소의 모든 임직원 목록입니다.</p> <br/>	
 	
 	<form action="main.go" method="get">
 		<div class="input-group input-group-sm" style="width:25%;">
@@ -94,9 +89,7 @@ thead{background-color: #F1A4BA;}
 		</div>
 	</form>
 	
-	
 	<table class="table table-hover table-sm mt-3">
->>>>>>> branch 'master' of https://github.com/yeonsu100/TeamProject_Acorn.git
 		<colgroup>
 			<col class="col-xs-2"/>
 			<col class="col-xs-1"/>
