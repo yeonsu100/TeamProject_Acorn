@@ -6,14 +6,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<<<<<<< HEAD
-<title>/view/board/list.jsp</title>
-<jsp:include page="../include/resource_boot4.jsp"/>
-=======
+
 <title>** banapresso **</title>
 <link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.ico">
 <jsp:include page="../include/resource_boot4.jsp"></jsp:include>
->>>>>>> branch 'master' of https://github.com/yeonsu100/TeamProject_Acorn.git
 <style>
 h1{color: #F1648A;}
 thead{background-color: #F1A4BA;}
@@ -97,16 +93,6 @@ thead{background-color: #F1A4BA;}
 			<div class="input-group-append">
 				<button class="btn btn-primary btn-sm" type="submit">검색</button>
 			</div>
-<<<<<<< HEAD
-			
-			<c:if test="${not empty keyword }">
-				<span style="float:right;">
-					<strong>${keyword }</strong> 라는 키워드로 
-					<strong>${totalRow }</strong> 개의 글이 검색 되었습니다.
-				</span>
-			</c:if>
-=======
->>>>>>> branch 'master' of https://github.com/yeonsu100/TeamProject_Acorn.git
 		</div>
 	</form>
 	

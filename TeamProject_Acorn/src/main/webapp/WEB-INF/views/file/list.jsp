@@ -6,14 +6,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<<<<<<< HEAD
-<title>/file/list.jsp</title>
-<jsp:include page="../include/resource_boot4.jsp"/>
-=======
 <title>** banapresso **</title>
 <link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.ico">
 <jsp:include page="../include/resource_boot4.jsp"></jsp:include>
->>>>>>> branch 'master' of https://github.com/yeonsu100/TeamProject_Acorn.git
 <style>
 h1{color: #F1648A;}
 thead{background-color: #F1A4BA;}
@@ -101,17 +96,10 @@ thead{background-color: #F1A4BA;}
 	</form>
 	
 	<c:if test="${not empty keyword }">
-<<<<<<< HEAD
-		<p>
-			<strong>${keyword }</strong> 라는 키워드로
-			<strong>${totalRow }</strong> 개의 글이 검색 되었습니다.
-		</p>
-=======
 		<span style="float:right;font-size:0.7rem;">
 			<strong>${keyword }</strong> 라는 검색어로 
 			<strong>${totalRow }</strong> 개의 글이 검색 되었습니다.
 		</span>
->>>>>>> branch 'master' of https://github.com/yeonsu100/TeamProject_Acorn.git
 	</c:if>
 	
 	<table class="table table-hover table-sm mt-3">
@@ -208,9 +196,7 @@ thead{background-color: #F1A4BA;}
 
 		</ul>
 	</nav>
-	
-	
-	
+
 </div>
 
 <script>

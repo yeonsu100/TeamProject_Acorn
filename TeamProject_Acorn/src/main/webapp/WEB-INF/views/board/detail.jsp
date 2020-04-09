@@ -183,12 +183,11 @@
 			<td colspan="4">${dto.content }</td>
 		</tr>
 	</table>
+	
 	<%-- 
 		글 작성자와 로그인 된 아이디가 같을때만 기능을 제공해 준다. 
 		즉, 본인이 작성한 글만 수정할수 있도록 하기 위해
 	--%>
-
-
 	<div class="comments">
 		<ul>
 		<c:forEach items="${commentList }" var="tmp">
@@ -255,9 +254,7 @@
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
-		</ul>
-<<<<<<< HEAD
-		
+		</ul>		
 		<!-- 게시글의 댓글폼 -->
 		<form action="comment_insert.go" method="post" style="margin-top:0.5rem;">
 			<div class="comment_form">
@@ -270,10 +267,6 @@
 		</form>
 	</div>
 	<div class="btn-group btn-group-sm float-right" role="group" aria-label="..." style="margin-top:0.7rem;">
-=======
-
-	<div class="btn-group btn-group-sm float-right" role="group" aria-label="...">
->>>>>>> branch 'master' of https://github.com/yeonsu100/TeamProject_Acorn.git
 		<a href="list.go" class="btn btn-secondary">목록</a>
 			<c:choose>
 				<c:when test="${dto.writer eq id}">
