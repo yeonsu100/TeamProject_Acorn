@@ -13,6 +13,11 @@
 body{
 	margin-top: 0px;
 }
+thead{
+	background-color: #F1A4BA;
+	vertical-align: inherit;
+  	font-weight: bold;
+}
 .title {
 	display: inline-block;
 	max-width: 200px;

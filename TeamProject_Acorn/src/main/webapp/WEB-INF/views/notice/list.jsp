@@ -11,8 +11,11 @@
 <jsp:include page="../include/resource_boot4.jsp" />
 <style>
 h1{color: #F1648A;}
-thead{background-color: #F1A4BA;}
-
+thead{
+	background-color: #F1A4BA;
+	vertical-align: inherit;
+  	font-weight: bold;
+}
 .table th,
 .table td {
 	border-top: 1px solid #F1A4BA;
