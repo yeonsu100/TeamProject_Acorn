@@ -336,7 +336,7 @@
 	</form>
 	</div>
 </div>
-
+<script src="https://unpkg.com/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
 <script>
 	//댓글 수정 링크 눌렀을때 호출
 	$(".comment-update-link").click(function(){
@@ -368,20 +368,30 @@
 	
 	//댓글 삭제를 눌렀을때 호출
 	function deleteComment(num){
-		var isDelete=confirm("확인 버튼을 누르면 해당 댓글이 삭제됩니다.");
-		if(isDelete){
-			$.ajax({
-				url:"comment_delete.go",
-				method:"post",
-				data:{"num":num, "ref_group":${dto.num}},
-				success:function(responseData){
-					if(responseData.isSuccess){
-						var sel="#comment"+num;
-						$(sel).text("삭제된 댓글입니다.");
-					}
-				}
+		swal({
+			  title: "삭제 하시겠습니까?",
+			  text: "댓글을 삭제하시면 복구 하실 수 없습니다.",
+			  icon: "warning",
+			  buttons: true,
+			  dangerMode: true,
+			})
+			.then((willDelete) => {
+			  if (willDelete) {
+					$.ajax({
+						url:"comment_delete.go",
+						method:"post",
+						data:{"num":num, "ref_group":${dto.num}},
+						success:function(responseData){
+							if(responseData.isSuccess){
+								var sel="#comment"+num;
+								$(sel).text("삭제된 댓글입니다.");
+							}
+						}
+					});
+			  } else {
+			    swal("삭제를 취소 하셨습니다.");
+			  }
 			});
-		}
 	}
 	
 	//폼에 submit 이벤트가 일어 났을때
@@ -396,10 +406,14 @@
 	$(".comments form textarea").on("click", function(){
 		var isLogin=${not empty id};
 		if(isLogin==false){
-			var isMove=confirm("로그인 페이지로 이동 하시겠습니까?");
-			if(isMove){
-				location.href="${pageContext.request.contextPath}/users/loginform.go?url=${pageContext.request.contextPath}/board/detail.go?num=${dto.num}";
-			}
+			swal("로그인창으로 가시겠습니까?", {
+				  buttons: ["취소", true],
+				})
+				.then((isMove) => {
+					if(isMove){
+						location.href="${pageContext.request.contextPath}/users/loginform.go?url=${pageContext.request.contextPath}/board/detail.go?num=${dto.num}";
+					}
+				});
 		}
 	});
 	//답글 달기 링크를 클릭했을때
@@ -416,11 +430,22 @@
 		}
 	});
 	function deleteConfirm(){
-		var isDelete=confirm("글을 삭제 하시겠습니까?");
-		if(isDelete){
-			location.href="delete.go?num=${dto.num}";
-		}
+		swal({
+			  title: "삭제 하시겠습니까?",
+			  text: "글을 삭제하시면 복구 하실 수 없습니다.",
+			  icon: "warning",
+			  buttons: true,
+			  dangerMode: true,
+			})
+			.then((willDelete) => {
+			  if (willDelete) {
+			    location.href="delete.go?num=${dto.num}";
+			  } else {
+			    swal("삭제를 취소 하셨습니다.");
+			  }
+			});
 	}
+	
 	
 	// 작성시 빈 값일 경우 버튼 제출 막기
 	$("#insert-boardContent").on("input",function(){

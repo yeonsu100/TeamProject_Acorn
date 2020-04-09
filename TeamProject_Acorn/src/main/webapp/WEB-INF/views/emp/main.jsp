@@ -120,12 +120,29 @@ thead{background-color: #F1A4BA;}
 				<td>${tmp.email }</td>
 				<td>${tmp.hdate }</td>
 				<td>
-					<a href="${pageContext.request.contextPath }/emp/delete.go?empno=${tmp.empno}" onclick="return confirm('${tmp.empno}번 사원의 모든 정보를 삭제하시겠습니까?')">
+					<a href="javascript:deleteConfirm()">
 						<span class="fas fa-trash-alt"/>
 					</a> / 
-					<a href="${pageContext.request.contextPath }/users/delete.go?empno=${tmp.empno}" onclick="return confirm('${tmp.empno}번 사원의 계정을 삭제하시겠습니까?')">
+					<a href="javascript:deleteConfirm()">
 						<span class="fas fa-user-times"/>
 					</a>
+					<script type="text/javascript">
+					function deleteConfirm(){
+						swal({
+							  title: "${tmp.empno} 번 사원의 계정을 삭제하시겠습니까?",
+							  icon: "warning",
+							  buttons: true,
+							  dangerMode: true,
+							})
+							.then((willDelete) => {
+								  if (willDelete) {
+										location.href="${pageContext.request.contextPath }/emp/delete.go?empno=${tmp.empno}"
+								  } else {
+								    swal("취소");
+								  }
+								});
+					}
+					</script>
 				</td>
 			</tr>
 		</c:forEach>
@@ -180,6 +197,8 @@ thead{background-color: #F1A4BA;}
 	</nav>
  		
 </div>
+<script src="https://unpkg.com/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
+
 </body>
 <jsp:include page="../include/footer2.jsp"/>
 <jsp:include page="../include/msgbtn.jsp"/>

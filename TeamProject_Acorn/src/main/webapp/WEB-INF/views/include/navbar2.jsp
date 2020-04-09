@@ -94,10 +94,28 @@
 				<p class="navbar-text ml-auto" style="margin-top:10px;margin-bottom:10px;">
 					<i class="fas fa-user"></i>
 					<strong><a class="navbar-link" href="${pageContext.request.contextPath }/users/info.go">${id }</a></strong>님 환영합니다!  &nbsp;| &nbsp;  
-					<a class="navbar-link" href="${pageContext.request.contextPath }/users/logout.go" onclick="return confirm('로그아웃 하시겠습니까?')"><i class="fas fa-door-open"></i> 로그아웃</a>
+					<a class="navbar-link" href="javascript:logoutConfirm()"><i class="fas fa-door-open"></i> 로그아웃</a>
 				</p>
 			</c:otherwise>
 		</c:choose>
 	</div>
 </div>
+<script src="https://unpkg.com/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
+<script type="text/javascript">
+	function logoutConfirm(){
+		swal({
+			  title: "로그아웃 하시겠습니까?",
+			  icon: "warning",
+			  buttons: true,
+			  dangerMode: true,
+			})
+			.then((willDelete) => {
+				  if (willDelete) {
+						location.href="${pageContext.request.contextPath }/users/logout.go"
+				  } else {
+				    swal("취소");
+				  }
+				});
+	}
+</script>
 </nav>

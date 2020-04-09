@@ -214,6 +214,7 @@ h1{color: #F1648A;}
 	</form>
 	</div>
 </div>
+<script src="https://unpkg.com/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
 <script>
 	// 게시글 수정 링크를 눌렀을때 호출되는 함수 등록
 	$(".suggest-update-link").click(function(){
@@ -263,15 +264,26 @@ h1{color: #F1648A;}
 	});
 	
 	function deleteConfirm(num){
-		var isDelete=confirm("확인 버튼을 누르면 해당 게시물이 삭제됩니다.");
-		if(isDelete){
-			$.ajax({
-				url:"delete.go",
-				method:"post",
-				data:{"num":num},	
+		swal({
+			  title: "삭제 하시겠습니까?",
+			  text: "글을 삭제하시면 복구 하실 수 없습니다.",
+			  icon: "warning",
+			  buttons: true,
+			  dangerMode: true,
 			})
-			location.href="${pageContext.request.contextPath}/suggest/list.go";
-		}
+			.then((willDelete) => {
+			  if (willDelete) {
+					$.ajax({
+						url:"delete.go",
+						method:"post",
+						data:{"num":num},	
+					})
+					location.href="${pageContext.request.contextPath}/suggest/list.go";
+			  } else {
+			    swal("삭제를 취소 하셨습니다.");
+			  }
+			});
+		
 	}
 </script>
 <br/><br/><br/>

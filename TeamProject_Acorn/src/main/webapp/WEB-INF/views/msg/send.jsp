@@ -10,9 +10,14 @@
 </head>
 <body>
 <div class="container">
+<script src="https://unpkg.com/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
 	<script>
-		alert("메시지를 보냈습니다");
-		location.href="${pageContext.request.contextPath }/msg/list.go";
+		swal("메시지를 보냈습니다.", "확인 버튼을 눌러주세요", "success")
+		.then((isSuccess) => {
+			if(isSuccess){
+				location.href="${pageContext.request.contextPath }/msg/list.go";
+			}
+		});
 	</script>
 </div>
 </body>
