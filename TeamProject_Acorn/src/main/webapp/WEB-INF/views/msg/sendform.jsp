@@ -146,9 +146,9 @@ function setBtnState(){
 			</div>
 			<div class="modal-body">
 				<div class="input-group input-group-sm">
-					<input type="text" class="form-control" placeholder="검색어 입력" id="idinsert">
+					<input type="text" class="form-control" placeholder="검색 버튼을 클릭하면 전체 사원 목록을 확인하실 수 있습니다." id="idinsert">
 					<span class="input-group-btn">
-					  <button class="btn btn-success btn-sm" type="button" id="submitId">검색</button>
+					  <button class="btn btn-info btn-sm" type="button" id="submitId">검색</button>
 					</span>
 				</div>
 				<table class="table table-hover table-sm" id="idTable">
