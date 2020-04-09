@@ -32,7 +32,7 @@ public class ExceptionController {
 	@ExceptionHandler(AccessException.class)
 	public ModelAndView insertForbidden() {
 		ModelAndView mView=new ModelAndView();
-		mView.addObject("msg", "관리자만 작성 할 수 있습니다.");
+		mView.addObject("msg", "관리자만 작성할 수 있습니다.");
 		mView.setViewName("error/forbidden");
 		return mView;
 	}

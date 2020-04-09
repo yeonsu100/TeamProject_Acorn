@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>** banapresso **</title>
-<link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="https://www.banapresso.com/ico_logo.ico">
 <jsp:include page="../include/resource_boot4.jsp"/>
 <style>
 #hdate{
