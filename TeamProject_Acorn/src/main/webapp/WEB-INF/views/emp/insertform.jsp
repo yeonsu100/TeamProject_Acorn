@@ -16,7 +16,7 @@
 	display: none;
 }
 .datepicker{
-	top: 7.5rem !important;
+	top: 8.5rem !important;
 	font-size:0.875rem !important;
 }
 .form-row{
