@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>404 Error</title>
-<link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="https://www.banapresso.com/ico_logo.ico">
 <jsp:include page="../include/resource.jsp"/>
 </head>
 <body>
