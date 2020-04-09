@@ -37,7 +37,7 @@ public class FileController {
 	}
 	
 	@RequestMapping("/file/download")
-	public ModelAndView authdownload(ModelAndView mView, @RequestParam int num) {
+	public ModelAndView download(ModelAndView mView, @RequestParam int num) {
 		service.getFileData(mView, num);
 		service.addDownCount(num);
 		mView.setViewName("fileDownView");
