@@ -111,7 +111,7 @@ thead{
 				<th>아이디</th>
 				<th>이메일 주소</th>
 				<th>입사일</th>
-				<th>사원 삭제 / 아이디 삭제</th>
+				<th>사원 삭제 / 계정 삭제</th>
 			</tr>
 		</thead>
 		<tbody>
