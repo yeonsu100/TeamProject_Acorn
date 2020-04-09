@@ -11,9 +11,9 @@
 <body>
 
 <div class="container">
-	<h1>Forbidden Request!</h1>
-	<p class="alert alert-danger">${msg }
-	<a class="alert-link" href="${pageContext.request.contextPath }/home.go">Turn Back</a>
+	<h1>금지된 요청입니다!</h1>
+		<p class="alert alert-danger">${msg }
+		<a class="alert-link" href="${pageContext.request.contextPath }/home.go">메인 화면으로 돌아가기</a>
 	</p>
 </div>
 

@@ -14,7 +14,7 @@ public class ExceptionController {
 	public ModelAndView deleteForbidden() {
 		
 		ModelAndView mView=new ModelAndView();
-		mView.addObject("msg", "Do NOT delete other user's file!");
+		mView.addObject("msg", "게시글 삭제 권한이 없습니다!");
 		mView.setViewName("error/forbidden");
 		return mView;
 	}
@@ -32,7 +32,7 @@ public class ExceptionController {
 	@ExceptionHandler(AccessException.class)
 	public ModelAndView insertForbidden() {
 		ModelAndView mView=new ModelAndView();
-		mView.addObject("msg", "관리자 만 작성 할 수 있습니다.");
+		mView.addObject("msg", "관리자만 작성 할 수 있습니다.");
 		mView.setViewName("error/forbidden");
 		return mView;
 	}
@@ -41,7 +41,7 @@ public class ExceptionController {
 	@ExceptionHandler(UpdateException.class)
 	public ModelAndView UpdateForbidden() {
 		ModelAndView mView=new ModelAndView();
-		mView.addObject("msg", "작성자 만 수정 할 수 있습니다.");
+		mView.addObject("msg", "게시글 수정 권한이 없습니다!");
 		mView.setViewName("error/forbidden");
 		return mView;
 	}
@@ -51,7 +51,7 @@ public class ExceptionController {
 	@ExceptionHandler(AdminAccessException.class)
 	public ModelAndView AccessForbidden() {
 		ModelAndView mView=new ModelAndView();
-		mView.addObject("msg", "접근 권한이 없습니다.");
+		mView.addObject("msg", "접근 권한이 없습니다!");
 		mView.setViewName("error/forbidden");
 		return mView;
 	}
