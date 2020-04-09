@@ -61,6 +61,7 @@
 .comments ul{
 	padding: 0;
 	margin: 0;
+	margin-top: 55px;
 	list-style-type: none;
 }
 .comments ul li{
@@ -188,6 +189,20 @@
 		글 작성자와 로그인 된 아이디가 같을때만 기능을 제공해 준다. 
 		즉, 본인이 작성한 글만 수정할수 있도록 하기 위해
 	--%>
+	<div class="btn-group btn-group-sm float-right" role="group" aria-label="...">
+		<a href="list.go" class="btn btn-secondary">목록</a>
+			<c:choose>
+				<c:when test="${dto.writer eq id}">
+					<a href ="updateform.go?num=${dto.num }" class="btn btn-secondary">수정</a>
+					<a href="javascript:deleteConfirm()" class="btn btn-secondary">삭제</a>
+				</c:when>
+			<c:otherwise>
+				<c:if test="${not empty isAdmin }">
+					<a href="javascript:deleteConfirm()" class="btn btn-secondary">삭제</a>
+				</c:if>
+			</c:otherwise>
+			</c:choose>
+	</div>
 	<div class="comments">
 		<ul>
 		<c:forEach items="${commentList }" var="tmp">
@@ -255,6 +270,51 @@
 			</c:choose>
 		</c:forEach>
 		</ul>		
+		<!--  댓글 페이징 구역 -->
+		<nav aria-label="Search pages" class="d-flex">
+			<ul class="pagination pagination-sm mx-auto">
+			<c:choose>
+				<c:when test="${re_startPageNum ne 1 }">
+					<li class="page-item">
+						<a class="page-link" href="detail.go?num=${dto.num }&re_pageNum=${re_startPageNum-1 }">
+							&laquo;
+						</a>
+					</li>
+				</c:when>
+				<c:otherwise>
+					<li class="page-item disabled">
+						<a class="page-link" href="javascript:">&laquo;</a>
+					</li>
+				</c:otherwise>
+			</c:choose>
+			<c:forEach var="i" begin="${re_startPageNum }" 
+				end="${re_endPageNum }" step="1">
+				<c:choose>
+					<c:when test="${i eq re_pageNum }">
+						<li class="page-item active"><a class="page-link" href="detail.go?num=${dto.num }&re_pageNum=${i }">${i }</a></li>
+					</c:when>
+					<c:otherwise>
+						<li class="page-item"><a class="page-link" href="detail.go?num=${dto.num }&re_pageNum=${i }">${i }</a></li>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+	
+			<c:choose>
+				<c:when test="${re_endPageNum lt re_totalPageCount }">
+					<li class="page-item">
+						<a class="page-link" href="detail.go?num=${dto.num }&re_pageNum=${re_endPageNum+1 }">
+							&raquo;
+						</a>
+					</li>
+				</c:when>
+				<c:otherwise>
+					<li class="page-item disabled">
+						<a class="page-link" href="javascript:">&raquo;</a>
+					</li>
+				</c:otherwise>
+			</c:choose>
+			</ul>		
+		</nav>
 		<!-- 게시글의 댓글폼 -->
 		<form action="comment_insert.go" method="post" style="margin-top:0.5rem;">
 			<div class="comment_form">
@@ -266,74 +326,6 @@
 			</div>
 		</form>
 	</div>
-	<div class="btn-group btn-group-sm float-right" role="group" aria-label="..." style="margin-top:0.7rem;">
-		<a href="list.go" class="btn btn-secondary">목록</a>
-			<c:choose>
-				<c:when test="${dto.writer eq id}">
-					<a href ="updateform.go?num=${dto.num }" class="btn btn-secondary">수정</a>
-					<a href="javascript:deleteConfirm()" class="btn btn-secondary">삭제</a>
-				</c:when>
-			<c:otherwise>
-				<c:if test="${not empty isAdmin }">
-					<a href="javascript:deleteConfirm()" class="btn btn-secondary">삭제</a>
-				</c:if>
-			</c:otherwise>
-			</c:choose>
-	</div>
-	<!--  댓글 페이징 구역 -->
-	<nav aria-label="Search pages" class="d-flex">
-		<ul class="pagination pagination-sm mx-auto">
-		<c:choose>
-			<c:when test="${re_startPageNum ne 1 }">
-				<li class="page-item">
-					<a class="page-link" href="detail.go?num=${dto.num }&re_pageNum=${re_startPageNum-1 }">
-						&laquo;
-					</a>
-				</li>
-			</c:when>
-			<c:otherwise>
-				<li class="page-item disabled">
-					<a class="page-link" href="javascript:">&laquo;</a>
-				</li>
-			</c:otherwise>
-		</c:choose>
-		<c:forEach var="i" begin="${re_startPageNum }" 
-			end="${re_endPageNum }" step="1">
-			<c:choose>
-				<c:when test="${i eq re_pageNum }">
-					<li class="page-item active"><a class="page-link" href="detail.go?num=${dto.num }&re_pageNum=${i }">${i }</a></li>
-				</c:when>
-				<c:otherwise>
-					<li class="page-item"><a class="page-link" href="detail.go?num=${dto.num }&re_pageNum=${i }">${i }</a></li>
-				</c:otherwise>
-			</c:choose>
-		</c:forEach>
-
-		<c:choose>
-			<c:when test="${re_endPageNum lt re_totalPageCount }">
-				<li class="page-item">
-					<a class="page-link" href="detail.go?num=${dto.num }&re_pageNum=${re_endPageNum+1 }">
-						&raquo;
-					</a>
-				</li>
-			</c:when>
-			<c:otherwise>
-				<li class="page-item disabled">
-					<a class="page-link" href="javascript:">&raquo;</a>
-				</li>
-			</c:otherwise>
-		</c:choose>
-		</ul>		
-	</nav>
-	<!-- 게시글의 댓글폼 -->
-	<form action="comment_insert.go" method="post">
-		<input type="hidden" name="ref_group" value="${dto.num }"/>
-		<input type="hidden" name="target_id" value="${dto.writer }"/>
-		<div class="input-group mt-2">
-			<textarea class="form-control" id="insert-boardContent" name="content"></textarea>
-			<button  class="btn btn-primary" type="submit" disabled id="insertBtn">등록</button>
-		</div>
-	</form>
 	</div>
 </div>
 
