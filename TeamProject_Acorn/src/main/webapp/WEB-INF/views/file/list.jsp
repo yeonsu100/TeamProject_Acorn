@@ -213,12 +213,23 @@ thead{background-color: #F1A4BA;}
 	
 </div>
 
+<script src="https://unpkg.com/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
 <script>
 	function deleteConfirm(num){
-		var isDelete=confirm("확인 버튼을 누르면 "+num+"번 게시물이 삭제됩니다.");
-		if(isDelete){
-			location.href="delete.go?num="+num;
-		}
+		swal({
+			  title: "삭제 하시겠습니까?",
+			  text: "확인 버튼을 누르면 "+num+"번 게시물이 삭제됩니다.",
+			  icon: "warning",
+			  buttons: true,
+			  dangerMode: true,
+			})
+			.then((willDelete) => {
+			  if (willDelete) {
+				  location.href="delete.go?num="+num;
+			  } else {
+			    swal("삭제를 취소 하셨습니다.");
+			  }
+			});
 	}
 </script>
 <br/><br/><br/>

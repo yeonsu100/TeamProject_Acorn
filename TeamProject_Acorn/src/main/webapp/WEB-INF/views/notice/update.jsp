@@ -11,11 +11,14 @@
 <jsp:include page="../include/resource.jsp"></jsp:include>
 </head>
 <body>>
-<div class="container">
+<script src="https://unpkg.com/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
 		<script>
-			alert("게시글 수정을 완료했습니다.");
-			location.href="${pageContext.request.contextPath }/notice/detail.go?num=${num}";
+			swal("글을 수정하였습니다.", "확인 버튼을 눌러주세요", "success")
+			.then((isSuccess) => {
+				if(isSuccess){
+					location.href="${pageContext.request.contextPath }/notice/detail.go?num=${num}";
+				}
+			});
 		</script>
-</div>
 </body>
 </html>
