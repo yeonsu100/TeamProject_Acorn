@@ -115,10 +115,12 @@ REFERENCES T_product(code) ON DELETE CASCADE;
 
 -- 사원 table
 CREATE TABLE T_emp(
-	empno NUMBER PRIMARY KEY,  --사번, 입사년월+4자리 시퀀스숫자로 넣을예정
-	ename VARCHAR2(100),  --사원 이름
-	hdate DATE,  --입사일
-	pnum VARCHAR2(100) --전화번호
+	empno NUMBER PRIMARY KEY,  		--사번, 입사년월+4자리 시퀀스숫자로 넣을예정
+	ename VARCHAR2(100),  			--사원 이름
+	hdate DATE,  					--입사일
+	rdate DATE,						--퇴사일
+	pnum VARCHAR2(100),				--전화번호
+	isresign VARCHAR2(100)			--yes면 퇴사자 null이면 직원
 );
 
 CREATE SEQUENCE T_emp_seq
@@ -133,7 +135,6 @@ CREATE TABLE T_user(
 	email VARCHAR2(100) NOT NULL,	--사내 email 생성
 	profile VARCHAR2(100),			--프로필이미지용
 	isadmin VARCHAR2(100),			--admin일경우 관리자, null일경우 일반회원계정
-	isresign VARCHAR2(100)			--yes면 퇴사자 null이면 직원
 );
 
 INSERT INTO T_emp 		--admin계정용 가상 사원 생성
