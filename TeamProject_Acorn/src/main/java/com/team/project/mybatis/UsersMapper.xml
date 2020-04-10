@@ -3,37 +3,37 @@
 <mapper namespace="users">
 	<update id="boardwriter" parameterType="usersDto">
 		UPDATE T_board
-		SET writer = '탈퇴-'||#{empno}
+		SET writer = '*'||#{empno}
 		WHERE writer = #{userid}
 	</update>
 	<update id="bcommentwriter" parameterType="usersDto">
 		UPDATE T_board_comment
-		SET writer = '탈퇴-'||#{empno}
+		SET writer = '*'||#{empno}
 		WHERE writer = #{userid}
 	</update>
 	<update id="filewriter" parameterType="usersDto">
 		UPDATE T_file
-		SET writer = '탈퇴-'||#{empno}
+		SET writer = '*'||#{empno}
 		WHERE writer = #{userid}
 	</update>
 	<update id="msgidsend" parameterType="usersDto">
 		UPDATE T_msg
-		SET idsend = '탈퇴-'||#{empno}
+		SET idsend = '*'||#{empno}
 		WHERE idsend = #{userid}
 	</update>
 	<update id="msgidrec" parameterType="usersDto">
 		UPDATE T_msg
-		SET idrec = '탈퇴-'||#{empno}
+		SET idrec = '*'||#{empno}
 		WHERE idrec = #{userid}
 	</update>
 	<update id="sugid" parameterType="usersDto">
 		UPDATE T_suggest
-		SET sugid = '탈퇴-'||#{empno}
+		SET sugid = '*'||#{empno}
 		WHERE sugid = #{userid}
 	</update>
 	<update id="resignuserid">
 		UPDATE T_user
-		SET userid = '탈퇴-'||#{empno}
+		SET userid = '*'||#{empno}
 		WHERE userid = #{userid}
 	</update>
 
@@ -46,6 +46,7 @@
 		SELECT pnum
 		FROM T_emp
 		WHERE pnum=#{inputPnum}
+		AND isresign is null
 	</select>
 	<select id="isUserExist" parameterType="int" resultType="String">
 		SELECT userid
@@ -77,6 +78,7 @@
 		SELECT ename
 		FROM T_emp
 		WHERE pnum=#{pnum}
+		AND isresign is null
 	</select>
 	<select id="getIsAdmin" parameterType="String" resultType="String">
 		SELECT isadmin
@@ -87,6 +89,7 @@
 		SELECT empno
 		FROM T_emp
 		where pnum=#{pnum}
+		AND isresign is null
 	</select>
 	<select id="getData" parameterType="String" resultType="usersDto">
 		SELECT e.empno, e.ename, TO_CHAR(hdate, 'YYYY-MM-DD') AS hdate, e.pnum, u.userid, u.email, u.profile

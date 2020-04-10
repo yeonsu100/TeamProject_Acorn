@@ -117,7 +117,7 @@
 			method:"GET",
 			data:{inputPnum:inputPnum},
 			success:function(responseData){
-				if(responseData.isExist){			// 이미 존재하는 아이디라면 
+				if(responseData.isExist){
 					isPnumUsable=false;
 				}else{
 					isPnumUsable=true;

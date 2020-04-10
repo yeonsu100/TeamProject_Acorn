@@ -124,20 +124,20 @@ thead{
 				<td>${tmp.email }</td>
 				<td>${tmp.hdate }</td>
 				<td>
-					<a href="javascript:resignConfirm()">
+					<a href="javascript:resignConfirm(${tmp.empno })">
 						<span class="fas fa-trash-alt"/>
 					</a>
 					<script type="text/javascript">
-					function resignConfirm(){
+					function resignConfirm(inputEmpno){
 						swal({
-							  title: "${tmp.empno} 번 사원을 퇴사처리하시겠습니까?",
+							  title: inputEmpno+" 번 사원을 퇴사처리하시겠습니까?",
 							  icon: "warning",
 							  buttons: true,
 							  dangerMode: true,
 							})
 							.then((willDelete) => {
 								  if (willDelete) {
-										location.href="${pageContext.request.contextPath }/emp/resign.go?empno=${tmp.empno}"
+										location.href="${pageContext.request.contextPath }/emp/resign.go?empno="+inputEmpno
 								  } else {
 								    swal("취소");
 								  }
