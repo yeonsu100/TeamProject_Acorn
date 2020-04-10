@@ -112,24 +112,55 @@ table{
 		</c:otherwise>
 	</c:choose>
 </div>
+<script src="https://unpkg.com/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
 <script>
 function deleteRecConfirm(){
-	var isDelete=confirm("글을 삭제 하시 겠습니까?");
-	if(isDelete){
-		location.href="recdel.go?num=${dto.num}&pageNum=${pageNum}";
-	}
+	swal({
+		  title: "글을 삭제 하시겠습니까?",
+		  text: "글을 삭제하시면 복구 하실 수 없습니다.",
+		  icon: "warning",
+		  buttons: true,
+		  dangerMode: true,
+		})
+		.then((willDelete) => {
+		  if (willDelete) {
+			  location.href="recdel.go?num=${dto.num}&pageNum=${pageNum}";
+		  } else {
+		    swal("삭제를 취소 하셨습니다.");
+		  }
+		});
 }
 function deleteSendConfirm(){
-	var isDelete=confirm("글을 삭제 하시 겠습니까?");
-	if(isDelete){
-		location.href="senddel.go?num=${dto.num}&pageNum=${pageNum}&pageType=${pageType}";
-	}
+	swal({
+		  title: "글을 삭제 하시겠습니까?",
+		  text: "글을 삭제하시면 복구 하실 수 없습니다.",
+		  icon: "warning",
+		  buttons: true,
+		  dangerMode: true,
+		})
+		.then((willDelete) => {
+		  if (willDelete) {
+			  location.href="senddel.go?num=${dto.num}&pageNum=${pageNum}&pageType=${pageType}";
+		  } else {
+		    swal("삭제를 취소 하셨습니다.");
+		  }
+		});
 }
 function deleteSavedConfirm(){
-	var isDelete=confirm("글을 삭제 하시 겠습니까?");
-	if(isDelete){
-		location.href="saveddel.go?num=${dto.num}&pageNum=${pageNum}&pageType=${pageType}";
-	}
+	swal({
+		  title: "글을 삭제 하시겠습니까?",
+		  text: "글을 삭제하시면 복구 하실 수 없습니다.",
+		  icon: "warning",
+		  buttons: true,
+		  dangerMode: true,
+		})
+		.then((willDelete) => {
+		  if (willDelete) {
+			  location.href="saveddel.go?num=${dto.num}&pageNum=${pageNum}&pageType=${pageType}";
+		  } else {
+		    swal("삭제를 취소 하셨습니다.");
+		  }
+		});
 }
 </script>
 </body>
