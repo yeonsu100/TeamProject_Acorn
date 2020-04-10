@@ -173,20 +173,57 @@ public class UsersServiceImpl implements UsersService{
 		request.setAttribute("totalPageCount", totalPageCount);
 		request.setAttribute("totalRow", totalRow);
 	}
+	
 
 	@Override
-	public void deleteUser(HttpServletRequest request) {
-		String eno=request.getParameter("empno");
-		int empno=Integer.parseInt(eno);
-		dao.deleteUser(empno);
+	public void empResignList(HttpServletRequest request) {
+		UsersDto dto=new UsersDto();
+		String keyword=request.getParameter("keyword");
+		if(keyword != null) {
+			dto.setEname(keyword);
+		}
+		final int PAGE_ROW_COUNT=10;
+		final int PAGE_DISPLAY_COUNT=5;
+		int pageNum=1;
+		String strPageNum=request.getParameter("pageNum");
+		if(strPageNum != null){
+			pageNum=Integer.parseInt(strPageNum);
+		}else {
+			pageNum=1;
+		}
+		int startRowNum=1+(pageNum-1)*PAGE_ROW_COUNT;
+		int endRowNum=pageNum*PAGE_ROW_COUNT;
+		int totalRow=dao.getCountR(dto);
+		int totalPageCount=(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
+		int startPageNum=1+((pageNum-1)/PAGE_DISPLAY_COUNT)*PAGE_DISPLAY_COUNT;
+		int endPageNum=startPageNum+PAGE_DISPLAY_COUNT-1;
+		if(totalPageCount < endPageNum){
+			endPageNum=totalPageCount;
+		}	
+		dto.setStartRowNum(startRowNum);
+		dto.setEndRowNum(endRowNum);
+		
+		List<UsersDto> list=dao.getListR(dto);
+
+		request.setAttribute("list", list);
+		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("startPageNum", startPageNum);
+		request.setAttribute("endPageNum", endPageNum);
+		request.setAttribute("totalPageCount", totalPageCount);
+		request.setAttribute("totalRow", totalRow);
 	}
 
 	@Override
-	public void deleteEmp(HttpServletRequest request) {
+	public void resignEmp(HttpServletRequest request) {
 		String eno=request.getParameter("empno");
 		int empno=Integer.parseInt(eno);
-		dao.deleteEmp(empno);
-		dao.deleteUser(empno);
+		String userid=dao.getUserid(empno);
+		UsersDto dto=new UsersDto();
+		dto.setEmpno(empno);
+		dto.setUserid(userid);
+		dao.resignEmp(empno);
+		dao.updateResignWriter(dto);
+		dao.updateResignUserid(dto);
 	}
 
 	@Override
@@ -245,6 +282,7 @@ public class UsersServiceImpl implements UsersService{
 		request.setAttribute("totalPageCount", totalPageCount);	
 		request.setAttribute("totalRow", totalRow);			
 	}
+
 
 	
 }

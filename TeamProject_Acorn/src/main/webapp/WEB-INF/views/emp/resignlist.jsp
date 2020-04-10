@@ -80,10 +80,10 @@ thead{
 <body>
 <div class="container">
 	
-	<h1>사원 목록</h1>
-	<p>바나프레소의 모든 임직원 목록입니다.</p> <br/>	
+	<h1>퇴사자 목록</h1>
+	<p>바나프레소에서 퇴사한 사원 목록입니다.</p> <br/>	
 	
-	<form action="main.go" method="get">
+	<form action="resignlist.go" method="get">
 		<div class="input-group input-group-sm" style="width:25%;">
 			<input class="form-control" type="text" name="keyword" 
 				placeholder="사원명을 입력하세요..."/>
@@ -98,10 +98,10 @@ thead{
 			<col class="col-xs-2"/>
 			<col class="col-xs-1"/>
 			<col class="col-xs-2"/>
-			<col class="col-xs-1"/>
+			<col class="col-xs-2"/>
 			<col class="col-xs-3"/>
 			<col class="col-xs-1"/>
-			<col class="col-xs-2"/>
+			<col class="col-xs-1"/>
 		</colgroup>
 		<thead>
 			<tr>
@@ -111,7 +111,7 @@ thead{
 				<th>아이디</th>
 				<th>이메일 주소</th>
 				<th>입사일</th>
-				<th>퇴사</th>
+				<th>퇴사일</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -123,36 +123,13 @@ thead{
 				<td>${tmp.userid }</td>
 				<td>${tmp.email }</td>
 				<td>${tmp.hdate }</td>
-				<td>
-					<a href="javascript:resignConfirm()">
-						<span class="fas fa-trash-alt"/>
-					</a>
-					<script type="text/javascript">
-					function resignConfirm(){
-						swal({
-							  title: "${tmp.empno} 번 사원을 퇴사처리하시겠습니까?",
-							  icon: "warning",
-							  buttons: true,
-							  dangerMode: true,
-							})
-							.then((willDelete) => {
-								  if (willDelete) {
-										location.href="${pageContext.request.contextPath }/emp/resign.go?empno=${tmp.empno}"
-								  } else {
-								    swal("취소");
-								  }
-								});
-					}
-					</script>
-				</td>
+				<td>${tmp.rdate }</td>
 			</tr>
 		</c:forEach>
 		</tbody>
 	</table>
 	<div class="text-right">
-		<a class="btn btn-primary btn-sm" href="resignlist.go">퇴사자 목록</a>
-		<a class="btn btn-primary btn-sm" 
-			href="${pageContext.request.contextPath }/emp/insertform.go">사원 정보 추가</a>
+		<a class="btn btn-primary btn-sm" href="main.go">사원 목록</a>
 	</div>
 	
 	<nav aria-label="Search pages" class="d-flex">
@@ -160,7 +137,7 @@ thead{
 		<c:choose>
 			<c:when test="${startPageNum ne 1 }">
 				<li class="page-item">
-					<a class="page-link" href="main.go?pageNum=${startPageNum-1 }&keyword=${encodedKeyword}">&laquo;</a>
+					<a class="page-link" href="resignlist.go?pageNum=${startPageNum-1 }&keyword=${encodedKeyword}">&laquo;</a>
 				</li>
 			</c:when>
 			<c:otherwise>
@@ -173,12 +150,12 @@ thead{
 			<c:choose>
 				<c:when test="${i eq pageNum }">
 					<li class="page-item active">
-						<a class="page-link" href="main.go?pageNum=${i }&keyword=${encodedKeyword}">${i }</a>
+						<a class="page-link" href="resignlist.go?pageNum=${i }&keyword=${encodedKeyword}">${i }</a>
 					</li>
 				</c:when>
 				<c:otherwise>
 					<li class="page-item">
-						<a class="page-link" href="main.go?pageNum=${i }&keyword=${encodedKeyword}">${i }</a>
+						<a class="page-link" href="resignlist.go?pageNum=${i }&keyword=${encodedKeyword}">${i }</a>
 					</li>
 				</c:otherwise>
 			</c:choose>
@@ -186,7 +163,7 @@ thead{
 			<c:choose>
 				<c:when test="${endPageNum lt totalPageCount }">
 					<li class="page-item">
-						<a class="page-link" href="main.go?pageNum=${endPageNum+1 }&keyword=${encodedKeyword}">&raquo;</a>
+						<a class="page-link" href="resignlist.go?pageNum=${endPageNum+1 }&keyword=${encodedKeyword}">&raquo;</a>
 					</li>
 				</c:when>
 				<c:otherwise>

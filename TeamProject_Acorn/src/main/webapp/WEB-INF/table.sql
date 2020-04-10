@@ -132,7 +132,8 @@ CREATE TABLE T_user(
 	pwd VARCHAR2(100) NOT NULL,		--유저 비번
 	email VARCHAR2(100) NOT NULL,	--사내 email 생성
 	profile VARCHAR2(100),			--프로필이미지용
-	isadmin VARCHAR2(100)			--admin일경우 관리자, null일경우 일반회원계정
+	isadmin VARCHAR2(100),			--admin일경우 관리자, null일경우 일반회원계정
+	isresign VARCHAR2(100)			--yes면 퇴사자 null이면 직원
 );
 
 INSERT INTO T_emp 		--admin계정용 가상 사원 생성
