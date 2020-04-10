@@ -10,21 +10,29 @@
 <jsp:include page="../include/resource_boot4.jsp">
 	<jsp:include page="../include/navbar2.jsp"/>
 </jsp:include>
-
 </head>
 <body>
+<script src="https://unpkg.com/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
 <div class="container">
 	<c:choose>
 		<c:when test="${isSuccess }">
 			<script>
-				alert("비밀 번호를 수정 했습니다.");
-				location.href="info.go";
+				swal("비밀 번호를 수정 했습니다.", "" , "success", {
+					  button: "확인",
+					})
+					.then((isSuccess) =>{
+						location.href="info.go";
+					})
 			</script>
 		</c:when>
 		<c:otherwise>
 			<script>
-				alert("기존 비밀번호가 일치 하지 않아요!");
-				location.href="pwd_updateform.go";
+				swal("기존 비밀번호가 일치 하지 않아요!", "" , "error", {
+					  button: "확인",
+					})
+					.then((isSuccess) =>{
+						location.href="pwd_updateform.go";
+					})
 			</script>
 		</c:otherwise>
 	</c:choose>
