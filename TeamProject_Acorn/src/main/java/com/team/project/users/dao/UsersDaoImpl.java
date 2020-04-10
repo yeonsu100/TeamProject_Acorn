@@ -109,6 +109,17 @@ public class UsersDaoImpl implements UsersDao{
 		List<UsersDto> list=session.selectList("users.getList", dto);
 		return list;
 	}
+	
+	@Override
+	public int getCountR(UsersDto dto) {
+		return session.selectOne("users.getCountR", dto);
+	}
+
+	@Override
+	public List<UsersDto> getListR(UsersDto dto) {
+		List<UsersDto> list=session.selectList("users.getListR", dto);
+		return list;
+	}
 
 	@Override
 	public void deleteUser(int empno) {
@@ -116,8 +127,30 @@ public class UsersDaoImpl implements UsersDao{
 	}
 
 	@Override
-	public void deleteEmp(int empno) {
-		session.delete("users.deleteEmp", empno);
+	public String getUserid(int empno) {
+		String userid=session.selectOne("users.isUserExist", empno);
+		return userid;
+	}
+
+	@Override
+	public void resignEmp(int empno) {
+		session.update("users.resignEmp", empno);
+		session.update("users.resignDate", empno);
+	}
+
+	@Override
+	public void updateResignWriter(UsersDto dto) {
+		session.update("users.boardwriter", dto);
+		session.update("users.bcommentwriter", dto);
+		session.update("users.filewriter", dto);
+		session.update("users.msgidsend", dto);
+		session.update("users.msgidrec", dto);
+		session.update("users.sugid", dto);
+	}
+
+	@Override
+	public void updateResignUserid(UsersDto dto) {
+		session.update("users.resignuserid", dto);
 	}
 
 	

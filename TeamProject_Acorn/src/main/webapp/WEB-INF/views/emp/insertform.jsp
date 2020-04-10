@@ -5,12 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <title>** banapresso **</title>
-<link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="https://www.banapresso.com/ico_logo.ico">
 <jsp:include page="../include/resource_boot4.jsp"/>
 <style>
+#hdate{
+	background-color:#fff;
+}
 /* 페이지 로딩 시점에 도움말과 피드백 아이콘은 일단 숨기기 */
 .help-block, .form-control-feedback{
 	display: none;
+}
+.datepicker{
+	top: 8.5rem !important;
+	font-size:0.875rem !important;
 }
 .form-row{
 	margin-top:1rem;
@@ -73,8 +80,7 @@
 		</div>
 		<div class="form-row">
 			<label class="control-label" for="hdate">입사일</label>
-			<input class="form-control" type="text" id="hdate" name="hdate"/>
-			<p class="invalid-feedback" id="hdate_error">특수기호(., /, -)를 제외한 8자리 숫자(YYYYMMDD) 형식으로 입력하세요.</p>
+			<input class="form-control" type="text" id="hdate" name="hdate" readonly="readonly"/>
 			<p class="invalid-feedback" id="hdate_required">반드시 입력해야하는 정보입니다.</p>
 		</div>
 		<button disabled="disabled" class="btn btn-primary btn-sm mt-3" type="submit">추가</button>
@@ -100,8 +106,6 @@
 	var isPnumMatch=false;
 	//전화번호가 사용가능한지(중복이 아닌지) 여부
 	var isPnumUsable=false;
-	//입사일을 형식에 맞게 입력했는지 여부
-	var isHdateMatch=false;
 	
 	//전화번호를 입력할때 실행할 함수 등록
 	$("#pnum").on("input", function(){
@@ -163,29 +167,26 @@
 		setState("#ename", isError);
 	});
 	
-	//입사일을 입력할때 실행할 함수 등록
-	$("#hdate").on("input", function(){
-		isHdateDirty=true;
-		
-		//입력한 입사일 받아오기
-		var hdate=$("#hdate").val();
-		
-		//입사일을 입력했는지 검증
-		if(hdate.length == 0){//만일 입력하지 않았다면
-			isHdateInput=false;
-		}else{
+	$(function() {	
+		$('#hdate').datepicker({
+		    format: "yyyymmdd",
+		    autoclose : true,
+		    immediateUpdates: false,
+		    templates : {
+		        leftArrow: '&laquo;',
+		        rightArrow: '&raquo;'
+		    },
+		    showWeekDays : true ,
+		    todayHighlight : true ,
+		    language : "ko",
+		})
+		.on("changeDate", function(e) {
+			isHdateDirty=true;
 			isHdateInput=true;
-		}
-		
-		if(hdate.match("-")||hdate.match("/")||hdate.match(/\./)){//입사일에 -,/,.중 하나가 들어갔다면
-			isHdateMatch=false;
-		}else{				// 제대로 입력했다면
-			isHdateMatch=true;			
-		}
-		//입사일 에러여부
-		var isError= !isHdateInput || !isHdateMatch
-		//입사일 상태 바꾸기
-		setState("#hdate", isError);
+			var isError= !isHdateInput;
+			//입사일 상태 바꾸기
+			setState("#hdate", isError);
+		})
 	});
 	
 	//입력란의 상태를 바꾸는 함수 
@@ -222,20 +223,19 @@
 		if(!isHdateInput && isHdateDirty){
 			$("#hdate_required").show();
 		}
-		if(isHdateInput && !isHdateMatch){
-			$("#hdate_error").show();
-		}
 		if(!isPnumUsable && isPnumDirty){
 			$("#pnum_exist").show();
 		}
 		
 		//버튼의 상태 바꾸기 
-		if(isEnameInput && isPnumInput && isPnumMatch && isHdateInput && isHdateMatch && isPnumUsable){
+		if(isEnameInput && isPnumInput && isPnumMatch && isHdateInput && isPnumUsable){
 			$("button[type=submit]").removeAttr("disabled");
 		}else{
 			$("button[type=submit]").attr("disabled","disabled");
 		}
 	}
+	
+
 </script>
 </body>
 <jsp:include page="../include/footer2.jsp"></jsp:include>

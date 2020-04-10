@@ -7,11 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>** banapresso **</title>
-<link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="https://www.banapresso.com/ico_logo.ico">
 <jsp:include page="../include/resource_boot4.jsp"></jsp:include>
 <style>
 h1{color: #F1648A;}
-thead{background-color: #F1A4BA;}
+thead{
+	background-color: #F1A4BA;
+	vertical-align: inherit;
+  	font-weight: bold;
+}
 .table th,
 .table td {
 	border-top: 1px solid #F1A4BA;
@@ -62,7 +66,7 @@ thead{background-color: #F1A4BA;}
 }
 .page-item.active .page-link {
   color: #fff;
-  background-color: #F1C4DA;
+  background-color: #F1648A;
   border-color: #F1C4DA;
 }
 .page-item.disabled .page-link {
@@ -107,7 +111,7 @@ thead{background-color: #F1A4BA;}
 				<th>아이디</th>
 				<th>이메일 주소</th>
 				<th>입사일</th>
-				<th>사원 삭제 / 아이디 삭제</th>
+				<th>퇴사</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -120,23 +124,20 @@ thead{background-color: #F1A4BA;}
 				<td>${tmp.email }</td>
 				<td>${tmp.hdate }</td>
 				<td>
-					<a href="javascript:deleteConfirm()">
+					<a href="javascript:resignConfirm()">
 						<span class="fas fa-trash-alt"/>
-					</a> / 
-					<a href="javascript:deleteConfirm()">
-						<span class="fas fa-user-times"/>
 					</a>
 					<script type="text/javascript">
-					function deleteConfirm(){
+					function resignConfirm(){
 						swal({
-							  title: "${tmp.empno} 번 사원의 계정을 삭제하시겠습니까?",
+							  title: "${tmp.empno} 번 사원을 퇴사처리하시겠습니까?",
 							  icon: "warning",
 							  buttons: true,
 							  dangerMode: true,
 							})
 							.then((willDelete) => {
 								  if (willDelete) {
-										location.href="${pageContext.request.contextPath }/emp/delete.go?empno=${tmp.empno}"
+										location.href="${pageContext.request.contextPath }/emp/resign.go?empno=${tmp.empno}"
 								  } else {
 								    swal("취소");
 								  }
@@ -149,7 +150,8 @@ thead{background-color: #F1A4BA;}
 		</tbody>
 	</table>
 	<div class="text-right">
-		<a  class="btn btn-primary btn-sm" 
+		<a class="btn btn-primary btn-sm" href="resignlist.go">퇴사자 목록</a>
+		<a class="btn btn-primary btn-sm" 
 			href="${pageContext.request.contextPath }/emp/insertform.go">사원 정보 추가</a>
 	</div>
 	

@@ -6,13 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>** banapresso **</title>
-<link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="https://www.banapresso.com/ico_logo.ico">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 <jsp:include page="../include/resource_boot4.jsp"/>
 <style>
+	h1{color: #F1648A;}
 	#profileLink img{
-		width: 50px;
-		height: 50px;
+		width: 60px;
+		height: 60px;
 		border-radius: 50%;
 	}
 	#profileForm{
@@ -23,11 +24,14 @@
 	}
 	th, td {
 		padding: 20px;
-		border: 2px solid #F1A4BA;
+		border: 2px solid #F1648A;
 	}
 	th{
 		font-weight: bold;
 	    border-left: 8px solid #F1648A;
+	}
+	td{
+		text-align: center;
 	}
 	a{
 		color:#F1648A;
@@ -40,7 +44,9 @@
 </head>
 <body>
 <div class="container">
-	<h1>개인 정보 페이지</h1>
+	<h1>개인 정보 페이지</h1> 
+	<p>개인 정보를 열람 및 수정할 수 있는 페이지입니다. 계정 삭제를 원하시는 경우, 관리자에게 문의하시기 바랍니다.</p> <br/><br/>
+	
 	<table>
 		<tr>
 			<th scope="row">아이디</th>

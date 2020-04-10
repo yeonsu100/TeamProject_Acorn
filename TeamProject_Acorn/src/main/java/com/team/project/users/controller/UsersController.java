@@ -41,6 +41,18 @@ public class UsersController {
 		return mView;
 	}
 	
+	//퇴사자 리스트 요청
+	@RequestMapping("/emp/resignlist")
+	public ModelAndView admin_resignlist(ModelAndView mView, HttpServletRequest request) {
+		String isAdmin=(String)request.getSession().getAttribute("isAdmin");
+		if(isAdmin==null) {
+			throw new AdminAccessException();
+		}
+		service.empResignList(request);
+		mView.setViewName("emp/resignlist");
+		return mView;
+	}
+	
 	//비밀번호 수정하기 폼 요청
 	@RequestMapping("/users/pwd_updateform")
 	public ModelAndView authPwdForm(HttpServletRequest request,
@@ -251,19 +263,11 @@ public class UsersController {
 		return "redirect:/home.go";
 	}
 	
-	@RequestMapping("/users/delete")
-	public ModelAndView userDelete(HttpServletRequest request,
-			ModelAndView mView) {		
-		service.deleteUser(request);
-		mView.setViewName("users/delete");
-		return mView;
-	}
-	
-	@RequestMapping("/emp/delete")
+	@RequestMapping("/emp/resign")
 	public ModelAndView empDelete(HttpServletRequest request,
 			ModelAndView mView) {		
-		service.deleteEmp(request);
-		mView.setViewName("emp/delete");
+		service.resignEmp(request);
+		mView.setViewName("emp/resign");
 		return mView;
 	}
 }

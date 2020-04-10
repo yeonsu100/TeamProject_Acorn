@@ -4,6 +4,7 @@ public class UsersDto {
 	private int empno;
 	private String ename;
 	private String hdate;
+	private String rdate;
 	private String pnum;
 	private String userid;
 	private String pwd;
@@ -19,16 +20,15 @@ public class UsersDto {
 	public UsersDto() {}
 	
 	
-	
-	
 
-	public UsersDto(int empno, String ename, String hdate, String pnum, String userid, String pwd, String email,
-			String profile, String isadmin, String newPwd, int startRowNum, int endRowNum, String title,
+	public UsersDto(int empno, String ename, String hdate, String rdate, String pnum, String userid, String pwd,
+			String email, String profile, String isadmin, String newPwd, int startRowNum, int endRowNum, String title,
 			String content) {
 		super();
 		this.empno = empno;
 		this.ename = ename;
 		this.hdate = hdate;
+		this.rdate = rdate;
 		this.pnum = pnum;
 		this.userid = userid;
 		this.pwd = pwd;
@@ -40,6 +40,16 @@ public class UsersDto {
 		this.endRowNum = endRowNum;
 		this.title = title;
 		this.content = content;
+	}
+
+
+
+	public String getRdate() {
+		return rdate;
+	}
+
+	public void setRdate(String rdate) {
+		this.rdate = rdate;
 	}
 
 	public int getEmpno() {

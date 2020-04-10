@@ -67,7 +67,7 @@
 	<div class="collapse navbar-collapse" id="one">
 		<ul class="navbar-nav">
 			<li class="nav-item <c:if test="${param.category eq 'notice' }">active </c:if>"> 
-				<a class="nav-link" href="${pageContext.request.contextPath }/notice/list.go"><span><i class="fas fa-bullhorn"></i>&nbsp;공지사항</span></a></li>
+				<a class="nav-link" href="${pageContext.request.contextPath }/notice/list.go"><span><i class="fas fa-bullhorn"></i>&nbsp; 공지사항</span></a></li>
 			<li class="nav-item <c:if test="${param.category eq 'board' }">active </c:if>"> 
 				<a class="nav-link" href="${pageContext.request.contextPath }/board/list.go"><span><i class="fas fa-pencil-alt"></i>&nbsp; 게시판</span></a></li>
 			<li class="nav-item <c:if test="${param.category eq 'suggest' }">active </c:if>"> 
