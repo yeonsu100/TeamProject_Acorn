@@ -31,6 +31,7 @@
 						location.href="${pageContext.request.contextPath }/home.go";
 					})
 			</script>
+			<% session.invalidate(); %>
 		</c:when>
 		<c:otherwise>
 			<script>
@@ -41,6 +42,7 @@
 						location.href="signup_checkform.go?url=${encodedUrl }";
 					})
 			</script>
+			<% session.invalidate(); %>
 		</c:otherwise>
 	</c:choose>	
 </div>

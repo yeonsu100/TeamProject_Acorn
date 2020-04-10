@@ -218,12 +218,16 @@ public class UsersServiceImpl implements UsersService{
 		String eno=request.getParameter("empno");
 		int empno=Integer.parseInt(eno);
 		String userid=dao.getUserid(empno);
-		UsersDto dto=new UsersDto();
-		dto.setEmpno(empno);
-		dto.setUserid(userid);
-		dao.resignEmp(empno);
-		dao.updateResignWriter(dto);
-		dao.updateResignUserid(dto);
+		if(userid != null) {
+			UsersDto dto=new UsersDto();
+			dto.setEmpno(empno);
+			dto.setUserid(userid);
+			dao.resignEmp(empno);
+			dao.updateResignWriter(dto);
+			dao.updateResignUserid(dto);
+		}else {
+			dao.resignEmp(empno);
+		}
 	}
 
 	@Override
