@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>** banapresso **</title>
 <link rel="shortcut icon" type="image/x-icon" href="https://www.banapresso.com/ico_logo.ico">
-<jsp:include page="../include/resource.jsp"></jsp:include>
+<jsp:include page="../include/resource.jsp"/>
 </head>
 <body>
 <div class="container">
@@ -17,8 +17,7 @@
 			location.replace("list.go?pageType=saved");
 		}else{
 			location.replace("detail.go?num=${num}&pageNum=${pageNum}")
-		}
-		
+		}	
 	</script>
 </div>
 </body>

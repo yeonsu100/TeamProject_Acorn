@@ -13,7 +13,8 @@
 <div class="container">
 	<h1>금지된 요청입니다!</h1>
 		<p class="alert alert-danger">${msg }
-		<a class="alert-link" href="${pageContext.request.contextPath }/home.go">메인 화면으로 돌아가기</a>
+		<br/><a class="alert-link" href="${pageContext.request.contextPath }/home.go">메인 화면으로 돌아가기</a><br/>
+		<img src="${pageContext.request.contextPath }/resources/images/no.jpg"/>
 	</p>
 </div>
 

@@ -22,6 +22,48 @@ body{margin-top: 0rem;}
 #idRec{
 	background-color:#fff;
 }
+#tbody tr:hover{
+	background-color:#f5d7e0;
+}
+#tbody tr.selected{
+  color: #fff;
+  background-color: #F1A4BA;
+}
+#tbody tr:not(:disabled):not(.disabled):active, #tbody tr:not(:disabled):not(.disabled).active{
+  color: #fff;
+  background-color: #F1A4BA;
+}
+.btn-primary{
+	background-color:#F1648A;
+	border:0;
+	outline:0;
+}
+.btn-primary:hover,
+.btn-primary:disabled{
+	background-color:#F1A4BA;
+	border:0;
+	outline:0;
+}
+.btn-primary:focus, .btn-primary.focus {
+	color: #fff;
+	background-color: #F1648A;
+	border: 0;
+	box-shadow: 0 0 0 0.1rem #F1A4BA;
+}
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #F1648A;
+  border-color: #F1A4BA;
+}
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.1rem #F1A4BA;
+}
+.btn-secondary{
+	border:0;
+	outline:0;
+}
 </style>
 </head>
 <body>
@@ -99,17 +141,17 @@ function setBtnState(){
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
+				<h5 class="modal-title" style="float:left;">회원 검색</h5>
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">회원 검색</h4>
 			</div>
 			<div class="modal-body">
-				<div class="input-group">
-					<input type="text" class="form-control" placeholder="검색어 입력" id="idinsert">
+				<div class="input-group input-group-sm">
+					<input type="text" class="form-control" placeholder="검색 버튼을 클릭하면 전체 사원 목록을 확인하실 수 있습니다." id="idinsert">
 					<span class="input-group-btn">
-					  <button class="btn btn-success" type="button" id="submitId">검색</button>
+					  <button class="btn btn-info btn-sm" type="button" id="submitId">검색</button>
 					</span>
 				</div>
-				<table class="table table-hover table-condensed" id="idTable">
+				<table class="table table-hover table-sm" id="idTable">
 					<tbody id="tbody">
 					
 					</tbody>

@@ -48,9 +48,9 @@ a{
 		        <h6 class="text-uppercase font-weight-bold">MISSION</h6>
 		        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
 		        <p>
-			        1. 우리는 항상 고객을 먼저 생각한다. <br/><br/>
-					2. 우리는 최고의 품질, 최상의 맛을 제공한다. <br/><br/>
-					3. 우리는 2030년까지 글로벌 기업으로 도약한다. <br/>
+			        1. 우리는 항상 고객을 생각한다. <br/><br/>
+					2. 우리는 늘 최상의 맛을 제공한다. <br/><br/>
+					3. 우리는 글로벌 기업으로 도약한다. <br/>
 				</p>
      	 	</div>
 
@@ -83,16 +83,16 @@ a{
 				<h6 class="text-uppercase font-weight-bold">전국 가맹점 현황</h6>
 				<hr class="accent-3 mb-2 mt-2 d-inline-block mx-auto" style="width: 60px;">
 				<p>
-					<a class="dark-grey-text" href="#!">강남 본점</a>
+					<a class="dark-grey-text" href="https://www.banapresso.com/store">강남 본점</a>
 				</p>
 				<p>
-					<a class="dark-grey-text" href="#!">천호점</a>
+					<a class="dark-grey-text" href="https://www.banapresso.com/store">문정점</a>
 				</p>
 				<p>
-					<a class="dark-grey-text" href="#!">잠실점</a>
+					<a class="dark-grey-text" href="https://www.banapresso.com/store">서초역점</a>
 				</p>
 				<p>
-					<a class="dark-grey-text" href="#!">인덕원점</a>
+					<a class="dark-grey-text" href="https://www.banapresso.com/store">이수점</a>
 				</p>
 
 			</div>

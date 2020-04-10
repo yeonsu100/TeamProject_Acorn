@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="users">
+	<update id="boardwriter" parameterType="usersDto">
+		UPDATE T_board
+		SET writer = '탈퇴-'||#{empno}
+		WHERE writer = #{userid}
+	</update>
+	<update id="bcommentwriter" parameterType="usersDto">
+		UPDATE T_board_comment
+		SET writer = '탈퇴-'||#{empno}
+		WHERE writer = #{userid}
+	</update>
+	<update id="filewriter" parameterType="usersDto">
+		UPDATE T_file
+		SET writer = '탈퇴-'||#{empno}
+		WHERE writer = #{userid}
+	</update>
+	<update id="msgidsend" parameterType="usersDto">
+		UPDATE T_msg
+		SET idsend = '탈퇴-'||#{empno}
+		WHERE idsend = #{userid}
+	</update>
+	<update id="msgidrec" parameterType="usersDto">
+		UPDATE T_msg
+		SET idrec = '탈퇴-'||#{empno}
+		WHERE idrec = #{userid}
+	</update>
+	<update id="sugid" parameterType="usersDto">
+		UPDATE T_suggest
+		SET sugid = '탈퇴-'||#{empno}
+		WHERE sugid = #{userid}
+	</update>
+	<update id="resignuserid">
+		UPDATE T_user
+		SET userid = '탈퇴-'||#{empno}
+		WHERE userid = #{userid}
+	</update>
+
 	<select id="isIdExist" parameterType="String" resultType="String">
 		SELECT userid
 		FROM T_user
@@ -76,8 +112,9 @@
 	<select id="getCount" parameterType="usersDto" resultType="int">
 		SELECT NVL(MAX(ROWNUM), 0)
 		FROM T_emp
+		WHERE isresign is null
 		<if test="ename != null">
-			WHERE ename LIKE '%'||#{ename}||'%'
+			AND ename LIKE '%'||#{ename}||'%'
 		</if>
 	</select>
 	<select id="getList" parameterType="usersDto" resultType="usersDto">
@@ -88,8 +125,32 @@
 		(SELECT e.empno, e.ename, e.pnum, u.userid, u.email, TO_CHAR(hdate, 'YYYY-MM-DD') AS hdate
 		FROM T_emp e LEFT JOIN T_user u
 		ON e.empno=u.empno
+		WHERE e.isresign is null
 		<if test="ename != null">
-			WHERE e.ename LIKE '%'||#{ename}||'%'
+			AND e.ename LIKE '%'||#{ename}||'%'
+		</if>
+		ORDER BY empno ASC) result1)
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+	<select id="getCountR" parameterType="usersDto" resultType="int">
+		SELECT NVL(MAX(ROWNUM), 0)
+		FROM T_emp
+		WHERE isresign is not null
+		<if test="ename != null">
+			AND ename LIKE '%'||#{ename}||'%'
+		</if>
+	</select>
+	<select id="getListR" parameterType="usersDto" resultType="usersDto">
+		SELECT*
+		FROM
+		(SELECT result1.*, ROWNUM AS rnum
+		FROM
+		(SELECT e.empno, e.ename, e.pnum, u.userid, u.email, TO_CHAR(hdate, 'YYYY-MM-DD') AS hdate, TO_CHAR(rdate, 'YYYY-MM-DD') AS rdate
+		FROM T_emp e LEFT JOIN T_user u
+		ON e.empno=u.empno
+		WHERE e.isresign is not null
+		<if test="ename != null">
+			AND e.ename LIKE '%'||#{ename}||'%'
 		</if>
 		ORDER BY empno ASC) result1)
 		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
@@ -98,8 +159,14 @@
 		DELETE FROM T_user
 		WHERE empno=#{empno}	
 	</delete>
-	<delete id="deleteEmp" parameterType="int">
-		DELETE FROM T_emp
+	<update id="resignEmp" parameterType="int">
+		UPDATE T_emp
+		SET isresign = 'yes'
 		WHERE empno=#{empno}	
-	</delete>
+	</update>
+	<update id="resignDate" parameterType="int">
+		UPDATE T_emp
+		SET rdate=sysdate
+		WHERE empno=#{empno}
+	</update>
 </mapper>

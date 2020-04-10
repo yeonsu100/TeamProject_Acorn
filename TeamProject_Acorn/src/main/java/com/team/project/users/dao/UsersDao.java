@@ -20,6 +20,11 @@ public interface UsersDao {
 	public void updatePwd(UsersDto dto);
 	public int getCount(UsersDto dto);
 	public List<UsersDto> getList(UsersDto dto);
+	public int getCountR(UsersDto dto);
+	public List<UsersDto> getListR(UsersDto dto);
 	public void deleteUser(int empno);
-	public void deleteEmp(int empno);
+	public void resignEmp(int empno);
+	public String getUserid(int empno);
+	public void updateResignWriter(UsersDto dto);
+	public void updateResignUserid(UsersDto dto);
 }
