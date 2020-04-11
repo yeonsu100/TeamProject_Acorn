@@ -41,8 +41,8 @@
 		FROM
 		(SELECT result1.*, ROWNUM AS rnum
 		FROM
-		(SELECT num,idSend,idRec,title,TO_CHAR(sendDate, 'YY-MM-DD HH24:MM:SS') AS sendDate,
-					TO_CHAR(readDate, 'YY-MM-DD HH24:MM:SS') AS readDate
+		(SELECT num,idSend,idRec,title,TO_CHAR(sendDate, 'YY-MM-DD HH24:MI:SS') AS sendDate,
+					TO_CHAR(readDate, 'YY-MM-DD HH24:MI:SS') AS readDate
 		FROM T_msg
 		WHERE idRec=#{idRec}
 		AND recDel is null
@@ -54,8 +54,8 @@
 		FROM
 		(SELECT result1.*, ROWNUM AS rnum
 		FROM
-		(SELECT num,idSend,idRec,title,TO_CHAR(sendDate, 'YY-MM-DD HH24:MM:SS') AS sendDate,
-					TO_CHAR(readDate, 'YY-MM-DD HH24:MM:SS') AS readDate
+		(SELECT num,idSend,idRec,title,TO_CHAR(sendDate, 'YY-MM-DD HH24:MI:SS') AS sendDate,
+					TO_CHAR(readDate, 'YY-MM-DD HH24:MI:SS') AS readDate
 		FROM T_msg
 		WHERE idSend=#{idSend}
 		AND sendDel is null
@@ -67,8 +67,8 @@
 		FROM
 		(SELECT result1.*, ROWNUM AS rnum
 		FROM
-		(SELECT num,idSend,idRec,title,TO_CHAR(sendDate, 'YY-MM-DD HH24:MM:SS') AS sendDate,
-					TO_CHAR(readDate, 'YY-MM-DD HH24:MM:SS') AS readDate
+		(SELECT num,idSend,idRec,title,TO_CHAR(sendDate, 'YY-MM-DD HH24:MI:SS') AS sendDate,
+					TO_CHAR(readDate, 'YY-MM-DD HH24:MI:SS') AS readDate
 		FROM T_msg
 		WHERE idRec=#{idRec}
 		AND saved is not null
@@ -78,8 +78,8 @@
 	</select>
 	<select id="getData" parameterType="msgDto" resultType="msgDto">
 		SELECT num, idSend, idRec, title, content, 
-			TO_CHAR(sendDate, 'YY-MM-DD HH24:MM:SS') AS sendDate, 
-			TO_CHAR(readDate, 'YY-MM-DD HH24:MM:SS') AS readDate, saved
+			TO_CHAR(sendDate, 'YY-MM-DD HH24:MI:SS') AS sendDate, 
+			TO_CHAR(readDate, 'YY-MM-DD HH24:MI:SS') AS readDate, saved
 		FROM T_msg
 		WHERE num=#{num}		
 	</select>
