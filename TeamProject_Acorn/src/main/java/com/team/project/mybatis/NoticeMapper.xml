@@ -19,7 +19,7 @@
 		FROM
 		(SELECT result1.*, ROWNUM AS rnum
 		FROM
-		(SELECT num,writer,title,viewCount,TO_CHAR(regdate, 'YY-MM-DD HH24:MM') AS regdate
+		(SELECT num,writer,title,viewCount,TO_CHAR(regdate, 'YY-MM-DD HH24:MI') AS regdate
 		FROM T_notice
 		<choose>
 			<when test="title != null and content != null ">

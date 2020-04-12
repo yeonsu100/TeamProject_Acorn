@@ -1,8 +1,16 @@
 # TeamProject_Acorn
-Final Team Project at Acorn :v:
+> Final Team Project at Acorn :v:
 
-> Build a Intranet Page using Spring
-- Project Duration : 02/18/2020 - 04/03/2020
-- TF Team : 백연수, 이상명, 이창호, 김철언, 한석호
-- Language : Java (Spring, JSP, HTML, Javascript, bootstrap, CSS, etc...)
-- Co-op Tool : Git (main), Google Docs & Spreadsheet
+## Intranet System
+### 개요
+- 기간 : 03/09/2020 - 04/09/2020
+- 개발자 : [백연수 (PM)](https://github.com/yeonsu100), [이상명](https://github.com/2ee30), [이창호](https://github.com/Maltitols), [한석호](https://github.com/gkstjrgh4)
+- 개발 환경
+  - OS : Windows 7, Windows 10, macOS 10.15 Catalina
+  - DB : Oracle Database 10g
+  - Development Tools : Eclipse, SQL Developer
+  - Server : Apache Tomcat 8.5.50
+  - Language
+    - Back-end : Java, Servlet/JSP, Spring, MyBatis, EL, JSTL
+    - Front-end : HTML, CSS3, XML, JavaScript, jQuery, Bootstrap4, Ajax, Angular.js
+  - Co-op Tools : GitHub, Google Docs & Spreadsheet, Trello

@@ -2,10 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="msg">
 	<select id="getIdList" parameterType="msgDto" resultType="usersDto">
-		SELECT userId
-		FROM T_user
-		WHERE userId != #{idSend}
+		SELECT u.userId
+		FROM T_user u, T_emp e
+		WHERE e.empno=u.empno
+		AND userId != #{idSend}
 		AND userId LIKE '%'||#{idRec}||'%'
+		AND isresign is null
 		ORDER BY userId ASC
 	</select>
 	<select id="getCount" resultType="int" parameterType="msgDto">
@@ -39,8 +41,8 @@
 		FROM
 		(SELECT result1.*, ROWNUM AS rnum
 		FROM
-		(SELECT num,idSend,idRec,title,TO_CHAR(sendDate, 'YY-MM-DD HH24:MM:SS') AS sendDate,
-					TO_CHAR(readDate, 'YY-MM-DD HH24:MM:SS') AS readDate
+		(SELECT num,idSend,idRec,title,TO_CHAR(sendDate, 'YY-MM-DD HH24:MI:SS') AS sendDate,
+					TO_CHAR(readDate, 'YY-MM-DD HH24:MI:SS') AS readDate
 		FROM T_msg
 		WHERE idRec=#{idRec}
 		AND recDel is null
@@ -52,8 +54,8 @@
 		FROM
 		(SELECT result1.*, ROWNUM AS rnum
 		FROM
-		(SELECT num,idSend,idRec,title,TO_CHAR(sendDate, 'YY-MM-DD HH24:MM:SS') AS sendDate,
-					TO_CHAR(readDate, 'YY-MM-DD HH24:MM:SS') AS readDate
+		(SELECT num,idSend,idRec,title,TO_CHAR(sendDate, 'YY-MM-DD HH24:MI:SS') AS sendDate,
+					TO_CHAR(readDate, 'YY-MM-DD HH24:MI:SS') AS readDate
 		FROM T_msg
 		WHERE idSend=#{idSend}
 		AND sendDel is null
@@ -65,8 +67,8 @@
 		FROM
 		(SELECT result1.*, ROWNUM AS rnum
 		FROM
-		(SELECT num,idSend,idRec,title,TO_CHAR(sendDate, 'YY-MM-DD HH24:MM:SS') AS sendDate,
-					TO_CHAR(readDate, 'YY-MM-DD HH24:MM:SS') AS readDate
+		(SELECT num,idSend,idRec,title,TO_CHAR(sendDate, 'YY-MM-DD HH24:MI:SS') AS sendDate,
+					TO_CHAR(readDate, 'YY-MM-DD HH24:MI:SS') AS readDate
 		FROM T_msg
 		WHERE idRec=#{idRec}
 		AND saved is not null
@@ -76,8 +78,8 @@
 	</select>
 	<select id="getData" parameterType="msgDto" resultType="msgDto">
 		SELECT num, idSend, idRec, title, content, 
-			TO_CHAR(sendDate, 'YY-MM-DD HH24:MM:SS') AS sendDate, 
-			TO_CHAR(readDate, 'YY-MM-DD HH24:MM:SS') AS readDate, saved
+			TO_CHAR(sendDate, 'YY-MM-DD HH24:MI:SS') AS sendDate, 
+			TO_CHAR(readDate, 'YY-MM-DD HH24:MI:SS') AS readDate, saved
 		FROM T_msg
 		WHERE num=#{num}		
 	</select>
