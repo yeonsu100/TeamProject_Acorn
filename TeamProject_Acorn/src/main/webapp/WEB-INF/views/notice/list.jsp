@@ -109,11 +109,10 @@ thead{
 	
 	<table class="table table-sm table-hover mt-3">
 		<colgroup>
-			<col class="col-xs-1"/>
 			<col class="col-xs-2"/>
-			<col class="col-xs-5"/>
-			<col class="col-xs-1"/>
-			<col class="col-xs-3"/>
+			<col class="col-xs-6"/>
+			<col class="col-xs-2"/>
+			<col class="col-xs-2"/>
 		</colgroup>
 		<thead>
 			<tr>
