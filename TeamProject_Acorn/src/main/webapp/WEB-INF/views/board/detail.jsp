@@ -252,8 +252,10 @@
 							<!-- 덧글 대상 -->
 							<input type="hidden" name="target_id" value="${tmp.writer }" />
 							<input type="hidden" name="comment_group" value="${tmp.comment_group }" />
-							<textarea class="form-control addReplyComment" name="content"><c:if test="${empty id }">로그인한 사용자만 댓글 등록이 가능합니다.</c:if></textarea>
-							<button disabled type="submit" class="btn btn-primary addReplyBtn">댓글 등록</button>
+							<div class="input-group">
+								<textarea class="form-control addReplyComment" name="content"><c:if test="${empty id }">로그인한 사용자만 댓글 등록이 가능합니다.</c:if></textarea>
+								<button disabled type="submit" class="btn btn-primary addReplyBtn">댓글 등록</button>
+							</div>
 						</form>			
 						<c:if test="${id eq tmp.writer }">
 							<form class="comment-update-form" action="comment_update.go" method="post">
@@ -321,8 +323,10 @@
 				<input type="hidden" name="ref_group" value="${dto.num }"/>
 				<input type="hidden" name="target_id" value="${dto.writer }"/>
 				<c:if test="${empty id }">로그인한 사용자만 댓글 등록이 가능합니다.</c:if>
-				<textarea class="form-control" id="insert-boardContent" name="content"></textarea>
-				<button  class="btn btn-primary" type="submit" disabled id="insertBtn">등록</button>
+				<div class="input-group">
+					<textarea class="form-control" id="insert-boardContent" name="content"></textarea>
+					<button  class="btn btn-primary" type="submit" disabled id="insertBtn">등록</button>
+				</div>
 			</div>
 		</form>
 	</div>
