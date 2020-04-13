@@ -15,7 +15,7 @@ import com.team.project.exception.CanNotDeleteException;
 import com.team.project.exception.UpdateException;
 import com.team.project.notice.dao.NoticeDao;
 import com.team.project.notice.dto.NoticeDto;
-import com.team.project.users.dao.UsersDao;
+
 
 @Service
 public class NoticeServiceImpl implements NoticeService{
