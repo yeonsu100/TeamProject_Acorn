@@ -92,6 +92,7 @@ $(document).ready(function(){
     			$.each(response, function (index, item) {
     			     var eachrow = "<tr>"
     	                 + "<td>" + response[index].userid + "</td>"
+    	                 + "<td>" + response[index].ename + "</td>"
     	                 + "</tr>";
     				$("#tbody").append(eachrow);
     			});
@@ -138,7 +139,7 @@ function setBtnState(){
 
 </script>
 <div class="modal fade" id="userlist">
-	<div class="modal-dialog">
+	<div class="modal-dialog modal-dialog-scrollable">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" style="float:left;">회원 검색</h5>

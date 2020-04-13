@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="msg">
 	<select id="getIdList" parameterType="msgDto" resultType="usersDto">
-		SELECT u.userId
+		SELECT u.userId, e.ename
 		FROM T_user u, T_emp e
 		WHERE e.empno=u.empno
 		AND userId != #{idSend}
-		AND userId LIKE '%'||#{idRec}||'%'
+		AND (userId LIKE '%'||#{idRec}||'%' OR ename LIKE '%'||#{idRec}||'%')
 		AND isresign is null
 		ORDER BY userId ASC
 	</select>
