@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.team.project.exception.CanNotDeleteException;
 import com.team.project.exception.UpdateException;
 import com.team.project.exception.AccessException;
 import com.team.project.notice.dao.NoticeDao;

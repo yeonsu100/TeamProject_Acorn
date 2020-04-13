@@ -11,9 +11,14 @@
 </head>
 <body>
 <div class="container">
-	<script>
-		alert("성공적으로 저장하였습니다!");
-		location.href="${pageContext.request.contextPath }/notice/list.go";
+<script src="https://unpkg.com/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
+	<script>		
+		swal("성공적으로 저장하였습니다!", "확인 버튼을 눌러주세요", "success")
+		.then((isSuccess) => {
+			if(isSuccess){
+				location.href="${pageContext.request.contextPath }/notice/list.go";
+			}
+		});
 	</script>
 </div>
 </body>
