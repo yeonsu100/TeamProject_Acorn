@@ -181,8 +181,8 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public void updateContent(BoardDto dto, HttpServletRequest request) {
-		String id=(String)request.getSession().getAttribute("id");
 		int num=dto.getNum();
+		String id=(String)request.getSession().getAttribute("id");
 		String writer=boardDao.getData(num).getWriter();
 		if(!id.equals(writer)) {
 			throw new UpdateException();
