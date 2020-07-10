@@ -1,5 +1,5 @@
 # TeamProject_Acorn
-> 교육기관을 통해 학습한 내용을 토대로 만든 프로젝트입니다. 본 프로젝트에 등장하는 상호명 및 지명은 실제와 무관한 것임을 밝힙니다.
+> 교육을 통해 학습한 내용을 토대로 만든 프로젝트입니다. 본 프로젝트에 등장하는 상호명 및 지명은 실제와 무관한 것임을 밝힙니다.
 
 ## Intranet System
 ### 개요
@@ -8,8 +8,9 @@
 - 개발 환경
   - OS : Windows 7, Windows 10, macOS 10.15 Catalina
   - DB : Oracle Database 10g
-  - Development Tools : Eclipse, SQL Developer
   - Server : Apache Tomcat 8.5.50
+  - IDE : Eclipse 4.8, Apache Maven 3.6.3, Visual Studio Code, SQL Developer 
+  - Framework : Spring Tools 3 SE 3.9.11
   - Language
     - Back-end : Java, Servlet/JSP, Spring, MyBatis, EL, JSTL
     - Front-end : HTML, CSS3, XML, JavaScript, jQuery, Bootstrap4, Ajax, Angular.js
